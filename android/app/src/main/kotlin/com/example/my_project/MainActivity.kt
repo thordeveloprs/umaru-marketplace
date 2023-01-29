@@ -1,0 +1,6 @@
+package com.mycompany.umarumarketplace
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
