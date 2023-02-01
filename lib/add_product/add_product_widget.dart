@@ -23,7 +23,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   bool isMediaUploading = false;
   FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
 
-  ApiCallResponse? apiResultfje;
   List<String>? selectedCategory;
   String? dropDownCategoryValue;
   TextEditingController? txtPriceController;
@@ -548,27 +547,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       return;
                                     }
                                   }
-
-                                  apiResultfje = await DemoImageUploadCall.call(
-                                    file: uploadedLocalFile,
-                                  );
-                                  if ((apiResultfje?.succeeded ?? true)) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          (apiResultfje?.jsonBody ?? '')
-                                              .toString(),
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Colors.black,
-                                      ),
-                                    );
-                                  }
-
-                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
