@@ -261,7 +261,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                         validator: (val) {
                                                           if (val == null ||
                                                               val.isEmpty) {
@@ -412,7 +419,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                         validator: (val) {
                                                           if (val == null ||
                                                               val.isEmpty) {
@@ -562,7 +576,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                         validator: (val) {
                                                           if (val == null ||
                                                               val.isEmpty) {
@@ -719,7 +740,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                         validator: (val) {
                                                           if (val == null ||
                                                               val.isEmpty) {
@@ -871,7 +899,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                         validator: (val) {
                                                           if (val == null ||
                                                               val.isEmpty) {
@@ -1109,7 +1144,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -1239,7 +1280,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -1489,7 +1536,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -1628,7 +1681,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1,
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .black,
+                                                              ),
                                                           validator: (val) {
                                                             if (val == null ||
                                                                 val.isEmpty) {
@@ -1777,7 +1837,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -1903,7 +1969,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -2029,7 +2101,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {

@@ -23,6 +23,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   bool isMediaUploading = false;
   FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
 
+  ApiCallResponse? apiResultfje;
   List<String>? selectedCategory;
   String? dropDownCategoryValue;
   TextEditingController? txtPriceController;
@@ -147,7 +148,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     errorBorder: InputBorder.none,
                                     focusedErrorBorder: InputBorder.none,
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
                                   keyboardType: TextInputType.name,
                                 ),
                               ),
@@ -214,7 +221,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     errorBorder: InputBorder.none,
                                     focusedErrorBorder: InputBorder.none,
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
                                 ),
                               ),
                               Align(
@@ -280,7 +293,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     errorBorder: InputBorder.none,
                                     focusedErrorBorder: InputBorder.none,
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
                                   keyboardType: TextInputType.number,
                                 ),
                               ),
@@ -332,7 +351,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     errorBorder: InputBorder.none,
                                     focusedErrorBorder: InputBorder.none,
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
                                   keyboardType: TextInputType.number,
                                 ),
                               ),
@@ -487,10 +512,14 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  final selectedMedia = await selectMedia(
+                                  final selectedMedia =
+                                      await selectMediaWithSourceBottomSheet(
+                                    context: context,
                                     imageQuality: 44,
-                                    mediaSource: MediaSource.photoGallery,
-                                    multiImage: false,
+                                    allowPhoto: true,
+                                    backgroundColor: Colors.white,
+                                    textColor: FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                   );
                                   if (selectedMedia != null &&
                                       selectedMedia.every((m) =>
@@ -519,6 +548,27 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       return;
                                     }
                                   }
+
+                                  apiResultfje = await DemoImageUploadCall.call(
+                                    file: uploadedLocalFile,
+                                  );
+                                  if ((apiResultfje?.succeeded ?? true)) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          (apiResultfje?.jsonBody ?? '')
+                                              .toString(),
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Colors.black,
+                                      ),
+                                    );
+                                  }
+
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,

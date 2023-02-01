@@ -388,6 +388,29 @@ class RegisterCall {
 
 /// End umaru Group Code
 
+class DemoImageUploadCall {
+  static Future<ApiCallResponse> call({
+    FFLocalFile? file,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'demo image upload',
+      apiUrl: 'https://19c29fb4b159b2cb37902b1e3c1b8b72.m.pipedream.net',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {
+        'file': file,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

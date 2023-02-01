@@ -193,7 +193,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFF9098B1),
+                                            color: FlutterFlowTheme.of(context)
+                                                .black,
                                             fontSize: 12,
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,
@@ -310,7 +311,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFF9098B1),
+                                            color: FlutterFlowTheme.of(context)
+                                                .black,
                                             fontSize: 12,
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,
@@ -427,7 +429,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFF9098B1),
+                                            color: FlutterFlowTheme.of(context)
+                                                .black,
                                             fontSize: 12,
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,

@@ -172,7 +172,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 keyboardType: TextInputType.emailAddress,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
@@ -264,7 +269,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 keyboardType: TextInputType.phone,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
@@ -348,7 +358,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 keyboardType: TextInputType.phone,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
@@ -439,7 +454,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 keyboardType: TextInputType.url,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
@@ -529,7 +549,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .black,
+                                          ),
                                       validator: (val) {
                                         if (val == null || val.isEmpty) {
                                           return 'Image is required';
@@ -629,7 +654,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 keyboardType: TextInputType.name,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
@@ -713,7 +743,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
                                     return 'Product Category is required';
@@ -796,7 +831,12 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).black,
+                                    ),
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
                                     return 'Field is required';

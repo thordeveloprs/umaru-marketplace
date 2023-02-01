@@ -60,7 +60,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           ),
         Expanded(
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 131, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 100, 0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,

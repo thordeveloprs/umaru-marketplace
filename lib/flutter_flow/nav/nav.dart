@@ -61,18 +61,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FilterWidget(),
             ),
             FFRoute(
-              name: 'All_Category',
-              path: 'allCategory',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'All_Category')
-                  : AllCategoryWidget(),
-            ),
-            FFRoute(
               name: 'main_Category',
               path: 'mainCategory',
               builder: (context, params) => MainCategoryWidget(
                 cetegoryId: params.getParam('cetegoryId', ParamType.int),
               ),
+            ),
+            FFRoute(
+              name: 'All_Category',
+              path: 'allCategory',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'All_Category')
+                  : AllCategoryWidget(),
             ),
             FFRoute(
               name: 'registerFormcompanyDetails',
@@ -102,14 +102,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ManageProductsWidget(),
             ),
             FFRoute(
-              name: 'addProduct',
-              path: 'addProduct',
-              builder: (context, params) => AddProductWidget(),
-            ),
-            FFRoute(
               name: 'privacyPolicy',
               path: 'privacyPolicy',
               builder: (context, params) => PrivacyPolicyWidget(),
+            ),
+            FFRoute(
+              name: 'addProduct',
+              path: 'addProduct',
+              builder: (context, params) => AddProductWidget(),
             ),
             FFRoute(
               name: 'sellerRegisteration',

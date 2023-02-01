@@ -360,7 +360,6 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 100,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
