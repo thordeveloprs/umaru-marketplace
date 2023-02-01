@@ -238,7 +238,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                       context.pushNamed('Product_detailPage');
                                     },
                                     child: Container(
-                                      width: 167,
+                                      width: double.infinity,
                                       height: 185,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -280,9 +280,9 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                           fontFamily: 'Poppins',
                                                           color:
                                                               Color(0xFF050404),
-                                                          fontSize: 11.5,
+                                                          fontSize: 10,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w600,
                                                         ),
                                                   ),
                                                 ),
@@ -312,7 +312,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                               Color(0xFF050404),
                                                           fontSize: 10,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w600,
                                                         ),
                                                   ),
                                                 ),

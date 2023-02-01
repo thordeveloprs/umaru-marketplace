@@ -48,7 +48,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             children: [
               AppbarWidget(
                 appTitle: 'Search Page',
-                isShowBack: true,
+                isShowBack: false,
               ),
               Expanded(
                 child: SingleChildScrollView(

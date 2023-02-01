@@ -1,4 +1,5 @@
 import '../backend/api_requests/api_calls.dart';
+import '../components/appbar_widget.dart';
 import '../components/forgot_password_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -52,6 +53,10 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              AppbarWidget(
+                appTitle: ' ',
+                isShowBack: true,
+              ),
               Expanded(
                 child: Form(
                   key: formKey,

@@ -33,7 +33,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
               .toString();
         });
 
-        context.pushNamed('Home');
+        context.goNamed('Home');
       }
     });
   }
