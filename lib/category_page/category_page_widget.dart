@@ -239,7 +239,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                     },
                                     child: Container(
                                       width: double.infinity,
-                                      height: 185,
+                                      height: 180,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -256,7 +256,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                             child: Image.network(
                                               'https://picsum.photos/seed/448/600',
                                               width: 116,
-                                              height: 106,
+                                              height: 97,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
