@@ -252,7 +252,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    25, 18, 25, 18),
+                                                    25, 9, 25, 9),
                                             child: Image.network(
                                               'https://picsum.photos/seed/448/600',
                                               width: 116,

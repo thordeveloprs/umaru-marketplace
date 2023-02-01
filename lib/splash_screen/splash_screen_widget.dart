@@ -32,10 +32,8 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
               )
               .toString();
         });
-        if (Navigator.of(context).canPop()) {
-          context.pop();
-        }
-        context.pushNamed('Home');
+
+        context.goNamed('Home');
       }
     });
   }
