@@ -238,7 +238,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         12, 0, 32, 0),
                                     child: TextFormField(
                                       controller: txtPasswordController1,
-                                      autofocus: true,
                                       obscureText: !txtPasswordVisibility1,
                                       decoration: InputDecoration(
                                         hintText: 'New Password',
@@ -356,7 +355,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         12, 0, 32, 0),
                                     child: TextFormField(
                                       controller: txtPasswordController2,
-                                      autofocus: true,
                                       obscureText: !txtPasswordVisibility2,
                                       decoration: InputDecoration(
                                         hintText: 'Confirm New Password',

@@ -233,11 +233,9 @@ class CreateProductCall {
     String? sku = '',
     int? price,
     int? qty,
-    List<FFLocalFile>? imagesList,
+    FFLocalFile? images,
     String? category = '',
   }) {
-    final images = _serializeList(imagesList);
-
     return ApiManager.instance.makeApiCall(
       callName: 'create product',
       apiUrl: '${UmaruGroup.baseUrl}vproductapi/vproducts/createproduct',

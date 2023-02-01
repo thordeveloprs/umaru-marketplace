@@ -21,7 +21,7 @@ class AddProductWidget extends StatefulWidget {
 
 class _AddProductWidgetState extends State<AddProductWidget> {
   bool isMediaUploading = false;
-  List<FFLocalFile> uploadedLocalFiles = [];
+  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
 
   List<String>? selectedCategory;
   String? dropDownCategoryValue;
@@ -138,7 +138,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: txtProductNameController,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -206,7 +205,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: txtSkuController,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -273,7 +271,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: txtPriceController,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -326,7 +323,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: txtQuantityController,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -494,7 +490,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   final selectedMedia = await selectMedia(
                                     imageQuality: 44,
                                     mediaSource: MediaSource.photoGallery,
-                                    multiImage: true,
+                                    multiImage: false,
                                   );
                                   if (selectedMedia != null &&
                                       selectedMedia.every((m) =>
@@ -516,8 +512,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     }
                                     if (selectedLocalFiles.length ==
                                         selectedMedia.length) {
-                                      setState(() => uploadedLocalFiles =
-                                          selectedLocalFiles);
+                                      setState(() => uploadedLocalFile =
+                                          selectedLocalFiles.first);
                                     } else {
                                       setState(() {});
                                       return;
@@ -640,7 +636,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       qty: int.tryParse(
                                           txtQuantityController!.text),
                                       category: subCategoryId,
-                                      imagesList: uploadedLocalFiles,
+                                      images: uploadedLocalFile,
                                     );
                                     if (getJsonField(
                                       (createProductDetails?.jsonBody ?? ''),

@@ -54,7 +54,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                 isShowBack: true,
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 21, 0, 21),
+                padding: EdgeInsetsDirectional.fromSTEB(15, 21, 15, 21),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -154,49 +154,51 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         ),
                       ),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(23, 0, 19, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  context.pushNamed('Filter');
-                                },
-                                child: Image.asset(
-                                  'assets/images/Filter.png',
-                                  width: 18,
-                                  height: 18,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(22, 0, 0, 0),
-                                child: InkWell(
+                    if (false)
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(23, 0, 19, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
                                   onTap: () async {
-                                    context.pushNamed('All_Category');
+                                    context.pushNamed('Filter');
                                   },
                                   child: Image.asset(
-                                    'assets/images/Group.png',
+                                    'assets/images/Filter.png',
                                     width: 18,
                                     height: 18,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      22, 0, 0, 0),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      context.pushNamed('All_Category');
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/Group.png',
+                                      width: 18,
+                                      height: 18,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
                   ],
                 ),
               ),

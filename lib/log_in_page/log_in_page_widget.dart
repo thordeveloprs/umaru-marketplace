@@ -153,7 +153,6 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           12, 0, 32, 0),
                                       child: TextFormField(
                                         controller: txtEmailController,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: 'Your Email',
@@ -272,7 +271,6 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           12, 0, 32, 0),
                                       child: TextFormField(
                                         controller: txtPasswordController,
-                                        autofocus: true,
                                         obscureText: !txtPasswordVisibility,
                                         decoration: InputDecoration(
                                           hintText: 'Password',

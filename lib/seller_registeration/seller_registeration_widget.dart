@@ -180,7 +180,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController1,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: 'First Name',
@@ -306,7 +305,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController2,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: 'Last Name',
@@ -422,7 +420,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController3,
-                                        autofocus: true,
                                         textCapitalization:
                                             TextCapitalization.none,
                                         obscureText: false,
@@ -548,7 +545,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController4,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: 'Public name',
@@ -667,7 +663,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController5,
-                                        autofocus: true,
                                         readOnly: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -787,7 +782,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController6,
-                                        autofocus: true,
                                         textCapitalization:
                                             TextCapitalization.none,
                                         obscureText: !passwordVisibility1,
@@ -925,7 +919,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           12, 0, 0, 0),
                                       child: TextFormField(
                                         controller: textController7,
-                                        autofocus: true,
                                         obscureText: !passwordVisibility2,
                                         decoration: InputDecoration(
                                           hintText: 'Confirm Password',
@@ -1148,16 +1141,18 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'The Password is not same',
+                                            'The Password and Confirm Password must be same',
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBtnText,
                                             ),
                                           ),
                                           duration:
                                               Duration(milliseconds: 4000),
-                                          backgroundColor: Color(0x00000000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .black,
                                         ),
                                       );
                                     }

@@ -108,7 +108,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                             Expanded(
                               child: TextFormField(
                                 controller: textController,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Search',

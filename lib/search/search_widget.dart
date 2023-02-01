@@ -95,7 +95,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 Expanded(
                                   child: TextFormField(
                                     controller: searchPageTextFieldController,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Search',
@@ -222,7 +221,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                             mainAxisSpacing: 10,
                             childAspectRatio: 1,
                           ),
-                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: list2Searchpage.length,

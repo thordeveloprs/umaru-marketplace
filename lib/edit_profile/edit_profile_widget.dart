@@ -161,7 +161,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       child: TextFormField(
                                                         controller:
                                                             firstNTextFieldController,
-                                                        autofocus: true,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -314,7 +313,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       child: TextFormField(
                                                         controller:
                                                             lastNTextFieldController,
-                                                        autofocus: true,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -464,7 +462,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       child: TextFormField(
                                                         controller:
                                                             yourEmailTextFieldController,
-                                                        autofocus: true,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -622,7 +619,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       child: TextFormField(
                                                         controller:
                                                             publicNTextFieldController,
-                                                        autofocus: true,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -775,7 +771,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       child: TextFormField(
                                                         controller:
                                                             shopURLTextFieldController,
-                                                        autofocus: true,
                                                         readOnly: true,
                                                         obscureText: false,
                                                         decoration:
@@ -1023,7 +1018,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
                                                     controller: textController6,
-                                                    autofocus: true,
                                                     readOnly: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -1155,7 +1149,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
                                                     controller: textController7,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1281,7 +1274,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
                                                     controller: textController8,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1407,7 +1399,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
                                                     controller: textController9,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1541,7 +1532,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         child: TextFormField(
                                                           controller:
                                                               textController10,
-                                                          autofocus: true,
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
@@ -1698,7 +1688,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   child: TextFormField(
                                                     controller:
                                                         textController11,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText: 'Industry',
@@ -1824,7 +1813,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   child: TextFormField(
                                                     controller:
                                                         textController12,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1951,7 +1939,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   child: TextFormField(
                                                     controller:
                                                         textController13,
-                                                    autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:

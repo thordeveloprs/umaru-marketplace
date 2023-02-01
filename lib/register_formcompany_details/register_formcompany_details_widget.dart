@@ -121,7 +121,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController1,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Business email',
@@ -214,7 +213,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController2,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Business Contact number',
@@ -299,7 +297,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController3,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Whatsapp number',
@@ -391,7 +388,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController4,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Social Media Links',
@@ -480,7 +476,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                         20, 0, 0, 0),
                                     child: TextFormField(
                                       controller: textController5,
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Company Image',
@@ -583,7 +578,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController6,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Industry',
@@ -668,7 +662,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController7,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Product Categories',
@@ -752,10 +745,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController8,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Product Categories',
+                                  hintText: 'Business Address',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(

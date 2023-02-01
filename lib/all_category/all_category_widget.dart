@@ -34,7 +34,7 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -52,11 +52,11 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                 ],
               ),
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Padding(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
                         child: Builder(
                           builder: (context) {
@@ -80,6 +80,7 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                 mainAxisSpacing: 14.66,
                                 childAspectRatio: 1,
                               ),
+                              shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: cateData.length,
                               itemBuilder: (context, cateDataIndex) {
@@ -100,7 +101,7 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                     );
                                   },
                                   child: Container(
-                                    width: 167,
+                                    width: double.infinity,
                                     height: 142.7,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
@@ -161,8 +162,8 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                           },
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

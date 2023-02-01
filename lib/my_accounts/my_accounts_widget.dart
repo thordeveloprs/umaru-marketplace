@@ -532,13 +532,13 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                       ),
                                     ),
                                   ),
+                                  Divider(
+                                    thickness: 1,
+                                    color: Color(0xFFC4C4C4),
+                                  ),
                                 ],
                               ),
                             ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xFFC4C4C4),
-                          ),
                         ],
                       ),
                     ),
