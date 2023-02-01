@@ -37,6 +37,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => SplashScreenWidget(),
           routes: [
             FFRoute(
+              name: 'Home',
+              path: 'home',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Home')
+                  : HomeWidget(),
+            ),
+            FFRoute(
               name: 'splashScreen',
               path: 'splashScreen',
               builder: (context, params) => SplashScreenWidget(),
@@ -44,17 +51,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'search',
               path: 'search',
-              builder: (context, params) => SearchWidget(),
-            ),
-            FFRoute(
-              name: 'Home',
-              path: 'home',
-              builder: (context, params) => HomeWidget(),
-            ),
-            FFRoute(
-              name: 'All_Category',
-              path: 'allCategory',
-              builder: (context, params) => AllCategoryWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'search')
+                  : SearchWidget(),
             ),
             FFRoute(
               name: 'Filter',
@@ -62,14 +61,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FilterWidget(),
             ),
             FFRoute(
-              name: 'main_Category',
-              path: 'mainCategory',
-              builder: (context, params) => MainCategoryWidget(),
+              name: 'All_Category',
+              path: 'allCategory',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'All_Category')
+                  : AllCategoryWidget(),
             ),
             FFRoute(
-              name: 'MyAccount',
-              path: 'myAccount',
-              builder: (context, params) => MyAccountWidget(),
+              name: 'main_Category',
+              path: 'mainCategory',
+              builder: (context, params) => MainCategoryWidget(
+                cetegoryId: params.getParam('cetegoryId', ParamType.int),
+              ),
             ),
             FFRoute(
               name: 'registerFormcompanyDetails',
@@ -82,11 +85,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegisterFormPricingWidget(),
             ),
             FFRoute(
-              name: 'sucessPage',
-              path: 'sucessPage',
-              builder: (context, params) => SucessPageWidget(),
-            ),
-            FFRoute(
               name: 'EditProfile',
               path: 'editProfile',
               builder: (context, params) => EditProfileWidget(),
@@ -94,7 +92,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MyAccounts',
               path: 'myAccounts',
-              builder: (context, params) => MyAccountsWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MyAccounts')
+                  : MyAccountsWidget(),
             ),
             FFRoute(
               name: 'ManageProducts',
@@ -105,11 +105,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'addProduct',
               path: 'addProduct',
               builder: (context, params) => AddProductWidget(),
-            ),
-            FFRoute(
-              name: 'sucessScreen2',
-              path: 'sucessScreen2',
-              builder: (context, params) => SucessScreen2Widget(),
             ),
             FFRoute(
               name: 'privacyPolicy',
@@ -127,9 +122,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LogInPageWidget(),
             ),
             FFRoute(
+              name: 'sucessScreen2',
+              path: 'sucessScreen2',
+              builder: (context, params) => SucessScreen2Widget(
+                msg: params.getParam('msg', ParamType.String),
+              ),
+            ),
+            FFRoute(
               name: 'Product_detailPage',
               path: 'productDetailPage',
               builder: (context, params) => ProductDetailPageWidget(),
+            ),
+            FFRoute(
+              name: 'categoryPage',
+              path: 'categoryPage',
+              builder: (context, params) => CategoryPageWidget(
+                categoryID: params.getParam('categoryID', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'ChangePassword',
+              path: 'changePassword',
+              builder: (context, params) => ChangePasswordWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

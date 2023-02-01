@@ -28,30 +28,35 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         if (widget.isShowBack ?? true)
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Color(0xFFC7C7CC),
-                  size: 24,
+          InkWell(
+            onTap: () async {
+              context.pop();
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0xFFC7C7CC),
+                    size: 24,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 65.02, 0),
-                child: Text(
-                  'Back',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFC7C7CC),
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 65.02, 0),
+                  child: Text(
+                    'Back',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFC7C7CC),
+                          fontSize: 17,
+                          fontWeight: FontWeight.normal,
+                        ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         Expanded(
           child: Padding(

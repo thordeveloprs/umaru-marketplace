@@ -1,11 +1,17 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SucessScreen2Widget extends StatefulWidget {
-  const SucessScreen2Widget({Key? key}) : super(key: key);
+  const SucessScreen2Widget({
+    Key? key,
+    this.msg,
+  }) : super(key: key);
+
+  final String? msg;
 
   @override
   _SucessScreen2WidgetState createState() => _SucessScreen2WidgetState();
@@ -14,6 +20,16 @@ class SucessScreen2Widget extends StatefulWidget {
 class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 2000));
+      context.pop();
+    });
+  }
 
   @override
   void dispose() {
@@ -27,7 +43,7 @@ class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: Color(0xFFF5F6F8),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -75,7 +91,7 @@ class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Your Product has been added\nsuccesfully',
+                              widget.msg!,
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2

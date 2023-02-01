@@ -26,6 +26,8 @@ class FFAppState extends ChangeNotifier {
     }
 
     _imageBaseUrl = prefs.getString('ff_imageBaseUrl') ?? _imageBaseUrl;
+    _findShopCategoryId =
+        prefs.getInt('ff_findShopCategoryId') ?? _findShopCategoryId;
   }
 
   void update(VoidCallback callback) {
@@ -75,6 +77,53 @@ class FFAppState extends ChangeNotifier {
   set imageBaseUrl(String _value) {
     _imageBaseUrl = _value;
     prefs.setString('ff_imageBaseUrl', _value);
+  }
+
+  int _findShopCategoryId = 9;
+  int get findShopCategoryId => _findShopCategoryId;
+  set findShopCategoryId(int _value) {
+    _findShopCategoryId = _value;
+    prefs.setInt('ff_findShopCategoryId', _value);
+  }
+
+  List<String> _productUploadImgList = [];
+  List<String> get productUploadImgList => _productUploadImgList;
+  set productUploadImgList(List<String> _value) {
+    _productUploadImgList = _value;
+  }
+
+  void addToProductUploadImgList(String _value) {
+    _productUploadImgList.add(_value);
+  }
+
+  void removeFromProductUploadImgList(String _value) {
+    _productUploadImgList.remove(_value);
+  }
+
+  List<String> _createProductCountry = [];
+  List<String> get createProductCountry => _createProductCountry;
+  set createProductCountry(List<String> _value) {
+    _createProductCountry = _value;
+  }
+
+  void addToCreateProductCountry(String _value) {
+    _createProductCountry.add(_value);
+  }
+
+  void removeFromCreateProductCountry(String _value) {
+    _createProductCountry.remove(_value);
+  }
+
+  bool _isConfirm = false;
+  bool get isConfirm => _isConfirm;
+  set isConfirm(bool _value) {
+    _isConfirm = _value;
+  }
+
+  String _dialogueMSG = '';
+  String get dialogueMSG => _dialogueMSG;
+  set dialogueMSG(String _value) {
+    _dialogueMSG = _value;
   }
 }
 

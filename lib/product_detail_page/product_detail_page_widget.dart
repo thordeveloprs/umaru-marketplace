@@ -48,10 +48,15 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: Color(0xFFC7C7CC),
-                            size: 24,
+                          child: InkWell(
+                            onTap: () async {
+                              context.pop();
+                            },
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              color: Color(0xFFC7C7CC),
+                              size: 24,
+                            ),
                           ),
                         ),
                         Expanded(
@@ -81,90 +86,6 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15, 24, 15, 0),
-                child: Container(
-                  width: double.infinity,
-                  height: 213,
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
-                        child: PageView(
-                          controller: pageViewController ??=
-                              PageController(initialPage: 0),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  37, 18, 37, 18),
-                              child: Image.network(
-                                'https://picsum.photos/seed/614/600',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/139/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/43/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/834/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/583/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 1),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                          child: smooth_page_indicator.SmoothPageIndicator(
-                            controller: pageViewController ??=
-                                PageController(initialPage: 0),
-                            count: 5,
-                            axisDirection: Axis.horizontal,
-                            onDotClicked: (i) {
-                              pageViewController!.animateToPage(
-                                i,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            effect: smooth_page_indicator.SlideEffect(
-                              spacing: 8,
-                              radius: 13,
-                              dotWidth: 8,
-                              dotHeight: 8,
-                              dotColor: Color(0xFFEBF0FF),
-                              activeDotColor:
-                                  FlutterFlowTheme.of(context).black,
-                              paintStyle: PaintingStyle.fill,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
@@ -172,6 +93,157 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(15, 0, 15, 24),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(),
+                            child: Container(
+                              height: 200,
+                              decoration: BoxDecoration(),
+                              child: Container(
+                                width: double.infinity,
+                                height: 213,
+                                child: Stack(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 25),
+                                      child: PageView(
+                                        controller: pageViewController ??=
+                                            PageController(initialPage: 0),
+                                        scrollDirection: Axis.horizontal,
+                                        children: [
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Image.asset(
+                                              'assets/images/d30cd2a7edbdee1c565fbb58e3d046ba.png',
+                                              width: 272,
+                                              height: 176,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(37, 18, 37, 18),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/139/600',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(37, 18, 37, 18),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/43/600',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(37, 18, 37, 18),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/834/600',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(37, 18, 37, 18),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/583/600',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 1),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 10),
+                                        child: smooth_page_indicator
+                                            .SmoothPageIndicator(
+                                          controller: pageViewController ??=
+                                              PageController(initialPage: 0),
+                                          count: 5,
+                                          axisDirection: Axis.horizontal,
+                                          onDotClicked: (i) {
+                                            pageViewController!.animateToPage(
+                                              i,
+                                              duration:
+                                                  Duration(milliseconds: 500),
+                                              curve: Curves.ease,
+                                            );
+                                          },
+                                          effect:
+                                              smooth_page_indicator.SlideEffect(
+                                            spacing: 8,
+                                            radius: 13,
+                                            dotWidth: 8,
+                                            dotHeight: 8,
+                                            dotColor: Color(0xFFEBF0FF),
+                                            activeDotColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .black,
+                                            paintStyle: PaintingStyle.fill,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -335,11 +407,11 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 19, 0, 0),
-                                  child: Image.network(
-                                    'https://picsum.photos/seed/687/600',
+                                  child: Image.asset(
+                                    'assets/images/419DHgF1nqL.jpg',
                                     width: double.infinity,
                                     height: 206,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
                                 Padding(

@@ -34,6 +34,7 @@ class UmaruGroup {
   static GetCategoryByVendorCall getCategoryByVendorCall =
       GetCategoryByVendorCall();
   static ProductByIdCall productByIdCall = ProductByIdCall();
+  static RegisterCall registerCall = RegisterCall();
 }
 
 class LoginCall {
@@ -60,9 +61,21 @@ class LoginCall {
     );
   }
 
-  dynamic loginData(dynamic response) => getJsonField(
+  dynamic vendorId(dynamic response) => getJsonField(
         response,
-        r'''$''',
+        r'''$.vendor_id''',
+      );
+  dynamic hashKey(dynamic response) => getJsonField(
+        response,
+        r'''$.hashkey''',
+      );
+  dynamic profileImage(dynamic response) => getJsonField(
+        response,
+        r'''$.profile_picture''',
+      );
+  dynamic vendorName(dynamic response) => getJsonField(
+        response,
+        r'''$.vendor_name''',
       );
 }
 
@@ -204,6 +217,12 @@ class GetProductByVenderCall {
       cache: false,
     );
   }
+
+  dynamic productList(dynamic response) => getJsonField(
+        response,
+        r'''$.data.products''',
+        true,
+      );
 }
 
 class CreateProductCall {
@@ -212,10 +231,10 @@ class CreateProductCall {
     String? hashkey = '',
     String? name = '',
     String? sku = '',
-    String? country = '',
     int? price,
     int? qty,
-    List<String>? imagesList,
+    List<FFLocalFile>? imagesList,
+    String? category = '',
   }) {
     final images = _serializeList(imagesList);
 
@@ -231,7 +250,6 @@ class CreateProductCall {
         'hashkey': hashkey,
         'name': name,
         'sku': sku,
-        'country': country,
         'type': "simple",
         'is_in_stock': 1,
         'price': price,
@@ -240,6 +258,7 @@ class CreateProductCall {
         'qty': qty,
         'status': 1,
         'images': images,
+        'category': category,
       },
       bodyType: BodyType.MULTIPART,
       returnBody: true,
@@ -336,6 +355,30 @@ class ProductByIdCall {
         'searchCriteria[filterGroups][0][filters][0][field]': "entity_id",
         'searchCriteria[filterGroups][0][filters][0][value]': productId,
         'searchCriteria[filterGroups][0][filters][0][condition_type]': "eq",
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class RegisterCall {
+  Future<ApiCallResponse> call({
+    dynamic? createaccountJson,
+  }) {
+    final createaccount = _serializeJson(createaccountJson);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'register',
+      apiUrl: '${UmaruGroup.baseUrl}/vendorapi/index/create',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'createaccount': createaccount,
       },
       returnBody: true,
       encodeBodyUtf8: false,

@@ -1,13 +1,18 @@
 import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/random_data_util.dart' as random_data;
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class MainCategoryWidget extends StatefulWidget {
-  const MainCategoryWidget({Key? key}) : super(key: key);
+  const MainCategoryWidget({
+    Key? key,
+    this.cetegoryId,
+  }) : super(key: key);
+
+  final int? cetegoryId;
 
   @override
   _MainCategoryWidgetState createState() => _MainCategoryWidgetState();
@@ -49,12 +54,15 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
                         child: Builder(
                           builder: (context) {
-                            final listMainCategory = List.generate(
-                                random_data.randomInteger(6, 6),
-                                (index) => random_data.randomImageUrl(
-                                      0,
-                                      0,
-                                    )).toList();
+                            final mainList = FFAppState()
+                                .categoryData
+                                .where((e) =>
+                                    getJsonField(
+                                      e,
+                                      r'''$.parent_id''',
+                                    ) ==
+                                    widget.cetegoryId)
+                                .toList();
                             return GridView.builder(
                               padding: EdgeInsets.zero,
                               gridDelegate:
@@ -65,54 +73,76 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                 childAspectRatio: 1,
                               ),
                               scrollDirection: Axis.vertical,
-                              itemCount: listMainCategory.length,
-                              itemBuilder: (context, listMainCategoryIndex) {
-                                final listMainCategoryItem =
-                                    listMainCategory[listMainCategoryIndex];
-                                return Container(
-                                  width: 167,
-                                  height: 142.7,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(8.11),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 18.68, 0, 0),
-                                        child: Image.network(
-                                          'https://picsum.photos/seed/448/600',
-                                          width: 66.5,
-                                          height: 69.7,
-                                          fit: BoxFit.cover,
+                              itemCount: mainList.length,
+                              itemBuilder: (context, mainListIndex) {
+                                final mainListItem = mainList[mainListIndex];
+                                return InkWell(
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'categoryPage',
+                                      queryParams: {
+                                        'categoryID': serializeParam(
+                                          '',
+                                          ParamType.String,
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 14.49, 0, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Hello World',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                            ),
-                                          ],
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 167,
+                                    height: 142.7,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(8.11),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 18.68, 0, 0),
+                                          child: Image.network(
+                                            functions.findProductImage(
+                                                getJsonField(
+                                                  mainListItem,
+                                                  r'''$.custom_attributes''',
+                                                )!,
+                                                FFAppState().imageBaseUrl),
+                                            width: 66.5,
+                                            height: 69.7,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 14.49, 0, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                getJsonField(
+                                                  mainListItem,
+                                                  r'''$.name''',
+                                                ).toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
