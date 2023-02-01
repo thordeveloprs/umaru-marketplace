@@ -46,11 +46,11 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                 isShowBack: true,
               ),
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Padding(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
                         child: Builder(
                           builder: (context) {
@@ -72,6 +72,8 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                 mainAxisSpacing: 14.66,
                                 childAspectRatio: 1,
                               ),
+                              primary: false,
+                              shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: mainList.length,
                               itemBuilder: (context, mainListIndex) {
@@ -89,7 +91,7 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                     );
                                   },
                                   child: Container(
-                                    width: 167,
+                                    width: double.infinity,
                                     height: 142.7,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
@@ -150,8 +152,8 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                           },
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

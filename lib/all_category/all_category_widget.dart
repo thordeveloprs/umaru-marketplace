@@ -80,6 +80,7 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                 mainAxisSpacing: 14.66,
                                 childAspectRatio: 1,
                               ),
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: cateData.length,
