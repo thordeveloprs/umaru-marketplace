@@ -14,6 +14,7 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
+  ApiCallResponse? adminData;
   ApiCallResponse? newOutPut1;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -24,6 +25,16 @@ class _HomeWidgetState extends State<HomeWidget> {
     super.initState();
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      adminData = await UmaruGroup.adminLoginCall.call();
+      if ((adminData?.succeeded ?? true)) {
+        FFAppState().update(() {
+          FFAppState().token = UmaruGroup.adminLoginCall
+              .responseToken(
+                (adminData?.jsonBody ?? ''),
+              )
+              .toString();
+        });
+      }
       newOutPut1 = await UmaruGroup.getCategoryInEnglishCall.call(
         token: FFAppState().token,
       );

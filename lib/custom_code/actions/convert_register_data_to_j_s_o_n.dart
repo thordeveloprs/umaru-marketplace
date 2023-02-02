@@ -23,15 +23,9 @@ dynamic convertRegisterDataToJSON(
   Map<String, dynamic> mapData = Map<String, dynamic>();
 
   List<Map<String, String>> listVendor = [];
-  Map<String, String> vendorData = Map<String, String>();
 
-  vendorData["key"] = "public_name";
-  vendorData["value"] = publicname;
-  listVendor.add(vendorData);
-
-  vendorData["key"] = "shop_url";
-  vendorData["value"] = shopurl;
-  listVendor.add(vendorData);
+  listVendor.add({"key": "public_name", "value": publicname});
+  listVendor.add({"key": "shop_url", "value": shopurl});
 
   mapData["email"] = email;
   mapData["firstname"] = firstname;
@@ -39,9 +33,9 @@ dynamic convertRegisterDataToJSON(
   mapData["password"] = password;
   mapData["issubscribed"] = issubscribed;
   mapData["is_vendor"] = "1";
-  mapData["is_vendor"] = listVendor;
+  mapData["vendor"] = listVendor;
 
-  return json.encode(mapData);
+  return mapData;
 
   /// MODIFY CODE ONLY ABOVE THIS LINE
 }

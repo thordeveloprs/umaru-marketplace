@@ -35,6 +35,11 @@ class UmaruGroup {
       GetCategoryByVendorCall();
   static ProductByIdCall productByIdCall = ProductByIdCall();
   static RegisterCall registerCall = RegisterCall();
+  static UpdateCompanyDetailsCall updateCompanyDetailsCall =
+      UpdateCompanyDetailsCall();
+  static UpdateUserDetailsCall updateUserDetailsCall = UpdateUserDetailsCall();
+  static ForgotPasswordCall forgotPasswordCall = ForgotPasswordCall();
+  static ProductByCategoryCall productByCategoryCall = ProductByCategoryCall();
 }
 
 class LoginCall {
@@ -235,6 +240,7 @@ class CreateProductCall {
     int? qty,
     FFLocalFile? images,
     String? category = '',
+    String? description = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'create product',
@@ -257,6 +263,7 @@ class CreateProductCall {
         'status': 1,
         'images': images,
         'category': category,
+        'description': description,
       },
       bodyType: BodyType.MULTIPART,
       returnBody: true,
@@ -384,6 +391,125 @@ class RegisterCall {
       cache: false,
     );
   }
+}
+
+class UpdateCompanyDetailsCall {
+  Future<ApiCallResponse> call({
+    String? contactNumber = '',
+    String? companyAddress = '',
+    String? supportNumber = '',
+    FFLocalFile? companyLogo,
+    String? vendorId = '',
+    String? hashkey = '',
+    String? facebookId = '',
+    String? supportEmail = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'update company details',
+      apiUrl:
+          '${UmaruGroup.baseUrl}/vendorapi/index/update?hashkey=${hashkey}&vendor_id=${vendorId}',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'contact_number': contactNumber,
+        'company_address': companyAddress,
+        'support_number': supportNumber,
+        'facebook_id': facebookId,
+        'support_email': supportEmail,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateUserDetailsCall {
+  Future<ApiCallResponse> call({
+    String? vendorId = '',
+    String? hashkey = '',
+    String? name = '',
+    String? email = '',
+    String? publicName = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'update user details ',
+      apiUrl:
+          '${UmaruGroup.baseUrl}/vendorapi/index/update?hashkey=${hashkey}&vendor_id=${vendorId}',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'name': name,
+        'email': email,
+        'company_name': publicName,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ForgotPasswordCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'forgot password',
+      apiUrl: '${UmaruGroup.baseUrl}vendorapi/index/forgotPassword',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'email': email,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ProductByCategoryCall {
+  Future<ApiCallResponse> call({
+    String? categoryId = '',
+    String? token = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'product by category',
+      apiUrl: '${UmaruGroup.baseUrl}rest/en/V1/products',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {
+        'searchCriteria[filter_groups][0][filters][0][field]': "category_id",
+        'searchCriteria[filter_groups][0][filters][0][value]': categoryId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic getItems(dynamic response) => getJsonField(
+        response,
+        r'''$.items''',
+        true,
+      );
 }
 
 /// End umaru Group Code

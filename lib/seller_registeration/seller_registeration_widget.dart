@@ -1122,6 +1122,35 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           (registerApiResponse?.jsonBody ?? ''),
                                           r'''$.data.customer[0].success''',
                                         )) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                getJsonField(
+                                                  (registerApiResponse
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.data.customer[0].message''',
+                                                ).toString(),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor: Colors.black,
+                                            ),
+                                          );
+                                          FFAppState().update(() {
+                                            FFAppState().userData =
+                                                getJsonField(
+                                              (registerApiResponse?.jsonBody ??
+                                                  ''),
+                                              r'''$.data.customer[0]''',
+                                            );
+                                            FFAppState().isLogin = true;
+                                          });
+
                                           context.pushNamed(
                                               'registerFormcompanyDetails');
                                         } else {

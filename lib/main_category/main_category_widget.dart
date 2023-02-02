@@ -84,7 +84,10 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                       'categoryPage',
                                       queryParams: {
                                         'categoryID': serializeParam(
-                                          '',
+                                          getJsonField(
+                                            mainListItem,
+                                            r'''$.id''',
+                                          ).toString(),
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,

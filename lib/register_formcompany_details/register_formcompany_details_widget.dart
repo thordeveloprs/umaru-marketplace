@@ -1,8 +1,10 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/appbar_widget.dart';
 import '../components/sucess_msg_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +19,16 @@ class RegisterFormcompanyDetailsWidget extends StatefulWidget {
 
 class _RegisterFormcompanyDetailsWidgetState
     extends State<RegisterFormcompanyDetailsWidget> {
-  TextEditingController? textController1;
+  bool isMediaUploading = false;
+  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+
+  TextEditingController? textController5;
+  TextEditingController? emalIdController;
   TextEditingController? textController2;
   TextEditingController? textController3;
-  TextEditingController? textController4;
-  TextEditingController? textController5;
+  TextEditingController? txtFacebookIdController;
   TextEditingController? textController6;
-  TextEditingController? textController7;
-  TextEditingController? textController8;
+  ApiCallResponse? apiResult5sa;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
@@ -32,27 +36,23 @@ class _RegisterFormcompanyDetailsWidgetState
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
+    emalIdController = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
-    textController4 = TextEditingController();
+    txtFacebookIdController = TextEditingController();
     textController5 = TextEditingController();
     textController6 = TextEditingController();
-    textController7 = TextEditingController();
-    textController8 = TextEditingController();
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
-    textController1?.dispose();
+    emalIdController?.dispose();
     textController2?.dispose();
     textController3?.dispose();
-    textController4?.dispose();
+    txtFacebookIdController?.dispose();
     textController5?.dispose();
     textController6?.dispose();
-    textController7?.dispose();
-    textController8?.dispose();
     super.dispose();
   }
 
@@ -120,7 +120,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: textController1,
+                                controller: emalIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Business email',
@@ -182,10 +182,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
                                     return 'Email Field is required';
-                                  }
-
-                                  if (val.length < 50) {
-                                    return 'Requires at least 50 characters.';
                                   }
 
                                   if (!RegExp(kTextValidatorEmailRegex)
@@ -402,10 +398,10 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: textController4,
+                                controller: txtFacebookIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Social Media Links',
+                                  hintText: 'Facebook Links',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -489,6 +485,7 @@ class _RegisterFormcompanyDetailsWidgetState
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
                                   child: Padding(
@@ -498,7 +495,7 @@ class _RegisterFormcompanyDetailsWidgetState
                                       controller: textController5,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        hintText: 'Company Image',
+                                        hintText: 'Image',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
@@ -555,28 +552,60 @@ class _RegisterFormcompanyDetailsWidgetState
                                             color: FlutterFlowTheme.of(context)
                                                 .black,
                                           ),
-                                      validator: (val) {
-                                        if (val == null || val.isEmpty) {
-                                          return 'Image is required';
-                                        }
-
-                                        return null;
-                                      },
+                                      keyboardType: TextInputType.url,
                                     ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 3, 0),
-                                  child: Text(
-                                    'Upload',
-                                    style: FlutterFlowTheme.of(context)
-                                        .title1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 14,
-                                          decoration: TextDecoration.underline,
-                                        ),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      final selectedMedia =
+                                          await selectMediaWithSourceBottomSheet(
+                                        context: context,
+                                        allowPhoto: true,
+                                      );
+                                      if (selectedMedia != null &&
+                                          selectedMedia.every((m) =>
+                                              validateFileFormat(
+                                                  m.storagePath, context))) {
+                                        setState(() => isMediaUploading = true);
+                                        var selectedLocalFiles =
+                                            <FFLocalFile>[];
+                                        try {
+                                          selectedLocalFiles = selectedMedia
+                                              .map((m) => FFLocalFile(
+                                                    name: m.storagePath
+                                                        .split('/')
+                                                        .last,
+                                                    bytes: m.bytes,
+                                                  ))
+                                              .toList();
+                                        } finally {
+                                          isMediaUploading = false;
+                                        }
+                                        if (selectedLocalFiles.length ==
+                                            selectedMedia.length) {
+                                          setState(() => uploadedLocalFile =
+                                              selectedLocalFiles.first);
+                                        } else {
+                                          setState(() {});
+                                          return;
+                                        }
+                                      }
+                                    },
+                                    child: Text(
+                                      'Upload',
+                                      style: FlutterFlowTheme.of(context)
+                                          .title1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 14,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -603,183 +632,6 @@ class _RegisterFormcompanyDetailsWidgetState
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
                                 controller: textController6,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintText: 'Industry',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF9098B1),
-                                        fontSize: 12,
-                                      ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context).black,
-                                    ),
-                                keyboardType: TextInputType.name,
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return 'Industry Field is required';
-                                  }
-
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
-                          child: Container(
-                            width: double.infinity,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Color(0xFFEBF0FF),
-                                width: 1,
-                              ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                              child: TextFormField(
-                                controller: textController7,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintText: 'Product Categories',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF9098B1),
-                                        fontSize: 12,
-                                      ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context).black,
-                                    ),
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return 'Product Category is required';
-                                  }
-
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
-                          child: Container(
-                            width: double.infinity,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Color(0xFFEBF0FF),
-                                width: 1,
-                              ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                              child: TextFormField(
-                                controller: textController8,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Business Address',
@@ -857,9 +709,48 @@ class _RegisterFormcompanyDetailsWidgetState
                                 return;
                               }
 
-                              FFAppState().update(() {
-                                FFAppState().isConfirm = true;
-                              });
+                              apiResult5sa = await UmaruGroup
+                                  .updateCompanyDetailsCall
+                                  .call(
+                                contactNumber: textController2!.text,
+                                companyAddress: textController6!.text,
+                                supportNumber: textController3!.text,
+                                companyLogo: uploadedLocalFile,
+                                vendorId: getJsonField(
+                                  FFAppState().userData,
+                                  r'''$.vendor_id''',
+                                ).toString(),
+                                hashkey: getJsonField(
+                                  FFAppState().userData,
+                                  r'''$.hashkey''',
+                                ).toString(),
+                                facebookId: txtFacebookIdController!.text,
+                                supportEmail: emalIdController!.text,
+                              );
+                              if (getJsonField(
+                                (apiResult5sa?.jsonBody ?? ''),
+                                r'''$.data.success''',
+                              )) {
+                                context.goNamed('Home');
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      getJsonField(
+                                        (apiResult5sa?.jsonBody ?? ''),
+                                        r'''$.data.message''',
+                                      ).toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Colors.black,
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
                             },
                             text: 'Sign Up ',
                             options: FFButtonOptions(

@@ -29,12 +29,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => SplashScreenWidget(),
+      errorBuilder: (context, _) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: Colors.white,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/image_1.png',
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+            )
+          : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashScreenWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: Colors.white,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/image_1.png',
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+                )
+              : NavBarPage(),
           routes: [
             FFRoute(
               name: 'Home',
@@ -75,14 +101,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : AllCategoryWidget(),
             ),
             FFRoute(
-              name: 'registerFormcompanyDetails',
-              path: 'registerFormcompanyDetails',
-              builder: (context, params) => RegisterFormcompanyDetailsWidget(),
-            ),
-            FFRoute(
               name: 'registerFormPricing',
               path: 'registerFormPricing',
               builder: (context, params) => RegisterFormPricingWidget(),
+            ),
+            FFRoute(
+              name: 'registerFormcompanyDetails',
+              path: 'registerFormcompanyDetails',
+              builder: (context, params) => RegisterFormcompanyDetailsWidget(),
             ),
             FFRoute(
               name: 'EditProfile',
@@ -102,14 +128,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ManageProductsWidget(),
             ),
             FFRoute(
-              name: 'privacyPolicy',
-              path: 'privacyPolicy',
-              builder: (context, params) => PrivacyPolicyWidget(),
-            ),
-            FFRoute(
               name: 'addProduct',
               path: 'addProduct',
               builder: (context, params) => AddProductWidget(),
+            ),
+            FFRoute(
+              name: 'privacyPolicy',
+              path: 'privacyPolicy',
+              builder: (context, params) => PrivacyPolicyWidget(),
             ),
             FFRoute(
               name: 'sellerRegisteration',

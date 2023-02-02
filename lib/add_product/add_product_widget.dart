@@ -31,6 +31,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   TextEditingController? txtQuantityController;
   String? dropDownValue;
   String? subCategoryId;
+  TextEditingController? descriptiontxtController;
   ApiCallResponse? createProductDetails;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,6 +40,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   @override
   void initState() {
     super.initState();
+    descriptiontxtController = TextEditingController();
     txtPriceController = TextEditingController();
     txtProductNameController = TextEditingController();
     txtSkuController = TextEditingController();
@@ -48,6 +50,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   @override
   void dispose() {
     _unfocusNode.dispose();
+    descriptiontxtController?.dispose();
     txtPriceController?.dispose();
     txtProductNameController?.dispose();
     txtSkuController?.dispose();
@@ -155,6 +158,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.name,
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return 'Product  Name  is required';
+                                    }
+
+                                    return null;
+                                  },
                                 ),
                               ),
                               Align(
@@ -227,6 +237,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         color:
                                             FlutterFlowTheme.of(context).black,
                                       ),
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return 'SKU is required';
+                                    }
+
+                                    return null;
+                                  },
                                 ),
                               ),
                               Align(
@@ -300,6 +317,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return 'Price is required';
+                                    }
+
+                                    return null;
+                                  },
                                 ),
                               ),
                               Align(
@@ -358,6 +382,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return 'Quantity is required';
+                                    }
+
+                                    return null;
+                                  },
                                 ),
                               ),
                               Align(
@@ -637,6 +668,71 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                               ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Description',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 150,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: descriptiontxtController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  maxLines: null,
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return 'Description is required';
+                                    }
+
+                                    return null;
+                                  },
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 25, 0, 15),
@@ -665,6 +761,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                           txtQuantityController!.text),
                                       category: subCategoryId,
                                       images: uploadedLocalFile,
+                                      description:
+                                          descriptiontxtController!.text,
                                     );
                                     if (getJsonField(
                                       (createProductDetails?.jsonBody ?? ''),

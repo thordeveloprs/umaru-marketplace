@@ -1,7 +1,9 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,19 +16,21 @@ class EditProfileWidget extends StatefulWidget {
 }
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
+  bool isMediaUploading = false;
+  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+
+  TextEditingController? textController9;
+  TextEditingController? textController6;
+  TextEditingController? txtEmailController;
+  TextEditingController? textController7;
+  TextEditingController? txtFacebookIdController;
+  TextEditingController? textController10;
+  ApiCallResponse? apiResult5sa;
+  ApiCallResponse? apiResult7rj;
   TextEditingController? firstNTextFieldController;
-  TextEditingController? lastNTextFieldController;
   TextEditingController? yourEmailTextFieldController;
   TextEditingController? publicNTextFieldController;
   TextEditingController? shopURLTextFieldController;
-  TextEditingController? textController10;
-  TextEditingController? textController6;
-  TextEditingController? textController7;
-  TextEditingController? textController8;
-  TextEditingController? textController9;
-  TextEditingController? textController11;
-  TextEditingController? textController12;
-  TextEditingController? textController13;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey2 = GlobalKey<FormState>();
@@ -36,36 +40,30 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   void initState() {
     super.initState();
     firstNTextFieldController = TextEditingController();
-    lastNTextFieldController = TextEditingController();
     yourEmailTextFieldController = TextEditingController();
     publicNTextFieldController = TextEditingController();
     shopURLTextFieldController = TextEditingController();
     textController10 = TextEditingController();
     textController6 = TextEditingController();
+    txtEmailController = TextEditingController();
     textController7 = TextEditingController();
-    textController8 = TextEditingController();
+    txtFacebookIdController = TextEditingController();
     textController9 = TextEditingController();
-    textController11 = TextEditingController();
-    textController12 = TextEditingController();
-    textController13 = TextEditingController();
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
     firstNTextFieldController?.dispose();
-    lastNTextFieldController?.dispose();
     yourEmailTextFieldController?.dispose();
     publicNTextFieldController?.dispose();
     shopURLTextFieldController?.dispose();
     textController10?.dispose();
     textController6?.dispose();
+    txtEmailController?.dispose();
     textController7?.dispose();
-    textController8?.dispose();
+    txtFacebookIdController?.dispose();
     textController9?.dispose();
-    textController11?.dispose();
-    textController12?.dispose();
-    textController13?.dispose();
     super.dispose();
   }
 
@@ -273,164 +271,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           if (val == null ||
                                                               val.isEmpty) {
                                                             return 'First Name is required';
-                                                          }
-
-                                                          return null;
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 13, 0, 0),
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 48,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  border: Border.all(
-                                                    color: Color(0xFFEBF0FF),
-                                                    width: 1,
-                                                  ),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  18, 0, 12, 0),
-                                                      child: Image.asset(
-                                                        'assets/images/User.png',
-                                                        width: 20,
-                                                        height: 20,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: TextFormField(
-                                                        controller:
-                                                            lastNTextFieldController,
-                                                        obscureText: false,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          hintText: 'Last Name',
-                                                          hintStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyText2
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    color: Color(
-                                                                        0xFF9098B1),
-                                                                    fontSize:
-                                                                        12,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                          enabledBorder:
-                                                              UnderlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color(
-                                                                  0x00000000),
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                            ),
-                                                          ),
-                                                          focusedBorder:
-                                                              UnderlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color(
-                                                                  0x00000000),
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                            ),
-                                                          ),
-                                                          errorBorder:
-                                                              UnderlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color(
-                                                                  0x00000000),
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                            ),
-                                                          ),
-                                                          focusedErrorBorder:
-                                                              UnderlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color(
-                                                                  0x00000000),
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      4.0),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .black,
-                                                                ),
-                                                        validator: (val) {
-                                                          if (val == null ||
-                                                              val.isEmpty) {
-                                                            return 'Last Name is required';
                                                           }
 
                                                           return null;
@@ -907,14 +747,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                           context)
                                                                       .black,
                                                                 ),
-                                                        validator: (val) {
-                                                          if (val == null ||
-                                                              val.isEmpty) {
-                                                            return 'Field is required';
-                                                          }
-
-                                                          return null;
-                                                        },
                                                       ),
                                                     ),
                                                   ],
@@ -966,6 +798,60 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           .validate()) {
                                                     return;
                                                   }
+
+                                                  apiResult7rj =
+                                                      await UmaruGroup
+                                                          .updateUserDetailsCall
+                                                          .call(
+                                                    vendorId: getJsonField(
+                                                      FFAppState().userData,
+                                                      r'''$.vendor_id''',
+                                                    ).toString(),
+                                                    hashkey: getJsonField(
+                                                      FFAppState().userData,
+                                                      r'''$.hashkey''',
+                                                    ).toString(),
+                                                    email:
+                                                        yourEmailTextFieldController!
+                                                            .text,
+                                                    publicName:
+                                                        publicNTextFieldController!
+                                                            .text,
+                                                    name:
+                                                        firstNTextFieldController!
+                                                            .text,
+                                                  );
+                                                  if (getJsonField(
+                                                    (apiResult7rj?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.success''',
+                                                  )) {
+                                                    context.pushNamed('Home');
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          getJsonField(
+                                                            (apiResult7rj
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.data.message''',
+                                                          ).toString(),
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            Colors.black,
+                                                      ),
+                                                    );
+                                                  }
+
+                                                  setState(() {});
                                                 },
                                                 text: 'Save',
                                                 options: FFButtonOptions(
@@ -1052,8 +938,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
-                                                    controller: textController6,
-                                                    readOnly: true,
+                                                    controller:
+                                                        txtEmailController,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1189,7 +1075,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
-                                                    controller: textController7,
+                                                    controller: textController6,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1320,7 +1206,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
-                                                    controller: textController8,
+                                                    controller: textController7,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -1411,7 +1297,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -1445,11 +1337,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
-                                                    controller: textController9,
+                                                    controller:
+                                                        txtFacebookIdController,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
-                                                          'Social Media Links',
+                                                          'Facebook Links',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1575,6 +1468,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     Expanded(
                                                       child: Padding(
@@ -1584,12 +1480,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     0, 0),
                                                         child: TextFormField(
                                                           controller:
-                                                              textController10,
+                                                              textController9,
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
-                                                            hintText:
-                                                                'Company Image',
+                                                            hintText: 'Image',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1689,14 +1584,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                         context)
                                                                     .black,
                                                               ),
-                                                          validator: (val) {
-                                                            if (val == null ||
-                                                                val.isEmpty) {
-                                                              return 'Company Image is required';
-                                                            }
-
-                                                            return null;
-                                                          },
                                                         ),
                                                       ),
                                                     ),
@@ -1705,20 +1592,67 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0, 0, 3, 0),
-                                                      child: Text(
-                                                        'Upload',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .title1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  fontSize: 14,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .underline,
-                                                                ),
+                                                      child: InkWell(
+                                                        onTap: () async {
+                                                          final selectedMedia =
+                                                              await selectMediaWithSourceBottomSheet(
+                                                            context: context,
+                                                            allowPhoto: true,
+                                                          );
+                                                          if (selectedMedia !=
+                                                                  null &&
+                                                              selectedMedia.every((m) =>
+                                                                  validateFileFormat(
+                                                                      m.storagePath,
+                                                                      context))) {
+                                                            setState(() =>
+                                                                isMediaUploading =
+                                                                    true);
+                                                            var selectedLocalFiles =
+                                                                <FFLocalFile>[];
+                                                            try {
+                                                              selectedLocalFiles =
+                                                                  selectedMedia
+                                                                      .map((m) =>
+                                                                          FFLocalFile(
+                                                                            name:
+                                                                                m.storagePath.split('/').last,
+                                                                            bytes:
+                                                                                m.bytes,
+                                                                          ))
+                                                                      .toList();
+                                                            } finally {
+                                                              isMediaUploading =
+                                                                  false;
+                                                            }
+                                                            if (selectedLocalFiles
+                                                                    .length ==
+                                                                selectedMedia
+                                                                    .length) {
+                                                              setState(() =>
+                                                                  uploadedLocalFile =
+                                                                      selectedLocalFiles
+                                                                          .first);
+                                                            } else {
+                                                              setState(() {});
+                                                              return;
+                                                            }
+                                                          }
+                                                        },
+                                                        child: Text(
+                                                          'Upload',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .title1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 14,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .underline,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -1747,270 +1681,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(20, 0, 0, 0),
                                                   child: TextFormField(
                                                     controller:
-                                                        textController11,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      hintText: 'Industry',
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Color(
-                                                                    0xFF9098B1),
-                                                                fontSize: 12,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .black,
-                                                        ),
-                                                    validator: (val) {
-                                                      if (val == null ||
-                                                          val.isEmpty) {
-                                                        return 'Industry is required';
-                                                      }
-
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(15, 0, 15, 13),
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 48,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  border: Border.all(
-                                                    color: Color(0xFFEBF0FF),
-                                                    width: 1,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20, 0, 0, 0),
-                                                  child: TextFormField(
-                                                    controller:
-                                                        textController12,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      hintText:
-                                                          'Product Categories',
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Color(
-                                                                    0xFF9098B1),
-                                                                fontSize: 12,
-                                                              ),
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      errorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .black,
-                                                        ),
-                                                    validator: (val) {
-                                                      if (val == null ||
-                                                          val.isEmpty) {
-                                                        return 'Product categories is required';
-                                                      }
-
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(15, 0, 15, 13),
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 48,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  border: Border.all(
-                                                    color: Color(0xFFEBF0FF),
-                                                    width: 1,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20, 0, 0, 0),
-                                                  child: TextFormField(
-                                                    controller:
-                                                        textController13,
+                                                        textController10,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
@@ -2131,6 +1802,65 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           .validate()) {
                                                     return;
                                                   }
+
+                                                  apiResult5sa = await UmaruGroup
+                                                      .updateCompanyDetailsCall
+                                                      .call(
+                                                    contactNumber:
+                                                        firstNTextFieldController!
+                                                            .text,
+                                                    companyAddress:
+                                                        textController10!.text,
+                                                    supportNumber:
+                                                        textController7!.text,
+                                                    companyLogo:
+                                                        uploadedLocalFile,
+                                                    vendorId: getJsonField(
+                                                      FFAppState().userData,
+                                                      r'''$.vendor_id''',
+                                                    ).toString(),
+                                                    hashkey: getJsonField(
+                                                      FFAppState().userData,
+                                                      r'''$.hashkey''',
+                                                    ).toString(),
+                                                    facebookId:
+                                                        txtFacebookIdController!
+                                                            .text,
+                                                    supportEmail:
+                                                        txtEmailController!
+                                                            .text,
+                                                  );
+                                                  if (getJsonField(
+                                                    (apiResult5sa?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.success''',
+                                                  )) {
+                                                    context.goNamed('Home');
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          getJsonField(
+                                                            (apiResult7rj
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.data.message''',
+                                                          ).toString(),
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            Colors.black,
+                                                      ),
+                                                    );
+                                                  }
+
+                                                  setState(() {});
                                                 },
                                                 text: 'Save',
                                                 options: FFButtonOptions(

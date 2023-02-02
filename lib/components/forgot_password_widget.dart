@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,6 +14,7 @@ class ForgotPasswordWidget extends StatefulWidget {
 }
 
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
+  ApiCallResponse? forgotPasswordApiResponse;
   TextEditingController? textController;
   final formKey = GlobalKey<FormState>();
 
@@ -182,6 +184,51 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       !formKey.currentState!.validate()) {
                     return;
                   }
+
+                  forgotPasswordApiResponse =
+                      await UmaruGroup.forgotPasswordCall.call(
+                    email: textController!.text,
+                  );
+                  if (getJsonField(
+                    (forgotPasswordApiResponse?.jsonBody ?? ''),
+                    r'''$.data.customer[0].success''',
+                  )) {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          getJsonField(
+                            (forgotPasswordApiResponse?.jsonBody ?? ''),
+                            r'''$.data.customer[0].message''',
+                          ).toString(),
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).black,
+                      ),
+                    );
+                  } else {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          getJsonField(
+                            (forgotPasswordApiResponse?.jsonBody ?? ''),
+                            r'''$.data.customer[0].message''',
+                          ).toString(),
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).black,
+                      ),
+                    );
+                  }
+
+                  setState(() {});
                 },
                 text: 'Submit',
                 options: FFButtonOptions(
