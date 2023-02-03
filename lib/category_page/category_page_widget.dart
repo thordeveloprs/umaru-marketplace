@@ -260,8 +260,18 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                           productList[productListIndex];
                                       return InkWell(
                                         onTap: () async {
-                                          context
-                                              .pushNamed('Product_detailPage');
+                                          context.pushNamed(
+                                            'Product_detailPage',
+                                            queryParams: {
+                                              'id': serializeParam(
+                                                getJsonField(
+                                                  productListItem,
+                                                  r'''$.id''',
+                                                ),
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         },
                                         child: Container(
                                           width: double.infinity,
@@ -298,7 +308,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                       child: Text(
                                                         getJsonField(
                                                           productListItem,
-                                                          r'''$.name''',
+                                                          r'''$.id''',
                                                         ).toString(),
                                                         textAlign:
                                                             TextAlign.start,

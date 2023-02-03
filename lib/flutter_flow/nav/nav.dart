@@ -133,14 +133,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AddProductWidget(),
             ),
             FFRoute(
-              name: 'privacyPolicy',
-              path: 'privacyPolicy',
-              builder: (context, params) => PrivacyPolicyWidget(),
-            ),
-            FFRoute(
               name: 'sellerRegisteration',
               path: 'sellerRegisteration',
               builder: (context, params) => SellerRegisterationWidget(),
+            ),
+            FFRoute(
+              name: 'privacyPolicy',
+              path: 'privacyPolicy',
+              builder: (context, params) => PrivacyPolicyWidget(),
             ),
             FFRoute(
               name: 'LogInPage',
@@ -155,15 +155,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'Product_detailPage',
-              path: 'productDetailPage',
-              builder: (context, params) => ProductDetailPageWidget(),
-            ),
-            FFRoute(
               name: 'categoryPage',
               path: 'categoryPage',
               builder: (context, params) => CategoryPageWidget(
                 categoryID: params.getParam('categoryID', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'Product_detailPage',
+              path: 'productDetailPage',
+              builder: (context, params) => ProductDetailPageWidget(
+                id: params.getParam('id', ParamType.int),
               ),
             ),
             FFRoute(

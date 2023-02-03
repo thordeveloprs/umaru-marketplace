@@ -40,6 +40,10 @@ class UmaruGroup {
   static UpdateUserDetailsCall updateUserDetailsCall = UpdateUserDetailsCall();
   static ForgotPasswordCall forgotPasswordCall = ForgotPasswordCall();
   static ProductByCategoryCall productByCategoryCall = ProductByCategoryCall();
+  static GetVendorDetailsByProductIdCall getVendorDetailsByProductIdCall =
+      GetVendorDetailsByProductIdCall();
+  static GetVendorAndCompanyDetailsCall getVendorAndCompanyDetailsCall =
+      GetVendorAndCompanyDetailsCall();
 }
 
 class LoginCall {
@@ -447,7 +451,7 @@ class UpdateUserDetailsCall {
       params: {
         'name': name,
         'email': email,
-        'company_name': publicName,
+        'public_name': publicName,
       },
       bodyType: BodyType.MULTIPART,
       returnBody: true,
@@ -508,6 +512,59 @@ class ProductByCategoryCall {
   dynamic getItems(dynamic response) => getJsonField(
         response,
         r'''$.items''',
+        true,
+      );
+}
+
+class GetVendorDetailsByProductIdCall {
+  Future<ApiCallResponse> call({
+    int? productid,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'get vendor details by product id',
+      apiUrl: '${UmaruGroup.baseUrl}rest/V1/wishusucess/vendordetail/',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'productid': productid,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetVendorAndCompanyDetailsCall {
+  Future<ApiCallResponse> call({
+    String? hashkey = '',
+    String? vendorId = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'get Vendor and Company Details',
+      apiUrl: '${UmaruGroup.baseUrl}vendorapi/index/infos',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'hashkey': hashkey,
+        'vendor_id': vendorId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic informationsgnrales(dynamic response) => getJsonField(
+        response,
+        r'''$.data['Informations générales']''',
         true,
       );
 }

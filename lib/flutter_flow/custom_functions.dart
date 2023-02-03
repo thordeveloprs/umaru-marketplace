@@ -8,7 +8,7 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
 
-List<dynamic> newCustomFunction(List<dynamic> listOfItems) {
+List<dynamic> newCustomFunction(dynamic listOfItems) {
   print('Anujesh');
   print(listOfItems);
   return listOfItems;
@@ -53,4 +53,29 @@ String getShopUrl() {
   String url = "shop${DateTime.now().millisecondsSinceEpoch}";
   print("urladsad " + url);
   return url;
+}
+
+dynamic createVendorUpdateList(String publicName) {
+  List<Map<String, String>> listData = [];
+
+  listData.add({"public_name": publicName});
+
+  return json.encode(listData);
+}
+
+String getObjectFromList(
+  List<dynamic> list,
+  String searchLableName,
+) {
+  if (list.isNotEmpty) {
+    var b = list.where((d) => d["label"] == searchLableName);
+
+    if (b.isEmpty) {
+      return "";
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return "";
+  }
 }
