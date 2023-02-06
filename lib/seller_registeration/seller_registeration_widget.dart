@@ -24,13 +24,15 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;
-  TextEditingController? textController4;
+  TextEditingController? txtContactController;
   TextEditingController? textController5;
   TextEditingController? textController6;
-  late bool passwordVisibility1;
   TextEditingController? textController7;
+  late bool passwordVisibility1;
+  TextEditingController? textController8;
   late bool passwordVisibility2;
   bool? checkboxValue;
+  bool? chkTnCValue;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
@@ -41,11 +43,12 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
     textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController(text: functions.getShopUrl());
-    textController6 = TextEditingController();
-    passwordVisibility1 = false;
+    txtContactController = TextEditingController();
+    textController5 = TextEditingController();
+    textController6 = TextEditingController(text: functions.getShopUrl());
     textController7 = TextEditingController();
+    passwordVisibility1 = false;
+    textController8 = TextEditingController();
     passwordVisibility2 = false;
   }
 
@@ -55,10 +58,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
-    textController4?.dispose();
+    txtContactController?.dispose();
     textController5?.dispose();
     textController6?.dispose();
     textController7?.dispose();
+    textController8?.dispose();
     super.dispose();
   }
 
@@ -551,7 +555,125 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController4,
+                                          controller: txtContactController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            hintText: 'Phone',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Color(0xFF9098B1),
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      lineHeight: 0.5,
+                                                    ),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            errorBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            focusedErrorBorder:
+                                                UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.black,
+                                                fontSize: 12,
+                                                letterSpacing: 0.5,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          keyboardType: TextInputType.number,
+                                          validator: (val) {
+                                            if (val == null || val.isEmpty) {
+                                              return 'phone is required';
+                                            }
+
+                                            return null;
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 51,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          18, 0, 12, 0),
+                                      child: Image.asset(
+                                        'assets/images/User.png',
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12, 0, 0, 0),
+                                        child: TextFormField(
+                                          controller: textController5,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText: 'Public name',
@@ -622,13 +744,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           keyboardType: TextInputType.name,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return 'Public Name is required';
-                                            }
-
-                                            return null;
-                                          },
                                         ),
                                       ),
                                     ),
@@ -669,7 +784,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController5,
+                                          controller: textController6,
                                           readOnly: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -788,7 +903,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController6,
+                                          controller: textController7,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           obscureText: !passwordVisibility1,
@@ -926,7 +1041,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController7,
+                                          controller: textController8,
                                           obscureText: !passwordVisibility2,
                                           decoration: InputDecoration(
                                             labelStyle:
@@ -1041,8 +1156,8 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15, 14.5, 15, 14.5),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 14.5, 15, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -1054,7 +1169,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         borderRadius: BorderRadius.circular(2),
                                       ),
                                     ),
-                                    unselectedWidgetColor: Color(0xFFF5F5F5),
+                                    unselectedWidgetColor:
+                                        FlutterFlowTheme.of(context)
+                                            .tertiaryColor,
                                   ),
                                   child: Checkbox(
                                     value: checkboxValue ??= true,
@@ -1079,6 +1196,88 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           letterSpacing: 0.5,
                                           fontWeight: FontWeight.w500,
                                         ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15, 14.5, 15, 14.5),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Theme(
+                                  data: ThemeData(
+                                    checkboxTheme: CheckboxThemeData(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
+                                    ),
+                                    unselectedWidgetColor:
+                                        FlutterFlowTheme.of(context)
+                                            .tertiaryColor,
+                                  ),
+                                  child: Checkbox(
+                                    value: chkTnCValue ??= false,
+                                    onChanged: (newValue) async {
+                                      setState(() => chkTnCValue = newValue!);
+                                    },
+                                    activeColor: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15, 0, 0, 0),
+                                  child: Text(
+                                    'I have read and accept',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          letterSpacing: 0.5,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'webview',
+                                        queryParams: {
+                                          'pagename': serializeParam(
+                                            'Term & Condition',
+                                            ParamType.String,
+                                          ),
+                                          'pageURL': serializeParam(
+                                            FFAppState().isEnglish
+                                                ? 'https://staging.umarumart.com/apppage/en/tnc.php'
+                                                : 'https://staging.umarumart.com/apppage/fr/tnc.php',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Text(
+                                      'term_condition',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            fontSize: 12,
+                                            letterSpacing: 0.5,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -1114,75 +1313,100 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         return;
                                       }
 
-                                      if (textController6!.text ==
-                                          textController7!.text) {
+                                      if (textController7!.text ==
+                                          textController8!.text) {
                                         registerJson = await actions
                                             .convertRegisterDataToJSON(
                                           textController3!.text,
                                           textController1!.text,
                                           textController2!.text,
-                                          textController6!.text,
+                                          textController7!.text,
                                           checkboxValue!,
-                                          textController4!.text,
-                                          textController5!.text,
+                                          txtContactController!.text,
+                                          textController6!.text,
+                                          txtContactController!.text,
                                         );
-                                        registerApiResponse =
-                                            await UmaruGroup.registerCall.call(
-                                          createaccountJson: registerJson,
-                                        );
-                                        if (getJsonField(
-                                          (registerApiResponse?.jsonBody ?? ''),
-                                          r'''$.data.customer[0].success''',
-                                        )) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                getJsonField(
-                                                  (registerApiResponse
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.data.customer[0].message''',
-                                                ).toString(),
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor: Colors.black,
-                                            ),
+                                        if (chkTnCValue!) {
+                                          registerApiResponse = await UmaruGroup
+                                              .registerCall
+                                              .call(
+                                            createaccountJson: registerJson,
                                           );
-                                          FFAppState().update(() {
-                                            FFAppState().userData =
-                                                getJsonField(
-                                              (registerApiResponse?.jsonBody ??
-                                                  ''),
-                                              r'''$.data.customer[0]''',
+                                          if (getJsonField(
+                                            (registerApiResponse?.jsonBody ??
+                                                ''),
+                                            r'''$.data.customer[0].success''',
+                                          )) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  getJsonField(
+                                                    (registerApiResponse
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.customer[0].message''',
+                                                  ).toString(),
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor: Colors.black,
+                                              ),
                                             );
-                                            FFAppState().isLogin = true;
-                                          });
+                                            FFAppState().update(() {
+                                              FFAppState().userData =
+                                                  getJsonField(
+                                                (registerApiResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.data.customer[0]''',
+                                              );
+                                              FFAppState().isLogin = true;
+                                            });
 
-                                          context.pushNamed(
-                                              'registerFormcompanyDetails');
+                                            context.pushNamed(
+                                                'registerFormcompanyDetails');
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  getJsonField(
+                                                    (registerApiResponse
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.customer[0].message''',
+                                                  ).toString(),
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor: Colors.black,
+                                              ),
+                                            );
+                                          }
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                getJsonField(
-                                                  (registerApiResponse
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.data.customer[0].message''',
-                                                ).toString(),
+                                                'Accept terms and condition',
                                                 style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
                                                 ),
                                               ),
                                               duration:
                                                   Duration(milliseconds: 4000),
-                                              backgroundColor: Colors.black,
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .black,
                                             ),
                                           );
                                         }

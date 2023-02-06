@@ -1,3 +1,4 @@
+import '../components/language_selection_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -171,51 +172,69 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                 ],
                               ),
                             ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 24, 0, 23),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Language',
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 17,
-                                            ),
-                                      ),
-                                      Text(
-                                        'English',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ],
+                          InkWell(
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return Padding(
+                                    padding: MediaQuery.of(context).viewInsets,
+                                    child: LanguageSelectionWidget(),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 24, 0, 23),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Language',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 17,
+                                              ),
+                                        ),
+                                        Text(
+                                          FFAppState().isEnglish == true
+                                              ? 'English'
+                                              : 'French',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Divider(
-                                thickness: 1,
-                                color: Color(0xFFC4C4C4),
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1,
+                                  color: Color(0xFFC4C4C4),
+                                ),
+                              ],
+                            ),
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
@@ -301,7 +320,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                         ParamType.String,
                                       ),
                                       'pageURL': serializeParam(
-                                        'https://staging.umarumart.com/apppage/en/faq.php',
+                                        FFAppState().isEnglish == true
+                                            ? 'https://staging.umarumart.com/apppage/en/faq.php'
+                                            : 'https://staging.umarumart.com/apppage/fr/faq.php',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -347,33 +368,52 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 20),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Contact Us',
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 17,
-                                            ),
+                              InkWell(
+                                onTap: () async {
+                                  context.pushNamed(
+                                    'webview',
+                                    queryParams: {
+                                      'pagename': serializeParam(
+                                        'FAQ',
+                                        ParamType.String,
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24,
+                                      'pageURL': serializeParam(
+                                        FFAppState().isEnglish == true
+                                            ? 'https://staging.umarumart.com/apppage/en/contact.php'
+                                            : 'https://staging.umarumart.com/apppage/fr/contact.php',
+                                        ParamType.String,
                                       ),
-                                    ],
+                                    }.withoutNulls,
+                                  );
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 20),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Contact Us',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 17,
+                                              ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -386,33 +426,52 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 20),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Terms & Conditions',
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 17,
-                                            ),
+                              InkWell(
+                                onTap: () async {
+                                  context.pushNamed(
+                                    'webview',
+                                    queryParams: {
+                                      'pagename': serializeParam(
+                                        'FAQ',
+                                        ParamType.String,
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24,
+                                      'pageURL': serializeParam(
+                                        FFAppState().isEnglish == true
+                                            ? 'https://staging.umarumart.com/apppage/en/tnc.php'
+                                            : 'https://staging.umarumart.com/apppage/fr/tnc.php',
+                                        ParamType.String,
                                       ),
-                                    ],
+                                    }.withoutNulls,
+                                  );
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 20),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Terms & Conditions',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 17,
+                                              ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

@@ -481,7 +481,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     bestsellerChild[bestsellerChildIndex];
                                 return InkWell(
                                   onTap: () async {
-                                    context.pushNamed('Product_detailPage');
+                                    context.pushNamed(
+                                      'Product_detailPage',
+                                      queryParams: {
+                                        'id': serializeParam(
+                                          getJsonField(
+                                            bestsellerChildItem,
+                                            r'''$.id''',
+                                          ),
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                    );
                                   },
                                   child: Container(
                                     width: 166,

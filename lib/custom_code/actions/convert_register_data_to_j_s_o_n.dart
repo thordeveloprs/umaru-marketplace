@@ -17,6 +17,7 @@ dynamic convertRegisterDataToJSON(
   bool issubscribed,
   String publicname,
   String shopurl,
+  String contactNumber,
 ) {
   /// MODIFY CODE ONLY BELOW THIS LINE
 
@@ -26,6 +27,7 @@ dynamic convertRegisterDataToJSON(
 
   listVendor.add({"key": "public_name", "value": publicname});
   listVendor.add({"key": "shop_url", "value": shopurl});
+  listVendor.add({"key": "contact_number", "value": contactNumber});
 
   mapData["email"] = email;
   mapData["firstname"] = firstname;
