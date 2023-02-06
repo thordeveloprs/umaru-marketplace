@@ -408,8 +408,14 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 19, 0, 0),
-                                      child: Image.asset(
-                                        'assets/images/419DHgF1nqL.jpg',
+                                      child: Image.network(
+                                        functions.findProductImage(
+                                            getJsonField(
+                                              columnProductByCategoryIdAndProductIdResponse
+                                                  .jsonBody,
+                                              r'''$.items[0].custom_attributes''',
+                                            )!,
+                                            FFAppState().imageBaseUrl),
                                         width: double.infinity,
                                         height: 206,
                                         fit: BoxFit.contain,
@@ -446,25 +452,29 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              functions.getObjectFromAttributes(
-                                                  getJsonField(
-                                                    columnProductByCategoryIdAndProductIdResponse
-                                                        .jsonBody,
-                                                    r'''$.items[0].custom_attributes''',
-                                                  )!,
-                                                  'description'),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF9098B1),
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                            Expanded(
+                                              child: Text(
+                                                functions
+                                                    .getObjectFromAttributes(
+                                                        getJsonField(
+                                                          columnProductByCategoryIdAndProductIdResponse
+                                                              .jsonBody,
+                                                          r'''$.items[0].custom_attributes''',
+                                                        )!,
+                                                        'description'),
+                                                textAlign: TextAlign.justify,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              Color(0xFF9098B1),
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
                                             ),
                                           ],
                                         ),

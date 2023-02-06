@@ -17,8 +17,16 @@ class EditProfileWidget extends StatefulWidget {
 }
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
-  bool isMediaUploading = false;
-  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+  bool isMediaUploading1 = false;
+  FFLocalFile uploadedLocalFile1 = FFLocalFile(bytes: Uint8List.fromList([]));
+
+  TextEditingController? firstNTextFieldController;
+  TextEditingController? yourEmailTextFieldController;
+  TextEditingController? publicNTextFieldController;
+  TextEditingController? shopURLTextFieldController;
+  ApiCallResponse? apiResult7rj;
+  bool isMediaUploading2 = false;
+  FFLocalFile uploadedLocalFile2 = FFLocalFile(bytes: Uint8List.fromList([]));
 
   TextEditingController? textController9;
   TextEditingController? textController6;
@@ -27,11 +35,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   TextEditingController? txtFacebookIdController;
   TextEditingController? textController10;
   ApiCallResponse? apiResult5sa;
-  ApiCallResponse? apiResult7rj;
-  TextEditingController? firstNTextFieldController;
-  TextEditingController? yourEmailTextFieldController;
-  TextEditingController? publicNTextFieldController;
-  TextEditingController? shopURLTextFieldController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey2 = GlobalKey<FormState>();
@@ -144,6 +147,124 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 25, 0, 25),
+                                                  child: Container(
+                                                    width: 100,
+                                                    height: 100,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        final selectedMedia =
+                                                            await selectMediaWithSourceBottomSheet(
+                                                          context: context,
+                                                          allowPhoto: true,
+                                                        );
+                                                        if (selectedMedia !=
+                                                                null &&
+                                                            selectedMedia.every((m) =>
+                                                                validateFileFormat(
+                                                                    m.storagePath,
+                                                                    context))) {
+                                                          setState(() =>
+                                                              isMediaUploading1 =
+                                                                  true);
+                                                          var selectedLocalFiles =
+                                                              <FFLocalFile>[];
+                                                          try {
+                                                            selectedLocalFiles =
+                                                                selectedMedia
+                                                                    .map((m) =>
+                                                                        FFLocalFile(
+                                                                          name: m
+                                                                              .storagePath
+                                                                              .split('/')
+                                                                              .last,
+                                                                          bytes:
+                                                                              m.bytes,
+                                                                        ))
+                                                                    .toList();
+                                                          } finally {
+                                                            isMediaUploading1 =
+                                                                false;
+                                                          }
+                                                          if (selectedLocalFiles
+                                                                  .length ==
+                                                              selectedMedia
+                                                                  .length) {
+                                                            setState(() =>
+                                                                uploadedLocalFile1 =
+                                                                    selectedLocalFiles
+                                                                        .first);
+                                                          } else {
+                                                            setState(() {});
+                                                            return;
+                                                          }
+                                                        }
+                                                      },
+                                                      child: Stack(
+                                                        children: [
+                                                          Container(
+                                                            width: 100,
+                                                            height: 100,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child:
+                                                                Image.network(
+                                                              'https://picsum.photos/seed/327/600',
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1, 0.7),
+                                                            child: Container(
+                                                              width: 20,
+                                                              height: 20,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                              child: Container(
+                                                                width: 120,
+                                                                height: 120,
+                                                                clipBehavior: Clip
+                                                                    .antiAlias,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                ),
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/camera-icon-symbol-template-camera-outline-icon-isolated-white-background_664675-534.avif',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 13, 0, 0),
@@ -1796,7 +1917,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                           m.storagePath,
                                                                           context))) {
                                                                 setState(() =>
-                                                                    isMediaUploading =
+                                                                    isMediaUploading2 =
                                                                         true);
                                                                 var selectedLocalFiles =
                                                                     <FFLocalFile>[];
@@ -1810,7 +1931,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                               ))
                                                                           .toList();
                                                                 } finally {
-                                                                  isMediaUploading =
+                                                                  isMediaUploading2 =
                                                                       false;
                                                                 }
                                                                 if (selectedLocalFiles
@@ -1818,7 +1939,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     selectedMedia
                                                                         .length) {
                                                                   setState(() =>
-                                                                      uploadedLocalFile =
+                                                                      uploadedLocalFile2 =
                                                                           selectedLocalFiles
                                                                               .first);
                                                                 } else {
@@ -2035,7 +2156,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     ?.text ??
                                                                 '',
                                                         companyLogo:
-                                                            uploadedLocalFile,
+                                                            uploadedLocalFile2,
                                                         vendorId: getJsonField(
                                                           FFAppState().userData,
                                                           r'''$.vendor_id''',
