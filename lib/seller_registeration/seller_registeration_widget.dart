@@ -82,7 +82,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                 ),
                 Form(
                   key: formKey,
-                  autovalidateMode: AutovalidateMode.always,
+                  autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
                     child: SingleChildScrollView(
@@ -160,7 +160,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -285,7 +285,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -400,7 +400,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -526,7 +526,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -644,7 +644,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -763,7 +763,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -900,7 +900,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 48,
+                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -911,6 +911,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -928,6 +929,17 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           controller: textController7,
                                           obscureText: !passwordVisibility2,
                                           decoration: InputDecoration(
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.black,
+                                                      fontSize: 12,
+                                                      letterSpacing: 0.5,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
                                             hintText: 'Confirm Password',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)

@@ -291,33 +291,50 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 20),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'FAQs',
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 17,
-                                            ),
+                              InkWell(
+                                onTap: () async {
+                                  context.pushNamed(
+                                    'webview',
+                                    queryParams: {
+                                      'pagename': serializeParam(
+                                        'FAQ',
+                                        ParamType.String,
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24,
+                                      'pageURL': serializeParam(
+                                        'https://staging.umarumart.com/apppage/en/faq.php',
+                                        ParamType.String,
                                       ),
-                                    ],
+                                    }.withoutNulls,
+                                  );
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 20),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'FAQs',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 17,
+                                              ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

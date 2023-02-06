@@ -10,9 +10,11 @@ class CategoryPageWidget extends StatefulWidget {
   const CategoryPageWidget({
     Key? key,
     this.categoryID,
+    this.categoryName,
   }) : super(key: key);
 
   final String? categoryID;
+  final String? categoryName;
 
   @override
   _CategoryPageWidgetState createState() => _CategoryPageWidgetState();
@@ -50,7 +52,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               AppbarWidget(
-                appTitle: 'Category',
+                appTitle: widget.categoryName,
                 isShowBack: true,
               ),
               Padding(
@@ -212,9 +214,12 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                           child: FutureBuilder<ApiCallResponse>(
-                            future: UmaruGroup.productByCategoryCall.call(
-                              categoryId: widget.categoryID,
+                            future: UmaruGroup
+                                .productByCategoryIdAndProductIdCall
+                                .call(
+                              id: widget.categoryID,
                               token: FFAppState().token,
+                              searchTerm: 'category_id',
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -230,20 +235,20 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                   ),
                                 );
                               }
-                              final gridViewProductByCategoryResponse =
+                              final gridViewProductByCategoryIdAndProductIdResponse =
                                   snapshot.data!;
                               return Builder(
                                 builder: (context) {
-                                  final productList =
-                                      UmaruGroup.productByCategoryCall
-                                              .getItems(
-                                                gridViewProductByCategoryResponse
-                                                    .jsonBody,
-                                              )
-                                              ?.map((e) => e)
-                                              .toList()
-                                              ?.toList() ??
-                                          [];
+                                  final productList = UmaruGroup
+                                          .productByCategoryIdAndProductIdCall
+                                          .getItems(
+                                            gridViewProductByCategoryIdAndProductIdResponse
+                                                .jsonBody,
+                                          )
+                                          ?.map((e) => e)
+                                          .toList()
+                                          ?.toList() ??
+                                      [];
                                   return GridView.builder(
                                     padding: EdgeInsets.zero,
                                     gridDelegate:
@@ -308,7 +313,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                       child: Text(
                                                         getJsonField(
                                                           productListItem,
-                                                          r'''$.id''',
+                                                          r'''$.name''',
                                                         ).toString(),
                                                         textAlign:
                                                             TextAlign.start,

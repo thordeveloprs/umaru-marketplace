@@ -1,9 +1,11 @@
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -21,9 +23,19 @@ class ProductDetailPageWidget extends StatefulWidget {
 }
 
 class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
-  PageController? pageViewController;
+  ApiCallResponse? vendorDetail;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  PageController? pageViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      vendorDetail = await UmaruGroup.vendorDetailsForProductPageCall.call();
+    });
+  }
 
   @override
   void dispose() {
@@ -96,9 +108,10 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                   child: FutureBuilder<ApiCallResponse>(
-                    future: UmaruGroup.productByIdCall.call(
-                      productId: widget.id,
+                    future: UmaruGroup.productByCategoryIdAndProductIdCall.call(
+                      id: widget.id?.toString(),
                       token: FFAppState().token,
+                      searchTerm: 'entity_id',
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -113,7 +126,8 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                           ),
                         );
                       }
-                      final columnProductByIdResponse = snapshot.data!;
+                      final columnProductByCategoryIdAndProductIdResponse =
+                          snapshot.data!;
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -149,7 +163,14 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                                       .secondaryBackground,
                                                 ),
                                                 child: Image.network(
-                                                  '',
+                                                  functions.findProductImage(
+                                                      getJsonField(
+                                                        columnProductByCategoryIdAndProductIdResponse
+                                                            .jsonBody,
+                                                        r'''$.items[0].custom_attributes''',
+                                                      )!,
+                                                      FFAppState()
+                                                          .imageBaseUrl),
                                                   width: 272,
                                                   height: 176,
                                                   fit: BoxFit.contain,
@@ -295,7 +316,8 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       children: [
                                         Text(
                                           getJsonField(
-                                            columnProductByIdResponse.jsonBody,
+                                            columnProductByCategoryIdAndProductIdResponse
+                                                .jsonBody,
                                             r'''$.items[0].name''',
                                           ).toString(),
                                           textAlign: TextAlign.start,
@@ -322,7 +344,11 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 2.5, 0),
                                             child: Text(
-                                              '27 189',
+                                              getJsonField(
+                                                columnProductByCategoryIdAndProductIdResponse
+                                                    .jsonBody,
+                                                r'''$.items[0].price''',
+                                              ).toString(),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1
@@ -364,7 +390,10 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
-                                          'Vendor Name',
+                                          getJsonField(
+                                            (vendorDetail?.jsonBody ?? ''),
+                                            r'''$..Vendor-name''',
+                                          ).toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -405,24 +434,40 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                         ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 13, 0, 19),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'SteamCare System reduces wrinkles by 30%\nSoftPlus Option pre-soaks and distributes clothing evenly\nA quiet washer for a calm and comfortable environment',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Color(0xFF9098B1),
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                        ],
+                                    Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 13, 0, 19),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              functions.getObjectFromAttributes(
+                                                  getJsonField(
+                                                    columnProductByCategoryIdAndProductIdResponse
+                                                        .jsonBody,
+                                                    r'''$.items[0].custom_attributes''',
+                                                  )!,
+                                                  'description'),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            Color(0xFF9098B1),
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -432,210 +477,296 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 22, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 10, 15, 0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: double.infinity,
-                                        height: 54,
-                                        decoration: BoxDecoration(
+                              child: FutureBuilder<ApiCallResponse>(
+                                future: UmaruGroup
+                                    .vendorDetailsForProductPageCall
+                                    .call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(5),
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(22, 0, 0, 0),
-                                              child: Image.asset(
-                                                'assets/images/Vector_(1).png',
-                                                width: 24,
-                                                height: 24,
-                                                fit: BoxFit.cover,
+                                      ),
+                                    );
+                                  }
+                                  final containerVendorDetailsForProductPageResponse =
+                                      snapshot.data!;
+                                  return Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 10, 15, 0),
+                                      child: FutureBuilder<ApiCallResponse>(
+                                        future: UmaruGroup
+                                            .vendorDetailsForProductPageCall
+                                            .call(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 22, 0),
+                                            );
+                                          }
+                                          final columnVendorDetailsForProductPageResponse =
+                                              snapshot.data!;
+                                          return Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: double.infinity,
+                                                height: 54,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
                                                   children: [
-                                                    Text(
-                                                      '1234567890',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryBtnText,
-                                                            fontSize: 16,
-                                                            letterSpacing: 1,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  22, 0, 0, 0),
+                                                      child: Image.asset(
+                                                        'assets/images/Vector_(1).png',
+                                                        width: 24,
+                                                        height: 24,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    22, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Text(
+                                                              getJsonField(
+                                                                columnVendorDetailsForProductPageResponse
+                                                                    .jsonBody,
+                                                                r'''$..Vendor-contact''',
+                                                              ).toString(),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBtnText,
+                                                                    fontSize:
+                                                                        16,
+                                                                    letterSpacing:
+                                                                        1,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 54,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .black,
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(22, 0, 0, 0),
-                                                child: Image.asset(
-                                                  'assets/images/ic_outline-email.png',
-                                                  width: 24,
-                                                  height: 24,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 22, 0),
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 54,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .black,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                  ),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
                                                     children: [
-                                                      Text(
-                                                        'email@email.com',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Montserrat',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  fontSize: 16,
-                                                                  letterSpacing:
-                                                                      1,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(22, 0,
+                                                                    0, 0),
+                                                        child: Image.asset(
+                                                          'assets/images/ic_outline-email.png',
+                                                          width: 24,
+                                                          height: 24,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 22, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                getJsonField(
+                                                                  columnVendorDetailsForProductPageResponse
+                                                                      .jsonBody,
+                                                                  r'''$..Vendor-email''',
+                                                                ).toString(),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryBtnText,
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          1,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 20),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 54,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFF4FCD5D),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(22, 0,
+                                                                    0, 0),
+                                                        child: Image.asset(
+                                                          'assets/images/ic_round-whatsapp.png',
+                                                          width: 24,
+                                                          height: 24,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 22, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                getJsonField(
+                                                                  columnVendorDetailsForProductPageResponse
+                                                                      .jsonBody,
+                                                                  r'''$..Vendor-whatsapp''',
+                                                                ).toString(),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryBtnText,
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          1,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
                                             ],
-                                          ),
-                                        ),
+                                          );
+                                        },
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 54,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF4FCD5D),
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(22, 0, 0, 0),
-                                                child: Image.asset(
-                                                  'assets/images/ic_round-whatsapp.png',
-                                                  width: 24,
-                                                  height: 24,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 22, 0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        '1234567890',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Montserrat',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  fontSize: 16,
-                                                                  letterSpacing:
-                                                                      1,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ],

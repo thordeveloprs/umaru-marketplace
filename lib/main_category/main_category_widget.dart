@@ -90,6 +90,13 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                           ).toString(),
                                           ParamType.String,
                                         ),
+                                        'categoryName': serializeParam(
+                                          getJsonField(
+                                            mainListItem,
+                                            r'''$.name''',
+                                          ).toString(),
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   },

@@ -40,14 +40,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   @override
   void initState() {
     super.initState();
-    firstNTextFieldController = TextEditingController();
-    yourEmailTextFieldController = TextEditingController();
-    shopURLTextFieldController = TextEditingController();
-    textController10 = TextEditingController();
-    textController6 = TextEditingController();
-    txtEmailController = TextEditingController();
-    textController7 = TextEditingController();
-    txtFacebookIdController = TextEditingController();
     textController9 = TextEditingController();
   }
 
@@ -157,7 +149,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(0, 13, 0, 0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -188,7 +180,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         Expanded(
                                                           child: TextFormField(
                                                             controller:
-                                                                firstNTextFieldController,
+                                                                firstNTextFieldController ??=
+                                                                    TextEditingController(
+                                                              text: functions
+                                                                  .getObjectFromList(
+                                                                      UmaruGroup
+                                                                          .getVendorAndCompanyDetailsCall
+                                                                          .informationsgnrales(
+                                                                            columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                          )!
+                                                                          .toList(),
+                                                                      'Nom'),
+                                                            ),
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -313,7 +316,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(0, 13, 0, 0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -344,7 +347,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         Expanded(
                                                           child: TextFormField(
                                                             controller:
-                                                                yourEmailTextFieldController,
+                                                                yourEmailTextFieldController ??=
+                                                                    TextEditingController(
+                                                              text: functions
+                                                                  .getObjectFromList(
+                                                                      UmaruGroup
+                                                                          .getVendorAndCompanyDetailsCall
+                                                                          .informationsgnrales(
+                                                                            columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                          )!
+                                                                          .toList(),
+                                                                      'Email'),
+                                                            ),
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -476,7 +490,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(0, 13, 0, 0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -646,7 +660,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(0, 13, 0, 0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -679,7 +693,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         Expanded(
                                                           child: TextFormField(
                                                             controller:
-                                                                shopURLTextFieldController,
+                                                                shopURLTextFieldController ??=
+                                                                    TextEditingController(
+                                                              text: functions
+                                                                  .getObjectFromList(
+                                                                      UmaruGroup
+                                                                          .getVendorAndCompanyDetailsCall
+                                                                          .informationsgnrales(
+                                                                            columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                          )!
+                                                                          .toList(),
+                                                                      'URL de la boutique'),
+                                                            ),
                                                             readOnly: true,
                                                             obscureText: false,
                                                             decoration:
@@ -854,11 +879,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           r'''$.hashkey''',
                                                         ).toString(),
                                                         email:
-                                                            yourEmailTextFieldController!
-                                                                .text,
+                                                            yourEmailTextFieldController
+                                                                    ?.text ??
+                                                                '',
                                                         name:
-                                                            firstNTextFieldController!
-                                                                .text,
+                                                            firstNTextFieldController
+                                                                    ?.text ??
+                                                                '',
                                                         publicName:
                                                             publicNTextFieldController
                                                                     ?.text ??
@@ -941,7 +968,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         Form(
                                           key: formKey1,
                                           autovalidateMode:
-                                              AutovalidateMode.always,
+                                              AutovalidateMode.disabled,
                                           child: SingleChildScrollView(
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -978,7 +1005,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 20, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -999,7 +1026,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   20, 0, 0, 0),
                                                       child: TextFormField(
                                                         controller:
-                                                            txtEmailController,
+                                                            txtEmailController ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Nom de l\'entreprise'),
+                                                        ),
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1127,7 +1166,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 0, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1148,7 +1187,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   20, 0, 0, 0),
                                                       child: TextFormField(
                                                         controller:
-                                                            textController6,
+                                                            textController6 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsgnrales(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Numéro de contact'),
+                                                        ),
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1271,7 +1322,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 0, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1292,7 +1343,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   20, 0, 0, 0),
                                                       child: TextFormField(
                                                         controller:
-                                                            textController7,
+                                                            textController7 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsd039assistance(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Numéro d\'assistance'),
+                                                        ),
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1415,7 +1478,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 0, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1436,7 +1499,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   20, 0, 0, 0),
                                                       child: TextFormField(
                                                         controller:
-                                                            txtFacebookIdController,
+                                                            txtFacebookIdController ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsd039assistance(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Facebook ID'),
+                                                        ),
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1559,7 +1634,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 0, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1779,7 +1854,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       .fromSTEB(15, 0, 15, 13),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 48,
+                                                    height: 51,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1800,7 +1875,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   20, 0, 0, 0),
                                                       child: TextFormField(
                                                         controller:
-                                                            textController10,
+                                                            textController10 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Adresse de la société'),
+                                                        ),
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1936,14 +2023,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               .updateCompanyDetailsCall
                                                               .call(
                                                         contactNumber:
-                                                            firstNTextFieldController!
-                                                                .text,
+                                                            firstNTextFieldController
+                                                                    ?.text ??
+                                                                '',
                                                         companyAddress:
-                                                            textController10!
-                                                                .text,
+                                                            textController10
+                                                                    ?.text ??
+                                                                '',
                                                         supportNumber:
-                                                            textController7!
-                                                                .text,
+                                                            textController7
+                                                                    ?.text ??
+                                                                '',
                                                         companyLogo:
                                                             uploadedLocalFile,
                                                         vendorId: getJsonField(
@@ -1955,11 +2045,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           r'''$.hashkey''',
                                                         ).toString(),
                                                         facebookId:
-                                                            txtFacebookIdController!
-                                                                .text,
+                                                            txtFacebookIdController
+                                                                    ?.text ??
+                                                                '',
                                                         supportEmail:
-                                                            txtEmailController!
-                                                                .text,
+                                                            txtEmailController
+                                                                    ?.text ??
+                                                                '',
                                                       );
                                                       if (getJsonField(
                                                         (apiResult5sa

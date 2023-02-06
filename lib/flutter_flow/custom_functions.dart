@@ -79,3 +79,20 @@ String getObjectFromList(
     return "";
   }
 }
+
+String getObjectFromAttributes(
+  List<dynamic> attributesList,
+  String attributesName,
+) {
+  if (attributesList.isNotEmpty) {
+    var b = attributesList.where((d) => d["attribute_code"] == attributesName);
+
+    if (b.isEmpty) {
+      return "";
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return "";
+  }
+}

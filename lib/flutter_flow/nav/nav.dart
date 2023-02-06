@@ -155,13 +155,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'categoryPage',
-              path: 'categoryPage',
-              builder: (context, params) => CategoryPageWidget(
-                categoryID: params.getParam('categoryID', ParamType.String),
-              ),
-            ),
-            FFRoute(
               name: 'Product_detailPage',
               path: 'productDetailPage',
               builder: (context, params) => ProductDetailPageWidget(
@@ -169,9 +162,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'categoryPage',
+              path: 'categoryPage',
+              builder: (context, params) => CategoryPageWidget(
+                categoryID: params.getParam('categoryID', ParamType.String),
+                categoryName: params.getParam('categoryName', ParamType.String),
+              ),
+            ),
+            FFRoute(
               name: 'ChangePassword',
               path: 'changePassword',
               builder: (context, params) => ChangePasswordWidget(),
+            ),
+            FFRoute(
+              name: 'webview',
+              path: 'webview',
+              builder: (context, params) => WebviewWidget(
+                pagename: params.getParam('pagename', ParamType.String),
+                pageURL: params.getParam('pageURL', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

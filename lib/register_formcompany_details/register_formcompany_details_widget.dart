@@ -106,7 +106,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 20, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -199,7 +199,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -288,7 +288,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -384,7 +384,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -473,7 +473,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -617,7 +617,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               EdgeInsetsDirectional.fromSTEB(15, 0, 15, 13),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 50,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,

@@ -33,17 +33,20 @@ class UmaruGroup {
   static EditProductCall editProductCall = EditProductCall();
   static GetCategoryByVendorCall getCategoryByVendorCall =
       GetCategoryByVendorCall();
-  static ProductByIdCall productByIdCall = ProductByIdCall();
   static RegisterCall registerCall = RegisterCall();
   static UpdateCompanyDetailsCall updateCompanyDetailsCall =
       UpdateCompanyDetailsCall();
   static UpdateUserDetailsCall updateUserDetailsCall = UpdateUserDetailsCall();
   static ForgotPasswordCall forgotPasswordCall = ForgotPasswordCall();
-  static ProductByCategoryCall productByCategoryCall = ProductByCategoryCall();
+  static ProductByCategoryIdAndProductIdCall
+      productByCategoryIdAndProductIdCall =
+      ProductByCategoryIdAndProductIdCall();
   static GetVendorDetailsByProductIdCall getVendorDetailsByProductIdCall =
       GetVendorDetailsByProductIdCall();
   static GetVendorAndCompanyDetailsCall getVendorAndCompanyDetailsCall =
       GetVendorAndCompanyDetailsCall();
+  static VendorDetailsForProductPageCall vendorDetailsForProductPageCall =
+      VendorDetailsForProductPageCall();
 }
 
 class LoginCall {
@@ -348,31 +351,6 @@ class GetCategoryByVendorCall {
   }
 }
 
-class ProductByIdCall {
-  Future<ApiCallResponse> call({
-    int? productId,
-    String? token = '',
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'product by id',
-      apiUrl: '${UmaruGroup.baseUrl}/rest/en/V1/products?',
-      callType: ApiCallType.GET,
-      headers: {
-        ...UmaruGroup.headers,
-      },
-      params: {
-        'searchCriteria[filterGroups][0][filters][0][field]': "entity_id",
-        'searchCriteria[filterGroups][0][filters][0][value]': productId,
-        'searchCriteria[filterGroups][0][filters][0][condition_type]': "eq",
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
 class RegisterCall {
   Future<ApiCallResponse> call({
     dynamic? createaccountJson,
@@ -485,13 +463,14 @@ class ForgotPasswordCall {
   }
 }
 
-class ProductByCategoryCall {
+class ProductByCategoryIdAndProductIdCall {
   Future<ApiCallResponse> call({
-    String? categoryId = '',
+    String? id = '',
     String? token = '',
+    String? searchTerm = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'product by category',
+      callName: 'product by category id and product id',
       apiUrl: '${UmaruGroup.baseUrl}rest/en/V1/products',
       callType: ApiCallType.GET,
       headers: {
@@ -499,8 +478,8 @@ class ProductByCategoryCall {
         'Authorization': 'Bearer ${token}',
       },
       params: {
-        'searchCriteria[filter_groups][0][filters][0][field]': "category_id",
-        'searchCriteria[filter_groups][0][filters][0][value]': categoryId,
+        'searchCriteria[filter_groups][0][filters][0][value]': id,
+        'searchCriteria[filter_groups][0][filters][0][field]': searchTerm,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -567,23 +546,31 @@ class GetVendorAndCompanyDetailsCall {
         r'''$.data['Informations générales']''',
         true,
       );
+  dynamic informationssurlasocit(dynamic response) => getJsonField(
+        response,
+        r'''$.data["Informations sur la société"]''',
+        true,
+      );
+  dynamic informationsd039assistance(dynamic response) => getJsonField(
+        response,
+        r'''$.data["Informations d&#039;assistance"]''',
+        true,
+      );
 }
 
-/// End umaru Group Code
-
-class DemoImageUploadCall {
-  static Future<ApiCallResponse> call({
-    FFLocalFile? file,
+class VendorDetailsForProductPageCall {
+  Future<ApiCallResponse> call({
+    String? productid = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'demo image upload',
-      apiUrl: 'https://19c29fb4b159b2cb37902b1e3c1b8b72.m.pipedream.net',
+      callName: 'vendor details for product page',
+      apiUrl: '${UmaruGroup.baseUrl}rest/V1/wishusucess/vendordetail/',
       callType: ApiCallType.POST,
       headers: {
-        'Content-Type': 'application/json',
+        ...UmaruGroup.headers,
       },
       params: {
-        'file': file,
+        'productid': productid,
       },
       bodyType: BodyType.MULTIPART,
       returnBody: true,
@@ -593,6 +580,8 @@ class DemoImageUploadCall {
     );
   }
 }
+
+/// End umaru Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;
