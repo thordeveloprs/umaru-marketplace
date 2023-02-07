@@ -77,7 +77,9 @@ class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Sucess',
+                              FFLocalizations.of(context).getText(
+                                'cejwnbr9' /* Sucess */,
+                              ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context).title1,
                             ),

@@ -53,7 +53,9 @@ class _SucessMsgWidgetState extends State<SucessMsgWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Sucess',
+                        FFLocalizations.of(context).getText(
+                          '4qqgfptk' /* Sucess */,
+                        ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).title1,
                       ),
@@ -84,7 +86,9 @@ class _SucessMsgWidgetState extends State<SucessMsgWidget> {
                     });
                     context.pop();
                   },
-                  text: 'OK',
+                  text: FFLocalizations.of(context).getText(
+                    'ycim0m5d' /* OK */,
+                  ),
                   options: FFButtonOptions(
                     width: 130,
                     height: 40,

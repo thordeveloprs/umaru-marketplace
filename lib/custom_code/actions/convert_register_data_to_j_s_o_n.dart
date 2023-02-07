@@ -10,14 +10,13 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 dynamic convertRegisterDataToJSON(
-  String email,
-  String firstname,
-  String lastname,
-  String password,
-  bool issubscribed,
-  String publicname,
-  String shopurl,
-  String contactNumber,
+  String? email,
+  String? firstname,
+  String? lastname,
+  String? password,
+  bool? issubscribed,
+  String? publicname,
+  String? contactNumber,
 ) {
   /// MODIFY CODE ONLY BELOW THIS LINE
 
@@ -25,9 +24,9 @@ dynamic convertRegisterDataToJSON(
 
   List<Map<String, String>> listVendor = [];
 
-  listVendor.add({"key": "public_name", "value": publicname});
-  listVendor.add({"key": "shop_url", "value": shopurl});
-  listVendor.add({"key": "contact_number", "value": contactNumber});
+  listVendor.add({"key": "public_name", "value": publicname!});
+
+  listVendor.add({"key": "contact_number", "value": contactNumber!});
 
   mapData["email"] = email;
   mapData["firstname"] = firstname;

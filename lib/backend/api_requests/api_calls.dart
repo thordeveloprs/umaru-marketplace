@@ -583,6 +583,51 @@ class VendorDetailsForProductPageCall {
 
 /// End umaru Group Code
 
+/// Start search Group Group Code
+
+class SearchGroupGroup {
+  static String baseUrl = 'https://staging.umarumart.com/';
+  static Map<String, String> headers = {
+    'Content_type': 'application/json',
+  };
+  static SearchCall searchCall = SearchCall();
+}
+
+class SearchCall {
+  Future<ApiCallResponse> call({
+    String? search = '',
+    String? token = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'search',
+      apiUrl: '${SearchGroupGroup.baseUrl}rest/en/V1/products',
+      callType: ApiCallType.GET,
+      headers: {
+        ...SearchGroupGroup.headers,
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {
+        'searchCriteria[filter_groups][0][filters][0][field]': "name",
+        'searchCriteria[filter_groups][0][filters][0][condition_type]': "like",
+        'searchCriteria[filter_groups][0][filters][1][field]': "name",
+        'searchCriteria[filter_groups][0][filters][0][value]': search,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic product(dynamic response) => getJsonField(
+        response,
+        r'''$.items''',
+        true,
+      );
+}
+
+/// End search Group Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -89,7 +89,9 @@ class _RegisterFormcompanyDetailsWidgetState
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Company Details',
+                                FFLocalizations.of(context).getText(
+                                  'xtlycfcc' /* Company Details */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
@@ -123,7 +125,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 controller: emalIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Business email',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'h4w025d2' /* Business email */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -181,7 +185,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 keyboardType: TextInputType.emailAddress,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
-                                    return 'Email Field is required';
+                                    return FFLocalizations.of(context).getText(
+                                      'uodie97m' /* Email Field is required */,
+                                    );
                                   }
 
                                   if (!RegExp(kTextValidatorEmailRegex)
@@ -216,7 +222,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 controller: textController2,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Business Contact number',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    '6pgoxn6p' /* Business Contact number */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -274,7 +282,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 keyboardType: TextInputType.phone,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
-                                    return 'Contact number is required';
+                                    return FFLocalizations.of(context).getText(
+                                      'c29g6rnb' /* Contact number is required */,
+                                    );
                                   }
 
                                   return null;
@@ -305,7 +315,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 controller: textController3,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Whatsapp number',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'q3lw2e3j' /* Whatsapp number */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -363,7 +375,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 keyboardType: TextInputType.phone,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
-                                    return 'Whatsapp number  is required';
+                                    return FFLocalizations.of(context).getText(
+                                      'qm8p52yr' /* Whatsapp number  is required */,
+                                    );
                                   }
 
                                   if (val.length < 10) {
@@ -401,7 +415,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 controller: txtFacebookIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Facebook Links',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'fwkphire' /* Facebook Links */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -459,7 +475,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 keyboardType: TextInputType.url,
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
-                                    return 'Field is required';
+                                    return FFLocalizations.of(context).getText(
+                                      'ss6wq0c5' /* Field is required */,
+                                    );
                                   }
 
                                   return null;
@@ -495,7 +513,10 @@ class _RegisterFormcompanyDetailsWidgetState
                                       controller: textController5,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        hintText: 'Image',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'bbkd2h8q' /* Image */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
@@ -596,7 +617,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                       }
                                     },
                                     child: Text(
-                                      'Upload',
+                                      FFLocalizations.of(context).getText(
+                                        '0e7f3t72' /* Upload */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
@@ -634,7 +657,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                 controller: textController6,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Business Address',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'fpxooik2' /* Business Address */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -691,7 +716,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                     ),
                                 validator: (val) {
                                   if (val == null || val.isEmpty) {
-                                    return 'Field is required';
+                                    return FFLocalizations.of(context).getText(
+                                      '1pi0d8h3' /* Field is required */,
+                                    );
                                   }
 
                                   return null;
@@ -752,7 +779,9 @@ class _RegisterFormcompanyDetailsWidgetState
 
                               setState(() {});
                             },
-                            text: 'Sign Up ',
+                            text: FFLocalizations.of(context).getText(
+                              'r0eqtcse' /* Sign Up  */,
+                            ),
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 54,

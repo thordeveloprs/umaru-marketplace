@@ -66,7 +66,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Price',
+                                FFLocalizations.of(context).getText(
+                                  'emieego1' /* Price */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -107,7 +109,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  '622 CFA',
+                                  FFLocalizations.of(context).getText(
+                                    'n09m17xj' /* 622 CFA */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -125,7 +129,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  '770 946 CFA',
+                                  FFLocalizations.of(context).getText(
+                                    'smd8eb6y' /* 770 946 CFA */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -151,7 +157,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Product Tags',
+                                FFLocalizations.of(context).getText(
+                                  'cukxqjse' /* Product Tags */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -206,7 +214,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Tags (1)',
+                                          FFLocalizations.of(context).getText(
+                                            'eak40wmk' /* Tags (1) */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -237,7 +247,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Product Color',
+                                FFLocalizations.of(context).getText(
+                                  'xcib4ui4' /* Product Color */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -293,7 +305,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Black (1)',
+                                          FFLocalizations.of(context).getText(
+                                            'qwocjax7' /* Black (1) */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -324,7 +338,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Product Size',
+                                FFLocalizations.of(context).getText(
+                                  '7ypkzxv9' /* Product Size */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -380,7 +396,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          '41 (1)',
+                                          FFLocalizations.of(context).getText(
+                                            'vlgbrdzs' /* 41 (1) */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -411,7 +429,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                   onPressed: () {
                     print('filterButton pressed ...');
                   },
-                  text: 'Apply',
+                  text: FFLocalizations.of(context).getText(
+                    'vcafnukz' /* Apply */,
+                  ),
                   options: FFButtonOptions(
                     width: double.infinity,
                     height: 54,

@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,16 +19,15 @@ class SellerRegisterationWidget extends StatefulWidget {
 
 class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
   ApiCallResponse? registerApiResponse;
-  dynamic? registerJson;
+  dynamic? response;
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;
   TextEditingController? txtContactController;
   TextEditingController? textController5;
   TextEditingController? textController6;
-  TextEditingController? textController7;
   late bool passwordVisibility1;
-  TextEditingController? textController8;
+  TextEditingController? textController7;
   late bool passwordVisibility2;
   bool? checkboxValue;
   bool? chkTnCValue;
@@ -45,10 +43,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
     textController3 = TextEditingController();
     txtContactController = TextEditingController();
     textController5 = TextEditingController();
-    textController6 = TextEditingController(text: functions.getShopUrl());
-    textController7 = TextEditingController();
+    textController6 = TextEditingController();
     passwordVisibility1 = false;
-    textController8 = TextEditingController();
+    textController7 = TextEditingController();
     passwordVisibility2 = false;
   }
 
@@ -62,7 +59,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
     textController5?.dispose();
     textController6?.dispose();
     textController7?.dispose();
-    textController8?.dispose();
     super.dispose();
   }
 
@@ -88,7 +84,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                   key: formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 8),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -100,7 +96,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   6.52, 12.5, 0, 0),
                               child: Text(
-                                'Seller Registeration',
+                                FFLocalizations.of(context).getText(
+                                  '507gsmi3' /* Seller Registeration */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -124,7 +122,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(0, 0),
                                     child: Text(
-                                      'Already have an account?',
+                                      FFLocalizations.of(context).getText(
+                                        'y3g4pylj' /* Already have an account? */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -141,7 +141,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                       context.pushNamed('LogInPage');
                                     },
                                     child: Text(
-                                      ' Sign In',
+                                      FFLocalizations.of(context).getText(
+                                        'yijis6u8' /*  Sign In */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -192,7 +194,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           controller: textController1,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'First Name',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '6mktuttj' /* First Name */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -262,7 +268,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           keyboardType: TextInputType.name,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
-                                              return 'First Name is required';
+                                              return FFLocalizations.of(context)
+                                                  .getText(
+                                                'vqjv2fz0' /* First Name is required */,
+                                              );
                                             }
 
                                             if (val.length < 1) {
@@ -317,7 +326,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           controller: textController2,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Last Name',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '6jndcsg8' /* Last Name */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -434,7 +447,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               TextCapitalization.none,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Your Email',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'm61tmd77' /* Your Email */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -505,7 +522,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               TextInputType.emailAddress,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
-                                              return 'Email Field is required';
+                                              return FFLocalizations.of(context)
+                                                  .getText(
+                                                'hziijhpq' /* Email Field is required */,
+                                              );
                                             }
 
                                             if (!RegExp(
@@ -558,7 +578,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           controller: txtContactController,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Phone',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'z7cxtr1a' /* Phone */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -628,7 +652,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           keyboardType: TextInputType.number,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
-                                              return 'phone is required';
+                                              return FFLocalizations.of(context)
+                                                  .getText(
+                                                'qsdqlnxz' /* phone is required */,
+                                              );
                                             }
 
                                             return null;
@@ -676,7 +703,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                           controller: textController5,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Public name',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'r8s7rbuh' /* Public name */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -775,125 +806,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           18, 0, 12, 0),
                                       child: Image.asset(
-                                        'assets/images/ph_globe-hemisphere-west.png',
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12, 0, 0, 0),
-                                        child: TextFormField(
-                                          controller: textController6,
-                                          readOnly: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText: 'Shop URL',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText2
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Color(0xFF9098B1),
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                      lineHeight: 0.5,
-                                                    ),
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1,
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                topLeft: Radius.circular(4.0),
-                                                topRight: Radius.circular(4.0),
-                                              ),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1,
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                topLeft: Radius.circular(4.0),
-                                                topRight: Radius.circular(4.0),
-                                              ),
-                                            ),
-                                            errorBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1,
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                topLeft: Radius.circular(4.0),
-                                                topRight: Radius.circular(4.0),
-                                              ),
-                                            ),
-                                            focusedErrorBorder:
-                                                UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1,
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                topLeft: Radius.circular(4.0),
-                                                topRight: Radius.circular(4.0),
-                                              ),
-                                            ),
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                letterSpacing: 0.5,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                          keyboardType: TextInputType.url,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return 'Shop URL  is required';
-                                            }
-
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 51,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                    color: Color(0xFFEBF0FF),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 0, 12, 0),
-                                      child: Image.asset(
                                         'assets/images/Password.png',
                                         fit: BoxFit.cover,
                                       ),
@@ -903,12 +815,16 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController7,
+                                          controller: textController6,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           obscureText: !passwordVisibility1,
                                           decoration: InputDecoration(
-                                            hintText: 'Password',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'k5uoh1nf' /* Password */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -995,7 +911,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               TextInputType.visiblePassword,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
-                                              return 'Password Field is required';
+                                              return FFLocalizations.of(context)
+                                                  .getText(
+                                                'yhccuozq' /* Password Field is required */,
+                                              );
                                             }
 
                                             return null;
@@ -1041,7 +960,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController8,
+                                          controller: textController7,
                                           obscureText: !passwordVisibility2,
                                           decoration: InputDecoration(
                                             labelStyle:
@@ -1055,7 +974,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                       fontWeight:
                                                           FontWeight.normal,
                                                     ),
-                                            hintText: 'Confirm Password',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'ceh0eslj' /* Confirm Password */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -1142,7 +1065,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               TextInputType.visiblePassword,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
-                                              return 'Confirm Password Field is required';
+                                              return FFLocalizations.of(context)
+                                                  .getText(
+                                                '9qfw7mbj' /* Confirm Password Field is requ... */,
+                                              );
                                             }
 
                                             return null;
@@ -1186,7 +1112,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15, 0, 0, 0),
                                   child: Text(
-                                    'Subscribe to Newsletter',
+                                    FFLocalizations.of(context).getText(
+                                      'p75gog2n' /* Subscribe to Newsletter */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -1232,7 +1160,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15, 0, 0, 0),
                                   child: Text(
-                                    'I have read and accept',
+                                    FFLocalizations.of(context).getText(
+                                      '70kusu88' /* I have read and accept */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -1266,7 +1196,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                       );
                                     },
                                     child: Text(
-                                      'term_condition',
+                                      FFLocalizations.of(context).getText(
+                                        '94ccrbne' /* term_condition */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -1287,7 +1219,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
                             child: Text(
-                              'By creating an account, you agree to our Terms and have read and acknowledge the Global Privacy Statement.',
+                              FFLocalizations.of(context).getText(
+                                'g89imkqo' /* By creating an account, you ag... */,
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
@@ -1313,24 +1247,23 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         return;
                                       }
 
-                                      if (textController7!.text ==
-                                          textController8!.text) {
-                                        registerJson = await actions
+                                      if (textController6!.text ==
+                                          textController7!.text) {
+                                        response = await actions
                                             .convertRegisterDataToJSON(
                                           textController3!.text,
                                           textController1!.text,
                                           textController2!.text,
-                                          textController7!.text,
-                                          checkboxValue!,
-                                          txtContactController!.text,
                                           textController6!.text,
+                                          checkboxValue,
+                                          textController5!.text,
                                           txtContactController!.text,
                                         );
                                         if (chkTnCValue!) {
                                           registerApiResponse = await UmaruGroup
                                               .registerCall
                                               .call(
-                                            createaccountJson: registerJson,
+                                            createaccountJson: response,
                                           );
                                           if (getJsonField(
                                             (registerApiResponse?.jsonBody ??
@@ -1367,8 +1300,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               FFAppState().isLogin = true;
                                             });
 
-                                            context.pushNamed(
-                                                'registerFormcompanyDetails');
+                                            context.goNamed('Home');
                                           } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
@@ -1433,7 +1365,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
 
                                       setState(() {});
                                     },
-                                    text: 'Next',
+                                    text: FFLocalizations.of(context).getText(
+                                      '7soqrhdw' /* Next */,
+                                    ),
                                     options: FFButtonOptions(
                                       width: 343,
                                       height: 54,

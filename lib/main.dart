@@ -14,6 +14,8 @@ import 'index.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await FFLocalizations.initialize();
+
   final appState = FFAppState(); // Initialize FFAppState
 
   runApp(ChangeNotifierProvider(
@@ -32,7 +34,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
+  Locale? _locale = FFLocalizations.getStoredLocale();
   ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
@@ -52,6 +54,7 @@ class _MyAppState extends State<MyApp> {
 
   void setLocale(String language) {
     setState(() => _locale = createLocale(language));
+    FFLocalizations.storeLocale(language);
   }
 
   void setThemeMode(ThemeMode mode) => setState(() {
@@ -69,7 +72,10 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('fr'),
+      ],
       theme: ThemeData(brightness: Brightness.light),
       themeMode: _themeMode,
       routeInformationParser: _router.routeInformationParser,
@@ -129,7 +135,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 24,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              '20rx34jn' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -137,7 +145,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.favorite_border,
               size: 24,
             ),
-            label: 'Search',
+            label: FFLocalizations.of(context).getText(
+              'l5195fyp' /* Search */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -145,7 +155,9 @@ class _NavBarPageState extends State<NavBarPage> {
               FontAwesomeIcons.borderAll,
               size: 24,
             ),
-            label: 'Categories',
+            label: FFLocalizations.of(context).getText(
+              '5jj46l07' /* Categories */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -153,7 +165,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.person_outline,
               size: 24,
             ),
-            label: 'Account',
+            label: FFLocalizations.of(context).getText(
+              'j5glnhsd' /* Account */,
+            ),
             tooltip: '',
           )
         ],

@@ -2,6 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,20 +22,12 @@ class CategoryPageWidget extends StatefulWidget {
 }
 
 class _CategoryPageWidgetState extends State<CategoryPageWidget> {
-  TextEditingController? searchPageTextFieldController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    searchPageTextFieldController = TextEditingController();
-  }
-
-  @override
   void dispose() {
     _unfocusNode.dispose();
-    searchPageTextFieldController?.dispose();
     super.dispose();
   }
 
@@ -63,96 +56,55 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Container(
-                        width: 259,
-                        height: 54,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Color(0xFFEDF0F7),
-                            width: 1,
+                      child: InkWell(
+                        onTap: () async {
+                          context.pushNamed('search');
+                        },
+                        child: Container(
+                          width: 259,
+                          height: 54,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Color(0xFFEDF0F7),
+                              width: 1,
+                            ),
                           ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      17, 0, 11.73, 0),
-                                  child: Image.asset(
-                                    'assets/images/Vector.png',
-                                    width: 20.3,
-                                    height: 21,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Expanded(
-                              child: TextFormField(
-                                controller: searchPageTextFieldController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintText: 'Search',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        17, 0, 11.73, 0),
+                                    child: Image.asset(
+                                      'assets/images/Vector.png',
+                                      width: 20.3,
+                                      height: 21,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                ],
                               ),
-                            ),
-                          ],
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'ua0ye29e' /* Search */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -294,15 +246,21 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(25, 9, 25, 9),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/448/600',
-                                                  width: 116,
-                                                  height: 97,
+                                                  functions.findProductImage(
+                                                      getJsonField(
+                                                        productListItem,
+                                                        r'''$.custom_attributes''',
+                                                      )!,
+                                                      FFAppState()
+                                                          .imageBaseUrl),
+                                                  width: 66.5,
+                                                  height: 69.7,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(13, 0, 0, 0),
+                                                    .fromSTEB(13, 10, 0, 0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -377,7 +335,11 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                               .fromSTEB(
                                                                   2.5, 0, 0, 0),
                                                       child: Text(
-                                                        'FCFA',
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'wwb2ohk2' /* FCFA */,
+                                                        ),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

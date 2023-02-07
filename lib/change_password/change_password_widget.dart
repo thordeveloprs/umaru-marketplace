@@ -78,7 +78,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  'Change Password',
+                                  FFLocalizations.of(context).getText(
+                                    'j3uepdqd' /* Change Password */,
+                                  ),
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
@@ -123,7 +125,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                       autofocus: true,
                                       obscureText: !oldPasswordVisibility,
                                       decoration: InputDecoration(
-                                        hintText: 'Old Password',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'd88f1rma' /* Old Password */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -201,7 +206,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           ),
                                       validator: (val) {
                                         if (val == null || val.isEmpty) {
-                                          return 'Old Password is required';
+                                          return FFLocalizations.of(context)
+                                              .getText(
+                                            'lami9rc5' /* Old Password is required */,
+                                          );
                                         }
 
                                         return null;
@@ -241,7 +249,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                       controller: txtPasswordController1,
                                       obscureText: !txtPasswordVisibility1,
                                       decoration: InputDecoration(
-                                        hintText: 'New Password',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'yg39z3t3' /* New Password */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -319,7 +330,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           ),
                                       validator: (val) {
                                         if (val == null || val.isEmpty) {
-                                          return 'New Password is required';
+                                          return FFLocalizations.of(context)
+                                              .getText(
+                                            'ir8ckcpm' /* New Password is required */,
+                                          );
                                         }
 
                                         return null;
@@ -359,7 +373,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                       controller: txtPasswordController2,
                                       obscureText: !txtPasswordVisibility2,
                                       decoration: InputDecoration(
-                                        hintText: 'Confirm New Password',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'wuyr64fn' /* Confirm New Password */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -437,7 +454,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           ),
                                       validator: (val) {
                                         if (val == null || val.isEmpty) {
-                                          return 'Confirm New Password is required';
+                                          return FFLocalizations.of(context)
+                                              .getText(
+                                            '9qpko8cd' /* Confirm New Password is requir... */,
+                                          );
                                         }
 
                                         return null;
@@ -459,7 +479,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                 return;
                               }
                             },
-                            text: 'Change Password',
+                            text: FFLocalizations.of(context).getText(
+                              '3p2xgaq0' /* Change Password */,
+                            ),
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 54,

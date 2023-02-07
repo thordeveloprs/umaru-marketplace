@@ -33,7 +33,9 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Select language',
+                  FFLocalizations.of(context).getText(
+                    'iqkzporf' /* Select language */,
+                  ),
                   style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ],
@@ -72,7 +74,9 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                     child: Text(
-                      'French',
+                      FFLocalizations.of(context).getText(
+                        't8c9txrm' /* French */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).black,
@@ -116,7 +120,9 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                     child: Text(
-                      'English',
+                      FFLocalizations.of(context).getText(
+                        'ph2q3vwm' /* English */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).black,

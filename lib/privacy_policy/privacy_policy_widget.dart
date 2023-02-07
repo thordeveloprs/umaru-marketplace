@@ -60,7 +60,9 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    'Title',
+                                    FFLocalizations.of(context).getText(
+                                      'dh9ypqda' /* Title */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -81,7 +83,9 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'Lorem Ipsum',
+                                      FFLocalizations.of(context).getText(
+                                        '1oij1epq' /* Lorem Ipsum */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(

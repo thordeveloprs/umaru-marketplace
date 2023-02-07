@@ -25,13 +25,21 @@ class _AddProductWidgetState extends State<AddProductWidget> {
 
   List<String>? selectedCategory;
   String? dropDownCategoryValue;
+  String? dropDownCountryValue;
+  String? dropDownStockstaValue;
+  TextEditingController? txQuantityController;
+  TextEditingController? txSpecialPriceController;
   TextEditingController? txtPriceController;
   TextEditingController? txtProductNameController;
   TextEditingController? txtSkuController;
   TextEditingController? txtQuantityController;
-  String? dropDownValue;
+  bool? switchIsFeatureValue;
+  String? dropDownsubcategoryValue;
   String? subCategoryId;
+  TextEditingController? shortdescriptiontxtController;
   TextEditingController? descriptiontxtController;
+  TextEditingController? txtMetaTitleController;
+  TextEditingController? metadesTxtController;
   ApiCallResponse? createProductDetails;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -41,20 +49,30 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   void initState() {
     super.initState();
     descriptiontxtController = TextEditingController();
+    shortdescriptiontxtController = TextEditingController();
+    txQuantityController = TextEditingController();
+    txSpecialPriceController = TextEditingController();
     txtPriceController = TextEditingController();
     txtProductNameController = TextEditingController();
     txtSkuController = TextEditingController();
     txtQuantityController = TextEditingController();
+    txtMetaTitleController = TextEditingController();
+    metadesTxtController = TextEditingController();
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
     descriptiontxtController?.dispose();
+    shortdescriptiontxtController?.dispose();
+    txQuantityController?.dispose();
+    txSpecialPriceController?.dispose();
     txtPriceController?.dispose();
     txtProductNameController?.dispose();
     txtSkuController?.dispose();
     txtQuantityController?.dispose();
+    txtMetaTitleController?.dispose();
+    metadesTxtController?.dispose();
     super.dispose();
   }
 
@@ -102,7 +120,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 7, 0),
                                         child: Text(
-                                          'Product Name',
+                                          FFLocalizations.of(context).getText(
+                                            '51t5z7ao' /* Product Name */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -114,7 +134,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '*',
+                                        FFLocalizations.of(context).getText(
+                                          'hgsodskl' /* * */,
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -160,7 +182,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   keyboardType: TextInputType.name,
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {
-                                      return 'Product  Name  is required';
+                                      return FFLocalizations.of(context)
+                                          .getText(
+                                        'llpjwsbt' /* Product  Name  is required */,
+                                      );
                                     }
 
                                     return null;
@@ -182,7 +207,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 7, 0),
                                         child: Text(
-                                          'SKU',
+                                          FFLocalizations.of(context).getText(
+                                            '2kqyqkli' /* SKU */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -194,7 +221,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '*',
+                                        FFLocalizations.of(context).getText(
+                                          'od9e4svd' /* * */,
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -239,7 +268,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {
-                                      return 'SKU is required';
+                                      return FFLocalizations.of(context)
+                                          .getText(
+                                        '70bbmi7a' /* SKU is required */,
+                                      );
                                     }
 
                                     return null;
@@ -261,7 +293,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 7, 0),
                                         child: Text(
-                                          'Price',
+                                          FFLocalizations.of(context).getText(
+                                            'jq9j560t' /* Price */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -273,7 +307,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '*',
+                                        FFLocalizations.of(context).getText(
+                                          '4drw1ybi' /* * */,
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -319,7 +355,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {
-                                      return 'Price is required';
+                                      return FFLocalizations.of(context)
+                                          .getText(
+                                        'obkalhf9' /* Price is required */,
+                                      );
                                     }
 
                                     return null;
@@ -338,7 +377,129 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Quantity',
+                                        FFLocalizations.of(context).getText(
+                                          '1s67b7gm' /* Special Price */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: txSpecialPriceController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  keyboardType: TextInputType.number,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '48bqkyu6' /* Quantity */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: txQuantityController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  keyboardType: TextInputType.number,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'ln1tvq9n' /* Weight */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -382,13 +543,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return 'Quantity is required';
-                                    }
-
-                                    return null;
-                                  },
                                 ),
                               ),
                               Align(
@@ -403,7 +557,280 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Category',
+                                        FFLocalizations.of(context).getText(
+                                          'fedck62x' /* Stock Status */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(-1, 0),
+                                child: FlutterFlowDropDown<String>(
+                                  options: [
+                                    FFLocalizations.of(context).getText(
+                                      'j8751bfb' /* In Stock  */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'xik083mw' /* Exhausted */,
+                                    )
+                                  ],
+                                  onChanged: (val) => setState(
+                                      () => dropDownStockstaValue = val),
+                                  width: double.infinity,
+                                  height: 48,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                      ),
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'll0gldf9' /* Please select */,
+                                  ),
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '7xo2l30t' /* Set the Product as a New from */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      height: 48,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                          color: Color(0xFFEBF0FF),
+                                          width: 1,
+                                        ),
+                                      ),
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'tmgifpgv' /* 14-01-2023 */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .black,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 0, 5, 0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'zzsucxyz' /* To */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      height: 48,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                          color: Color(0xFFEBF0FF),
+                                          width: 1,
+                                        ),
+                                      ),
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '9er7y2um' /* 15-02-2023 */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .black,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'gt3zd2as' /* Is Featured  */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                      Switch(
+                                        value: switchIsFeatureValue ??= true,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              switchIsFeatureValue = newValue!);
+                                        },
+                                      ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'q2bgfi67' /* Non */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'h2d0wn47' /* Country */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(-1, 0),
+                                child: FlutterFlowDropDown<String>(
+                                  options: [
+                                    FFLocalizations.of(context).getText(
+                                      '480yyzvg' /* Option 1 */,
+                                    )
+                                  ],
+                                  onChanged: (val) => setState(
+                                      () => dropDownCountryValue = val),
+                                  width: double.infinity,
+                                  height: 48,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                      ),
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'j999msk4' /* Please select... */,
+                                  ),
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'ztcmmad9' /* Category */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -441,7 +868,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       fontFamily: 'Poppins',
                                       color: Colors.black,
                                     ),
-                                hintText: 'Please select...',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'b1r8noxx' /* Please select... */,
+                                ),
                                 fillColor: Colors.white,
                                 elevation: 2,
                                 borderColor: Colors.transparent,
@@ -451,69 +880,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     12, 4, 12, 4),
                                 hidesUnderline: true,
                               ),
-                              if (selectedCategory?.length != null)
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Align(
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 25, 0, 12),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Sub Category',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: Colors.black,
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    FlutterFlowDropDown<String>(
-                                      options: selectedCategory!.toList(),
-                                      onChanged: (val) async {
-                                        setState(() => dropDownValue = val);
-                                        subCategoryId =
-                                            await actions.getSubCategoryId(
-                                          dropDownValue!,
-                                        );
-
-                                        setState(() {});
-                                      },
-                                      width: double.infinity,
-                                      height: 48,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.black,
-                                          ),
-                                      hintText: 'Please select...',
-                                      fillColor: Colors.white,
-                                      elevation: 2,
-                                      borderColor: Colors.transparent,
-                                      borderWidth: 0,
-                                      borderRadius: 0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      hidesUnderline: true,
-                                    ),
-                                  ],
-                                ),
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Padding(
@@ -526,7 +892,69 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Image Upload',
+                                        FFLocalizations.of(context).getText(
+                                          'nc7d8gdm' /* Sub Category */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              FlutterFlowDropDown<String>(
+                                options: selectedCategory!.toList(),
+                                onChanged: (val) async {
+                                  setState(
+                                      () => dropDownsubcategoryValue = val);
+                                  subCategoryId =
+                                      await actions.getSubCategoryId(
+                                    dropDownsubcategoryValue!,
+                                  );
+
+                                  setState(() {});
+                                },
+                                width: double.infinity,
+                                height: 48,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.black,
+                                    ),
+                                hintText: FFLocalizations.of(context).getText(
+                                  '8zummp9n' /* Please select... */,
+                                ),
+                                fillColor: Colors.white,
+                                elevation: 2,
+                                borderColor: Colors.transparent,
+                                borderWidth: 0,
+                                borderRadius: 0,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12, 4, 12, 4),
+                                hidesUnderline: true,
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          's548nlpk' /* Image Upload */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -596,7 +1024,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Select Photos',
+                                        FFLocalizations.of(context).getText(
+                                          'myi910on' /* Select Photos */,
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -680,7 +1110,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Description',
+                                        FFLocalizations.of(context).getText(
+                                          'wlkswa8h' /* Short Description */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -695,7 +1127,77 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 ),
                               ),
                               Container(
-                                height: 150,
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: shortdescriptiontxtController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  maxLines: null,
+                                  validator: (val) {
+                                    if (val == null || val.isEmpty) {
+                                      return FFLocalizations.of(context)
+                                          .getText(
+                                        'u04kux11' /* Description is required */,
+                                      );
+                                    }
+
+                                    return null;
+                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'drupwz7u' /* Description */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 180,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -724,13 +1226,126 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   maxLines: null,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return 'Description is required';
-                                    }
-
-                                    return null;
-                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'nse4uqkl' /* Meta Title */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: txtMetaTitleController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  keyboardType: TextInputType.number,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 25, 0, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'hbi0gd7x' /* Meta Description */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 180,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Color(0xFFEBF0FF),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: metadesTxtController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color:
+                                            FlutterFlowTheme.of(context).black,
+                                      ),
+                                  maxLines: null,
                                 ),
                               ),
                               Padding(
@@ -758,11 +1373,11 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       price: int.tryParse(
                                           txtPriceController!.text),
                                       qty: int.tryParse(
-                                          txtQuantityController!.text),
+                                          txQuantityController!.text),
                                       category: subCategoryId,
                                       images: uploadedLocalFile,
                                       description:
-                                          descriptiontxtController!.text,
+                                          shortdescriptiontxtController!.text,
                                     );
                                     if (getJsonField(
                                       (createProductDetails?.jsonBody ?? ''),
@@ -794,7 +1409,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
 
                                     setState(() {});
                                   },
-                                  text: 'Confirm',
+                                  text: FFLocalizations.of(context).getText(
+                                    'htvqm6j1' /* Confirm */,
+                                  ),
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 54,

@@ -25,28 +25,30 @@ class _AppbarWidgetState extends State<AppbarWidget> {
 
     return Row(
       mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (widget.isShowBack ?? true)
-          InkWell(
-            onTap: () async {
-              context.pop();
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    color: Color(0xFFC7C7CC),
-                    size: 24,
+          Expanded(
+            child: InkWell(
+              onTap: () async {
+                context.pop();
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Color(0xFFC7C7CC),
+                      size: 24,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 65.02, 0),
-                  child: Text(
-                    'Back',
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      '0un09esu' /* Back */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
                           color: Color(0xFFC7C7CC),
@@ -54,18 +56,19 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                           fontWeight: FontWeight.normal,
                         ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         Expanded(
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 85, 0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
+          flex: 2,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Text(
                   widget.appTitle!,
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -74,8 +77,16 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [],
           ),
         ),
       ],

@@ -1,7 +1,10 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/random_data_util.dart' as random_data;
+import '../custom_code/widgets/index.dart' as custom_widgets;
+import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +17,7 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
+  ApiCallResponse? searchResult;
   TextEditingController? searchPageTextFieldController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -45,7 +49,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppbarWidget(
@@ -56,6 +60,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
                           padding:
@@ -103,9 +108,37 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         child: TextFormField(
                                           controller:
                                               searchPageTextFieldController,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            'searchPageTextFieldController',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              setState(() {
+                                                FFAppState().isLoading = true;
+                                              });
+                                              searchResult =
+                                                  await SearchGroupGroup
+                                                      .searchCall
+                                                      .call(
+                                                search: functions.urlEncode(
+                                                    searchPageTextFieldController!
+                                                        .text),
+                                                token: FFAppState().token,
+                                              );
+                                              setState(() {
+                                                FFAppState().isLoading = false;
+                                              });
+
+                                              setState(() {});
+                                            },
+                                          ),
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Search',
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'c8qyhf09' /* Search */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2
@@ -221,140 +254,176 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
-                          child: Builder(
-                            builder: (context) {
-                              final list2Searchpage = List.generate(
-                                  random_data.randomInteger(6, 6),
-                                  (index) => random_data.randomImageUrl(
-                                        0,
-                                        0,
-                                      )).toList();
-                              return GridView.builder(
-                                padding: EdgeInsets.zero,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 14,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 1,
-                                ),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: list2Searchpage.length,
-                                itemBuilder: (context, list2SearchpageIndex) {
-                                  final list2SearchpageItem =
-                                      list2Searchpage[list2SearchpageIndex];
-                                  return InkWell(
-                                    onTap: () async {
-                                      context.pushNamed('Product_detailPage');
-                                    },
-                                    child: Container(
-                                      width: 166,
-                                      height: 185,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 16, 0, 1.9),
-                                            child: Row(
+                        if (!FFAppState().isLoading)
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
+                            child: Builder(
+                              builder: (context) {
+                                final search = SearchGroupGroup.searchCall
+                                        .product(
+                                          (searchResult?.jsonBody ?? ''),
+                                        )
+                                        ?.map((e) => e)
+                                        .toList()
+                                        ?.toList() ??
+                                    [];
+                                return GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 14,
+                                    mainAxisSpacing: 10,
+                                    childAspectRatio: 1,
+                                  ),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: search.length,
+                                  itemBuilder: (context, searchIndex) {
+                                    final searchItem = search[searchIndex];
+                                    return InkWell(
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'Product_detailPage',
+                                          queryParams: {
+                                            'id': serializeParam(
+                                              getJsonField(
+                                                searchItem,
+                                                r'''$.id''',
+                                              ),
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 166,
+                                        height: 185,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 16, 0, 1.9),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Image.network(
+                                                    functions.findProductImage(
+                                                        getJsonField(
+                                                          searchItem,
+                                                          r'''$.custom_attributes''',
+                                                        )!,
+                                                        FFAppState()
+                                                            .imageBaseUrl),
+                                                    width: 107,
+                                                    height: 107,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Image.network(
-                                                  'https://picsum.photos/seed/409/600',
-                                                  width: 107,
-                                                  height: 107,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Prodct name goes here',
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 11,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 2.5, 0),
-                                                child: Text(
-                                                  '27 189',
+                                                Text(
+                                                  getJsonField(
+                                                    searchItem,
+                                                    r'''$.name''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 12,
+                                                        fontSize: 11,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(2.5, 0, 0, 0),
-                                                child: Text(
-                                                  'FCFA',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 2.5, 0),
+                                                  child: Text(
+                                                    getJsonField(
+                                                      searchItem,
+                                                      r'''$.price''',
+                                                    ).toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(2.5, 0, 0, 0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '9ugg92yn' /* FCFA */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
+                        if (FFAppState().isLoading)
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height * 1,
+                            child: custom_widgets.HomeCustomProgressWidget(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 1,
+                              width: 50.0,
+                              height: 50.0,
+                            ),
+                          ),
                       ],
                     ),
                   ),

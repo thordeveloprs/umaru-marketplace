@@ -96,3 +96,7 @@ String getObjectFromAttributes(
     return "";
   }
 }
+
+String urlEncode(String value) {
+  return Uri.encodeComponent("%${value}%");
+}

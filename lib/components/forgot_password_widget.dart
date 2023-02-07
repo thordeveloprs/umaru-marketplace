@@ -52,7 +52,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Forgot Password',
+                    FFLocalizations.of(context).getText(
+                      's01ryyvc' /* Forgot Password */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
                           fontSize: 18,
@@ -95,7 +97,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               textCapitalization: TextCapitalization.none,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'Your Email',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'jdkbxb5u' /* Your Email */,
+                                ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -158,7 +162,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               keyboardType: TextInputType.emailAddress,
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
-                                  return 'Email is required';
+                                  return FFLocalizations.of(context).getText(
+                                    '046440qs' /* Email is required */,
+                                  );
                                 }
 
                                 if (val.length > 50) {
@@ -230,7 +236,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
 
                   setState(() {});
                 },
-                text: 'Submit',
+                text: FFLocalizations.of(context).getText(
+                  'ejhpbld9' /* Submit */,
+                ),
                 options: FFButtonOptions(
                   width: 343,
                   height: 54,

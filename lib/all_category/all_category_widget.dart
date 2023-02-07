@@ -43,7 +43,9 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'All Category',
+                      FFLocalizations.of(context).getText(
+                        'nsgaqc3d' /* All Category */,
+                      ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
@@ -101,12 +103,19 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                             ),
                                             ParamType.int,
                                           ),
+                                          'cateName': serializeParam(
+                                            getJsonField(
+                                              cateDataItem,
+                                              r'''$.name''',
+                                            ).toString(),
+                                            ParamType.String,
+                                          ),
                                         }.withoutNulls,
                                       );
                                     },
                                     child: Container(
                                       width: double.infinity,
-                                      height: 142.7,
+                                      height: 143,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -135,25 +144,28 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 14.49, 0, 0),
+                                                    5, 14.49, 5, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  getJsonField(
-                                                    cateDataItem,
-                                                    r'''$.name''',
-                                                  ).toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                Expanded(
+                                                  child: Text(
+                                                    getJsonField(
+                                                      cateDataItem,
+                                                      r'''$.name''',
+                                                    ).toString(),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
                                                 ),
                                               ],
                                             ),

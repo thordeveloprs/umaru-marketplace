@@ -63,7 +63,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                         ),
                       if (FFAppState().isLogin == false)
                         Text(
-                          'User',
+                          FFLocalizations.of(context).getText(
+                            'h1ahj7v6' /* User */,
+                          ),
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
@@ -102,7 +104,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Profile',
+                                            FFLocalizations.of(context).getText(
+                                              'pldvdyz5' /* Profile */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -147,7 +151,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Manage Product',
+                                            FFLocalizations.of(context).getText(
+                                              '4uwb1xdx' /* Manage Product */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -202,7 +208,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Language',
+                                          FFLocalizations.of(context).getText(
+                                            'fqdv5hs8' /* Language */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
@@ -254,7 +262,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Currency',
+                                            FFLocalizations.of(context).getText(
+                                              '5vc88ei9' /* Currency */,
+                                            ),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -272,15 +282,17 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 7.91, 0),
-                                            child: Image.network(
-                                              'https://picsum.photos/seed/373/600',
+                                            child: Image.asset(
+                                              'assets/images/image_62.png',
                                               width: 22.2,
                                               height: 15,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
                                           Text(
-                                            'XOF CFA',
+                                            FFLocalizations.of(context).getText(
+                                              'lk525ulh' /* XOF CFA */,
+                                            ),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -340,7 +352,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'FAQs',
+                                          FFLocalizations.of(context).getText(
+                                            'labm5b1q' /* FAQs */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
@@ -398,7 +412,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Contact Us',
+                                          FFLocalizations.of(context).getText(
+                                            'kzuiblqv' /* Contact Us */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
@@ -456,7 +472,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Terms & Conditions',
+                                          FFLocalizations.of(context).getText(
+                                            '6kc9ijah' /* Terms & Conditions */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
@@ -496,7 +514,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Privacy Policy',
+                                        FFLocalizations.of(context).getText(
+                                          'du1ib3ff' /* Privacy Policy */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
@@ -545,7 +565,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Log Out',
+                                            FFLocalizations.of(context).getText(
+                                              'h7it2kdi' /* Log Out */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -590,7 +612,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Seller Login',
+                                            FFLocalizations.of(context).getText(
+                                              '40ndwqug' /* Seller Login */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -632,7 +656,9 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Connect With us',
+                                    FFLocalizations.of(context).getText(
+                                      'e5nh1b6y' /* Connect With us */,
+                                    ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1

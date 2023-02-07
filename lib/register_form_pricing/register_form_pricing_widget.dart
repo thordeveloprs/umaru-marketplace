@@ -53,7 +53,9 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Pricing',
+                            FFLocalizations.of(context).getText(
+                              'sq1mhc65' /* Pricing */,
+                            ),
                             style: FlutterFlowTheme.of(context).title1.override(
                                   fontFamily: 'Poppins',
                                   color:
@@ -82,7 +84,9 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '100',
+                                    FFLocalizations.of(context).getText(
+                                      '155zkjih' /* 100 */,
+                                    ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .title1
@@ -95,7 +99,9 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 10, 0, 0),
                                     child: Text(
-                                      'CFA/month',
+                                      FFLocalizations.of(context).getText(
+                                        'gxj14kty' /* CFA/month */,
+                                      ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .title1
@@ -141,7 +147,10 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              'Some Benefit Goes Here',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'gvdwwaie' /* Some Benefit Goes Here */,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1,
@@ -161,7 +170,9 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
                               onPressed: () {
                                 print('Button pressed ...');
                               },
-                              text: 'Select',
+                              text: FFLocalizations.of(context).getText(
+                                'dwtwt2pa' /* Select */,
+                              ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 54,

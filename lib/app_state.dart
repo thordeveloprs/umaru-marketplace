@@ -133,6 +133,18 @@ class FFAppState extends ChangeNotifier {
     _isEnglish = _value;
     prefs.setBool('ff_isEnglish', _value);
   }
+
+  bool _homeProgress = true;
+  bool get homeProgress => _homeProgress;
+  set homeProgress(bool _value) {
+    _homeProgress = _value;
+  }
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool _value) {
+    _isLoading = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
