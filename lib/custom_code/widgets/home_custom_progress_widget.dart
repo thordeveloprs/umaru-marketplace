@@ -19,7 +19,9 @@ class HomeCustomProgressWidget extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      child: CircularProgressIndicator(),
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

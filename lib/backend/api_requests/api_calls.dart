@@ -47,6 +47,8 @@ class UmaruGroup {
       GetVendorAndCompanyDetailsCall();
   static VendorDetailsForProductPageCall vendorDetailsForProductPageCall =
       VendorDetailsForProductPageCall();
+  static SearchVendorProductCall searchVendorProductCall =
+      SearchVendorProductCall();
 }
 
 class LoginCall {
@@ -573,6 +575,34 @@ class VendorDetailsForProductPageCall {
         'productid': productid,
       },
       bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class SearchVendorProductCall {
+  Future<ApiCallResponse> call({
+    dynamic? filterJson,
+    String? hashkey = '',
+    String? vendorId = '',
+  }) {
+    final filter = _serializeJson(filterJson);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'search vendor product',
+      apiUrl: '${UmaruGroup.baseUrl}vendorapi/vproducts/item/page/1',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'filter': filter,
+        'hashkey': hashkey,
+        'vendor_id': vendorId,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

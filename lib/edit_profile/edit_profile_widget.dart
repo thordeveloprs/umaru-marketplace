@@ -31,14 +31,24 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   bool isMediaUploading2 = false;
   FFLocalFile uploadedLocalFile2 = FFLocalFile(bytes: Uint8List.fromList([]));
 
-  TextEditingController? textController12;
   TextEditingController? textController8;
   TextEditingController? txtEmailController;
   TextEditingController? txtFacebookIdController1;
   TextEditingController? textController9;
+  TextEditingController? txtAboutController;
   TextEditingController? txtFacebookIdController2;
   TextEditingController? txtFacebookIdController3;
+  bool isMediaUploading3 = false;
+  FFLocalFile uploadedLocalFile3 = FFLocalFile(bytes: Uint8List.fromList([]));
+
   TextEditingController? textController13;
+  TextEditingController? txtMetaKeywordController1;
+  TextEditingController? txtMetaKeywordController2;
+  TextEditingController? textController16;
+  TextEditingController? textController17;
+  TextEditingController? textController18;
+  TextEditingController? textController19;
+  String? dropDownCountryValue;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey2 = GlobalKey<FormState>();
@@ -48,9 +58,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   void initState() {
     super.initState();
     contactnoTextFieldController = TextEditingController();
-    textController12 = TextEditingController();
     txtFacebookIdController1 = TextEditingController();
     txtFacebookIdController3 = TextEditingController();
+    txtMetaKeywordController1 = TextEditingController();
+    txtMetaKeywordController2 = TextEditingController();
   }
 
   @override
@@ -61,14 +72,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     yourEmailTextFieldController?.dispose();
     publicNTextFieldController?.dispose();
     shopURLTextFieldController?.dispose();
-    textController12?.dispose();
+    textController13?.dispose();
     textController8?.dispose();
     txtEmailController?.dispose();
     txtFacebookIdController1?.dispose();
     textController9?.dispose();
+    txtAboutController?.dispose();
     txtFacebookIdController2?.dispose();
     txtFacebookIdController3?.dispose();
-    textController13?.dispose();
+    txtMetaKeywordController1?.dispose();
+    txtMetaKeywordController2?.dispose();
+    textController16?.dispose();
+    textController17?.dispose();
+    textController18?.dispose();
+    textController19?.dispose();
     super.dispose();
   }
 
@@ -1417,1174 +1434,1543 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           key: formKey1,
                                           autovalidateMode:
                                               AutovalidateMode.disabled,
-                                          child: SingleChildScrollView(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 48, 15, 0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'mm9hofjm' /* Company Details */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .title1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 20, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          txtFacebookIdController1,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'w66jit69' /* Company Name */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          txtEmailController ??=
-                                                              TextEditingController(
-                                                        text: functions
-                                                            .getObjectFromList(
-                                                                UmaruGroup
-                                                                    .getVendorAndCompanyDetailsCall
-                                                                    .informationssurlasocit(
-                                                                      columnGetVendorAndCompanyDetailsResponse
-                                                                          .jsonBody,
-                                                                    )!
-                                                                    .toList(),
-                                                                'Nom de l\'entreprise'),
-                                                      ),
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'bobcwdkr' /* Business email */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          textController8 ??=
-                                                              TextEditingController(
-                                                        text: functions
-                                                            .getObjectFromList(
-                                                                UmaruGroup
-                                                                    .getVendorAndCompanyDetailsCall
-                                                                    .informationsgnrales(
-                                                                      columnGetVendorAndCompanyDetailsResponse
-                                                                          .jsonBody,
-                                                                    )!
-                                                                    .toList(),
-                                                                'Numéro de contact'),
-                                                      ),
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'wmqmt4zv' /* Business Contact number */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                      validator: (val) {
-                                                        if (val == null ||
-                                                            val.isEmpty) {
-                                                          return FFLocalizations
-                                                                  .of(context)
-                                                              .getText(
-                                                            'tftwgqjq' /* Contact Number is required */,
-                                                          );
-                                                        }
-
-                                                        return null;
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          textController9 ??=
-                                                              TextEditingController(
-                                                        text: functions
-                                                            .getObjectFromList(
-                                                                UmaruGroup
-                                                                    .getVendorAndCompanyDetailsCall
-                                                                    .informationsd039assistance(
-                                                                      columnGetVendorAndCompanyDetailsResponse
-                                                                          .jsonBody,
-                                                                    )!
-                                                                    .toList(),
-                                                                'Numéro d\'assistance'),
-                                                      ),
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'c5y6y0j4' /* Whatsapp number */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                      validator: (val) {
-                                                        if (val == null ||
-                                                            val.isEmpty) {
-                                                          return FFLocalizations
-                                                                  .of(context)
-                                                              .getText(
-                                                            'uuwzcakn' /* Whatsapp number is required */,
-                                                          );
-                                                        }
-
-                                                        return null;
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          txtFacebookIdController2 ??=
-                                                              TextEditingController(
-                                                        text: functions
-                                                            .getObjectFromList(
-                                                                UmaruGroup
-                                                                    .getVendorAndCompanyDetailsCall
-                                                                    .informationsd039assistance(
-                                                                      columnGetVendorAndCompanyDetailsResponse
-                                                                          .jsonBody,
-                                                                    )!
-                                                                    .toList(),
-                                                                'Facebook ID'),
-                                                      ),
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '0fweyao9' /* Facebook Links */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                      validator: (val) {
-                                                        if (val == null ||
-                                                            val.isEmpty) {
-                                                          return FFLocalizations
-                                                                  .of(context)
-                                                              .getText(
-                                                            'jo1zt6nr' /* Social Media Link is required */,
-                                                          );
-                                                        }
-
-                                                        return null;
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          txtFacebookIdController3,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'lmenbq21' /* Twitter Links */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF9098B1),
-                                                                  fontSize: 12,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .black,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
-                                                      ),
-                                                    ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15, 0, 15, 0),
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                15, 48, 15, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .spaceBetween,
+                                                              .center,
                                                       children: [
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child:
-                                                                TextFormField(
-                                                              controller:
-                                                                  textController12,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                hintText:
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                  'pkfeyy25' /* Image */,
-                                                                ),
-                                                                hintStyle: FlutterFlowTheme.of(
+                                                        Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'mm9hofjm' /* Company Details */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .title1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .subtitle2
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: Color(
-                                                                          0xFF9098B1),
-                                                                      fontSize:
-                                                                          12,
-                                                                    ),
-                                                                enabledBorder:
-                                                                    UnderlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      const BorderRadius
-                                                                          .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                  ),
-                                                                ),
-                                                                focusedBorder:
-                                                                    UnderlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      const BorderRadius
-                                                                          .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                  ),
-                                                                ),
-                                                                errorBorder:
-                                                                    UnderlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      const BorderRadius
-                                                                          .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                  ),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    UnderlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      const BorderRadius
-                                                                          .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            4.0),
-                                                                  ),
-                                                                ),
+                                                                    .primaryColor,
                                                               ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .black,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 3, 0),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              final selectedMedia =
-                                                                  await selectMediaWithSourceBottomSheet(
-                                                                context:
-                                                                    context,
-                                                                allowPhoto:
-                                                                    true,
-                                                              );
-                                                              if (selectedMedia !=
-                                                                      null &&
-                                                                  selectedMedia.every((m) =>
-                                                                      validateFileFormat(
-                                                                          m.storagePath,
-                                                                          context))) {
-                                                                setState(() =>
-                                                                    isMediaUploading2 =
-                                                                        true);
-                                                                var selectedLocalFiles =
-                                                                    <FFLocalFile>[];
-                                                                try {
-                                                                  selectedLocalFiles =
-                                                                      selectedMedia
-                                                                          .map((m) =>
-                                                                              FFLocalFile(
-                                                                                name: m.storagePath.split('/').last,
-                                                                                bytes: m.bytes,
-                                                                              ))
-                                                                          .toList();
-                                                                } finally {
-                                                                  isMediaUploading2 =
-                                                                      false;
-                                                                }
-                                                                if (selectedLocalFiles
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length) {
-                                                                  setState(() =>
-                                                                      uploadedLocalFile2 =
-                                                                          selectedLocalFiles
-                                                                              .first);
-                                                                } else {
-                                                                  setState(
-                                                                      () {});
-                                                                  return;
-                                                                }
-                                                              }
-                                                            },
-                                                            child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '7cnp0o5r' /* Upload */,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .title1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontSize:
-                                                                        14,
-                                                                    decoration:
-                                                                        TextDecoration
-                                                                            .underline,
-                                                                  ),
-                                                            ),
-                                                          ),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 13),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 51,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0xFFEBF0FF),
-                                                        width: 1,
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 20, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtFacebookIdController1,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'w66jit69' /* Company Name */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
                                                       ),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  20, 0, 0, 0),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtEmailController ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Nom de l\'entreprise'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'bobcwdkr' /* Business email */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController8 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsgnrales(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Numéro de contact'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'wmqmt4zv' /* Business Contact number */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                        validator: (val) {
+                                                          if (val == null ||
+                                                              val.isEmpty) {
+                                                            return FFLocalizations
+                                                                    .of(context)
+                                                                .getText(
+                                                              'tftwgqjq' /* Contact Number is required */,
+                                                            );
+                                                          }
+
+                                                          return null;
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController9 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsd039assistance(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Numéro d\'assistance'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'c5y6y0j4' /* Whatsapp number */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                        validator: (val) {
+                                                          if (val == null ||
+                                                              val.isEmpty) {
+                                                            return FFLocalizations
+                                                                    .of(context)
+                                                                .getText(
+                                                              'uuwzcakn' /* Whatsapp number is required */,
+                                                            );
+                                                          }
+
+                                                          return null;
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtAboutController ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsd039assistance(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Facebook ID'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '3mfdocdn' /* About */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtFacebookIdController2 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationsd039assistance(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Facebook ID'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '0fweyao9' /* Facebook Links */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                        validator: (val) {
+                                                          if (val == null ||
+                                                              val.isEmpty) {
+                                                            return FFLocalizations
+                                                                    .of(context)
+                                                                .getText(
+                                                              'jo1zt6nr' /* Social Media Link is required */,
+                                                            );
+                                                          }
+
+                                                          return null;
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtFacebookIdController3,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'lmenbq21' /* Twitter Links */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            10,
+                                                                            0,
+                                                                            0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'da4rbw3c' /* Company Logo */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).black,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 100,
+                                                                  height: 100,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  child: Stack(
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20,
+                                                                            20,
+                                                                            20,
+                                                                            20),
+                                                                        child: Image
+                                                                            .network(
+                                                                          'https://picsum.photos/seed/767/600',
+                                                                          width:
+                                                                              100,
+                                                                          height:
+                                                                              100,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.71,
+                                                                            -0.75),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              20,
+                                                                          height:
+                                                                              20,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFFF0000),
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0, 0),
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.close,
+                                                                              color: Colors.black,
+                                                                              size: 20,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        3,
+                                                                        0),
+                                                            child: InkWell(
+                                                              onTap: () async {
+                                                                final selectedMedia =
+                                                                    await selectMediaWithSourceBottomSheet(
+                                                                  context:
+                                                                      context,
+                                                                  allowPhoto:
+                                                                      true,
+                                                                );
+                                                                if (selectedMedia !=
+                                                                        null &&
+                                                                    selectedMedia.every((m) =>
+                                                                        validateFileFormat(
+                                                                            m.storagePath,
+                                                                            context))) {
+                                                                  setState(() =>
+                                                                      isMediaUploading2 =
+                                                                          true);
+                                                                  var selectedLocalFiles =
+                                                                      <FFLocalFile>[];
+                                                                  try {
+                                                                    selectedLocalFiles = selectedMedia
+                                                                        .map((m) => FFLocalFile(
+                                                                              name: m.storagePath.split('/').last,
+                                                                              bytes: m.bytes,
+                                                                            ))
+                                                                        .toList();
+                                                                  } finally {
+                                                                    isMediaUploading2 =
+                                                                        false;
+                                                                  }
+                                                                  if (selectedLocalFiles
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length) {
+                                                                    setState(() =>
+                                                                        uploadedLocalFile2 =
+                                                                            selectedLocalFiles.first);
+                                                                  } else {
+                                                                    setState(
+                                                                        () {});
+                                                                    return;
+                                                                  }
+                                                                }
+                                                              },
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'lkm40ew1' /* Upload */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      fontSize:
+                                                                          14,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .underline,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            10,
+                                                                            0,
+                                                                            0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'gnadkps6' /* Company Banner */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).black,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 100,
+                                                                  height: 100,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  child: Stack(
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20,
+                                                                            20,
+                                                                            20,
+                                                                            20),
+                                                                        child: Image
+                                                                            .network(
+                                                                          'https://picsum.photos/seed/767/600',
+                                                                          width:
+                                                                              100,
+                                                                          height:
+                                                                              100,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.71,
+                                                                            -0.75),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              20,
+                                                                          height:
+                                                                              20,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFFF0000),
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0, 0),
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.close,
+                                                                              color: Colors.black,
+                                                                              size: 20,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        3,
+                                                                        0),
+                                                            child: InkWell(
+                                                              onTap: () async {
+                                                                final selectedMedia =
+                                                                    await selectMediaWithSourceBottomSheet(
+                                                                  context:
+                                                                      context,
+                                                                  allowPhoto:
+                                                                      true,
+                                                                );
+                                                                if (selectedMedia !=
+                                                                        null &&
+                                                                    selectedMedia.every((m) =>
+                                                                        validateFileFormat(
+                                                                            m.storagePath,
+                                                                            context))) {
+                                                                  setState(() =>
+                                                                      isMediaUploading3 =
+                                                                          true);
+                                                                  var selectedLocalFiles =
+                                                                      <FFLocalFile>[];
+                                                                  try {
+                                                                    selectedLocalFiles = selectedMedia
+                                                                        .map((m) => FFLocalFile(
+                                                                              name: m.storagePath.split('/').last,
+                                                                              bytes: m.bytes,
+                                                                            ))
+                                                                        .toList();
+                                                                  } finally {
+                                                                    isMediaUploading3 =
+                                                                        false;
+                                                                  }
+                                                                  if (selectedLocalFiles
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length) {
+                                                                    setState(() =>
+                                                                        uploadedLocalFile3 =
+                                                                            selectedLocalFiles.first);
+                                                                  } else {
+                                                                    setState(
+                                                                        () {});
+                                                                    return;
+                                                                  }
+                                                                }
+                                                              },
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'cjuh6ur0' /* Upload */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      fontSize:
+                                                                          14,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .underline,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
                                                       child: TextFormField(
                                                         controller:
                                                             textController13 ??=
@@ -2724,11 +3110,824 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 15, 0),
-                                                  child: FFButtonWidget(
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 180,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtMetaKeywordController1,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'tyb3vn59' /* Meta Keywords */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyText2,
+                                                          enabledBorder:
+                                                              InputBorder.none,
+                                                          focusedBorder:
+                                                              InputBorder.none,
+                                                          errorBorder:
+                                                              InputBorder.none,
+                                                          focusedErrorBorder:
+                                                              InputBorder.none,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .number,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 180,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            txtMetaKeywordController2,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'evhoh7dd' /* Meta Description */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyText2,
+                                                          enabledBorder:
+                                                              InputBorder.none,
+                                                          focusedBorder:
+                                                              InputBorder.none,
+                                                          errorBorder:
+                                                              InputBorder.none,
+                                                          focusedErrorBorder:
+                                                              InputBorder.none,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .number,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController16 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Adresse de la société'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '868ao0pr' /* Address */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController17 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Adresse de la société'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'rw528rrh' /* City */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController18 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Adresse de la société'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'p58rnj7i' /* Zip Code */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 51,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFFEBF0FF),
+                                                          width: 1,
+                                                        ),
+                                                      ),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            textController19 ??=
+                                                                TextEditingController(
+                                                          text: functions
+                                                              .getObjectFromList(
+                                                                  UmaruGroup
+                                                                      .getVendorAndCompanyDetailsCall
+                                                                      .informationssurlasocit(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                      )!
+                                                                      .toList(),
+                                                                  'Adresse de la société'),
+                                                        ),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'f9dzocp8' /* State */,
+                                                          ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF9098B1),
+                                                                    fontSize:
+                                                                        12,
+                                                                  ),
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .black,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 13),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '0g7ke5wk' /* Country */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .black,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -1, 0),
+                                                            child:
+                                                                FlutterFlowDropDown<
+                                                                    String>(
+                                                              options: [
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'veo4aa6b' /* Option 1 */,
+                                                                )
+                                                              ],
+                                                              onChanged: (val) =>
+                                                                  setState(() =>
+                                                                      dropDownCountryValue =
+                                                                          val),
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 48,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
+                                                              hintText:
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                'eaeq5isb' /* Please select... */,
+                                                              ),
+                                                              fillColor:
+                                                                  Colors.white,
+                                                              elevation: 2,
+                                                              borderColor: Colors
+                                                                  .transparent,
+                                                              borderWidth: 0,
+                                                              borderRadius: 0,
+                                                              margin:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12,
+                                                                          4,
+                                                                          12,
+                                                                          4),
+                                                              hidesUnderline:
+                                                                  true,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  FFButtonWidget(
                                                     onPressed: () async {
                                                       if (formKey1.currentState ==
                                                               null ||
@@ -2775,8 +3974,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               5),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),

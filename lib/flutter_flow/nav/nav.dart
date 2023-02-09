@@ -80,19 +80,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FilterWidget(),
             ),
             FFRoute(
-              name: 'search',
-              path: 'search',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'search')
-                  : SearchWidget(),
-            ),
-            FFRoute(
               name: 'main_Category',
               path: 'mainCategory',
               builder: (context, params) => MainCategoryWidget(
                 cetegoryId: params.getParam('cetegoryId', ParamType.int),
                 cateName: params.getParam('cateName', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'search',
+              path: 'search',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'search')
+                  : SearchWidget(),
             ),
             FFRoute(
               name: 'registerFormPricing',

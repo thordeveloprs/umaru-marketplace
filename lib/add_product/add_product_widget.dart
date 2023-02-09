@@ -9,6 +9,7 @@ import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -48,6 +49,13 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().selectedCountryId = 0;
+      });
+    });
+
     descriptiontxtController = TextEditingController();
     shortdescriptiontxtController = TextEditingController();
     txQuantityController = TextEditingController();
@@ -788,11 +796,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               Align(
                                 alignment: AlignmentDirectional(-1, 0),
                                 child: FlutterFlowDropDown<String>(
-                                  options: [
-                                    FFLocalizations.of(context).getText(
-                                      '480yyzvg' /* Option 1 */,
-                                    )
-                                  ],
+                                  options: FFAppState().listCountry.toList(),
                                   onChanged: (val) => setState(
                                       () => dropDownCountryValue = val),
                                   width: double.infinity,

@@ -145,6 +145,40 @@ class FFAppState extends ChangeNotifier {
   set isLoading(bool _value) {
     _isLoading = _value;
   }
+
+  List<dynamic> _jsonData = [];
+  List<dynamic> get jsonData => _jsonData;
+  set jsonData(List<dynamic> _value) {
+    _jsonData = _value;
+  }
+
+  void addToJsonData(dynamic _value) {
+    _jsonData.add(_value);
+  }
+
+  void removeFromJsonData(dynamic _value) {
+    _jsonData.remove(_value);
+  }
+
+  List<String> _listCountry = ['Mali', 'Senegal', 'Cote d\'ivoire'];
+  List<String> get listCountry => _listCountry;
+  set listCountry(List<String> _value) {
+    _listCountry = _value;
+  }
+
+  void addToListCountry(String _value) {
+    _listCountry.add(_value);
+  }
+
+  void removeFromListCountry(String _value) {
+    _listCountry.remove(_value);
+  }
+
+  int _selectedCountryId = 0;
+  int get selectedCountryId => _selectedCountryId;
+  set selectedCountryId(int _value) {
+    _selectedCountryId = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -100,3 +100,9 @@ String getObjectFromAttributes(
 String urlEncode(String value) {
   return Uri.encodeComponent("%${value}%");
 }
+
+dynamic createManageProductJson(String searchItem) {
+  Map<String, dynamic> mapData = Map<String, dynamic>();
+  mapData = {"name": searchItem};
+  return mapData;
+}

@@ -420,8 +420,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                             child: custom_widgets.HomeCustomProgressWidget(
                               width: MediaQuery.of(context).size.width,
                               height: MediaQuery.of(context).size.height * 1,
-                              width: 50.0,
-                              height: 50.0,
                             ),
                           ),
                       ],

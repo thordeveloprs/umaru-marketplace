@@ -2,8 +2,8 @@
 export 'home/home_widget.dart' show HomeWidget;
 export 'splash_screen/splash_screen_widget.dart' show SplashScreenWidget;
 export 'filter/filter_widget.dart' show FilterWidget;
-export 'search/search_widget.dart' show SearchWidget;
 export 'main_category/main_category_widget.dart' show MainCategoryWidget;
+export 'search/search_widget.dart' show SearchWidget;
 export 'register_form_pricing/register_form_pricing_widget.dart'
     show RegisterFormPricingWidget;
 export 'all_category/all_category_widget.dart' show AllCategoryWidget;

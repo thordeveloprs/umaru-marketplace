@@ -157,6 +157,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
+  // main_Category
+  {
+    '9j1wihv4': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // search
   {
     'c8qyhf09': {
@@ -170,13 +177,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'l5195fyp': {
       'en': 'Search',
       'fr': 'Recherche',
-    },
-  },
-  // main_Category
-  {
-    '9j1wihv4': {
-      'en': 'Home',
-      'fr': 'Maison',
     },
   },
   // registerFormPricing
@@ -458,6 +458,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': 'Numéro WhatsApp',
     },
+    '3mfdocdn': {
+      'en': 'About',
+      'fr': '',
+    },
+    'vphnvefz': {
+      'en': '',
+      'fr': 'Liens Facebook',
+    },
     '0fweyao9': {
       'en': 'Facebook Links',
       'fr': '',
@@ -474,11 +482,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': 'Liens Facebook',
     },
-    'pkfeyy25': {
-      'en': 'Image',
-      'fr': 'Image',
+    'da4rbw3c': {
+      'en': 'Company Logo',
+      'fr': '',
     },
-    '7cnp0o5r': {
+    'lkm40ew1': {
+      'en': 'Upload',
+      'fr': 'Télécharger',
+    },
+    'gnadkps6': {
+      'en': 'Company Banner',
+      'fr': '',
+    },
+    'cjuh6ur0': {
       'en': 'Upload',
       'fr': 'Télécharger',
     },
@@ -489,6 +505,58 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'gph2ryrn': {
       'en': '',
       'fr': 'Adresse d\'affaires',
+    },
+    'tyb3vn59': {
+      'en': 'Meta Keywords',
+      'fr': '',
+    },
+    'evhoh7dd': {
+      'en': 'Meta Description',
+      'fr': '',
+    },
+    '868ao0pr': {
+      'en': 'Address',
+      'fr': '',
+    },
+    'dm8drsmy': {
+      'en': '',
+      'fr': 'Adresse d\'affaires',
+    },
+    'rw528rrh': {
+      'en': 'City',
+      'fr': '',
+    },
+    'dct2e67u': {
+      'en': '',
+      'fr': 'Adresse d\'affaires',
+    },
+    'p58rnj7i': {
+      'en': 'Zip Code',
+      'fr': '',
+    },
+    '6fvtied8': {
+      'en': '',
+      'fr': 'Adresse d\'affaires',
+    },
+    'f9dzocp8': {
+      'en': 'State',
+      'fr': '',
+    },
+    'u5hs8lnl': {
+      'en': '',
+      'fr': 'Adresse d\'affaires',
+    },
+    '0g7ke5wk': {
+      'en': 'Country',
+      'fr': '',
+    },
+    'veo4aa6b': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    'eaeq5isb': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
     },
     'qesddxaj': {
       'en': 'Save',
@@ -624,11 +692,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ManageProducts
   {
-    'qw6rcyqw': {
+    'e0pba0x2': {
       'en': 'Search',
-      'fr': 'Recherche',
+      'fr': '',
     },
-    'aex32807': {
+    'bys89djy': {
       'en': 'Add New',
       'fr': 'Ajouter nouveau',
     },
