@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'language_selection_model.dart';
+export 'language_selection_model.dart';
 
 class LanguageSelectionWidget extends StatefulWidget {
   const LanguageSelectionWidget({Key? key}) : super(key: key);
@@ -13,6 +15,27 @@ class LanguageSelectionWidget extends StatefulWidget {
 }
 
 class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
+  late LanguageSelectionModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => LanguageSelectionModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();

@@ -8,6 +8,8 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'search_model.dart';
+export 'search_model.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({Key? key}) : super(key: key);
@@ -17,21 +19,24 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  ApiCallResponse? searchResult;
-  TextEditingController? searchPageTextFieldController;
-  final _unfocusNode = FocusNode();
+  late SearchModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    searchPageTextFieldController = TextEditingController();
+    _model = createModel(context, () => SearchModel());
+
+    _model.searchPageTextFieldController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    searchPageTextFieldController?.dispose();
     super.dispose();
   }
 
@@ -52,9 +57,13 @@ class _SearchWidgetState extends State<SearchWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppbarWidget(
-                  appTitle: 'Search Page',
-                  isShowBack: false,
+                wrapWithModel(
+                  model: _model.appbarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppbarWidget(
+                    appTitle: 'Search Page',
+                    isShowBack: false,
+                  ),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -106,23 +115,23 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       ),
                                       Expanded(
                                         child: TextFormField(
-                                          controller:
-                                              searchPageTextFieldController,
+                                          controller: _model
+                                              .searchPageTextFieldController,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            'searchPageTextFieldController',
+                                            '_model.searchPageTextFieldController',
                                             Duration(milliseconds: 2000),
                                             () async {
                                               setState(() {
                                                 FFAppState().isLoading = true;
                                               });
-                                              searchResult =
+                                              _model.searchResult =
                                                   await SearchGroupGroup
                                                       .searchCall
                                                       .call(
-                                                search: functions.urlEncode(
-                                                    searchPageTextFieldController!
-                                                        .text),
+                                                search: functions.urlEncode(_model
+                                                    .searchPageTextFieldController
+                                                    .text),
                                                 token: FFAppState().token,
                                               );
                                               setState(() {
@@ -196,6 +205,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1,
+                                          validator: _model
+                                              .searchPageTextFieldControllerValidator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ],
@@ -262,7 +274,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               builder: (context) {
                                 final search = SearchGroupGroup.searchCall
                                         .product(
-                                          (searchResult?.jsonBody ?? ''),
+                                          (_model.searchResult?.jsonBody ?? ''),
                                         )
                                         ?.map((e) => e)
                                         .toList()

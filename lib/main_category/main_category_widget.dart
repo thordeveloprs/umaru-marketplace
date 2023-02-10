@@ -5,6 +5,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'main_category_model.dart';
+export 'main_category_model.dart';
 
 class MainCategoryWidget extends StatefulWidget {
   const MainCategoryWidget({
@@ -21,11 +23,21 @@ class MainCategoryWidget extends StatefulWidget {
 }
 
 class _MainCategoryWidgetState extends State<MainCategoryWidget> {
-  final _unfocusNode = FocusNode();
+  late MainCategoryModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MainCategoryModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -43,9 +55,13 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: widget.cateName,
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: widget.cateName,
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: SingleChildScrollView(

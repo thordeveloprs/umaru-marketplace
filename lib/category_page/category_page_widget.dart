@@ -6,6 +6,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'category_page_model.dart';
+export 'category_page_model.dart';
 
 class CategoryPageWidget extends StatefulWidget {
   const CategoryPageWidget({
@@ -22,11 +24,21 @@ class CategoryPageWidget extends StatefulWidget {
 }
 
 class _CategoryPageWidgetState extends State<CategoryPageWidget> {
-  final _unfocusNode = FocusNode();
+  late CategoryPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => CategoryPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -44,9 +56,13 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: widget.categoryName,
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: widget.categoryName,
+                  isShowBack: true,
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 21, 15, 21),

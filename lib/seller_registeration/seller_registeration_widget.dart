@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'seller_registeration_model.dart';
+export 'seller_registeration_model.dart';
 
 class SellerRegisterationWidget extends StatefulWidget {
   const SellerRegisterationWidget({Key? key}) : super(key: key);
@@ -18,47 +20,30 @@ class SellerRegisterationWidget extends StatefulWidget {
 }
 
 class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
-  ApiCallResponse? registerApiResponse;
-  dynamic? response;
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  TextEditingController? txtContactController;
-  TextEditingController? textController5;
-  TextEditingController? textController6;
-  late bool passwordVisibility1;
-  TextEditingController? textController7;
-  late bool passwordVisibility2;
-  bool? checkboxValue;
-  bool? chkTnCValue;
-  final _unfocusNode = FocusNode();
+  late SellerRegisterationModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    txtContactController = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
-    passwordVisibility1 = false;
-    textController7 = TextEditingController();
-    passwordVisibility2 = false;
+    _model = createModel(context, () => SellerRegisterationModel());
+
+    _model.textController1 = TextEditingController();
+    _model.textController2 = TextEditingController();
+    _model.textController3 = TextEditingController();
+    _model.txtContactController = TextEditingController();
+    _model.textController5 = TextEditingController();
+    _model.textController6 = TextEditingController();
+    _model.textController7 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
-    txtContactController?.dispose();
-    textController5?.dispose();
-    textController6?.dispose();
-    textController7?.dispose();
     super.dispose();
   }
 
@@ -76,12 +61,16 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppbarWidget(
-                  appTitle: ' ',
-                  isShowBack: true,
+                wrapWithModel(
+                  model: _model.appbarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppbarWidget(
+                    appTitle: ' ',
+                    isShowBack: true,
+                  ),
                 ),
                 Form(
-                  key: formKey,
+                  key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 8),
@@ -191,7 +180,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController1,
+                                          controller: _model.textController1,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText:
@@ -266,23 +255,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           keyboardType: TextInputType.name,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return FFLocalizations.of(context)
-                                                  .getText(
-                                                'vqjv2fz0' /* First Name is required */,
-                                              );
-                                            }
-
-                                            if (val.length < 1) {
-                                              return 'Requires at least 1 characters.';
-                                            }
-                                            if (val.length > 50) {
-                                              return 'Maximum 50 characters allowed, currently ${val.length}.';
-                                            }
-
-                                            return null;
-                                          },
+                                          validator: _model
+                                              .textController1Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -323,7 +298,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController2,
+                                          controller: _model.textController2,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText:
@@ -398,6 +373,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           keyboardType: TextInputType.name,
+                                          validator: _model
+                                              .textController2Validator
+                                              .asValidator(context),
                                           inputFormatters: [
                                             FilteringTextInputFormatter.allow(
                                                 RegExp('[a-zA-Z0-9]'))
@@ -442,7 +420,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController3,
+                                          controller: _model.textController3,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           obscureText: false,
@@ -520,21 +498,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               ),
                                           keyboardType:
                                               TextInputType.emailAddress,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return FFLocalizations.of(context)
-                                                  .getText(
-                                                'hziijhpq' /* Email Field is required */,
-                                              );
-                                            }
-
-                                            if (!RegExp(
-                                                    kTextValidatorEmailRegex)
-                                                .hasMatch(val)) {
-                                              return 'Has to be a valid email address.';
-                                            }
-                                            return null;
-                                          },
+                                          validator: _model
+                                              .textController3Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -575,7 +541,8 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: txtContactController,
+                                          controller:
+                                              _model.txtContactController,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText:
@@ -650,16 +617,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           keyboardType: TextInputType.number,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return FFLocalizations.of(context)
-                                                  .getText(
-                                                'qsdqlnxz' /* phone is required */,
-                                              );
-                                            }
-
-                                            return null;
-                                          },
+                                          validator: _model
+                                              .txtContactControllerValidator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -700,7 +660,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController5,
+                                          controller: _model.textController5,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText:
@@ -775,6 +735,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           keyboardType: TextInputType.name,
+                                          validator: _model
+                                              .textController5Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -815,10 +778,11 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController6,
+                                          controller: _model.textController6,
                                           textCapitalization:
                                               TextCapitalization.none,
-                                          obscureText: !passwordVisibility1,
+                                          obscureText:
+                                              !_model.passwordVisibility1,
                                           decoration: InputDecoration(
                                             hintText:
                                                 FFLocalizations.of(context)
@@ -883,13 +847,14 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             ),
                                             suffixIcon: InkWell(
                                               onTap: () => setState(
-                                                () => passwordVisibility1 =
-                                                    !passwordVisibility1,
+                                                () => _model
+                                                        .passwordVisibility1 =
+                                                    !_model.passwordVisibility1,
                                               ),
                                               focusNode: FocusNode(
                                                   skipTraversal: true),
                                               child: Icon(
-                                                passwordVisibility1
+                                                _model.passwordVisibility1
                                                     ? Icons.visibility_outlined
                                                     : Icons
                                                         .visibility_off_outlined,
@@ -909,16 +874,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               ),
                                           keyboardType:
                                               TextInputType.visiblePassword,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return FFLocalizations.of(context)
-                                                  .getText(
-                                                'yhccuozq' /* Password Field is required */,
-                                              );
-                                            }
-
-                                            return null;
-                                          },
+                                          validator: _model
+                                              .textController6Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -960,8 +918,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: TextFormField(
-                                          controller: textController7,
-                                          obscureText: !passwordVisibility2,
+                                          controller: _model.textController7,
+                                          obscureText:
+                                              !_model.passwordVisibility2,
                                           decoration: InputDecoration(
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1037,13 +996,14 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             ),
                                             suffixIcon: InkWell(
                                               onTap: () => setState(
-                                                () => passwordVisibility2 =
-                                                    !passwordVisibility2,
+                                                () => _model
+                                                        .passwordVisibility2 =
+                                                    !_model.passwordVisibility2,
                                               ),
                                               focusNode: FocusNode(
                                                   skipTraversal: true),
                                               child: Icon(
-                                                passwordVisibility2
+                                                _model.passwordVisibility2
                                                     ? Icons.visibility_outlined
                                                     : Icons
                                                         .visibility_off_outlined,
@@ -1063,16 +1023,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               ),
                                           keyboardType:
                                               TextInputType.visiblePassword,
-                                          validator: (val) {
-                                            if (val == null || val.isEmpty) {
-                                              return FFLocalizations.of(context)
-                                                  .getText(
-                                                '9qfw7mbj' /* Confirm Password Field is requ... */,
-                                              );
-                                            }
-
-                                            return null;
-                                          },
+                                          validator: _model
+                                              .textController7Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -1100,9 +1053,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             .tertiaryColor,
                                   ),
                                   child: Checkbox(
-                                    value: checkboxValue ??= true,
+                                    value: _model.checkboxValue ??= true,
                                     onChanged: (newValue) async {
-                                      setState(() => checkboxValue = newValue!);
+                                      setState(() =>
+                                          _model.checkboxValue = newValue!);
                                     },
                                     activeColor: FlutterFlowTheme.of(context)
                                         .primaryColor,
@@ -1148,9 +1102,10 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             .tertiaryColor,
                                   ),
                                   child: Checkbox(
-                                    value: chkTnCValue ??= false,
+                                    value: _model.chkTnCValue ??= false,
                                     onChanged: (newValue) async {
-                                      setState(() => chkTnCValue = newValue!);
+                                      setState(
+                                          () => _model.chkTnCValue = newValue!);
                                     },
                                     activeColor: FlutterFlowTheme.of(context)
                                         .primaryColor,
@@ -1197,7 +1152,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                     },
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '94ccrbne' /* term_condition */,
+                                        '94ccrbne' /* Terms_condition */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -1242,31 +1197,32 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                 Expanded(
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if (formKey.currentState == null ||
-                                          !formKey.currentState!.validate()) {
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
                                         return;
                                       }
-
-                                      if (textController6!.text ==
-                                          textController7!.text) {
-                                        response = await actions
+                                      if (_model.textController6.text ==
+                                          _model.textController7.text) {
+                                        _model.response = await actions
                                             .convertRegisterDataToJSON(
-                                          textController3!.text,
-                                          textController1!.text,
-                                          textController2!.text,
-                                          textController6!.text,
-                                          checkboxValue,
-                                          textController5!.text,
-                                          txtContactController!.text,
+                                          _model.textController3.text,
+                                          _model.textController1.text,
+                                          _model.textController2.text,
+                                          _model.textController6.text,
+                                          _model.checkboxValue,
+                                          _model.textController5.text,
+                                          _model.txtContactController.text,
                                         );
-                                        if (chkTnCValue!) {
-                                          registerApiResponse = await UmaruGroup
-                                              .registerCall
-                                              .call(
-                                            createaccountJson: response,
+                                        if (_model.chkTnCValue!) {
+                                          _model.registerApiResponse =
+                                              await UmaruGroup.registerCall
+                                                  .call(
+                                            createaccountJson: _model.response,
                                           );
                                           if (getJsonField(
-                                            (registerApiResponse?.jsonBody ??
+                                            (_model.registerApiResponse
+                                                    ?.jsonBody ??
                                                 ''),
                                             r'''$.data.customer[0].success''',
                                           )) {
@@ -1275,7 +1231,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               SnackBar(
                                                 content: Text(
                                                   getJsonField(
-                                                    (registerApiResponse
+                                                    (_model.registerApiResponse
                                                             ?.jsonBody ??
                                                         ''),
                                                     r'''$.data.customer[0].message''',
@@ -1292,7 +1248,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             FFAppState().update(() {
                                               FFAppState().userData =
                                                   getJsonField(
-                                                (registerApiResponse
+                                                (_model.registerApiResponse
                                                         ?.jsonBody ??
                                                     ''),
                                                 r'''$.data.customer[0]''',
@@ -1307,7 +1263,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               SnackBar(
                                                 content: Text(
                                                   getJsonField(
-                                                    (registerApiResponse
+                                                    (_model.registerApiResponse
                                                             ?.jsonBody ??
                                                         ''),
                                                     r'''$.data.customer[0].message''',

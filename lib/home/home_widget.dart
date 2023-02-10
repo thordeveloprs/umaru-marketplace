@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'home_model.dart';
+export 'home_model.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -16,36 +18,38 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  ApiCallResponse? adminData;
-  ApiCallResponse? newOutPut1;
-  final _unfocusNode = FocusNode();
+  late HomeModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => HomeModel());
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().isLoading = true;
       });
-      adminData = await UmaruGroup.adminLoginCall.call();
-      if ((adminData?.succeeded ?? true)) {
+      _model.adminData = await UmaruGroup.adminLoginCall.call();
+      if ((_model.adminData?.succeeded ?? true)) {
         FFAppState().update(() {
           FFAppState().token = UmaruGroup.adminLoginCall
               .responseToken(
-                (adminData?.jsonBody ?? ''),
+                (_model.adminData?.jsonBody ?? ''),
               )
               .toString();
         });
       }
-      newOutPut1 = await UmaruGroup.getCategoryInEnglishCall.call(
+      _model.newOutPut1 = await UmaruGroup.getCategoryInEnglishCall.call(
         token: FFAppState().token,
       );
       FFAppState().update(() {
         FFAppState().categoryData = UmaruGroup.getCategoryInEnglishCall
             .productCategories(
-              (newOutPut1?.jsonBody ?? ''),
+              (_model.newOutPut1?.jsonBody ?? ''),
             )!
             .toList();
         FFAppState().isLoading = false;
@@ -55,6 +59,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -175,7 +181,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               final catData = (UmaruGroup
                                           .getCategoryInEnglishCall
                                           .productCategories(
-                                            (newOutPut1?.jsonBody ?? ''),
+                                            (_model.newOutPut1?.jsonBody ?? ''),
                                           )
                                           ?.where((e) =>
                                               getJsonField(

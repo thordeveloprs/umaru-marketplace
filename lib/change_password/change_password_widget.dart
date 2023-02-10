@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'change_password_model.dart';
+export 'change_password_model.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
   const ChangePasswordWidget({Key? key}) : super(key: key);
@@ -14,33 +16,26 @@ class ChangePasswordWidget extends StatefulWidget {
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
-  TextEditingController? oldPasswordController;
-  late bool oldPasswordVisibility;
-  TextEditingController? txtPasswordController1;
-  late bool txtPasswordVisibility1;
-  TextEditingController? txtPasswordController2;
-  late bool txtPasswordVisibility2;
-  final _unfocusNode = FocusNode();
+  late ChangePasswordModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    oldPasswordController = TextEditingController();
-    oldPasswordVisibility = false;
-    txtPasswordController1 = TextEditingController();
-    txtPasswordVisibility1 = false;
-    txtPasswordController2 = TextEditingController();
-    txtPasswordVisibility2 = false;
+    _model = createModel(context, () => ChangePasswordModel());
+
+    _model.oldPasswordController = TextEditingController();
+    _model.txtPasswordController1 = TextEditingController();
+    _model.txtPasswordController2 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    oldPasswordController?.dispose();
-    txtPasswordController1?.dispose();
-    txtPasswordController2?.dispose();
     super.dispose();
   }
 
@@ -57,13 +52,17 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: ' ',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: ' ',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: Form(
-                  key: formKey,
+                  key: _model.formKey,
                   autovalidateMode: AutovalidateMode.always,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
@@ -121,9 +120,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12, 0, 32, 0),
                                     child: TextFormField(
-                                      controller: oldPasswordController,
+                                      controller: _model.oldPasswordController,
                                       autofocus: true,
-                                      obscureText: !oldPasswordVisibility,
+                                      obscureText:
+                                          !_model.oldPasswordVisibility,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -180,13 +180,13 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
-                                            () => oldPasswordVisibility =
-                                                !oldPasswordVisibility,
+                                            () => _model.oldPasswordVisibility =
+                                                !_model.oldPasswordVisibility,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            oldPasswordVisibility
+                                            _model.oldPasswordVisibility
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Color(0xFF757575),
@@ -204,16 +204,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      validator: (val) {
-                                        if (val == null || val.isEmpty) {
-                                          return FFLocalizations.of(context)
-                                              .getText(
-                                            'lami9rc5' /* Old Password is required */,
-                                          );
-                                        }
-
-                                        return null;
-                                      },
+                                      validator: _model
+                                          .oldPasswordControllerValidator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -246,8 +239,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12, 0, 32, 0),
                                     child: TextFormField(
-                                      controller: txtPasswordController1,
-                                      obscureText: !txtPasswordVisibility1,
+                                      controller: _model.txtPasswordController1,
+                                      obscureText:
+                                          !_model.txtPasswordVisibility1,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -304,13 +298,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
-                                            () => txtPasswordVisibility1 =
-                                                !txtPasswordVisibility1,
+                                            () => _model
+                                                    .txtPasswordVisibility1 =
+                                                !_model.txtPasswordVisibility1,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            txtPasswordVisibility1
+                                            _model.txtPasswordVisibility1
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Color(0xFF757575),
@@ -328,16 +323,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      validator: (val) {
-                                        if (val == null || val.isEmpty) {
-                                          return FFLocalizations.of(context)
-                                              .getText(
-                                            'ir8ckcpm' /* New Password is required */,
-                                          );
-                                        }
-
-                                        return null;
-                                      },
+                                      validator: _model
+                                          .txtPasswordController1Validator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -370,8 +358,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12, 0, 32, 0),
                                     child: TextFormField(
-                                      controller: txtPasswordController2,
-                                      obscureText: !txtPasswordVisibility2,
+                                      controller: _model.txtPasswordController2,
+                                      obscureText:
+                                          !_model.txtPasswordVisibility2,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -428,13 +417,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
-                                            () => txtPasswordVisibility2 =
-                                                !txtPasswordVisibility2,
+                                            () => _model
+                                                    .txtPasswordVisibility2 =
+                                                !_model.txtPasswordVisibility2,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            txtPasswordVisibility2
+                                            _model.txtPasswordVisibility2
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Color(0xFF757575),
@@ -452,16 +442,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             letterSpacing: 0.5,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      validator: (val) {
-                                        if (val == null || val.isEmpty) {
-                                          return FFLocalizations.of(context)
-                                              .getText(
-                                            '9qpko8cd' /* Confirm New Password is requir... */,
-                                          );
-                                        }
-
-                                        return null;
-                                      },
+                                      validator: _model
+                                          .txtPasswordController2Validator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -474,8 +457,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                               EdgeInsetsDirectional.fromSTEB(15, 20, 15, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              if (formKey.currentState == null ||
-                                  !formKey.currentState!.validate()) {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
                                 return;
                               }
                             },

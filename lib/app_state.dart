@@ -72,6 +72,10 @@ class FFAppState extends ChangeNotifier {
     _categoryData.remove(_value);
   }
 
+  void removeAtIndexFromCategoryData(int _index) {
+    _categoryData.removeAt(_index);
+  }
+
   String _imageBaseUrl =
       'https://staging.umarumart.com/pub/media/catalog/product/';
   String get imageBaseUrl => _imageBaseUrl;
@@ -101,6 +105,10 @@ class FFAppState extends ChangeNotifier {
     _productUploadImgList.remove(_value);
   }
 
+  void removeAtIndexFromProductUploadImgList(int _index) {
+    _productUploadImgList.removeAt(_index);
+  }
+
   List<String> _createProductCountry = [];
   List<String> get createProductCountry => _createProductCountry;
   set createProductCountry(List<String> _value) {
@@ -113,6 +121,10 @@ class FFAppState extends ChangeNotifier {
 
   void removeFromCreateProductCountry(String _value) {
     _createProductCountry.remove(_value);
+  }
+
+  void removeAtIndexFromCreateProductCountry(int _index) {
+    _createProductCountry.removeAt(_index);
   }
 
   bool _isConfirm = false;
@@ -160,6 +172,10 @@ class FFAppState extends ChangeNotifier {
     _jsonData.remove(_value);
   }
 
+  void removeAtIndexFromJsonData(int _index) {
+    _jsonData.removeAt(_index);
+  }
+
   List<String> _listCountry = ['Mali', 'Senegal', 'Cote d\'ivoire'];
   List<String> get listCountry => _listCountry;
   set listCountry(List<String> _value) {
@@ -174,10 +190,74 @@ class FFAppState extends ChangeNotifier {
     _listCountry.remove(_value);
   }
 
+  void removeAtIndexFromListCountry(int _index) {
+    _listCountry.removeAt(_index);
+  }
+
   int _selectedCountryId = 0;
   int get selectedCountryId => _selectedCountryId;
   set selectedCountryId(int _value) {
     _selectedCountryId = _value;
+  }
+
+  String _productStartDate = '';
+  String get productStartDate => _productStartDate;
+  set productStartDate(String _value) {
+    _productStartDate = _value;
+  }
+
+  String _productEndDate = '';
+  String get productEndDate => _productEndDate;
+  set productEndDate(String _value) {
+    _productEndDate = _value;
+  }
+
+  String _priceDateStart = '';
+  String get priceDateStart => _priceDateStart;
+  set priceDateStart(String _value) {
+    _priceDateStart = _value;
+  }
+
+  String _priceDateEnd = '';
+  String get priceDateEnd => _priceDateEnd;
+  set priceDateEnd(String _value) {
+    _priceDateEnd = _value;
+  }
+
+  List<String> _selecetCategoryList = [];
+  List<String> get selecetCategoryList => _selecetCategoryList;
+  set selecetCategoryList(List<String> _value) {
+    _selecetCategoryList = _value;
+  }
+
+  void addToSelecetCategoryList(String _value) {
+    _selecetCategoryList.add(_value);
+  }
+
+  void removeFromSelecetCategoryList(String _value) {
+    _selecetCategoryList.remove(_value);
+  }
+
+  void removeAtIndexFromSelecetCategoryList(int _index) {
+    _selecetCategoryList.removeAt(_index);
+  }
+
+  List<int> _selectedCategoryIdList = [];
+  List<int> get selectedCategoryIdList => _selectedCategoryIdList;
+  set selectedCategoryIdList(List<int> _value) {
+    _selectedCategoryIdList = _value;
+  }
+
+  void addToSelectedCategoryIdList(int _value) {
+    _selectedCategoryIdList.add(_value);
+  }
+
+  void removeFromSelectedCategoryIdList(int _value) {
+    _selectedCategoryIdList.remove(_value);
+  }
+
+  void removeAtIndexFromSelectedCategoryIdList(int _index) {
+    _selectedCategoryIdList.removeAt(_index);
   }
 }
 

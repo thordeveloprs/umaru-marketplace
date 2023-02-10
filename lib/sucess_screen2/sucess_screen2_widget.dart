@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'sucess_screen2_model.dart';
+export 'sucess_screen2_model.dart';
 
 class SucessScreen2Widget extends StatefulWidget {
   const SucessScreen2Widget({
@@ -18,12 +20,16 @@ class SucessScreen2Widget extends StatefulWidget {
 }
 
 class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
-  final _unfocusNode = FocusNode();
+  late SucessScreen2Model _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => SucessScreen2Model());
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 2000));
@@ -33,6 +39,8 @@ class _SucessScreen2WidgetState extends State<SucessScreen2Widget> {
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }

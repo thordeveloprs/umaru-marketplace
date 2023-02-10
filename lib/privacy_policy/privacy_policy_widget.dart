@@ -4,6 +4,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'privacy_policy_model.dart';
+export 'privacy_policy_model.dart';
 
 class PrivacyPolicyWidget extends StatefulWidget {
   const PrivacyPolicyWidget({Key? key}) : super(key: key);
@@ -13,11 +15,21 @@ class PrivacyPolicyWidget extends StatefulWidget {
 }
 
 class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
-  final _unfocusNode = FocusNode();
+  late PrivacyPolicyModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => PrivacyPolicyModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -35,9 +47,13 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: 'Privacy Policy',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: 'Privacy Policy',
+                  isShowBack: true,
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 14, 0, 0),

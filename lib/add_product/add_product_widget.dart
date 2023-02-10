@@ -8,10 +8,13 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'add_product_model.dart';
+export 'add_product_model.dart';
 
 class AddProductWidget extends StatefulWidget {
   const AddProductWidget({Key? key}) : super(key: key);
@@ -21,66 +24,45 @@ class AddProductWidget extends StatefulWidget {
 }
 
 class _AddProductWidgetState extends State<AddProductWidget> {
-  bool isMediaUploading = false;
-  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+  late AddProductModel _model;
 
-  List<String>? selectedCategory;
-  String? dropDownCategoryValue;
-  String? dropDownCountryValue;
-  String? dropDownStockstaValue;
-  TextEditingController? txQuantityController;
-  TextEditingController? txSpecialPriceController;
-  TextEditingController? txtPriceController;
-  TextEditingController? txtProductNameController;
-  TextEditingController? txtSkuController;
-  TextEditingController? txtQuantityController;
-  bool? switchIsFeatureValue;
-  String? dropDownsubcategoryValue;
-  String? subCategoryId;
-  TextEditingController? shortdescriptiontxtController;
-  TextEditingController? descriptiontxtController;
-  TextEditingController? txtMetaTitleController;
-  TextEditingController? metadesTxtController;
-  ApiCallResponse? createProductDetails;
-  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => AddProductModel());
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().selectedCountryId = 0;
+        FFAppState().productStartDate = '';
+        FFAppState().productEndDate = '';
+        FFAppState().priceDateStart = '';
+        FFAppState().priceDateEnd = '';
+        FFAppState().selecetCategoryList = [];
       });
     });
 
-    descriptiontxtController = TextEditingController();
-    shortdescriptiontxtController = TextEditingController();
-    txQuantityController = TextEditingController();
-    txSpecialPriceController = TextEditingController();
-    txtPriceController = TextEditingController();
-    txtProductNameController = TextEditingController();
-    txtSkuController = TextEditingController();
-    txtQuantityController = TextEditingController();
-    txtMetaTitleController = TextEditingController();
-    metadesTxtController = TextEditingController();
+    _model.txtProductNameController = TextEditingController();
+    _model.txtSkuController = TextEditingController();
+    _model.txtPriceController = TextEditingController();
+    _model.txSpecialPriceController = TextEditingController();
+    _model.txQuantityController = TextEditingController();
+    _model.txWeightController = TextEditingController();
+    _model.shortdescriptiontxtController = TextEditingController();
+    _model.descriptiontxtController = TextEditingController();
+    _model.txtMetaTitleController = TextEditingController();
+    _model.metadesTxtController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    descriptiontxtController?.dispose();
-    shortdescriptiontxtController?.dispose();
-    txQuantityController?.dispose();
-    txSpecialPriceController?.dispose();
-    txtPriceController?.dispose();
-    txtProductNameController?.dispose();
-    txtSkuController?.dispose();
-    txtQuantityController?.dispose();
-    txtMetaTitleController?.dispose();
-    metadesTxtController?.dispose();
     super.dispose();
   }
 
@@ -99,14 +81,18 @@ class _AddProductWidgetState extends State<AddProductWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  AppbarWidget(
-                    appTitle: 'Add Product',
-                    isShowBack: true,
+                  wrapWithModel(
+                    model: _model.appbarModel,
+                    updateCallback: () => setState(() {}),
+                    child: AppbarWidget(
+                      appTitle: 'Add Product',
+                      isShowBack: true,
+                    ),
                   ),
                   Expanded(
                     child: Form(
-                      key: formKey,
-                      autovalidateMode: AutovalidateMode.always,
+                      key: _model.formKey,
+                      autovalidateMode: AutovalidateMode.disabled,
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 29, 15, 0),
                         child: SingleChildScrollView(
@@ -170,7 +156,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txtProductNameController,
+                                  controller: _model.txtProductNameController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -188,16 +174,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.name,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        'llpjwsbt' /* Product  Name  is required */,
-                                      );
-                                    }
-
-                                    return null;
-                                  },
+                                  validator: _model
+                                      .txtProductNameControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -257,7 +236,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txtSkuController,
+                                  controller: _model.txtSkuController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -274,16 +253,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         color:
                                             FlutterFlowTheme.of(context).black,
                                       ),
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        '70bbmi7a' /* SKU is required */,
-                                      );
-                                    }
-
-                                    return null;
-                                  },
+                                  validator: _model.txtSkuControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -343,7 +314,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txtPriceController,
+                                  controller: _model.txtPriceController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -361,16 +332,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        'obkalhf9' /* Price is required */,
-                                      );
-                                    }
-
-                                    return null;
-                                  },
+                                  validator: _model.txtPriceControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -382,11 +345,11 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '1s67b7gm' /* Special Price */,
+                                          'gt3zd2as' /* Set Special Price */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -397,42 +360,269 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
+                                      Switch(
+                                        value: _model
+                                                .switchISetSpecialPriceValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .switchISetSpecialPriceValue =
+                                              newValue!);
+                                        },
+                                      ),
                                     ],
                                   ),
                                 ),
                               ),
-                              Container(
-                                height: 48,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                    color: Color(0xFFEBF0FF),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: txSpecialPriceController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).bodyText2,
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color:
-                                            FlutterFlowTheme.of(context).black,
+                              if (_model.switchISetSpecialPriceValue ?? true)
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 25, 0, 12),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '1s67b7gm' /* Special Price */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                  keyboardType: TextInputType.number,
+                                    ),
+                                    Container(
+                                      height: 48,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                          color: Color(0xFFEBF0FF),
+                                          width: 1,
+                                        ),
+                                      ),
+                                      child: TextFormField(
+                                        controller:
+                                            _model.txSpecialPriceController,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .black,
+                                            ),
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .txSpecialPriceControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 25, 0, 12),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'hmf6t5s6' /* Special price from */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          flex: 3,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              final _datePicked1Date =
+                                                  await showDatePicker(
+                                                context: context,
+                                                initialDate:
+                                                    getCurrentTimestamp,
+                                                firstDate: getCurrentTimestamp,
+                                                lastDate: DateTime(2050),
+                                              );
+
+                                              if (_datePicked1Date != null) {
+                                                setState(() {
+                                                  _model.datePicked1 = DateTime(
+                                                    _datePicked1Date.year,
+                                                    _datePicked1Date.month,
+                                                    _datePicked1Date.day,
+                                                  );
+                                                });
+                                              }
+                                              setState(() {
+                                                FFAppState().priceDateStart =
+                                                    dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
+                                            },
+                                            child: Container(
+                                              height: 48,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                  color: Color(0xFFEBF0FF),
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Text(
+                                                FFAppState().priceDateStart,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 0, 5, 0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '9yhjpwb8' /* To */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 3,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              final _datePicked2Date =
+                                                  await showDatePicker(
+                                                context: context,
+                                                initialDate:
+                                                    getCurrentTimestamp,
+                                                firstDate: getCurrentTimestamp,
+                                                lastDate: DateTime(2050),
+                                              );
+
+                                              if (_datePicked2Date != null) {
+                                                setState(() {
+                                                  _model.datePicked2 = DateTime(
+                                                    _datePicked2Date.year,
+                                                    _datePicked2Date.month,
+                                                    _datePicked2Date.day,
+                                                  );
+                                                });
+                                              }
+                                              setState(() {
+                                                FFAppState().priceDateEnd =
+                                                    dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
+                                            },
+                                            child: Container(
+                                              height: 48,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                  color: Color(0xFFEBF0FF),
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Text(
+                                                FFAppState().priceDateEnd,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .black,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Padding(
@@ -473,7 +663,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txQuantityController,
+                                  controller: _model.txQuantityController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -491,6 +681,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
+                                  validator: _model
+                                      .txQuantityControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -533,7 +726,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txtQuantityController,
+                                  controller: _model.txWeightController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -551,6 +744,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
+                                  validator: _model.txWeightControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -583,8 +778,11 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(-1, 0),
-                                child: FlutterFlowDropDown<String>(
-                                  options: [
+                                child: FlutterFlowDropDown<int>(
+                                  initialOption:
+                                      _model.dropDownStockstaValue ??= 1,
+                                  options: [1, 0],
+                                  optionLabels: [
                                     FFLocalizations.of(context).getText(
                                       'j8751bfb' /* In Stock  */,
                                     ),
@@ -593,7 +791,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     )
                                   ],
                                   onChanged: (val) => setState(
-                                      () => dropDownStockstaValue = val),
+                                      () => _model.dropDownStockstaValue = val),
                                   width: double.infinity,
                                   height: 48,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -602,9 +800,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         fontFamily: 'Poppins',
                                         color: Colors.black,
                                       ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'll0gldf9' /* Please select */,
-                                  ),
                                   fillColor: Colors.white,
                                   elevation: 2,
                                   borderColor: Colors.transparent,
@@ -648,30 +843,59 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 children: [
                                   Expanded(
                                     flex: 3,
-                                    child: Container(
-                                      height: 48,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius: BorderRadius.circular(5),
-                                        border: Border.all(
-                                          color: Color(0xFFEBF0FF),
-                                          width: 1,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final _datePicked3Date =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: getCurrentTimestamp,
+                                          firstDate: getCurrentTimestamp,
+                                          lastDate: DateTime(2050),
+                                        );
+
+                                        if (_datePicked3Date != null) {
+                                          setState(() {
+                                            _model.datePicked3 = DateTime(
+                                              _datePicked3Date.year,
+                                              _datePicked3Date.month,
+                                              _datePicked3Date.day,
+                                            );
+                                          });
+                                        }
+                                        setState(() {
+                                          FFAppState().productStartDate =
+                                              dateTimeFormat(
+                                            'd/M/y',
+                                            _model.datePicked3,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          );
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          border: Border.all(
+                                            color: Color(0xFFEBF0FF),
+                                            width: 1,
+                                          ),
                                         ),
-                                      ),
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'tmgifpgv' /* 14-01-2023 */,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          FFAppState().productStartDate,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .black,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .black,
-                                            ),
                                       ),
                                     ),
                                   ),
@@ -688,30 +912,59 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                   Expanded(
                                     flex: 3,
-                                    child: Container(
-                                      height: 48,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius: BorderRadius.circular(5),
-                                        border: Border.all(
-                                          color: Color(0xFFEBF0FF),
-                                          width: 1,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final _datePicked4Date =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: getCurrentTimestamp,
+                                          firstDate: getCurrentTimestamp,
+                                          lastDate: DateTime(2050),
+                                        );
+
+                                        if (_datePicked4Date != null) {
+                                          setState(() {
+                                            _model.datePicked4 = DateTime(
+                                              _datePicked4Date.year,
+                                              _datePicked4Date.month,
+                                              _datePicked4Date.day,
+                                            );
+                                          });
+                                        }
+                                        setState(() {
+                                          FFAppState().productEndDate =
+                                              dateTimeFormat(
+                                            'd/M/y',
+                                            _model.datePicked4,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          );
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          border: Border.all(
+                                            color: Color(0xFFEBF0FF),
+                                            width: 1,
+                                          ),
                                         ),
-                                      ),
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '9er7y2um' /* 15-02-2023 */,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          FFAppState().productEndDate,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .black,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .black,
-                                            ),
                                       ),
                                     ),
                                   ),
@@ -730,7 +983,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'gt3zd2as' /* Is Featured  */,
+                                          'xlh6u3rq' /* Is Featured  */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -742,16 +995,18 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             ),
                                       ),
                                       Switch(
-                                        value: switchIsFeatureValue ??= true,
+                                        value: _model.switchIsFeatureValue ??=
+                                            false,
                                         onChanged: (newValue) async {
                                           setState(() =>
-                                              switchIsFeatureValue = newValue!);
+                                              _model.switchIsFeatureValue =
+                                                  newValue!);
                                         },
                                       ),
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'q2bgfi67' /* Non */,
-                                        ),
+                                        _model.switchIsFeatureValue!
+                                            ? 'Oui'
+                                            : 'Non',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -797,8 +1052,45 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 alignment: AlignmentDirectional(-1, 0),
                                 child: FlutterFlowDropDown<String>(
                                   options: FFAppState().listCountry.toList(),
-                                  onChanged: (val) => setState(
-                                      () => dropDownCountryValue = val),
+                                  onChanged: (val) async {
+                                    setState(() =>
+                                        _model.dropDownCountryValue = val);
+                                    if (_model.dropDownCountryValue == 'Mali') {
+                                      setState(() {
+                                        FFAppState().selectedCountryId = 4;
+                                      });
+                                    } else {
+                                      if (_model.dropDownCountryValue ==
+                                          'Senegal') {
+                                        setState(() {
+                                          FFAppState().selectedCountryId = 5;
+                                        });
+                                      } else {
+                                        if (_model.dropDownCountryValue ==
+                                            'Cote d\'ivoire') {
+                                          setState(() {
+                                            FFAppState().selectedCountryId = 6;
+                                          });
+                                        }
+                                      }
+                                    }
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          FFAppState()
+                                              .selectedCountryId
+                                              .toString(),
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0x00000000),
+                                      ),
+                                    );
+                                  },
                                   width: double.infinity,
                                   height: 48,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -855,12 +1147,24 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         FFAppState().findShopCategoryId)
                                     .toList(),
                                 onChanged: (val) async {
-                                  setState(() => dropDownCategoryValue = val);
-                                  selectedCategory = await actions
+                                  setState(
+                                      () => _model.dropDownCategoryValue = val);
+                                  _model.selectedCategory = await actions
                                       .createSubCategoryOnCategorySelect(
-                                    dropDownCategoryValue!,
+                                    _model.dropDownCategoryValue!,
                                     FFAppState().categoryData.toList(),
                                   );
+                                  if (!FFAppState()
+                                      .selecetCategoryList
+                                      .contains(_model.dropDownCountryValue)) {
+                                    setState(() {
+                                      FFAppState().addToSelecetCategoryList(
+                                          _model.dropDownCategoryValue!);
+                                      FFAppState().addToSelectedCategoryIdList(
+                                          functions.getSelectedCategoryId(
+                                              _model.dropDownCategoryValue!));
+                                    });
+                                  }
 
                                   setState(() {});
                                 },
@@ -884,65 +1188,184 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     12, 4, 12, 4),
                                 hidesUnderline: true,
                               ),
+                              if (_model.selectedCategory?.length != null)
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 25, 0, 12),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'nc7d8gdm' /* Sub Category */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    FlutterFlowDropDown<String>(
+                                      options:
+                                          _model.selectedCategory!.toList(),
+                                      onChanged: (val) async {
+                                        setState(() => _model
+                                            .dropDownsubcategoryValue = val);
+                                        _model.subCategoryId =
+                                            await actions.getSubCategoryId(
+                                          _model.dropDownsubcategoryValue!,
+                                        );
+                                        if (!FFAppState()
+                                            .selecetCategoryList
+                                            .contains(_model
+                                                .dropDownsubcategoryValue)) {
+                                          setState(() {
+                                            FFAppState()
+                                                .addToSelecetCategoryList(_model
+                                                    .dropDownsubcategoryValue!);
+                                            FFAppState().addToSelectedCategoryIdList(
+                                                functions.getSelectedCategoryId(
+                                                    _model
+                                                        .dropDownsubcategoryValue!));
+                                          });
+                                        }
+
+                                        setState(() {});
+                                      },
+                                      width: double.infinity,
+                                      height: 48,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        '8zummp9n' /* Please select... */,
+                                      ),
+                                      fillColor: Colors.white,
+                                      elevation: 2,
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 0,
+                                      borderRadius: 0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          12, 4, 12, 4),
+                                      hidesUnderline: true,
+                                    ),
+                                  ],
+                                ),
                               Align(
-                                alignment: AlignmentDirectional(0, 0),
+                                alignment: AlignmentDirectional(-1, 0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 25, 0, 12),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'nc7d8gdm' /* Sub Category */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
+                                      0, 10, 0, 0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final selectedCategoryList = FFAppState()
+                                          .selecetCategoryList
+                                          .map((e) => e)
+                                          .toList();
+                                      return Wrap(
+                                        spacing: 0,
+                                        runSpacing: 0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            selectedCategoryList.length,
+                                            (selectedCategoryListIndex) {
+                                          final selectedCategoryListItem =
+                                              selectedCategoryList[
+                                                  selectedCategoryListIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 8, 8, 8),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                shape: BoxShape.rectangle,
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 8, 8, 8),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      selectedCategoryListItem,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyText1
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.white,
+                                                          ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8, 0, 0, 0),
+                                                      child: InkWell(
+                                                        onTap: () async {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .removeFromSelecetCategoryList(
+                                                                    selectedCategoryListItem);
+                                                            FFAppState().removeFromSelectedCategoryIdList(
+                                                                functions
+                                                                    .getSelectedCategoryId(
+                                                                        selectedCategoryListItem));
+                                                          });
+                                                        },
+                                                        child: Icon(
+                                                          Icons.close,
+                                                          color: Colors.white,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                             ),
-                                      ),
-                                    ],
+                                          );
+                                        }),
+                                      );
+                                    },
                                   ),
                                 ),
-                              ),
-                              FlutterFlowDropDown<String>(
-                                options: selectedCategory!.toList(),
-                                onChanged: (val) async {
-                                  setState(
-                                      () => dropDownsubcategoryValue = val);
-                                  subCategoryId =
-                                      await actions.getSubCategoryId(
-                                    dropDownsubcategoryValue!,
-                                  );
-
-                                  setState(() {});
-                                },
-                                width: double.infinity,
-                                height: 48,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                    ),
-                                hintText: FFLocalizations.of(context).getText(
-                                  '8zummp9n' /* Please select... */,
-                                ),
-                                fillColor: Colors.white,
-                                elevation: 2,
-                                borderColor: Colors.transparent,
-                                borderWidth: 0,
-                                borderRadius: 0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    12, 4, 12, 4),
-                                hidesUnderline: true,
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
@@ -987,24 +1410,31 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       selectedMedia.every((m) =>
                                           validateFileFormat(
                                               m.storagePath, context))) {
-                                    setState(() => isMediaUploading = true);
-                                    var selectedLocalFiles = <FFLocalFile>[];
+                                    setState(
+                                        () => _model.isMediaUploading = true);
+                                    var selectedUploadedFiles =
+                                        <FFUploadedFile>[];
+
                                     try {
-                                      selectedLocalFiles = selectedMedia
-                                          .map((m) => FFLocalFile(
+                                      selectedUploadedFiles = selectedMedia
+                                          .map((m) => FFUploadedFile(
                                                 name: m.storagePath
                                                     .split('/')
                                                     .last,
                                                 bytes: m.bytes,
+                                                height: m.dimensions?.height,
+                                                width: m.dimensions?.width,
                                               ))
                                           .toList();
                                     } finally {
-                                      isMediaUploading = false;
+                                      _model.isMediaUploading = false;
                                     }
-                                    if (selectedLocalFiles.length ==
+                                    if (selectedUploadedFiles.length ==
                                         selectedMedia.length) {
-                                      setState(() => uploadedLocalFile =
-                                          selectedLocalFiles.first);
+                                      setState(() {
+                                        _model.uploadedLocalFile =
+                                            selectedUploadedFiles.first;
+                                      });
                                     } else {
                                       setState(() {});
                                       return;
@@ -1142,7 +1572,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: shortdescriptiontxtController,
+                                  controller:
+                                      _model.shortdescriptiontxtController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -1160,16 +1591,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   maxLines: null,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        'u04kux11' /* Description is required */,
-                                      );
-                                    }
-
-                                    return null;
-                                  },
+                                  validator: _model
+                                      .shortdescriptiontxtControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -1212,7 +1636,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: descriptiontxtController,
+                                  controller: _model.descriptiontxtController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -1230,6 +1654,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   maxLines: null,
+                                  validator: _model
+                                      .descriptiontxtControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -1272,7 +1699,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: txtMetaTitleController,
+                                  controller: _model.txtMetaTitleController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -1290,6 +1717,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   keyboardType: TextInputType.number,
+                                  validator: _model
+                                      .txtMetaTitleControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -1332,7 +1762,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: metadesTxtController,
+                                  controller: _model.metadesTxtController,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintStyle:
@@ -1350,6 +1780,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   maxLines: null,
+                                  validator: _model
+                                      .metadesTxtControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                               Padding(
@@ -1357,12 +1790,12 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     0, 25, 0, 15),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    if (formKey.currentState == null ||
-                                        !formKey.currentState!.validate()) {
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
                                       return;
                                     }
-
-                                    createProductDetails =
+                                    _model.createProductDetails =
                                         await UmaruGroup.createProductCall.call(
                                       vendorId: getJsonField(
                                         FFAppState().userData,
@@ -1372,19 +1805,60 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         FFAppState().userData,
                                         r'''$.hashkey''',
                                       ).toString(),
-                                      name: txtProductNameController!.text,
-                                      sku: txtSkuController!.text,
-                                      price: int.tryParse(
-                                          txtPriceController!.text),
+                                      name:
+                                          _model.txtProductNameController.text,
+                                      sku: _model.txtSkuController.text,
+                                      price: double.tryParse(
+                                          _model.txtPriceController.text),
                                       qty: int.tryParse(
-                                          txQuantityController!.text),
-                                      category: subCategoryId,
-                                      images: uploadedLocalFile,
-                                      description:
-                                          shortdescriptiontxtController!.text,
+                                          _model.txQuantityController.text),
+                                      images: _model.uploadedLocalFile,
+                                      description: _model
+                                          .shortdescriptiontxtController.text,
+                                      isInStock: _model.dropDownStockstaValue,
+                                      weight: double.tryParse(
+                                          _model.txWeightController.text),
+                                      metaTitle:
+                                          _model.txtMetaTitleController.text,
+                                      specialPrice: double.tryParse(
+                                          _model.txSpecialPriceController.text),
+                                      metaDescription:
+                                          _model.metadesTxtController.text,
+                                      shortDescription: _model
+                                          .shortdescriptiontxtController.text,
+                                      specialToDate: dateTimeFormat(
+                                        'd/M/y',
+                                        _model.datePicked2,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                      newsFromDate: dateTimeFormat(
+                                        'd/M/y',
+                                        _model.datePicked3,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                      newsToDate: dateTimeFormat(
+                                        'd/M/y',
+                                        _model.datePicked4,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                      swFeatured:
+                                          _model.switchIsFeatureValue! ? 1 : 0,
+                                      categoryList:
+                                          FFAppState().selectedCategoryIdList,
+                                      specialFromDate: dateTimeFormat(
+                                        'd/M/y',
+                                        _model.datePicked1,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                      country: FFAppState().selectedCountryId,
                                     );
                                     if (getJsonField(
-                                      (createProductDetails?.jsonBody ?? ''),
+                                      (_model.createProductDetails?.jsonBody ??
+                                          ''),
                                       r'''$.data.success''',
                                     )) {
                                       setState(() {
@@ -1396,7 +1870,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         SnackBar(
                                           content: Text(
                                             getJsonField(
-                                              (createProductDetails?.jsonBody ??
+                                              (_model.createProductDetails
+                                                      ?.jsonBody ??
                                                   ''),
                                               r'''$.data.message''',
                                             ).toString(),
@@ -1446,7 +1921,12 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                   ),
                 ],
               ),
-              if (FFAppState().isConfirm == true) SucessMsgWidget(),
+              if (FFAppState().isConfirm == true)
+                wrapWithModel(
+                  model: _model.sucessMsgModel,
+                  updateCallback: () => setState(() {}),
+                  child: SucessMsgWidget(),
+                ),
             ],
           ),
         ),

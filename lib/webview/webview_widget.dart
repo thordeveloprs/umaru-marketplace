@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'webview_model.dart';
+export 'webview_model.dart';
 
 class WebviewWidget extends StatefulWidget {
   const WebviewWidget({
@@ -21,11 +23,21 @@ class WebviewWidget extends StatefulWidget {
 }
 
 class _WebviewWidgetState extends State<WebviewWidget> {
-  final _unfocusNode = FocusNode();
+  late WebviewModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => WebviewModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -43,9 +55,13 @@ class _WebviewWidgetState extends State<WebviewWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: ' ',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: ' ',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: FlutterFlowWebView(

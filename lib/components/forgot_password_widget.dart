@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'forgot_password_model.dart';
+export 'forgot_password_model.dart';
 
 class ForgotPasswordWidget extends StatefulWidget {
   const ForgotPasswordWidget({Key? key}) : super(key: key);
@@ -14,19 +16,26 @@ class ForgotPasswordWidget extends StatefulWidget {
 }
 
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
-  ApiCallResponse? forgotPasswordApiResponse;
-  TextEditingController? textController;
-  final formKey = GlobalKey<FormState>();
+  late ForgotPasswordModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => ForgotPasswordModel());
+
+    _model.textController = TextEditingController();
   }
 
   @override
   void dispose() {
-    textController?.dispose();
+    _model.dispose();
+
     super.dispose();
   }
 
@@ -40,7 +49,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Form(
-        key: formKey,
+        key: _model.formKey,
         autovalidateMode: AutovalidateMode.always,
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 0),
@@ -92,7 +101,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                             child: TextFormField(
-                              controller: textController,
+                              controller: _model.textController,
                               autofocus: true,
                               textCapitalization: TextCapitalization.none,
                               obscureText: false,
@@ -160,22 +169,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               keyboardType: TextInputType.emailAddress,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return FFLocalizations.of(context).getText(
-                                    '046440qs' /* Email is required */,
-                                  );
-                                }
-
-                                if (val.length > 50) {
-                                  return 'Maximum 50 characters allowed, currently ${val.length}.';
-                                }
-                                if (!RegExp(kTextValidatorEmailRegex)
-                                    .hasMatch(val)) {
-                                  return 'Has to be a valid email address.';
-                                }
-                                return null;
-                              },
+                              validator: _model.textControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -186,17 +181,16 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  if (formKey.currentState == null ||
-                      !formKey.currentState!.validate()) {
+                  if (_model.formKey.currentState == null ||
+                      !_model.formKey.currentState!.validate()) {
                     return;
                   }
-
-                  forgotPasswordApiResponse =
+                  _model.forgotPasswordApiResponse =
                       await UmaruGroup.forgotPasswordCall.call(
-                    email: textController!.text,
+                    email: _model.textController.text,
                   );
                   if (getJsonField(
-                    (forgotPasswordApiResponse?.jsonBody ?? ''),
+                    (_model.forgotPasswordApiResponse?.jsonBody ?? ''),
                     r'''$.data.customer[0].success''',
                   )) {
                     Navigator.pop(context);
@@ -204,7 +198,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       SnackBar(
                         content: Text(
                           getJsonField(
-                            (forgotPasswordApiResponse?.jsonBody ?? ''),
+                            (_model.forgotPasswordApiResponse?.jsonBody ?? ''),
                             r'''$.data.customer[0].message''',
                           ).toString(),
                           style: TextStyle(
@@ -221,7 +215,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       SnackBar(
                         content: Text(
                           getJsonField(
-                            (forgotPasswordApiResponse?.jsonBody ?? ''),
+                            (_model.forgotPasswordApiResponse?.jsonBody ?? ''),
                             r'''$.data.customer[0].message''',
                           ).toString(),
                           style: TextStyle(

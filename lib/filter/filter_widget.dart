@@ -6,6 +6,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'filter_model.dart';
+export 'filter_model.dart';
 
 class FilterWidget extends StatefulWidget {
   const FilterWidget({Key? key}) : super(key: key);
@@ -15,19 +17,23 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  double? filterSliderValue;
-  final _unfocusNode = FocusNode();
+  late FilterModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => FilterModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -46,9 +52,13 @@ class _FilterWidgetState extends State<FilterWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppbarWidget(
-                appTitle: 'Filter',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: 'Filter',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -90,11 +100,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                           inactiveColor: Color(0xFF9E9E9E),
                           min: 0,
                           max: 0,
-                          value: filterSliderValue ??= 1,
+                          value: _model.filterSliderValue ??= 1,
                           onChanged: (newValue) {
                             newValue =
                                 double.parse(newValue.toStringAsFixed(4));
-                            setState(() => filterSliderValue = newValue);
+                            setState(() => _model.filterSliderValue = newValue);
                           },
                         ),
                       ),

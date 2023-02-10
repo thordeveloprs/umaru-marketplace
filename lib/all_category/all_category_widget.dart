@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'all_category_model.dart';
+export 'all_category_model.dart';
 
 class AllCategoryWidget extends StatefulWidget {
   const AllCategoryWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class AllCategoryWidget extends StatefulWidget {
 }
 
 class _AllCategoryWidgetState extends State<AllCategoryWidget> {
-  final _unfocusNode = FocusNode();
+  late AllCategoryModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => AllCategoryModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }

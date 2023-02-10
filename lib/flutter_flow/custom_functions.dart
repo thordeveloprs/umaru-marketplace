@@ -68,7 +68,9 @@ String getObjectFromList(
   String searchLableName,
 ) {
   if (list.isNotEmpty) {
+    print(searchLableName);
     var b = list.where((d) => d["label"] == searchLableName);
+    print(b);
 
     if (b.isEmpty) {
       return "";
@@ -105,4 +107,36 @@ dynamic createManageProductJson(String searchItem) {
   Map<String, dynamic> mapData = Map<String, dynamic>();
   mapData = {"name": searchItem};
   return mapData;
+}
+
+String findImagePath(
+  List<dynamic> customAttributes,
+  String attributesName,
+) {
+  String defaultImg =
+      "https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg";
+
+  print(customAttributes);
+
+  if (customAttributes.isNotEmpty) {
+    print(attributesName);
+    var b = customAttributes.where((d) => d["label"] == attributesName);
+    print(b);
+
+    if (b.isEmpty) {
+      return defaultImg;
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return defaultImg;
+  }
+}
+
+int getSelectedCategoryId(String selectedCategoryId) {
+  String filtterId = selectedCategoryId
+      .substring(0, selectedCategoryId.length)
+      .substring(0, selectedCategoryId.indexOf(' '));
+
+  return int.parse(filtterId);
 }

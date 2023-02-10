@@ -8,6 +8,8 @@ import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'register_formcompany_details_model.dart';
+export 'register_formcompany_details_model.dart';
 
 class RegisterFormcompanyDetailsWidget extends StatefulWidget {
   const RegisterFormcompanyDetailsWidget({Key? key}) : super(key: key);
@@ -19,40 +21,29 @@ class RegisterFormcompanyDetailsWidget extends StatefulWidget {
 
 class _RegisterFormcompanyDetailsWidgetState
     extends State<RegisterFormcompanyDetailsWidget> {
-  bool isMediaUploading = false;
-  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+  late RegisterFormcompanyDetailsModel _model;
 
-  TextEditingController? textController5;
-  TextEditingController? emalIdController;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  TextEditingController? txtFacebookIdController;
-  TextEditingController? textController6;
-  ApiCallResponse? apiResult5sa;
-  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emalIdController = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    txtFacebookIdController = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
+    _model = createModel(context, () => RegisterFormcompanyDetailsModel());
+
+    _model.emalIdController = TextEditingController();
+    _model.textController2 = TextEditingController();
+    _model.textController3 = TextEditingController();
+    _model.txtFacebookIdController = TextEditingController();
+    _model.textController5 = TextEditingController();
+    _model.textController6 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emalIdController?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
-    txtFacebookIdController?.dispose();
-    textController5?.dispose();
-    textController6?.dispose();
     super.dispose();
   }
 
@@ -71,12 +62,16 @@ class _RegisterFormcompanyDetailsWidgetState
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  AppbarWidget(
-                    appTitle: ' ',
-                    isShowBack: true,
+                  wrapWithModel(
+                    model: _model.appbarModel,
+                    updateCallback: () => setState(() {}),
+                    child: AppbarWidget(
+                      appTitle: ' ',
+                      isShowBack: true,
+                    ),
                   ),
                   Form(
-                    key: formKey,
+                    key: _model.formKey,
                     autovalidateMode: AutovalidateMode.always,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -122,7 +117,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: emalIdController,
+                                controller: _model.emalIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
@@ -183,19 +178,8 @@ class _RegisterFormcompanyDetailsWidgetState
                                       color: FlutterFlowTheme.of(context).black,
                                     ),
                                 keyboardType: TextInputType.emailAddress,
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return FFLocalizations.of(context).getText(
-                                      'uodie97m' /* Email Field is required */,
-                                    );
-                                  }
-
-                                  if (!RegExp(kTextValidatorEmailRegex)
-                                      .hasMatch(val)) {
-                                    return 'Has to be a valid email address.';
-                                  }
-                                  return null;
-                                },
+                                validator: _model.emalIdControllerValidator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
@@ -219,7 +203,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: textController2,
+                                controller: _model.textController2,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
@@ -280,15 +264,8 @@ class _RegisterFormcompanyDetailsWidgetState
                                       color: FlutterFlowTheme.of(context).black,
                                     ),
                                 keyboardType: TextInputType.phone,
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return FFLocalizations.of(context).getText(
-                                      'c29g6rnb' /* Contact number is required */,
-                                    );
-                                  }
-
-                                  return null;
-                                },
+                                validator: _model.textController2Validator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
@@ -312,7 +289,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: textController3,
+                                controller: _model.textController3,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
@@ -373,22 +350,8 @@ class _RegisterFormcompanyDetailsWidgetState
                                       color: FlutterFlowTheme.of(context).black,
                                     ),
                                 keyboardType: TextInputType.phone,
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return FFLocalizations.of(context).getText(
-                                      'qm8p52yr' /* Whatsapp number  is required */,
-                                    );
-                                  }
-
-                                  if (val.length < 10) {
-                                    return 'Requires at least 10 characters.';
-                                  }
-                                  if (val.length > 10) {
-                                    return 'Maximum 10 characters allowed, currently ${val.length}.';
-                                  }
-
-                                  return null;
-                                },
+                                validator: _model.textController3Validator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
@@ -412,7 +375,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: txtFacebookIdController,
+                                controller: _model.txtFacebookIdController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
@@ -473,15 +436,9 @@ class _RegisterFormcompanyDetailsWidgetState
                                       color: FlutterFlowTheme.of(context).black,
                                     ),
                                 keyboardType: TextInputType.url,
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return FFLocalizations.of(context).getText(
-                                      'ss6wq0c5' /* Field is required */,
-                                    );
-                                  }
-
-                                  return null;
-                                },
+                                validator: _model
+                                    .txtFacebookIdControllerValidator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
@@ -510,7 +467,7 @@ class _RegisterFormcompanyDetailsWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         20, 0, 0, 0),
                                     child: TextFormField(
-                                      controller: textController5,
+                                      controller: _model.textController5,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText:
@@ -574,6 +531,8 @@ class _RegisterFormcompanyDetailsWidgetState
                                                 .black,
                                           ),
                                       keyboardType: TextInputType.url,
+                                      validator: _model.textController5Validator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -591,25 +550,32 @@ class _RegisterFormcompanyDetailsWidgetState
                                           selectedMedia.every((m) =>
                                               validateFileFormat(
                                                   m.storagePath, context))) {
-                                        setState(() => isMediaUploading = true);
-                                        var selectedLocalFiles =
-                                            <FFLocalFile>[];
+                                        setState(() =>
+                                            _model.isMediaUploading = true);
+                                        var selectedUploadedFiles =
+                                            <FFUploadedFile>[];
+
                                         try {
-                                          selectedLocalFiles = selectedMedia
-                                              .map((m) => FFLocalFile(
+                                          selectedUploadedFiles = selectedMedia
+                                              .map((m) => FFUploadedFile(
                                                     name: m.storagePath
                                                         .split('/')
                                                         .last,
                                                     bytes: m.bytes,
+                                                    height:
+                                                        m.dimensions?.height,
+                                                    width: m.dimensions?.width,
                                                   ))
                                               .toList();
                                         } finally {
-                                          isMediaUploading = false;
+                                          _model.isMediaUploading = false;
                                         }
-                                        if (selectedLocalFiles.length ==
+                                        if (selectedUploadedFiles.length ==
                                             selectedMedia.length) {
-                                          setState(() => uploadedLocalFile =
-                                              selectedLocalFiles.first);
+                                          setState(() {
+                                            _model.uploadedLocalFile =
+                                                selectedUploadedFiles.first;
+                                          });
                                         } else {
                                           setState(() {});
                                           return;
@@ -654,7 +620,7 @@ class _RegisterFormcompanyDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: TextFormField(
-                                controller: textController6,
+                                controller: _model.textController6,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
@@ -714,15 +680,8 @@ class _RegisterFormcompanyDetailsWidgetState
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context).black,
                                     ),
-                                validator: (val) {
-                                  if (val == null || val.isEmpty) {
-                                    return FFLocalizations.of(context).getText(
-                                      '1pi0d8h3' /* Field is required */,
-                                    );
-                                  }
-
-                                  return null;
-                                },
+                                validator: _model.textController6Validator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
@@ -731,18 +690,17 @@ class _RegisterFormcompanyDetailsWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              if (formKey.currentState == null ||
-                                  !formKey.currentState!.validate()) {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
                                 return;
                               }
-
-                              apiResult5sa = await UmaruGroup
+                              _model.apiResult5sa = await UmaruGroup
                                   .updateCompanyDetailsCall
                                   .call(
-                                contactNumber: textController2!.text,
-                                companyAddress: textController6!.text,
-                                supportNumber: textController3!.text,
-                                companyLogo: uploadedLocalFile,
+                                contactNumber: _model.textController2.text,
+                                companyAddress: _model.textController6.text,
+                                supportNumber: _model.textController3.text,
+                                companyLogo: _model.uploadedLocalFile,
                                 vendorId: getJsonField(
                                   FFAppState().userData,
                                   r'''$.vendor_id''',
@@ -751,11 +709,11 @@ class _RegisterFormcompanyDetailsWidgetState
                                   FFAppState().userData,
                                   r'''$.hashkey''',
                                 ).toString(),
-                                facebookId: txtFacebookIdController!.text,
-                                supportEmail: emalIdController!.text,
+                                facebookId: _model.txtFacebookIdController.text,
+                                supportEmail: _model.emalIdController.text,
                               );
                               if (getJsonField(
-                                (apiResult5sa?.jsonBody ?? ''),
+                                (_model.apiResult5sa?.jsonBody ?? ''),
                                 r'''$.data.success''',
                               )) {
                                 context.goNamed('Home');
@@ -764,7 +722,7 @@ class _RegisterFormcompanyDetailsWidgetState
                                   SnackBar(
                                     content: Text(
                                       getJsonField(
-                                        (apiResult5sa?.jsonBody ?? ''),
+                                        (_model.apiResult5sa?.jsonBody ?? ''),
                                         r'''$.data.message''',
                                       ).toString(),
                                       style: TextStyle(
@@ -808,7 +766,12 @@ class _RegisterFormcompanyDetailsWidgetState
                   ),
                 ],
               ),
-              if (FFAppState().isConfirm == true) SucessMsgWidget(),
+              if (FFAppState().isConfirm == true)
+                wrapWithModel(
+                  model: _model.sucessMsgModel,
+                  updateCallback: () => setState(() {}),
+                  child: SucessMsgWidget(),
+                ),
             ],
           ),
         ),

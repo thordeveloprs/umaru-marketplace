@@ -6,6 +6,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'register_form_pricing_model.dart';
+export 'register_form_pricing_model.dart';
 
 class RegisterFormPricingWidget extends StatefulWidget {
   const RegisterFormPricingWidget({Key? key}) : super(key: key);
@@ -16,11 +18,21 @@ class RegisterFormPricingWidget extends StatefulWidget {
 }
 
 class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
-  final _unfocusNode = FocusNode();
+  late RegisterFormPricingModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => RegisterFormPricingModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -38,9 +50,13 @@ class _RegisterFormPricingWidgetState extends State<RegisterFormPricingWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: ' ',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: ' ',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: Column(

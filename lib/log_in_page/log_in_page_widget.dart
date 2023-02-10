@@ -7,6 +7,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'log_in_page_model.dart';
+export 'log_in_page_model.dart';
 
 class LogInPageWidget extends StatefulWidget {
   const LogInPageWidget({Key? key}) : super(key: key);
@@ -16,27 +18,25 @@ class LogInPageWidget extends StatefulWidget {
 }
 
 class _LogInPageWidgetState extends State<LogInPageWidget> {
-  ApiCallResponse? loginData;
-  TextEditingController? txtEmailController;
-  TextEditingController? txtPasswordController;
-  late bool txtPasswordVisibility;
-  final _unfocusNode = FocusNode();
+  late LogInPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    txtEmailController = TextEditingController();
-    txtPasswordController = TextEditingController();
-    txtPasswordVisibility = false;
+    _model = createModel(context, () => LogInPageModel());
+
+    _model.txtEmailController = TextEditingController();
+    _model.txtPasswordController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    txtEmailController?.dispose();
-    txtPasswordController?.dispose();
     super.dispose();
   }
 
@@ -53,14 +53,18 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppbarWidget(
-                appTitle: ' ',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: ' ',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: Form(
-                  key: formKey,
-                  autovalidateMode: AutovalidateMode.always,
+                  key: _model.formKey,
+                  autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
                     child: SingleChildScrollView(
@@ -142,7 +146,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 51,
+                              height: 52,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -163,7 +167,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12, 0, 32, 0),
                                       child: TextFormField(
-                                        controller: txtEmailController,
+                                        controller: _model.txtEmailController,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: FFLocalizations.of(context)
@@ -239,23 +243,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                             ),
                                         keyboardType:
                                             TextInputType.emailAddress,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              'jekprojl' /* Email is required */,
-                                            );
-                                          }
-
-                                          if (val.length > 50) {
-                                            return 'Maximum 50 characters allowed, currently ${val.length}.';
-                                          }
-                                          if (!RegExp(kTextValidatorEmailRegex)
-                                              .hasMatch(val)) {
-                                            return 'Has to be a valid email address.';
-                                          }
-                                          return null;
-                                        },
+                                        validator: _model
+                                            .txtEmailControllerValidator
+                                            .asValidator(context),
                                       ),
                                     ),
                                   ),
@@ -268,7 +258,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 51,
+                              height: 52,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -289,8 +279,10 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12, 0, 32, 0),
                                       child: TextFormField(
-                                        controller: txtPasswordController,
-                                        obscureText: !txtPasswordVisibility,
+                                        controller:
+                                            _model.txtPasswordController,
+                                        obscureText:
+                                            !_model.txtPasswordVisibility,
                                         decoration: InputDecoration(
                                           hintText: FFLocalizations.of(context)
                                               .getText(
@@ -353,13 +345,14 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           ),
                                           suffixIcon: InkWell(
                                             onTap: () => setState(
-                                              () => txtPasswordVisibility =
-                                                  !txtPasswordVisibility,
+                                              () => _model
+                                                      .txtPasswordVisibility =
+                                                  !_model.txtPasswordVisibility,
                                             ),
                                             focusNode:
                                                 FocusNode(skipTraversal: true),
                                             child: Icon(
-                                              txtPasswordVisibility
+                                              _model.txtPasswordVisibility
                                                   ? Icons.visibility_outlined
                                                   : Icons
                                                       .visibility_off_outlined,
@@ -379,16 +372,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                               letterSpacing: 0.5,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '1q7epzwu' /* Password is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
+                                        validator: _model
+                                            .txtPasswordControllerValidator
+                                            .asValidator(context),
                                       ),
                                     ),
                                   ),
@@ -405,23 +391,24 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 Expanded(
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if (formKey.currentState == null ||
-                                          !formKey.currentState!.validate()) {
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
                                         return;
                                       }
-
-                                      loginData =
+                                      _model.loginData =
                                           await UmaruGroup.loginCall.call(
-                                        email: txtEmailController!.text,
-                                        password: txtPasswordController!.text,
+                                        email: _model.txtEmailController.text,
+                                        password:
+                                            _model.txtPasswordController.text,
                                       );
                                       if (getJsonField(
-                                        (loginData?.jsonBody ?? ''),
+                                        (_model.loginData?.jsonBody ?? ''),
                                         r'''$.data.customer[0].success''',
                                       )) {
                                         FFAppState().update(() {
                                           FFAppState().userData = getJsonField(
-                                            (loginData?.jsonBody ?? ''),
+                                            (_model.loginData?.jsonBody ?? ''),
                                             r'''$.data.customer[0]''',
                                           );
                                           FFAppState().isLogin = true;
@@ -434,7 +421,8 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           SnackBar(
                                             content: Text(
                                               getJsonField(
-                                                (loginData?.jsonBody ?? ''),
+                                                (_model.loginData?.jsonBody ??
+                                                    ''),
                                                 r'''$.data.customer[0].message''',
                                               ).toString(),
                                               style: TextStyle(

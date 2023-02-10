@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'manage_products_model.dart';
+export 'manage_products_model.dart';
 
 class ManageProductsWidget extends StatefulWidget {
   const ManageProductsWidget({Key? key}) : super(key: key);
@@ -19,22 +21,23 @@ class ManageProductsWidget extends StatefulWidget {
 }
 
 class _ManageProductsWidgetState extends State<ManageProductsWidget> {
-  ApiCallResponse? productList;
-  final _unfocusNode = FocusNode();
+  late ManageProductsModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  ApiCallResponse? searchResponse;
-  TextEditingController? textController;
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => ManageProductsModel());
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().jsonData = [];
         FFAppState().isLoading = true;
       });
-      productList = await UmaruGroup.getProductByVenderCall.call(
+      _model.productList = await UmaruGroup.getProductByVenderCall.call(
         vendorId: getJsonField(
           FFAppState().userData,
           r'''$.vendor_id''',
@@ -44,10 +47,10 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
           r'''$.hashkey''',
         ).toString().toString(),
       );
-      if ((productList?.succeeded ?? true)) {
+      if ((_model.productList?.succeeded ?? true)) {
         setState(() {
           FFAppState().jsonData = getJsonField(
-            (productList?.jsonBody ?? ''),
+            (_model.productList?.jsonBody ?? ''),
             r'''$.data.products''',
           )!
               .toList();
@@ -56,13 +59,14 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
       }
     });
 
-    textController = TextEditingController();
+    _model.textController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController?.dispose();
     super.dispose();
   }
 
@@ -81,9 +85,13 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              AppbarWidget(
-                appTitle: 'Manage Products',
-                isShowBack: true,
+              wrapWithModel(
+                model: _model.appbarModel,
+                updateCallback: () => setState(() {}),
+                child: AppbarWidget(
+                  appTitle: 'Manage Products',
+                  isShowBack: true,
+                ),
               ),
               Expanded(
                 child: Padding(
@@ -138,22 +146,24 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                       ),
                                       Expanded(
                                         child: TextFormField(
-                                          controller: textController,
+                                          controller: _model.textController,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            'textController',
+                                            '_model.textController',
                                             Duration(milliseconds: 2000),
                                             () async {
                                               FFAppState().update(() {
                                                 FFAppState().isLoading = true;
                                                 FFAppState().jsonData = [];
                                               });
-                                              searchResponse = await UmaruGroup
-                                                  .searchVendorProductCall
-                                                  .call(
+                                              _model.searchResponse =
+                                                  await UmaruGroup
+                                                      .searchVendorProductCall
+                                                      .call(
                                                 filterJson: functions
                                                     .createManageProductJson(
-                                                        textController!.text),
+                                                        _model.textController
+                                                            .text),
                                                 hashkey: getJsonField(
                                                   FFAppState().userData,
                                                   r'''$.hashkey''',
@@ -163,14 +173,16 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                                   r'''$.vendor_id''',
                                                 ).toString(),
                                               );
-                                              if ((searchResponse?.succeeded ??
+                                              if ((_model.searchResponse
+                                                      ?.succeeded ??
                                                   true)) {
                                                 FFAppState().update(() {
                                                   FFAppState().isLoading =
                                                       false;
                                                   FFAppState().jsonData =
                                                       getJsonField(
-                                                    (searchResponse?.jsonBody ??
+                                                    (_model.searchResponse
+                                                            ?.jsonBody ??
                                                         ''),
                                                     r'''$.data.products''',
                                                   )!
@@ -245,6 +257,9 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1,
+                                          validator: _model
+                                              .textControllerValidator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ],

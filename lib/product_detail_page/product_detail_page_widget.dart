@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'product_detail_page_model.dart';
+export 'product_detail_page_model.dart';
 
 class ProductDetailPageWidget extends StatefulWidget {
   const ProductDetailPageWidget({
@@ -23,12 +25,21 @@ class ProductDetailPageWidget extends StatefulWidget {
 }
 
 class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
-  PageController? pageViewController;
-  final _unfocusNode = FocusNode();
+  late ProductDetailPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ProductDetailPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -164,10 +175,10 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 0, 0, 25),
                                               child: PageView(
-                                                controller:
-                                                    pageViewController ??=
-                                                        PageController(
-                                                            initialPage: 0),
+                                                controller: _model
+                                                        .pageViewController ??=
+                                                    PageController(
+                                                        initialPage: 0),
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 children: [
@@ -284,15 +295,15 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                                     .fromSTEB(0, 0, 0, 10),
                                                 child: smooth_page_indicator
                                                     .SmoothPageIndicator(
-                                                  controller:
-                                                      pageViewController ??=
-                                                          PageController(
-                                                              initialPage: 0),
+                                                  controller: _model
+                                                          .pageViewController ??=
+                                                      PageController(
+                                                          initialPage: 0),
                                                   count: 5,
                                                   axisDirection:
                                                       Axis.horizontal,
                                                   onDotClicked: (i) {
-                                                    pageViewController!
+                                                    _model.pageViewController!
                                                         .animateToPage(
                                                       i,
                                                       duration: Duration(
