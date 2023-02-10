@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class EditProfileModel extends FlutterFlowModel {
   ///  Local state fields for this page.
 
-  String productSelectedCountryCode = ' ';
+  String productSelectedCountryCode = ' ML';
 
   ///  State fields for stateful widgets in this page.
 
@@ -32,7 +32,7 @@ class EditProfileModel extends FlutterFlowModel {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'ygbk1uyd' /* First Name is required */,
+        'ygbk1uyd' /* Name is required */,
       );
     }
 
@@ -102,61 +102,15 @@ class EditProfileModel extends FlutterFlowModel {
   // State field(s) for txtcontactnumber widget.
   TextEditingController? txtcontactnumberController;
   String? Function(BuildContext, String?)? txtcontactnumberControllerValidator;
-  String? _txtcontactnumberControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'tftwgqjq' /* Contact Number is required */,
-      );
-    }
-
-    if (val.length < 10) {
-      return 'Requires at least 10 characters.';
-    }
-    if (val.length > 10) {
-      return 'Maximum 10 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
   // State field(s) for txtwhatsappnumber widget.
   TextEditingController? txtwhatsappnumberController;
   String? Function(BuildContext, String?)? txtwhatsappnumberControllerValidator;
-  String? _txtwhatsappnumberControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'uuwzcakn' /* Whatsapp number is required */,
-      );
-    }
-
-    if (val.length < 10) {
-      return 'Requires at least 10 characters.';
-    }
-    if (val.length > 10) {
-      return 'Maximum 10 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
   // State field(s) for txtAbout widget.
   TextEditingController? txtAboutController;
   String? Function(BuildContext, String?)? txtAboutControllerValidator;
   // State field(s) for txtFacebookId widget.
   TextEditingController? txtFacebookIdController;
   String? Function(BuildContext, String?)? txtFacebookIdControllerValidator;
-  String? _txtFacebookIdControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'jo1zt6nr' /* Social Media Link is required */,
-      );
-    }
-
-    return null;
-  }
-
   // State field(s) for txttwitterlink widget.
   TextEditingController? txttwitterlinkController;
   String? Function(BuildContext, String?)? txttwitterlinkControllerValidator;
@@ -172,54 +126,13 @@ class EditProfileModel extends FlutterFlowModel {
   TextEditingController? txtbusinessAddressController;
   String? Function(BuildContext, String?)?
       txtbusinessAddressControllerValidator;
-  String? _txtbusinessAddressControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'ecoog53e' /* Business Address is required */,
-      );
-    }
-
-    if (val.length > 150) {
-      return 'Maximum 150 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
   // State field(s) for txtMetaKeyword widget.
   TextEditingController? txtMetaKeywordController;
   String? Function(BuildContext, String?)? txtMetaKeywordControllerValidator;
-  String? _txtMetaKeywordControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length > 60) {
-      return 'Maximum 60 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
   // State field(s) for txtMetadescription widget.
   TextEditingController? txtMetadescriptionController;
   String? Function(BuildContext, String?)?
       txtMetadescriptionControllerValidator;
-  String? _txtMetadescriptionControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length > 250) {
-      return 'Maximum 250 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
   // State field(s) for txtAddress widget.
   TextEditingController? txtAddressController;
   String? Function(BuildContext, String?)? txtAddressControllerValidator;
@@ -262,16 +175,6 @@ class EditProfileModel extends FlutterFlowModel {
   // State field(s) for txtState widget.
   TextEditingController? txtStateController;
   String? Function(BuildContext, String?)? txtStateControllerValidator;
-  String? _txtStateControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'd9ku6dhx' /* State is required */,
-      );
-    }
-
-    return null;
-  }
-
   // State field(s) for DropDownCountry widget.
   String? dropDownCountryValue;
   // Stores action output result for [Backend Call - API (update company details)] action in companyDetailButton widget.
@@ -285,19 +188,9 @@ class EditProfileModel extends FlutterFlowModel {
     yourEmailTextFieldControllerValidator =
         _yourEmailTextFieldControllerValidator;
     publicNTextFieldControllerValidator = _publicNTextFieldControllerValidator;
-    txtcontactnumberControllerValidator = _txtcontactnumberControllerValidator;
-    txtwhatsappnumberControllerValidator =
-        _txtwhatsappnumberControllerValidator;
-    txtFacebookIdControllerValidator = _txtFacebookIdControllerValidator;
-    txtbusinessAddressControllerValidator =
-        _txtbusinessAddressControllerValidator;
-    txtMetaKeywordControllerValidator = _txtMetaKeywordControllerValidator;
-    txtMetadescriptionControllerValidator =
-        _txtMetadescriptionControllerValidator;
     txtAddressControllerValidator = _txtAddressControllerValidator;
     txtCityControllerValidator = _txtCityControllerValidator;
     txtZipControllerValidator = _txtZipControllerValidator;
-    txtStateControllerValidator = _txtStateControllerValidator;
   }
 
   void dispose() {

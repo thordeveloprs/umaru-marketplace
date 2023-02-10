@@ -383,7 +383,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Sauvegarder',
     },
     'ygbk1uyd': {
-      'en': 'First Name is required',
+      'en': 'Name is required',
       'fr': 'Le prénom est requis',
     },
     'v43cw97q': {

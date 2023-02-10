@@ -4075,7 +4075,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                       setState(
                                                                           () {
                                                                         _model.productSelectedCountryCode =
-                                                                            ' ';
+                                                                            ' ML';
                                                                       });
                                                                     }
                                                                   }
@@ -4135,6 +4135,30 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                             !_model.formKey1
                                                                 .currentState!
                                                                 .validate()) {
+                                                          return;
+                                                        }
+                                                        if (_model
+                                                                .dropDownCountryValue ==
+                                                            null) {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Country is Required',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  Colors.black,
+                                                            ),
+                                                          );
                                                           return;
                                                         }
                                                         _model.apiCompanyResult =
