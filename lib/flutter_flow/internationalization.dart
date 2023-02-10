@@ -1023,6 +1023,61 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
+  // LogInPage
+  {
+    'fd1zkw9n': {
+      'en': 'Welcome back',
+      'fr': 'Content de te revoir',
+    },
+    'cscivhoe': {
+      'en': 'Don\'t have an account?',
+      'fr': 'Vous n\'avez pas de compte ?',
+    },
+    'vjjbth2j': {
+      'en': ' Sign up here',
+      'fr': 'Inscrivez-vous ici',
+    },
+    'wbfshhsf': {
+      'en': 'Your Email',
+      'fr': 'Votre e-mail',
+    },
+    'ah6h2pvf': {
+      'en': 'Password',
+      'fr': 'Mot de passe',
+    },
+    '8h7dl375': {
+      'en': 'Sign in',
+      'fr': 'S\'identifier',
+    },
+    'ts6gw97x': {
+      'en': 'Forgot password ?',
+      'fr': 'Mot de passe oublié ?',
+    },
+    'rfngstlz': {
+      'en': 'Click here',
+      'fr': 'Cliquez ici',
+    },
+    'jekprojl': {
+      'en': 'Email is required',
+      'fr': 'L\'e-mail est requis',
+    },
+    '34cvqjvt': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    '1q7epzwu': {
+      'en': 'Password is required',
+      'fr': 'Mot de passe requis',
+    },
+    '2qyzwam9': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    '0b0dap51': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // sellerRegisteration
   {
     '507gsmi3': {
@@ -1152,61 +1207,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'f89tzehl': {
-      'en': 'Home',
-      'fr': 'Maison',
-    },
-  },
-  // LogInPage
-  {
-    'fd1zkw9n': {
-      'en': 'Welcome back',
-      'fr': 'Content de te revoir',
-    },
-    'cscivhoe': {
-      'en': 'Don\'t have an account?',
-      'fr': 'Vous n\'avez pas de compte ?',
-    },
-    'vjjbth2j': {
-      'en': ' Sign up here',
-      'fr': 'Inscrivez-vous ici',
-    },
-    'wbfshhsf': {
-      'en': 'Your Email',
-      'fr': 'Votre e-mail',
-    },
-    'ah6h2pvf': {
-      'en': 'Password',
-      'fr': 'Mot de passe',
-    },
-    '8h7dl375': {
-      'en': 'Sign in',
-      'fr': 'S\'identifier',
-    },
-    'ts6gw97x': {
-      'en': 'Forgot password ?',
-      'fr': 'Mot de passe oublié ?',
-    },
-    'rfngstlz': {
-      'en': 'Click here',
-      'fr': 'Cliquez ici',
-    },
-    'jekprojl': {
-      'en': 'Email is required',
-      'fr': 'L\'e-mail est requis',
-    },
-    '34cvqjvt': {
-      'en': 'Please choose an option from the dropdown',
-      'fr': 'Veuillez choisir une option dans la liste déroulante',
-    },
-    '1q7epzwu': {
-      'en': 'Password is required',
-      'fr': 'Mot de passe requis',
-    },
-    '2qyzwam9': {
-      'en': 'Please choose an option from the dropdown',
-      'fr': 'Veuillez choisir une option dans la liste déroulante',
-    },
-    '0b0dap51': {
       'en': 'Home',
       'fr': 'Maison',
     },
@@ -1567,10 +1567,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // BuyMembershipPage
   {
-    'qauaan3r': {
-      'en': 'FCFA',
-      'fr': '',
-    },
     'uyracpdl': {
       'en': 'Subscribe',
       'fr': '',
@@ -1580,21 +1576,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'wfzqgmuf': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
-  // test
-  {
-    'xazjhut2': {
-      'en': 'Button',
-      'fr': '',
-    },
-    '5i7b1ivg': {
-      'en': 'Page Title',
-      'fr': '',
-    },
-    '6mz8qj35': {
       'en': 'Home',
       'fr': '',
     },

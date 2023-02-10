@@ -139,14 +139,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => PrivacyPolicyWidget(),
             ),
             FFRoute(
-              name: 'sellerRegisteration',
-              path: 'sellerRegisteration',
-              builder: (context, params) => SellerRegisterationWidget(),
-            ),
-            FFRoute(
               name: 'LogInPage',
               path: 'logInPage',
               builder: (context, params) => LogInPageWidget(),
+            ),
+            FFRoute(
+              name: 'sellerRegisteration',
+              path: 'sellerRegisteration',
+              builder: (context, params) => SellerRegisterationWidget(),
             ),
             FFRoute(
               name: 'sucessScreen2',
@@ -194,13 +194,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'BuyMembershipPage',
               path: 'buyMembershipPage',
               builder: (context, params) => BuyMembershipPageWidget(),
-            ),
-            FFRoute(
-              name: 'test',
-              path: 'test',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'test')
-                  : TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

@@ -90,7 +90,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       final columnGetVendorAndCompanyDetailsResponse =
                           snapshot.data!;
                       return Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Expanded(
                             child: DefaultTabController(

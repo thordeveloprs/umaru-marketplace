@@ -14,9 +14,9 @@ export 'manage_products/manage_products_widget.dart' show ManageProductsWidget;
 export 'my_accounts/my_accounts_widget.dart' show MyAccountsWidget;
 export 'add_product/add_product_widget.dart' show AddProductWidget;
 export 'privacy_policy/privacy_policy_widget.dart' show PrivacyPolicyWidget;
+export 'log_in_page/log_in_page_widget.dart' show LogInPageWidget;
 export 'seller_registeration/seller_registeration_widget.dart'
     show SellerRegisterationWidget;
-export 'log_in_page/log_in_page_widget.dart' show LogInPageWidget;
 export 'sucess_screen2/sucess_screen2_widget.dart' show SucessScreen2Widget;
 export 'product_detail_page/product_detail_page_widget.dart'
     show ProductDetailPageWidget;
@@ -26,4 +26,3 @@ export 'webview/webview_widget.dart' show WebviewWidget;
 export 'edit_product/edit_product_widget.dart' show EditProductWidget;
 export 'buy_membership_page/buy_membership_page_widget.dart'
     show BuyMembershipPageWidget;
-export 'test/test_widget.dart' show TestWidget;

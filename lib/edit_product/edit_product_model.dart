@@ -15,6 +15,40 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class EditProductModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  String? productName;
+
+  String? sku;
+
+  String? price;
+
+  String? specialPrice;
+
+  String? priceStartFrom;
+
+  String? priceEndFrom;
+
+  String? qty;
+
+  String? weight;
+
+  String? stockStatus;
+
+  String? productNewStartDate;
+
+  String? productNewEndDate;
+
+  String? isFeature;
+
+  String? shortDesc;
+
+  String? desc;
+
+  String? metaTitle;
+
+  String? metaDesc;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
