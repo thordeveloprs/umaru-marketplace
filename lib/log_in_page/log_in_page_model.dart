@@ -44,13 +44,6 @@ class LogInPageModel extends FlutterFlowModel {
       );
     }
 
-    if (val.length < 8) {
-      return 'Requires at least 8 characters.';
-    }
-    if (val.length > 20) {
-      return 'Maximum 20 characters allowed, currently ${val.length}.';
-    }
-
     return null;
   }
 

@@ -26,3 +26,5 @@ export 'webview/webview_widget.dart' show WebviewWidget;
 export 'edit_product/edit_product_widget.dart' show EditProductWidget;
 export 'buy_membership_page/buy_membership_page_widget.dart'
     show BuyMembershipPageWidget;
+export 'edit_product_copy/edit_product_copy_widget.dart'
+    show EditProductCopyWidget;

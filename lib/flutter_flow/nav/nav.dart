@@ -194,6 +194,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'BuyMembershipPage',
               path: 'buyMembershipPage',
               builder: (context, params) => BuyMembershipPageWidget(),
+            ),
+            FFRoute(
+              name: 'editProductCopy',
+              path: 'editProductCopy',
+              builder: (context, params) => EditProductCopyWidget(
+                id: params.getParam('id', ParamType.int),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

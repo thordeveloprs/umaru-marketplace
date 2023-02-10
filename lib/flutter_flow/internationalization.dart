@@ -316,15 +316,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bv6314xi': {
       'en': 'Name',
-      'fr': '',
+      'fr': 'Nom',
     },
     'lq4l5hgv': {
       'en': '',
-      'fr': 'Nom',
+      'fr': '',
     },
     'schp4wrh': {
       'en': 'Your Email',
-      'fr': '',
+      'fr': 'Votre e-mail',
     },
     'm51jdzb0': {
       'en': '',
@@ -332,7 +332,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7szg26og': {
       'en': 'Public Name',
-      'fr': '',
+      'fr': 'Nom public',
     },
     'o2843kjb': {
       'en': '',
@@ -340,7 +340,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tg4jnqx5': {
       'en': 'Gender',
-      'fr': '',
+      'fr': 'Genre',
     },
     'ddo9zma9': {
       'en': 'Male',
@@ -356,11 +356,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sj2zs9b5': {
       'en': 'Please select...',
-      'fr': '',
+      'fr': 'Veuillez sélectionner...',
     },
     'yd8vgjd6': {
       'en': 'Shop URL',
-      'fr': '',
+      'fr': 'URL de la boutique',
     },
     'pu994wls': {
       'en': '',
@@ -368,7 +368,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'heuaoa1i': {
       'en': 'Contact Number',
-      'fr': '',
+      'fr': 'Numéro de contact',
     },
     '0dpc5py2': {
       'en': '',
@@ -384,7 +384,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ygbk1uyd': {
       'en': 'Name is required',
-      'fr': 'Le prénom est requis',
+      'fr': 'Le nom est requis',
     },
     'v43cw97q': {
       'en': 'Please choose an option from the dropdown',
@@ -416,11 +416,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cvl0eeba': {
       'en': 'Field is required',
-      'fr': '',
+      'fr': 'Champ requis',
     },
     'r3fn7yr4': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'je9s1pos': {
       'en': 'Company Info',
@@ -432,7 +432,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w66jit69': {
       'en': 'Company Name',
-      'fr': '',
+      'fr': 'Nom de l\'entreprise',
     },
     '1bgcum69': {
       'en': '',
@@ -440,7 +440,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bobcwdkr': {
       'en': 'Business email',
-      'fr': '',
+      'fr': 'E-mail professionnel',
     },
     'qe1ao6ds': {
       'en': '',
@@ -448,7 +448,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wmqmt4zv': {
       'en': 'Business Contact number',
-      'fr': '',
+      'fr': 'Numéro de contact professionnel',
     },
     'uxm7mi4b': {
       'en': '',
@@ -456,7 +456,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'c5y6y0j4': {
       'en': 'Whatsapp number',
-      'fr': '',
+      'fr': 'Numéro WhatsApp',
     },
     'fkkb55hi': {
       'en': '',
@@ -464,7 +464,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3mfdocdn': {
       'en': 'About',
-      'fr': '',
+      'fr': 'À propos',
     },
     'vphnvefz': {
       'en': '',
@@ -472,7 +472,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0fweyao9': {
       'en': 'Facebook Links',
-      'fr': '',
+      'fr': 'Liens Facebook',
     },
     '5mg8rgtx': {
       'en': '',
@@ -480,7 +480,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'lmenbq21': {
       'en': 'Twitter Links',
-      'fr': '',
+      'fr': 'Liens Twitter',
     },
     'e6qfakaz': {
       'en': '',
@@ -488,23 +488,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'da4rbw3c': {
       'en': 'Company Logo',
-      'fr': '',
+      'fr': 'Logo d\'entreprise',
     },
     'lkm40ew1': {
       'en': 'Update',
-      'fr': 'Télécharger',
+      'fr': 'Mise à jour',
     },
     'gnadkps6': {
       'en': 'Company Banner',
-      'fr': '',
+      'fr': 'Bannière de l\'entreprise',
     },
     'cjuh6ur0': {
       'en': 'Update',
-      'fr': 'Télécharger',
+      'fr': 'Mise à jour',
     },
     'mggg2z6a': {
       'en': 'Business Address',
-      'fr': '',
+      'fr': 'Adresse d\'affaires',
     },
     'gph2ryrn': {
       'en': '',
@@ -512,15 +512,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tyb3vn59': {
       'en': 'Meta Keywords',
-      'fr': '',
+      'fr': 'Méta-mots clés',
     },
     'evhoh7dd': {
       'en': 'Meta Description',
-      'fr': '',
+      'fr': 'Meta Description',
     },
     '868ao0pr': {
       'en': 'Address',
-      'fr': '',
+      'fr': 'Adresse',
     },
     'dm8drsmy': {
       'en': '',
@@ -528,7 +528,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rw528rrh': {
       'en': 'City',
-      'fr': '',
+      'fr': 'Ville',
     },
     'dct2e67u': {
       'en': '',
@@ -536,7 +536,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p58rnj7i': {
       'en': 'Zip Code',
-      'fr': '',
+      'fr': 'Code postal',
     },
     '6fvtied8': {
       'en': '',
@@ -544,7 +544,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'f9dzocp8': {
       'en': 'State',
-      'fr': '',
+      'fr': 'État',
     },
     'u5hs8lnl': {
       'en': '',
@@ -552,15 +552,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0g7ke5wk': {
       'en': 'Country',
-      'fr': '',
+      'fr': 'Pays',
     },
     'hqxvs859': {
       'en': 'Senegal',
-      'fr': 'Senegal',
+      'fr': 'Sénégal',
     },
     'ww71d6zu': {
       'en': 'Côte d’Ivoire',
-      'fr': 'Côte d’Ivoire',
+      'fr': 'Côte d\'Ivoire',
     },
     'qwb5ffh1': {
       'en': 'Mali',
@@ -576,19 +576,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rtav37la': {
       'en': 'Field is required',
-      'fr': '',
+      'fr': 'Champ requis',
     },
     'xi91pagh': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     '4rsrmp7c': {
       'en': 'Field is required',
-      'fr': '',
+      'fr': 'Champ requis',
     },
     'bkp86x5h': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'tftwgqjq': {
       'en': 'Contact Number is required',
@@ -608,11 +608,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3ktzzw40': {
       'en': 'Field is required',
-      'fr': '',
+      'fr': 'Champ requis',
     },
     '1pcqemsx': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'jo1zt6nr': {
       'en': 'Social Media Link is required',
@@ -624,11 +624,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7pptcwbx': {
       'en': 'Field is required',
-      'fr': '',
+      'fr': 'Champ requis',
     },
     'ywzfulkt': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'ecoog53e': {
       'en': 'Business Address is required',
@@ -640,43 +640,43 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4e66c2x8': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'ahx95ty2': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'bo6xwu0z': {
       'en': 'Address is required',
-      'fr': '',
+      'fr': 'L\'adresse est obligatoire',
     },
     'nhgjlggz': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'iyz1rz3f': {
       'en': 'City is required',
-      'fr': '',
+      'fr': 'La ville est obligatoire',
     },
     'k8h0u1qp': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     '6tmywdg6': {
       'en': 'Zip is required',
-      'fr': '',
+      'fr': 'Le code postal est requis',
     },
     'dl67z9lr': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'd9ku6dhx': {
       'en': 'State is required',
-      'fr': '',
+      'fr': 'L\'état est requis',
     },
     'myi128hd': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'vu7ttq17': {
       'en': 'Home',
@@ -1409,8 +1409,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '*',
     },
     'zaqb2msj': {
-      'en': 'Option 1',
+      'en': 'Mali',
       'fr': 'Option 1',
+    },
+    'ovegx36m': {
+      'en': 'Senegal',
+      'fr': '',
+    },
+    'z9lv36ov': {
+      'en': 'Cote d\'ivoire',
+      'fr': '',
     },
     't225ejyg': {
       'en': 'Please select...',
@@ -1578,6 +1586,257 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'wfzqgmuf': {
       'en': 'Home',
       'fr': '',
+    },
+  },
+  // editProductCopy
+  {
+    'x92k84jw': {
+      'en': 'Product Name',
+      'fr': 'Nom du produit',
+    },
+    '639uciv9': {
+      'en': '*',
+      'fr': '*',
+    },
+    'i31dm0i1': {
+      'en': 'SKU',
+      'fr': 'UGS',
+    },
+    'wmlwuqpx': {
+      'en': '*',
+      'fr': '*',
+    },
+    'ub22s8qr': {
+      'en': 'Price',
+      'fr': 'Prix',
+    },
+    '0t52bf4x': {
+      'en': '*',
+      'fr': '*',
+    },
+    '52eroz1a': {
+      'en': 'Set Special Price',
+      'fr': 'Est en vedette',
+    },
+    '3f66vyfx': {
+      'en': 'Special Price',
+      'fr': 'Prix spécial',
+    },
+    'cbh2n86q': {
+      'en': 'Special price from',
+      'fr': 'Définissez le produit comme nouveau à partir de',
+    },
+    'fs3icq2j': {
+      'en': 'To',
+      'fr': 'Pour',
+    },
+    'j1q1pgce': {
+      'en': 'Quantity',
+      'fr': 'Quantité',
+    },
+    '4etwxld5': {
+      'en': '*',
+      'fr': '*',
+    },
+    'uiq62brm': {
+      'en': 'Weight',
+      'fr': 'Lester',
+    },
+    'h07r4osr': {
+      'en': 'Stock Status',
+      'fr': 'État des stocks',
+    },
+    'il21m270': {
+      'en': 'In Stock ',
+      'fr': '',
+    },
+    'qp5x503t': {
+      'en': 'In Stock ',
+      'fr': 'En stock',
+    },
+    '11g6vto6': {
+      'en': 'Exhausted',
+      'fr': 'Épuisé',
+    },
+    'i78cz4fn': {
+      'en': '',
+      'fr': 'Veuillez sélectionner',
+    },
+    '4lwgon8p': {
+      'en': 'Set the Product as a New from',
+      'fr': 'Définissez le produit comme nouveau à partir de',
+    },
+    '23683jnf': {
+      'en': 'To',
+      'fr': 'Pour',
+    },
+    'sjyh91i6': {
+      'en': 'Is Featured ',
+      'fr': 'Est en vedette',
+    },
+    'nn16hd1u': {
+      'en': 'Country',
+      'fr': 'Pays',
+    },
+    '6t8r8awj': {
+      'en': '*',
+      'fr': '*',
+    },
+    'yb3z65hy': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    'keli239f': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    'gnx4py4c': {
+      'en': 'Category',
+      'fr': 'Catégorie',
+    },
+    'c8vgd1nq': {
+      'en': '*',
+      'fr': '*',
+    },
+    'bft2m7jx': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    '04l07kis': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    'sx7st6y0': {
+      'en': 'Sub Category',
+      'fr': 'Sous-catégorie',
+    },
+    'ln3q6942': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    'pveysdbx': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    '9ah9pcxz': {
+      'en': 'Image Upload',
+      'fr': 'Téléchargement d\'images',
+    },
+    'khakxguz': {
+      'en': 'Select Photos',
+      'fr': 'Sélectionnez Photos',
+    },
+    '55b19a7g': {
+      'en': 'Short Description',
+      'fr': 'brève description',
+    },
+    'iujn647h': {
+      'en': '*',
+      'fr': '*',
+    },
+    'zvb3hbaz': {
+      'en': 'Description',
+      'fr': 'Description',
+    },
+    'rhx1o4vy': {
+      'en': '*',
+      'fr': '*',
+    },
+    '8b098ni9': {
+      'en': 'Meta Title',
+      'fr': 'Méta-titre',
+    },
+    'unltsxru': {
+      'en': 'Meta Description',
+      'fr': 'Meta Description',
+    },
+    '3t2mscl4': {
+      'en': 'Confirm',
+      'fr': 'Confirmer',
+    },
+    'qn4cta99': {
+      'en': 'Product  Name  is required',
+      'fr': 'Le nom du produit est requis',
+    },
+    'fw4ogj21': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'cy5vmb36': {
+      'en': 'SKU is required',
+      'fr': 'SKU est requis',
+    },
+    'am92qs75': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'o6iocwn3': {
+      'en': 'Price is required',
+      'fr': 'Le prix est requis',
+    },
+    '0ng2emku': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'eg7lcpwf': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'zln3wlbj': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    '1nez42ly': {
+      'en': 'Quantity is required',
+      'fr': '',
+    },
+    '2w5vts3v': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'zv3pg4hl': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'a3zcffw3': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'ymp8xw13': {
+      'en': 'Short Description is required',
+      'fr': 'La description est obligatoire',
+    },
+    'l11zmabn': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'jf7v9d3q': {
+      'en': 'Description is required',
+      'fr': '',
+    },
+    'l7gm1o3c': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'gvz1721k': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'q7j5ir37': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    '04jiyfau': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    '0jxszvfz': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'wjm6ikqr': {
+      'en': 'Home',
+      'fr': 'Maison',
     },
   },
   // forgotPassword
