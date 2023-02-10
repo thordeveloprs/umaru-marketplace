@@ -70,6 +70,16 @@ class AddProductModel extends FlutterFlowModel {
   // State field(s) for txQuantity widget.
   TextEditingController? txQuantityController;
   String? Function(BuildContext, String?)? txQuantityControllerValidator;
+  String? _txQuantityControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '59g8tzsm' /* Quantity is required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for txWeight widget.
   TextEditingController? txWeightController;
   String? Function(BuildContext, String?)? txWeightControllerValidator;
@@ -101,7 +111,7 @@ class AddProductModel extends FlutterFlowModel {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'u04kux11' /* Description is required */,
+        'u04kux11' /* Short Description is required */,
       );
     }
 
@@ -111,6 +121,17 @@ class AddProductModel extends FlutterFlowModel {
   // State field(s) for descriptiontxt widget.
   TextEditingController? descriptiontxtController;
   String? Function(BuildContext, String?)? descriptiontxtControllerValidator;
+  String? _descriptiontxtControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '1ie876mk' /* Description is required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for txtMetaTitle widget.
   TextEditingController? txtMetaTitleController;
   String? Function(BuildContext, String?)? txtMetaTitleControllerValidator;
@@ -129,8 +150,10 @@ class AddProductModel extends FlutterFlowModel {
     txtProductNameControllerValidator = _txtProductNameControllerValidator;
     txtSkuControllerValidator = _txtSkuControllerValidator;
     txtPriceControllerValidator = _txtPriceControllerValidator;
+    txQuantityControllerValidator = _txQuantityControllerValidator;
     shortdescriptiontxtControllerValidator =
         _shortdescriptiontxtControllerValidator;
+    descriptiontxtControllerValidator = _descriptiontxtControllerValidator;
     sucessMsgModel = createModel(context, () => SucessMsgModel());
   }
 

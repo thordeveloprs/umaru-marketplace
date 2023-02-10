@@ -634,16 +634,33 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 7, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '48bqkyu6' /* Quantity */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '48bqkyu6' /* Quantity */,
+                                          '0u8mfm93' /* * */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFEB5757),
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -1031,16 +1048,33 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 7, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'h2d0wn47' /* Country */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'h2d0wn47' /* Country */,
+                                          'hdze4isj' /* * */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFEB5757),
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -1123,16 +1157,33 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 7, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'ztcmmad9' /* Category */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'ztcmmad9' /* Category */,
+                                          'cy0qce3x' /* * */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFEB5757),
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -1543,16 +1594,33 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 7, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'wlkswa8h' /* Short Description */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'wlkswa8h' /* Short Description */,
+                                          'vxgfjtg2' /* * */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFEB5757),
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -1607,16 +1675,33 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 7, 0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'drupwz7u' /* Description */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'drupwz7u' /* Description */,
+                                          '7qjvlohe' /* * */,
                                         ),
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.black,
-                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFEB5757),
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -1793,6 +1878,40 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
                                             .validate()) {
+                                      return;
+                                    }
+                                    if (_model.dropDownCountryValue == null) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Country Is Required',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Colors.black,
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    if (_model.dropDownCategoryValue == null) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Category is Required',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Colors.black,
+                                        ),
+                                      );
                                       return;
                                     }
                                     _model.createProductDetails =

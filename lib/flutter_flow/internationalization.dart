@@ -795,6 +795,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Quantity',
       'fr': 'Quantité',
     },
+    '0u8mfm93': {
+      'en': '*',
+      'fr': '*',
+    },
     'ln1tvq9n': {
       'en': 'Weight',
       'fr': 'Lester',
@@ -835,6 +839,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Country',
       'fr': 'Pays',
     },
+    'hdze4isj': {
+      'en': '*',
+      'fr': '*',
+    },
     '480yyzvg': {
       'en': 'Option 1',
       'fr': 'Option 1',
@@ -846,6 +854,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ztcmmad9': {
       'en': 'Category',
       'fr': 'Catégorie',
+    },
+    'cy0qce3x': {
+      'en': '*',
+      'fr': '*',
     },
     'x7sf0j31': {
       'en': 'Option 1',
@@ -879,9 +891,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Short Description',
       'fr': 'brève description',
     },
+    'vxgfjtg2': {
+      'en': '*',
+      'fr': '*',
+    },
     'drupwz7u': {
       'en': 'Description',
       'fr': 'Description',
+    },
+    '7qjvlohe': {
+      'en': '*',
+      'fr': '*',
     },
     'nse4uqkl': {
       'en': 'Meta Title',
@@ -919,21 +939,61 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
-    'q7cbhdhb': {
-      'en': 'Quantity is required',
-      'fr': 'La quantité est requise',
+    '8ki5uhi7': {
+      'en': 'Field is required',
+      'fr': '',
     },
-    'chdkyou7': {
+    't41z7ffv': {
       'en': 'Please choose an option from the dropdown',
-      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'fr': '',
+    },
+    '59g8tzsm': {
+      'en': 'Quantity is required',
+      'fr': '',
+    },
+    'b30ktoo3': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    '2s349ffd': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    '6catfwqy': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
     },
     'u04kux11': {
-      'en': 'Description is required',
+      'en': 'Short Description is required',
       'fr': 'La description est obligatoire',
     },
     '7ne2q8u9': {
       'en': 'Please choose an option from the dropdown',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    '1ie876mk': {
+      'en': 'Description is required',
+      'fr': '',
+    },
+    '2hyts9k3': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'q0pvu7zq': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'f78vtg40': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'xwjdbrv1': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'fb085egi': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
     },
     'b4hvqkxw': {
       'en': 'Home',
