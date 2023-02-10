@@ -50,6 +50,7 @@ class _EditProductWidgetState extends State<EditProductWidget> {
         FFAppState().selecetCategoryList = [];
         FFAppState().selectedCategoryIdList = [];
       });
+      setAppLanguage(context, 'fr');
     });
 
     _model.txtSkuController = TextEditingController();
@@ -96,11 +97,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                   ),
                   Expanded(
                     child: FutureBuilder<ApiCallResponse>(
-                      future:
-                          UmaruGroup.productByCategoryIdAndProductIdCall.call(
-                        id: widget.id?.toString(),
-                        token: FFAppState().token,
-                        searchTerm: 'entity_id',
+                      future: UmaruGroup.getProductAllDetailsForEditProductCall
+                          .call(
+                        vendorId: getJsonField(
+                          FFAppState().userData,
+                          r'''$.vendor_id''',
+                        ),
+                        productId: widget.id,
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -116,7 +119,7 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                             ),
                           );
                         }
-                        final formProductByCategoryIdAndProductIdResponse =
+                        final formGetProductAllDetailsForEditProductResponse =
                             snapshot.data!;
                         return Form(
                           key: _model.formKey,
@@ -192,11 +195,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       controller:
                                           _model.txtProductNameController ??=
                                               TextEditingController(
-                                        text: getJsonField(
-                                          formProductByCategoryIdAndProductIdResponse
-                                              .jsonBody,
-                                          r'''$.items[0].name''',
-                                        ).toString(),
+                                        text: functions.findEditProdutFromJson(
+                                            UmaruGroup
+                                                .getProductAllDetailsForEditProductCall
+                                                .details(
+                                                  formGetProductAllDetailsForEditProductResponse
+                                                      .jsonBody,
+                                                )!
+                                                .toList(),
+                                            'name'),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(

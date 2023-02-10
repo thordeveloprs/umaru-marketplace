@@ -555,8 +555,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'hqxvs859': {
-      'en': 'Option 1',
-      'fr': 'Option 1',
+      'en': 'Senegal',
+      'fr': 'Senegal',
+    },
+    'ww71d6zu': {
+      'en': 'Côte d’Ivoire',
+      'fr': 'Côte d’Ivoire',
+    },
+    'qwb5ffh1': {
+      'en': 'Mali',
+      'fr': 'Mali',
     },
     '2343jo0n': {
       'en': 'Please select...',

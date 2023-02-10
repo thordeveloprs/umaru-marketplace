@@ -4028,59 +4028,65 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                             child:
                                                                 FlutterFlowDropDown<
                                                                     String>(
-                                                              initialOption: _model
-                                                                      .dropDownCountryValue ??=
-                                                                  functions.getObjectFromList(
-                                                                      UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                          .informationsdadresse(
-                                                                            columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                          )!
-                                                                          .toList(),
-                                                                      'Pays'),
-                                                              options:
-                                                                  FFAppState()
-                                                                      .listCountry
-                                                                      .toList(),
-                                                              onChanged:
-                                                                  (val) async {
-                                                                setState(() =>
-                                                                    _model.dropDownCountryValue =
-                                                                        val);
-                                                                if (_model
-                                                                        .dropDownCountryValue ==
-                                                                    'Mali') {
-                                                                  setState(() {
-                                                                    _model.productSelectedCountryCode =
-                                                                        'ML';
-                                                                  });
+                                                              initialOption:
+                                                                  _model.dropDownCountryValue ??=
+                                                                      () {
+                                                                if (functions.getObjectFromList(
+                                                                        UmaruGroup.getVendorAndCompanyDetailsCall
+                                                                            .informationsdadresse(
+                                                                              columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                            )!
+                                                                            .toList(),
+                                                                        'Pays') ==
+                                                                    'Sénégal') {
+                                                                  return 'SN';
+                                                                } else if ((functions.getObjectFromList(
+                                                                            UmaruGroup.getVendorAndCompanyDetailsCall
+                                                                                .informationsdadresse(
+                                                                                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                                )!
+                                                                                .toList(),
+                                                                            'Pays') ==
+                                                                        'Ivory Coast') ||
+                                                                    (functions.getObjectFromList(
+                                                                            UmaruGroup.getVendorAndCompanyDetailsCall
+                                                                                .informationsdadresse(
+                                                                                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                                )!
+                                                                                .toList(),
+                                                                            'Pays') ==
+                                                                        'Côte d’Ivoire')) {
+                                                                  return 'CI';
                                                                 } else {
-                                                                  if (_model
-                                                                          .dropDownCountryValue ==
-                                                                      'Senegal') {
-                                                                    setState(
-                                                                        () {
-                                                                      _model.productSelectedCountryCode =
-                                                                          'SN';
-                                                                    });
-                                                                  } else {
-                                                                    if (_model
-                                                                            .dropDownCountryValue ==
-                                                                        'Cote d\'ivoire') {
-                                                                      setState(
-                                                                          () {
-                                                                        _model.productSelectedCountryCode =
-                                                                            'CI';
-                                                                      });
-                                                                    } else {
-                                                                      setState(
-                                                                          () {
-                                                                        _model.productSelectedCountryCode =
-                                                                            ' ML';
-                                                                      });
-                                                                    }
-                                                                  }
+                                                                  return 'ML';
                                                                 }
-                                                              },
+                                                              }(),
+                                                              options: [
+                                                                'SN',
+                                                                'CI',
+                                                                'ML'
+                                                              ],
+                                                              optionLabels: [
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'hqxvs859' /* Senegal */,
+                                                                ),
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'ww71d6zu' /* Côte d’Ivoire */,
+                                                                ),
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'qwb5ffh1' /* Mali */,
+                                                                )
+                                                              ],
+                                                              onChanged: (val) =>
+                                                                  setState(() =>
+                                                                      _model.dropDownCountryValue =
+                                                                          val),
                                                               width: double
                                                                   .infinity,
                                                               height: 48,
@@ -4208,7 +4214,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               .txtStateController
                                                               .text,
                                                           countryId: _model
-                                                              .productSelectedCountryCode,
+                                                              .dropDownCountryValue,
                                                           vendorId:
                                                               getJsonField(
                                                             FFAppState()

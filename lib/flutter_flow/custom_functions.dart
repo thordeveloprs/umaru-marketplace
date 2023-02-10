@@ -140,3 +140,20 @@ int getSelectedCategoryId(String selectedCategoryId) {
 
   return int.parse(filtterId);
 }
+
+String findEditProdutFromJson(
+  List<dynamic> list,
+  String searchLabelName,
+) {
+  if (list.isNotEmpty) {
+    var b = list.where((d) => d["attribute_code"] == searchLabelName);
+
+    if (b.isEmpty) {
+      return "";
+    } else {
+      return b.first["saved_value"];
+    }
+  } else {
+    return "";
+  }
+}

@@ -49,6 +49,9 @@ class UmaruGroup {
       VendorDetailsForProductPageCall();
   static SearchVendorProductCall searchVendorProductCall =
       SearchVendorProductCall();
+  static GetProductAllDetailsForEditProductCall
+      getProductAllDetailsForEditProductCall =
+      GetProductAllDetailsForEditProductCall();
 }
 
 class LoginCall {
@@ -669,6 +672,36 @@ class SearchVendorProductCall {
       cache: false,
     );
   }
+}
+
+class GetProductAllDetailsForEditProductCall {
+  Future<ApiCallResponse> call({
+    int? vendorId,
+    int? productId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getProductAllDetailsForEditProduct',
+      apiUrl: '${UmaruGroup.baseUrl}vproductapi/vproducts/productform?',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'vendor_id': vendorId,
+        'product_id': productId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic details(dynamic response) => getJsonField(
+        response,
+        r'''$[0]['#Détails du produit']''',
+        true,
+      );
 }
 
 /// End umaru Group Code
