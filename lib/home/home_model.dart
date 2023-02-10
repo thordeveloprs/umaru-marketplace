@@ -9,12 +9,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomeModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  dynamic topCategoriesResponse;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (admin login)] action in Home widget.
   ApiCallResponse? adminData;
   // Stores action output result for [Backend Call - API (get category in english)] action in Home widget.
   ApiCallResponse? newOutPut1;
+  // Stores action output result for [Backend Call - API (get category in french)] action in Home widget.
+  ApiCallResponse? newOutPutFrench;
 
   /// Initialization and disposal methods.
 

@@ -94,6 +94,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'FCFA',
       'fr': 'FCFA',
     },
+    '5cphv3xj': {
+      'en': 'FCFA',
+      'fr': 'FCFA',
+    },
     '20rx34jn': {
       'en': 'Home',
       'fr': 'Maison',

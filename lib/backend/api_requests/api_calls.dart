@@ -176,6 +176,12 @@ class GetCategoryInFrenchCall {
       cache: false,
     );
   }
+
+  dynamic frenchProductCategories(dynamic response) => getJsonField(
+        response,
+        r'''$.items''',
+        true,
+      );
 }
 
 class BestSellerInFrenchCall {
