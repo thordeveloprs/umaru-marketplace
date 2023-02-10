@@ -37,6 +37,9 @@ class FFAppState extends ChangeNotifier {
         print("Can't decode persisted json. Error: $e.");
       }
     }
+
+    _selectedLanguageCode =
+        prefs.getString('ff_selectedLanguageCode') ?? _selectedLanguageCode;
   }
 
   void update(VoidCallback callback) {
@@ -273,6 +276,13 @@ class FFAppState extends ChangeNotifier {
   set subscriptionDetail(dynamic _value) {
     _subscriptionDetail = _value;
     prefs.setString('ff_subscriptionDetail', jsonEncode(_value));
+  }
+
+  String _selectedLanguageCode = 'en';
+  String get selectedLanguageCode => _selectedLanguageCode;
+  set selectedLanguageCode(String _value) {
+    _selectedLanguageCode = _value;
+    prefs.setString('ff_selectedLanguageCode', _value);
   }
 }
 

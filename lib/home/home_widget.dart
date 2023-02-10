@@ -54,6 +54,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             .toList();
         FFAppState().isLoading = false;
       });
+      setAppLanguage(context, FFAppState().selectedLanguageCode);
     });
   }
 
@@ -355,7 +356,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     13, 0, 0, 0),
                                             child: Container(
                                               width: 103,
-                                              height: 26.8,
+                                              height: 35,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)

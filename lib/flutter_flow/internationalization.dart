@@ -179,6 +179,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Recherche',
     },
   },
+  // BuyMembershipPage
+  {
+    'f262efla': {
+      'en': 'Membership Details',
+      'fr': 'Tarification',
+    },
+    'uyracpdl': {
+      'en': 'Subscribe',
+      'fr': '',
+    },
+    'bc5c9vv1': {
+      'en': 'Skip',
+      'fr': '',
+    },
+    'wfzqgmuf': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // registerFormPricing
   {
     'sq1mhc65': {
@@ -1412,11 +1431,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Mali',
       'fr': 'Option 1',
     },
-    'ovegx36m': {
+    '7v0bn8cm': {
       'en': 'Senegal',
       'fr': '',
     },
-    'z9lv36ov': {
+    'zyn8e18i': {
       'en': 'Cote d\'ivoire',
       'fr': '',
     },
@@ -1571,21 +1590,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'x0i4bayh': {
       'en': 'Home',
       'fr': 'Maison',
-    },
-  },
-  // BuyMembershipPage
-  {
-    'uyracpdl': {
-      'en': 'Subscribe',
-      'fr': '',
-    },
-    'bc5c9vv1': {
-      'en': 'Skip',
-      'fr': '',
-    },
-    'wfzqgmuf': {
-      'en': 'Home',
-      'fr': '',
     },
   },
   // editProductCopy

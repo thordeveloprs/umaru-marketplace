@@ -734,7 +734,7 @@ class GetSubscriptionDetailsCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Subscription Details',
-      apiUrl: '${UmaruGroup.baseUrl}/pub/rest/V1/plan/items',
+      apiUrl: '${UmaruGroup.baseUrl}pub/rest/V1/plan/items',
       callType: ApiCallType.POST,
       headers: {
         ...UmaruGroup.headers,

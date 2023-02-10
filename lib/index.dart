@@ -4,6 +4,8 @@ export 'splash_screen/splash_screen_widget.dart' show SplashScreenWidget;
 export 'filter/filter_widget.dart' show FilterWidget;
 export 'main_category/main_category_widget.dart' show MainCategoryWidget;
 export 'search/search_widget.dart' show SearchWidget;
+export 'buy_membership_page/buy_membership_page_widget.dart'
+    show BuyMembershipPageWidget;
 export 'register_form_pricing/register_form_pricing_widget.dart'
     show RegisterFormPricingWidget;
 export 'all_category/all_category_widget.dart' show AllCategoryWidget;
@@ -24,7 +26,5 @@ export 'category_page/category_page_widget.dart' show CategoryPageWidget;
 export 'change_password/change_password_widget.dart' show ChangePasswordWidget;
 export 'webview/webview_widget.dart' show WebviewWidget;
 export 'edit_product/edit_product_widget.dart' show EditProductWidget;
-export 'buy_membership_page/buy_membership_page_widget.dart'
-    show BuyMembershipPageWidget;
 export 'edit_product_copy/edit_product_copy_widget.dart'
     show EditProductCopyWidget;

@@ -95,6 +95,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SearchWidget(),
             ),
             FFRoute(
+              name: 'BuyMembershipPage',
+              path: 'buyMembershipPage',
+              builder: (context, params) => BuyMembershipPageWidget(),
+            ),
+            FFRoute(
               name: 'registerFormPricing',
               path: 'registerFormPricing',
               builder: (context, params) => RegisterFormPricingWidget(),
@@ -189,11 +194,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProductWidget(
                 id: params.getParam('id', ParamType.int),
               ),
-            ),
-            FFRoute(
-              name: 'BuyMembershipPage',
-              path: 'buyMembershipPage',
-              builder: (context, params) => BuyMembershipPageWidget(),
             ),
             FFRoute(
               name: 'editProductCopy',

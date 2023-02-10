@@ -1374,10 +1374,10 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                           'zaqb2msj' /* Mali */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          'ovegx36m' /* Senegal */,
+                                          '7v0bn8cm' /* Senegal */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          'z9lv36ov' /* Cote d'ivoire */,
+                                          'zyn8e18i' /* Cote d'ivoire */,
                                         )
                                       ],
                                       onChanged: (val) async {

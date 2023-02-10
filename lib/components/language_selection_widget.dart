@@ -70,7 +70,9 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
               onTap: () async {
                 FFAppState().update(() {
                   FFAppState().isEnglish = false;
+                  FFAppState().selectedLanguageCode = 'fr';
                 });
+                setAppLanguage(context, FFAppState().selectedLanguageCode);
                 Navigator.pop(context);
               },
               child: Row(
@@ -116,7 +118,9 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
               onTap: () async {
                 FFAppState().update(() {
                   FFAppState().isEnglish = true;
+                  FFAppState().selectedLanguageCode = 'en';
                 });
+                setAppLanguage(context, FFAppState().selectedLanguageCode);
                 Navigator.pop(context);
               },
               child: Row(

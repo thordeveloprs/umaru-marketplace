@@ -1261,7 +1261,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                     .call(
                                               venderId: getJsonField(
                                                 FFAppState().userData,
-                                                r'''$.data.vendor_id''',
+                                                r'''$.vendor_id''',
                                               ).toString(),
                                             );
                                             setState(() {

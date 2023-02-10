@@ -62,13 +62,32 @@ class _BuyMembershipPageWidgetState extends State<BuyMembershipPageWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15, 123, 15, 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'f262efla' /* Membership Details */,
+                      ),
+                      style: FlutterFlowTheme.of(context).title1.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            fontSize: 22,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
               if (_model.subscriptionResult != null)
                 Expanded(
                   child: Padding(
@@ -179,6 +198,7 @@ class _BuyMembershipPageWidgetState extends State<BuyMembershipPageWidget> {
                                         ),
                                         options: FFButtonOptions(
                                           width: double.infinity,
+                                          height: 40,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           textStyle:
