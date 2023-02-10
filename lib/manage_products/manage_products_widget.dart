@@ -353,76 +353,94 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                           (context, manageProductIndex) {
                                         final manageProductItem =
                                             manageProduct[manageProductIndex];
-                                        return Container(
-                                          width: double.infinity,
-                                          height: 99.6,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFFF5F6F8),
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
+                                        return InkWell(
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'editProduct',
+                                              queryParams: {
+                                                'id': serializeParam(
+                                                  getJsonField(
+                                                    manageProductItem,
+                                                    r'''$.product_id''',
+                                                  ),
+                                                  ParamType.int,
                                                 ),
-                                                child: Row(
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 99.6,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFF5F6F8),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 8, 0, 8),
+                                                        child: Image.network(
+                                                          getJsonField(
+                                                            manageProductItem,
+                                                            r'''$.product_image''',
+                                                          ),
+                                                          width: 83,
+                                                          height: 83,
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 8, 0, 8),
-                                                      child: Image.network(
+                                                    Expanded(
+                                                      child: Text(
                                                         getJsonField(
                                                           manageProductItem,
-                                                          r'''$.product_image''',
-                                                        ),
-                                                        width: 83,
-                                                        height: 83,
-                                                        fit: BoxFit.fitHeight,
+                                                          r'''$.product_name''',
+                                                        ).toString(),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .title1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  fontSize: 11,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
                                                 ),
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      getJsonField(
-                                                        manageProductItem,
-                                                        r'''$.product_name''',
-                                                      ).toString(),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .title1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                fontSize: 11,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         );
                                       },

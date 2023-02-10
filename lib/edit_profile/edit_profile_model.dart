@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class EditProfileModel extends FlutterFlowModel {
   ///  Local state fields for this page.
 
-  String productSelectedCountryCode = 'NULL';
+  String productSelectedCountryCode = ' ';
 
   ///  State fields for stateful widgets in this page.
 

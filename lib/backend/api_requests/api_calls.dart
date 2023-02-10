@@ -422,7 +422,7 @@ class UpdateCompanyDetailsCall {
     String? city = '',
     String? zipCode = '',
     String? region = '',
-    int? countryId,
+    String? countryId = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'update company details',

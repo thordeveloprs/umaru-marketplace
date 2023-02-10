@@ -1306,6 +1306,257 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
+  // editProduct
+  {
+    'menrklms': {
+      'en': 'Product Name',
+      'fr': 'Nom du produit',
+    },
+    'mtuqqny5': {
+      'en': '*',
+      'fr': '*',
+    },
+    '2vg0rric': {
+      'en': 'SKU',
+      'fr': 'UGS',
+    },
+    'x7nlnghf': {
+      'en': '*',
+      'fr': '*',
+    },
+    'm790oisr': {
+      'en': 'Price',
+      'fr': 'Prix',
+    },
+    '80fgzf1b': {
+      'en': '*',
+      'fr': '*',
+    },
+    'awsuihr9': {
+      'en': 'Set Special Price',
+      'fr': 'Est en vedette',
+    },
+    'amc2lap9': {
+      'en': 'Special Price',
+      'fr': 'Prix spécial',
+    },
+    'pjrrc9x7': {
+      'en': 'Special price from',
+      'fr': 'Définissez le produit comme nouveau à partir de',
+    },
+    'k4fgkzs3': {
+      'en': 'To',
+      'fr': 'Pour',
+    },
+    'qx74i40q': {
+      'en': 'Quantity',
+      'fr': 'Quantité',
+    },
+    'mli64bxk': {
+      'en': '*',
+      'fr': '*',
+    },
+    'mfb9j1bq': {
+      'en': 'Weight',
+      'fr': 'Lester',
+    },
+    'xbbzt1u5': {
+      'en': 'Stock Status',
+      'fr': 'État des stocks',
+    },
+    'h4q1csch': {
+      'en': 'In Stock ',
+      'fr': '',
+    },
+    'fd8z6tju': {
+      'en': 'In Stock ',
+      'fr': 'En stock',
+    },
+    'fcu4dp1u': {
+      'en': 'Exhausted',
+      'fr': 'Épuisé',
+    },
+    '01nzfk23': {
+      'en': '',
+      'fr': 'Veuillez sélectionner',
+    },
+    'di06alia': {
+      'en': 'Set the Product as a New from',
+      'fr': 'Définissez le produit comme nouveau à partir de',
+    },
+    'p60y16md': {
+      'en': 'To',
+      'fr': 'Pour',
+    },
+    'ppi9gkv5': {
+      'en': 'Is Featured ',
+      'fr': 'Est en vedette',
+    },
+    'fyts3w4t': {
+      'en': 'Country',
+      'fr': 'Pays',
+    },
+    '96h5uvbg': {
+      'en': '*',
+      'fr': '*',
+    },
+    'zaqb2msj': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    't225ejyg': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    '3ymbbsia': {
+      'en': 'Category',
+      'fr': 'Catégorie',
+    },
+    '3hu4o4ec': {
+      'en': '*',
+      'fr': '*',
+    },
+    'ihsc85xz': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    '8z9rp7ns': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    'm2xeb55k': {
+      'en': 'Sub Category',
+      'fr': 'Sous-catégorie',
+    },
+    '0yl76fcg': {
+      'en': 'Option 1',
+      'fr': 'Option 1',
+    },
+    '9i9d8l8h': {
+      'en': 'Please select...',
+      'fr': 'Veuillez sélectionner...',
+    },
+    'vwgf8cd9': {
+      'en': 'Image Upload',
+      'fr': 'Téléchargement d\'images',
+    },
+    'vq98v1dx': {
+      'en': 'Select Photos',
+      'fr': 'Sélectionnez Photos',
+    },
+    'w3q1760b': {
+      'en': 'Short Description',
+      'fr': 'brève description',
+    },
+    'gxwmyljo': {
+      'en': '*',
+      'fr': '*',
+    },
+    'iehjjfex': {
+      'en': 'Description',
+      'fr': 'Description',
+    },
+    '1xdnh6bj': {
+      'en': '*',
+      'fr': '*',
+    },
+    'sle95kp0': {
+      'en': 'Meta Title',
+      'fr': 'Méta-titre',
+    },
+    '8ftb2hgu': {
+      'en': 'Meta Description',
+      'fr': 'Meta Description',
+    },
+    '8v228q18': {
+      'en': 'Confirm',
+      'fr': 'Confirmer',
+    },
+    'h3gmsbrx': {
+      'en': 'Product  Name  is required',
+      'fr': 'Le nom du produit est requis',
+    },
+    '4qrjkwij': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'enhhuxpu': {
+      'en': 'SKU is required',
+      'fr': 'SKU est requis',
+    },
+    'r4omzblk': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'k6nnqzq3': {
+      'en': 'Price is required',
+      'fr': 'Le prix est requis',
+    },
+    '4q0pz3cf': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    '6pucfdi2': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'xf0n3f5f': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'x1a7o5rn': {
+      'en': 'Quantity is required',
+      'fr': '',
+    },
+    'vdr2cudq': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'wdzyqodv': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'k2rqqulg': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'cgsqj3ex': {
+      'en': 'Short Description is required',
+      'fr': 'La description est obligatoire',
+    },
+    'vt0xnw79': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'zj9pedb3': {
+      'en': 'Description is required',
+      'fr': '',
+    },
+    '3voam8fj': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'wszjul3w': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'xtql6ky1': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    '2e24x3ua': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'baydztbe': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'x0i4bayh': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // forgotPassword
   {
     's01ryyvc': {

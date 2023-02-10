@@ -23,3 +23,4 @@ export 'product_detail_page/product_detail_page_widget.dart'
 export 'category_page/category_page_widget.dart' show CategoryPageWidget;
 export 'change_password/change_password_widget.dart' show ChangePasswordWidget;
 export 'webview/webview_widget.dart' show WebviewWidget;
+export 'edit_product/edit_product_widget.dart' show EditProductWidget;

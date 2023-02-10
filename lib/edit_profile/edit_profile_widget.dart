@@ -4075,7 +4075,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                       setState(
                                                                           () {
                                                                         _model.productSelectedCountryCode =
-                                                                            'NULL';
+                                                                            ' ';
                                                                       });
                                                                     }
                                                                   }
@@ -4183,8 +4183,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           region: _model
                                                               .txtStateController
                                                               .text,
-                                                          countryId: FFAppState()
-                                                              .selectedCountryId,
+                                                          countryId: _model
+                                                              .productSelectedCountryCode,
                                                           vendorId:
                                                               getJsonField(
                                                             FFAppState()

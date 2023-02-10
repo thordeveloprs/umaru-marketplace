@@ -13,18 +13,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_product_model.dart';
-export 'add_product_model.dart';
+import 'edit_product_model.dart';
+export 'edit_product_model.dart';
 
-class AddProductWidget extends StatefulWidget {
-  const AddProductWidget({Key? key}) : super(key: key);
+class EditProductWidget extends StatefulWidget {
+  const EditProductWidget({
+    Key? key,
+    this.id,
+  }) : super(key: key);
+
+  final int? id;
 
   @override
-  _AddProductWidgetState createState() => _AddProductWidgetState();
+  _EditProductWidgetState createState() => _EditProductWidgetState();
 }
 
-class _AddProductWidgetState extends State<AddProductWidget> {
-  late AddProductModel _model;
+class _EditProductWidgetState extends State<EditProductWidget> {
+  late EditProductModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -32,7 +37,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddProductModel());
+    _model = createModel(context, () => EditProductModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -86,7 +91,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                     model: _model.appbarModel,
                     updateCallback: () => setState(() {}),
                     child: AppbarWidget(
-                      appTitle: 'Add Product',
+                      appTitle: 'Edit Product',
                       isShowBack: true,
                     ),
                   ),
@@ -116,7 +121,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '51t5z7ao' /* Product Name */,
+                                            'menrklms' /* Product Name */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -130,7 +135,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'hgsodskl' /* * */,
+                                          'mtuqqny5' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -196,7 +201,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '2kqyqkli' /* SKU */,
+                                            '2vg0rric' /* SKU */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -210,7 +215,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'od9e4svd' /* * */,
+                                          'x7nlnghf' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -274,7 +279,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'jq9j560t' /* Price */,
+                                            'm790oisr' /* Price */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -288,7 +293,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '4drw1ybi' /* * */,
+                                          '80fgzf1b' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -350,7 +355,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'gt3zd2as' /* Set Special Price */,
+                                          'awsuihr9' /* Set Special Price */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -394,7 +399,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '1s67b7gm' /* Special Price */,
+                                                'amc2lap9' /* Special Price */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -463,7 +468,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'hmf6t5s6' /* Special price from */,
+                                                'pjrrc9x7' /* Special price from */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -551,7 +556,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                                   5, 0, 5, 0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '9yhjpwb8' /* To */,
+                                              'k4fgkzs3' /* To */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1,
@@ -640,7 +645,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '48bqkyu6' /* Quantity */,
+                                            'qx74i40q' /* Quantity */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -654,7 +659,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '0u8mfm93' /* * */,
+                                          'mli64bxk' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -717,7 +722,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'ln1tvq9n' /* Weight */,
+                                          'mfb9j1bq' /* Weight */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -779,7 +784,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'fedck62x' /* Stock Status */,
+                                          'xbbzt1u5' /* Stock Status */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -802,10 +807,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   options: [1, 0],
                                   optionLabels: [
                                     FFLocalizations.of(context).getText(
-                                      'j8751bfb' /* In Stock  */,
+                                      'fd8z6tju' /* In Stock  */,
                                     ),
                                     FFLocalizations.of(context).getText(
-                                      'xik083mw' /* Exhausted */,
+                                      'fcu4dp1u' /* Exhausted */,
                                     )
                                   ],
                                   onChanged: (val) => setState(
@@ -841,7 +846,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '7xo2l30t' /* Set the Product as a New from */,
+                                          'di06alia' /* Set the Product as a New from */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -922,7 +927,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         5, 0, 5, 0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'zzsucxyz' /* To */,
+                                        'p60y16md' /* To */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
@@ -1001,7 +1006,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'xlh6u3rq' /* Is Featured  */,
+                                          'ppi9gkv5' /* Is Featured  */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1054,7 +1059,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'h2d0wn47' /* Country */,
+                                            'fyts3w4t' /* Country */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1068,7 +1073,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'hdze4isj' /* * */,
+                                          '96h5uvbg' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -1135,7 +1140,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         color: Colors.black,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'j999msk4' /* Please select... */,
+                                    't225ejyg' /* Please select... */,
                                   ),
                                   fillColor: Colors.white,
                                   elevation: 2,
@@ -1163,7 +1168,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'ztcmmad9' /* Category */,
+                                            '3ymbbsia' /* Category */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1177,7 +1182,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'cy0qce3x' /* * */,
+                                          '3hu4o4ec' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -1229,7 +1234,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       color: Colors.black,
                                     ),
                                 hintText: FFLocalizations.of(context).getText(
-                                  'b1r8noxx' /* Please select... */,
+                                  '8z9rp7ns' /* Please select... */,
                                 ),
                                 fillColor: Colors.white,
                                 elevation: 2,
@@ -1259,7 +1264,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'nc7d8gdm' /* Sub Category */,
+                                                'm2xeb55k' /* Sub Category */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -1312,7 +1317,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '8zummp9n' /* Please select... */,
+                                        '9i9d8l8h' /* Please select... */,
                                       ),
                                       fillColor: Colors.white,
                                       elevation: 2,
@@ -1432,7 +1437,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          's548nlpk' /* Image Upload */,
+                                          'vwgf8cd9' /* Image Upload */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1511,7 +1516,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'myi910on' /* Select Photos */,
+                                          'vq98v1dx' /* Select Photos */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -1600,7 +1605,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'wlkswa8h' /* Short Description */,
+                                            'w3q1760b' /* Short Description */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1614,7 +1619,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'vxgfjtg2' /* * */,
+                                          'gxwmyljo' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -1681,7 +1686,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             0, 0, 7, 0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'drupwz7u' /* Description */,
+                                            'iehjjfex' /* Description */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1695,7 +1700,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '7qjvlohe' /* * */,
+                                          '1xdnh6bj' /* * */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -1758,7 +1763,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'nse4uqkl' /* Meta Title */,
+                                          'sle95kp0' /* Meta Title */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1821,7 +1826,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'hbi0gd7x' /* Meta Description */,
+                                          '8ftb2hgu' /* Meta Description */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1879,40 +1884,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
                                             .validate()) {
-                                      return;
-                                    }
-                                    if (_model.dropDownCountryValue == null) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Country Is Required',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor: Colors.black,
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                    if (_model.dropDownCategoryValue == null) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Category is Required',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor: Colors.black,
-                                        ),
-                                      );
                                       return;
                                     }
                                     _model.createProductDetails =
@@ -2009,7 +1980,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     setState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'htvqm6j1' /* Confirm */,
+                                    '8v228q18' /* Confirm */,
                                   ),
                                   options: FFButtonOptions(
                                     width: double.infinity,
