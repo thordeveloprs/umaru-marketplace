@@ -1567,14 +1567,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // BuyMembershipPage
   {
-    'yaj9lnxq': {
-      'en': 'Member Ship Name',
-      'fr': '',
-    },
-    '448llw3h': {
-      'en': '200',
-      'fr': '',
-    },
     'qauaan3r': {
       'en': 'FCFA',
       'fr': '',
@@ -1594,15 +1586,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // test
   {
-    'lta3mqol': {
+    'xazjhut2': {
       'en': 'Button',
       'fr': '',
     },
-    '5w77t3ju': {
+    '5i7b1ivg': {
       'en': 'Page Title',
       'fr': '',
     },
-    'unsw1un9': {
+    '6mz8qj35': {
       'en': 'Home',
       'fr': '',
     },

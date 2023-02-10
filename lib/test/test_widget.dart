@@ -46,7 +46,7 @@ class _TestWidgetState extends State<TestWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            '5w77t3ju' /* Page Title */,
+            '5i7b1ivg' /* Page Title */,
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
@@ -69,7 +69,7 @@ class _TestWidgetState extends State<TestWidget> {
                   context.pushNamed('BuyMembershipPage');
                 },
                 text: FFLocalizations.of(context).getText(
-                  'lta3mqol' /* Button */,
+                  'xazjhut2' /* Button */,
                 ),
                 options: FFButtonOptions(
                   width: 130,
