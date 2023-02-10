@@ -10,8 +10,8 @@ export 'all_category/all_category_widget.dart' show AllCategoryWidget;
 export 'register_formcompany_details/register_formcompany_details_widget.dart'
     show RegisterFormcompanyDetailsWidget;
 export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
-export 'my_accounts/my_accounts_widget.dart' show MyAccountsWidget;
 export 'manage_products/manage_products_widget.dart' show ManageProductsWidget;
+export 'my_accounts/my_accounts_widget.dart' show MyAccountsWidget;
 export 'add_product/add_product_widget.dart' show AddProductWidget;
 export 'privacy_policy/privacy_policy_widget.dart' show PrivacyPolicyWidget;
 export 'seller_registeration/seller_registeration_widget.dart'
@@ -24,3 +24,6 @@ export 'category_page/category_page_widget.dart' show CategoryPageWidget;
 export 'change_password/change_password_widget.dart' show ChangePasswordWidget;
 export 'webview/webview_widget.dart' show WebviewWidget;
 export 'edit_product/edit_product_widget.dart' show EditProductWidget;
+export 'buy_membership_page/buy_membership_page_widget.dart'
+    show BuyMembershipPageWidget;
+export 'test/test_widget.dart' show TestWidget;

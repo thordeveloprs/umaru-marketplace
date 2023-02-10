@@ -29,6 +29,14 @@ class FFAppState extends ChangeNotifier {
     _findShopCategoryId =
         prefs.getInt('ff_findShopCategoryId') ?? _findShopCategoryId;
     _isEnglish = prefs.getBool('ff_isEnglish') ?? _isEnglish;
+    if (prefs.containsKey('ff_subscriptionDetail')) {
+      try {
+        _subscriptionDetail =
+            jsonDecode(prefs.getString('ff_subscriptionDetail') ?? '');
+      } catch (e) {
+        print("Can't decode persisted json. Error: $e.");
+      }
+    }
   }
 
   void update(VoidCallback callback) {
@@ -258,6 +266,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromSelectedCategoryIdList(int _index) {
     _selectedCategoryIdList.removeAt(_index);
+  }
+
+  dynamic _subscriptionDetail;
+  dynamic get subscriptionDetail => _subscriptionDetail;
+  set subscriptionDetail(dynamic _value) {
+    _subscriptionDetail = _value;
+    prefs.setString('ff_subscriptionDetail', jsonEncode(_value));
   }
 }
 

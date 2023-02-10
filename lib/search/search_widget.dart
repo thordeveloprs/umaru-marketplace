@@ -1,5 +1,4 @@
 import '../backend/api_requests/api_calls.dart';
-import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/widgets/index.dart' as custom_widgets;
@@ -57,13 +56,23 @@ class _SearchWidgetState extends State<SearchWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                wrapWithModel(
-                  model: _model.appbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: AppbarWidget(
-                    appTitle: 'Search Page',
-                    isShowBack: false,
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '0pkr8h18' /* Search */,
+                        ),
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -204,7 +213,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.black,
+                                              ),
                                           validator: _model
                                               .searchPageTextFieldControllerValidator
                                               .asValidator(context),

@@ -106,6 +106,8 @@ class SellerRegisterationModel extends FlutterFlowModel {
   dynamic? response;
   // Stores action output result for [Backend Call - API (register)] action in Button widget.
   ApiCallResponse? registerApiResponse;
+  // Stores action output result for [Backend Call - API (Get Subscription Details)] action in Button widget.
+  ApiCallResponse? membershipResponse;
 
   /// Initialization and disposal methods.
 

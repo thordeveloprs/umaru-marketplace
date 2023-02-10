@@ -52,6 +52,8 @@ class UmaruGroup {
   static GetProductAllDetailsForEditProductCall
       getProductAllDetailsForEditProductCall =
       GetProductAllDetailsForEditProductCall();
+  static GetSubscriptionDetailsCall getSubscriptionDetailsCall =
+      GetSubscriptionDetailsCall();
 }
 
 class LoginCall {
@@ -676,8 +678,8 @@ class SearchVendorProductCall {
 
 class GetProductAllDetailsForEditProductCall {
   Future<ApiCallResponse> call({
-    int? vendorId,
-    int? productId,
+    String? vendorId = '',
+    String? productId = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getProductAllDetailsForEditProduct',
@@ -700,6 +702,60 @@ class GetProductAllDetailsForEditProductCall {
   dynamic details(dynamic response) => getJsonField(
         response,
         r'''$[0]['#Détails du produit']''',
+        true,
+      );
+  dynamic contenu(dynamic response) => getJsonField(
+        response,
+        r'''$[0]['#Contenu']''',
+        true,
+      );
+  dynamic optimisationpourlesmoteursderecherche(dynamic response) =>
+      getJsonField(
+        response,
+        r'''$[0]['#Optimisation pour les moteurs de recherche']''',
+        true,
+      );
+  dynamic gestionavancedesprix(dynamic response) => getJsonField(
+        response,
+        r'''$[0]['#Gestion avancée des prix']''',
+        true,
+      );
+}
+
+class GetSubscriptionDetailsCall {
+  Future<ApiCallResponse> call({
+    String? venderId = '',
+  }) {
+    final body = '''
+{
+  "data": {
+    "vendor_id": "${venderId}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Subscription Details',
+      apiUrl: '${UmaruGroup.baseUrl}/pub/rest/V1/plan/items',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic membershipStatus(dynamic response) => getJsonField(
+        response,
+        r'''$[0].vendor_data.status''',
+      );
+  dynamic membershipPlan(dynamic response) => getJsonField(
+        response,
+        r'''$[0].vendor_data.membership_plans''',
         true,
       );
 }

@@ -90,10 +90,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Best Sellers',
       'fr': 'Meilleures ventes',
     },
-    'tbzjdptw': {
-      'en': '27 189',
-      'fr': '27 189',
-    },
     '15llcaa4': {
       'en': 'FCFA',
       'fr': 'FCFA',
@@ -166,6 +162,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // search
   {
+    '0pkr8h18': {
+      'en': 'Search',
+      'fr': 'Appbar',
+    },
     'c8qyhf09': {
       'en': 'Search',
       'fr': 'Recherche',
@@ -683,6 +683,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
+  // ManageProducts
+  {
+    'e0pba0x2': {
+      'en': 'Search',
+      'fr': '',
+    },
+    'bys89djy': {
+      'en': 'Add New',
+      'fr': 'Ajouter nouveau',
+    },
+    'l78spfvj': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // MyAccounts
   {
     'h1ahj7v6': {
@@ -740,21 +755,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'j5glnhsd': {
       'en': 'Account',
       'fr': 'Compte',
-    },
-  },
-  // ManageProducts
-  {
-    'e0pba0x2': {
-      'en': 'Search',
-      'fr': '',
-    },
-    'bys89djy': {
-      'en': 'Add New',
-      'fr': 'Ajouter nouveau',
-    },
-    'l78spfvj': {
-      'en': 'Home',
-      'fr': 'Maison',
     },
   },
   // addProduct
@@ -1563,6 +1563,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'x0i4bayh': {
       'en': 'Home',
       'fr': 'Maison',
+    },
+  },
+  // BuyMembershipPage
+  {
+    'yaj9lnxq': {
+      'en': 'Member Ship Name',
+      'fr': '',
+    },
+    '448llw3h': {
+      'en': '200',
+      'fr': '',
+    },
+    'qauaan3r': {
+      'en': 'FCFA',
+      'fr': '',
+    },
+    'uyracpdl': {
+      'en': 'Subscribe',
+      'fr': '',
+    },
+    'bc5c9vv1': {
+      'en': 'Skip',
+      'fr': '',
+    },
+    'wfzqgmuf': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // test
+  {
+    'lta3mqol': {
+      'en': 'Button',
+      'fr': '',
+    },
+    '5w77t3ju': {
+      'en': 'Page Title',
+      'fr': '',
+    },
+    'unsw1un9': {
+      'en': 'Home',
+      'fr': '',
     },
   },
   // forgotPassword

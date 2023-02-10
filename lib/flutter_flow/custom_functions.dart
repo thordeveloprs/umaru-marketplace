@@ -151,7 +151,7 @@ String findEditProdutFromJson(
     if (b.isEmpty) {
       return "";
     } else {
-      return b.first["saved_value"];
+      return b.first["saved_value"].toString();
     }
   } else {
     return "";

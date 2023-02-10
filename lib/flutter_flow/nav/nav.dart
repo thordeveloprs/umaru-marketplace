@@ -117,16 +117,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
+              name: 'ManageProducts',
+              path: 'manageProducts',
+              builder: (context, params) => ManageProductsWidget(),
+            ),
+            FFRoute(
               name: 'MyAccounts',
               path: 'myAccounts',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'MyAccounts')
                   : MyAccountsWidget(),
-            ),
-            FFRoute(
-              name: 'ManageProducts',
-              path: 'manageProducts',
-              builder: (context, params) => ManageProductsWidget(),
             ),
             FFRoute(
               name: 'addProduct',
@@ -189,6 +189,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProductWidget(
                 id: params.getParam('id', ParamType.int),
               ),
+            ),
+            FFRoute(
+              name: 'BuyMembershipPage',
+              path: 'buyMembershipPage',
+              builder: (context, params) => BuyMembershipPageWidget(),
+            ),
+            FFRoute(
+              name: 'test',
+              path: 'test',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'test')
+                  : TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

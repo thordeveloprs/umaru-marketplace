@@ -1,5 +1,4 @@
 import '../backend/api_requests/api_calls.dart';
-import '../components/appbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/widgets/index.dart' as custom_widgets;
@@ -12,8 +11,6 @@ import 'package:provider/provider.dart';
 class SearchModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Model for appbar component.
-  late AppbarModel appbarModel;
   // State field(s) for SearchPageTextField widget.
   TextEditingController? searchPageTextFieldController;
   String? Function(BuildContext, String?)?
@@ -23,9 +20,7 @@ class SearchModel extends FlutterFlowModel {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    appbarModel = createModel(context, () => AppbarModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     searchPageTextFieldController?.dispose();

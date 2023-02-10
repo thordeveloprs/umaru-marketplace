@@ -18,6 +18,8 @@ class EditProductModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - API (getProductAllDetailsForEditProduct)] action in editProduct widget.
+  ApiCallResponse? getProductAllDetailsForEditProductCall;
   // Model for appbar component.
   late AppbarModel appbarModel;
   // State field(s) for txtProductName widget.
@@ -43,7 +45,7 @@ class EditProductModel extends FlutterFlowModel {
   TextEditingController? txWeightController;
   String? Function(BuildContext, String?)? txWeightControllerValidator;
   // State field(s) for DropDownStocksta widget.
-  int? dropDownStockstaValue;
+  String? dropDownStockstaValue;
   DateTime? datePicked3;
   DateTime? datePicked4;
   // State field(s) for SwitchIsFeature widget.
@@ -75,8 +77,6 @@ class EditProductModel extends FlutterFlowModel {
   // State field(s) for metadesTxt widget.
   TextEditingController? metadesTxtController;
   String? Function(BuildContext, String?)? metadesTxtControllerValidator;
-  // Stores action output result for [Backend Call - API (create product)] action in Tab1SaveButton widget.
-  ApiCallResponse? createProductDetails;
   // Model for sucessMsg component.
   late SucessMsgModel sucessMsgModel;
 

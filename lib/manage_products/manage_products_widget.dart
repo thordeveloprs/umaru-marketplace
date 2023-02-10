@@ -256,7 +256,11 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.black,
+                                              ),
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),

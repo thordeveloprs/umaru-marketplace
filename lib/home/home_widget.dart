@@ -580,11 +580,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .fromSTEB(
                                                                   0, 0, 2.5, 0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'tbzjdptw' /* 27 189 */,
-                                                        ),
+                                                        getJsonField(
+                                                          bestsellerChildItem,
+                                                          r'''$.price''',
+                                                        ).toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

@@ -1255,8 +1255,33 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               );
                                               FFAppState().isLogin = true;
                                             });
-
-                                            context.goNamed('Home');
+                                            _model.membershipResponse =
+                                                await UmaruGroup
+                                                    .getSubscriptionDetailsCall
+                                                    .call(
+                                              venderId: getJsonField(
+                                                FFAppState().userData,
+                                                r'''$.data.vendor_id''',
+                                              ).toString(),
+                                            );
+                                            setState(() {
+                                              FFAppState().subscriptionDetail =
+                                                  (_model.membershipResponse
+                                                          ?.jsonBody ??
+                                                      '');
+                                            });
+                                            if (UmaruGroup
+                                                .getSubscriptionDetailsCall
+                                                .membershipStatus(
+                                              (_model.membershipResponse
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )) {
+                                              context.goNamed('Home');
+                                            } else {
+                                              context.pushNamed(
+                                                  'BuyMembershipPage');
+                                            }
                                           } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
