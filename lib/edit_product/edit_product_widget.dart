@@ -2312,7 +2312,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                   FFAppState()
                                                           .productStartDate !=
                                                       ''
-                                              ? FFAppState().productStartDate
+                                              ? dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )
                                               : functions
                                                   .findEditProdutFromJson(
                                                       UmaruGroup
@@ -2328,7 +2334,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       null &&
                                                   FFAppState().productEndDate !=
                                                       ''
-                                              ? FFAppState().productEndDate
+                                              ? dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked4,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )
                                               : functions
                                                   .findEditProdutFromJson(
                                                       UmaruGroup

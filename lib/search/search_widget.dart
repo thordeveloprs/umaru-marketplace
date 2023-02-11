@@ -156,9 +156,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                         .searchFranchCall
                                                         .call(
                                                   token: FFAppState().token,
-                                                  search: _model
+                                                  search: functions.urlEncode(_model
                                                       .searchPageTextFieldController
-                                                      .text,
+                                                      .text),
                                                 );
                                                 setState(() {
                                                   FFAppState().isLoading =
