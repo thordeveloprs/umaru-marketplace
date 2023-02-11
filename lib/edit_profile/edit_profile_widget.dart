@@ -30,20 +30,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
-    _model.txtCompanyNameController = TextEditingController(
-        text: getJsonField(
-                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                  r'''$.data["Informations sur la société"]''',
-                ) ==
-                null
-            ? null
-            : functions.getObjectFromList(
-                UmaruGroup.getVendorAndCompanyDetailsCall
-                    .informationssurlasocit(
-                      columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                    )!
-                    .toList(),
-                'Nom de l\'entreprise'));
+    _model.txtCompanyNameController = TextEditingController();
   }
 
   @override
