@@ -51,7 +51,7 @@ class _PaymentWebViewWidgetState extends State<PaymentWebViewWidget> {
         automaticallyImplyLeading: true,
         title: Text(
           FFLocalizations.of(context).getText(
-            '08xz7j8l' /* Payment */,
+            'v2mqw0qq' /* Payment */,
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
@@ -75,6 +75,7 @@ class _PaymentWebViewWidgetState extends State<PaymentWebViewWidget> {
                 child: custom_widgets.PaymentWebView(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 1,
+                  url: widget.url!,
                 ),
               ),
             ],

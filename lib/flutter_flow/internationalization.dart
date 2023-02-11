@@ -195,11 +195,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'zz2z69w8': {
       'en': 'Buy Now',
-      'fr': '',
+      'fr': 'Acheter maintenant',
     },
     'bc5c9vv1': {
       'en': 'Skip',
-      'fr': '',
+      'fr': 'Sauter',
     },
     'wfzqgmuf': {
       'en': 'Home',
@@ -339,7 +339,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'f40622jz': {
       'en': 'Genreal Info',
-      'fr': 'Informations générales',
+      'fr': 'Informations \ngénérales',
     },
     'bv6314xi': {
       'en': 'Name',
@@ -451,7 +451,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'je9s1pos': {
       'en': 'Company Info',
-      'fr': 'Information d\'entreprise',
+      'fr': 'Information \nd\'entreprise',
     },
     'mm9hofjm': {
       'en': 'Company Details',
@@ -1614,11 +1614,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // paymentWebView
   {
-    '08xz7j8l': {
+    'v2mqw0qq': {
       'en': 'Payment',
       'fr': '',
     },
-    'gxm9sb4x': {
+    'opcxfe54': {
       'en': 'Home',
       'fr': '',
     },

@@ -161,7 +161,6 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                                     r'''$.name''',
                                                   ).toString(),
                                                   textAlign: TextAlign.center,
-                                                  maxLines: 2,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1

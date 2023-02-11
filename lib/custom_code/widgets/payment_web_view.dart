@@ -8,15 +8,27 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 class PaymentWebView extends StatefulWidget {
   double width, height;
-  PaymentWebView({Key? key, required this.height, required this.width})
+  String url;
+  PaymentWebView(
+      {Key? key, required this.height, required this.width, required this.url})
       : super(key: key);
   @override
   _PaymentWebView createState() => _PaymentWebView();
 }
 
 class _PaymentWebView extends State<PaymentWebView> {
+  bool isLoading = true;
+
+  @override
+  void onInit() {
+    print("ASdad");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();

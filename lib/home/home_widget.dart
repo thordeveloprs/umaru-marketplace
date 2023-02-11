@@ -869,6 +869,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           },
                                           child: Container(
                                             width: 166,
+                                            height: 287.9,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -901,7 +902,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 0),
+                                                      .fromSTEB(0, 4, 0, 0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,

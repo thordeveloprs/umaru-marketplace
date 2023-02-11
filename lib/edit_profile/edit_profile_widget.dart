@@ -99,7 +99,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: Column(
                                 children: [
                                   TabBar(
-                                    isScrollable: true,
                                     labelColor: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -152,7 +151,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           MainAxisAlignment
                                                               .center,
                                                       children: [
-                                                        Expanded(
+                                                        Container(
+                                                          width: 120,
+                                                          height: 100,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0x00FFFFFF),
+                                                          ),
                                                           child: InkWell(
                                                             onTap: () async {
                                                               final selectedMedia =
@@ -233,46 +239,24 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          0.2,
-                                                                          0.61),
+                                                                          0.65,
+                                                                          0.89),
                                                                   child:
                                                                       Container(
                                                                     width: 20,
                                                                     height: 20,
+                                                                    clipBehavior:
+                                                                        Clip.antiAlias,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
-                                                                    child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0,
-                                                                              0),
-                                                                      child:
-                                                                          Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        height:
-                                                                            double.infinity,
-                                                                        clipBehavior:
-                                                                            Clip.antiAlias,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          shape:
-                                                                              BoxShape.circle,
-                                                                        ),
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'assets/images/camera-icon-symbol-template-camera-outline-icon-isolated-white-background_664675-534.avif',
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
+                                                                    child: Image
+                                                                        .asset(
+                                                                      'assets/images/camera-icon-symbol-template-camera-outline-icon-isolated-white-background_664675-534.avif',
+                                                                      fit: BoxFit
+                                                                          .contain,
                                                                     ),
                                                                   ),
                                                                 ),
