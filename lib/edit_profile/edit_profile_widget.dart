@@ -36,7 +36,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   r'''$.data["Informations sur la société"]''',
                 ) ==
                 null
-            ? ' '
+            ? null
             : functions.getObjectFromList(
                 UmaruGroup.getVendorAndCompanyDetailsCall
                     .informationssurlasocit(
