@@ -1,4 +1,4 @@
-package com.mycompany.umarumarketplace
+package com.mycompany.umarumart
 
 import io.flutter.embedding.android.FlutterActivity
 

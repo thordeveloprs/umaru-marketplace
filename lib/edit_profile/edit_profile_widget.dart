@@ -35,7 +35,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   columnGetVendorAndCompanyDetailsResponse.jsonBody,
                 ) ==
                 null
-            ? null
+            ? 'rt'
             : functions.getObjectFromList(
                 UmaruGroup.getVendorAndCompanyDetailsCall
                     .informationssurlasocit(
@@ -253,24 +253,45 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          0.65,
+                                                                          0.6,
                                                                           0.89),
                                                                   child:
                                                                       Container(
                                                                     width: 20,
                                                                     height: 20,
-                                                                    clipBehavior:
-                                                                        Clip.antiAlias,
                                                                     decoration:
                                                                         BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       shape: BoxShape
                                                                           .circle,
                                                                     ),
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'assets/images/camera-icon-symbol-template-camera-outline-icon-isolated-white-background_664675-534.avif',
-                                                                      fit: BoxFit
-                                                                          .contain,
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.65,
+                                                                          0.89),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            20,
+                                                                        clipBehavior:
+                                                                            Clip.antiAlias,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          shape:
+                                                                              BoxShape.circle,
+                                                                        ),
+                                                                        child: Image
+                                                                            .asset(
+                                                                          'assets/images/camera-outline-icon-27.png',
+                                                                          fit: BoxFit
+                                                                              .contain,
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
