@@ -29,6 +29,21 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
+
+    _model.txtCompanyNameController = TextEditingController(
+        text: getJsonField(
+                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                  r'''$.data["Informations sur la société"]''',
+                ) ==
+                null
+            ? ' '
+            : functions.getObjectFromList(
+                UmaruGroup.getVendorAndCompanyDetailsCall
+                    .informationssurlasocit(
+                      columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                    )!
+                    .toList(),
+                'Nom de l\'entreprise'));
   }
 
   @override
@@ -1504,19 +1519,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     0, 0),
                                                         child: TextFormField(
                                                           controller: _model
-                                                                  .txtCompanyNameController ??=
-                                                              TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlasocit(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Nom de l\'entreprise'),
-                                                          ),
+                                                              .txtCompanyNameController,
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
