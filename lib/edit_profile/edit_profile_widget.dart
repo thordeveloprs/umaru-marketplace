@@ -30,7 +30,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
-    _model.txtCompanyNameController = TextEditingController();
+    _model.txtCompanyNameController = TextEditingController(
+        text: false
+            ? null
+            : functions.getObjectFromList(
+                UmaruGroup.getVendorAndCompanyDetailsCall
+                    .informationssurlasocit(
+                      columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                    )!
+                    .toList(),
+                'Nom de l\'entreprise'));
   }
 
   @override
