@@ -67,6 +67,9 @@ String getObjectFromList(
   List<dynamic> list,
   String searchLableName,
 ) {
+  if (list == null) {
+    return "";
+  }
   if (list.isNotEmpty) {
     print(searchLableName);
     var b = list.where((d) => d["label"] == searchLableName);
