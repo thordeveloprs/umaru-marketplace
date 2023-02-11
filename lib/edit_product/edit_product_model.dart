@@ -75,6 +75,8 @@ class EditProductModel extends FlutterFlowModel {
   // State field(s) for metadesTxt widget.
   TextEditingController? metadesTxtController;
   String? Function(BuildContext, String?)? metadesTxtControllerValidator;
+  // Stores action output result for [Backend Call - API (edit product)] action in Tab1SaveButton widget.
+  ApiCallResponse? editApiResult;
   // Model for sucessMsg component.
   late SucessMsgModel sucessMsgModel;
 

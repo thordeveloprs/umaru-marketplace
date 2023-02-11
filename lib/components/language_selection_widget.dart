@@ -69,7 +69,6 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
             child: InkWell(
               onTap: () async {
                 FFAppState().update(() {
-                  FFAppState().isEnglish = false;
                   FFAppState().selectedLanguageCode = 'fr';
                 });
                 setAppLanguage(context, FFAppState().selectedLanguageCode);
@@ -78,7 +77,7 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  if (FFAppState().isEnglish == true)
+                  if (FFAppState().selectedLanguageCode == 'en')
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Icon(
@@ -87,7 +86,7 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                         size: 24,
                       ),
                     ),
-                  if (FFAppState().isEnglish == false)
+                  if (FFAppState().selectedLanguageCode == 'fr')
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Icon(
@@ -117,7 +116,6 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
             child: InkWell(
               onTap: () async {
                 FFAppState().update(() {
-                  FFAppState().isEnglish = true;
                   FFAppState().selectedLanguageCode = 'en';
                 });
                 setAppLanguage(context, FFAppState().selectedLanguageCode);
@@ -126,7 +124,7 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  if (FFAppState().isEnglish == false)
+                  if (FFAppState().selectedLanguageCode == 'fr')
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Icon(
@@ -135,7 +133,7 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                         size: 24,
                       ),
                     ),
-                  if (FFAppState().isEnglish == true)
+                  if (FFAppState().selectedLanguageCode == 'en')
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Icon(

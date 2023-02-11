@@ -1142,7 +1142,8 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                             ParamType.String,
                                           ),
                                           'pageURL': serializeParam(
-                                            FFAppState().isEnglish
+                                            FFAppState().selectedLanguageCode ==
+                                                    'en'
                                                 ? 'https://staging.umarumart.com/apppage/en/tnc.php'
                                                 : 'https://staging.umarumart.com/apppage/fr/tnc.php',
                                             ParamType.String,

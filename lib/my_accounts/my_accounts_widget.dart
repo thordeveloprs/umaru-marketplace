@@ -231,7 +231,8 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                               ),
                                         ),
                                         Text(
-                                          FFAppState().isEnglish == true
+                                          FFAppState().selectedLanguageCode ==
+                                                  'en'
                                               ? 'English'
                                               : 'French',
                                           style: FlutterFlowTheme.of(context)
@@ -349,7 +350,8 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                           ParamType.String,
                                         ),
                                         'pageURL': serializeParam(
-                                          FFAppState().isEnglish == true
+                                          FFAppState().selectedLanguageCode ==
+                                                  'en'
                                               ? 'https://staging.umarumart.com/apppage/en/faq.php'
                                               : 'https://staging.umarumart.com/apppage/fr/faq.php',
                                           ParamType.String,
@@ -409,7 +411,8 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                         ParamType.String,
                                       ),
                                       'pageURL': serializeParam(
-                                        FFAppState().isEnglish == true
+                                        FFAppState().selectedLanguageCode ==
+                                                'en'
                                             ? 'https://staging.umarumart.com/apppage/en/contact.php'
                                             : 'https://staging.umarumart.com/apppage/fr/contact.php',
                                         ParamType.String,
@@ -469,7 +472,8 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                         ParamType.String,
                                       ),
                                       'pageURL': serializeParam(
-                                        FFAppState().isEnglish == true
+                                        FFAppState().selectedLanguageCode ==
+                                                'en'
                                             ? 'https://staging.umarumart.com/apppage/en/tnc.php'
                                             : 'https://staging.umarumart.com/apppage/fr/tnc.php',
                                         ParamType.String,

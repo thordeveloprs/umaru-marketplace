@@ -2265,6 +2265,134 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                 .validate()) {
                                           return;
                                         }
+                                        _model.editApiResult = await UmaruGroup
+                                            .editProductCall
+                                            .call(
+                                          vendorId: getJsonField(
+                                            FFAppState().userData,
+                                            r'''$.vendor_id''',
+                                          ).toString(),
+                                          productId: widget.id,
+                                          hashkey: getJsonField(
+                                            FFAppState().userData,
+                                            r'''$.hashkey''',
+                                          ).toString(),
+                                          name: _model
+                                              .txtProductNameController.text,
+                                          sku: _model.txtSkuController.text,
+                                          price: double.tryParse(
+                                              _model.txtPriceController.text),
+                                          qty: int.tryParse(
+                                              _model.txQuantityController.text),
+                                          categoryList: FFAppState()
+                                              .selectedCategoryIdList,
+                                          description: _model
+                                              .descriptiontxtController.text,
+                                          shortDescription: _model
+                                              .shortdescriptiontxtController
+                                              .text,
+                                          metaTitle: _model
+                                              .txtMetaTitleController.text,
+                                          metaDescription:
+                                              _model.metadesTxtController.text,
+                                          swFeatured:
+                                              _model.switchIsFeatureValue!
+                                                  ? 1
+                                                  : 0,
+                                          specialPrice: double.tryParse(_model
+                                              .txSpecialPriceController.text),
+                                          weight: double.tryParse(
+                                              _model.txWeightController.text),
+                                          country: _model.dropDownCountryValue,
+                                          isInStock:
+                                              _model.dropDownStockstaValue,
+                                          newsFromDate: FFAppState()
+                                                          .productStartDate !=
+                                                      null &&
+                                                  FFAppState()
+                                                          .productStartDate !=
+                                                      ''
+                                              ? FFAppState().productStartDate
+                                              : functions
+                                                  .findEditProdutFromJson(
+                                                      UmaruGroup
+                                                          .getProductAllDetailsForEditProductCall
+                                                          .details(
+                                                            formGetProductAllDetailsForEditProductResponse
+                                                                .jsonBody,
+                                                          )!
+                                                          .toList(),
+                                                      'news_from_date'),
+                                          newsToDate: FFAppState()
+                                                          .productEndDate !=
+                                                      null &&
+                                                  FFAppState().productEndDate !=
+                                                      ''
+                                              ? FFAppState().productEndDate
+                                              : functions
+                                                  .findEditProdutFromJson(
+                                                      UmaruGroup
+                                                          .getProductAllDetailsForEditProductCall
+                                                          .details(
+                                                            formGetProductAllDetailsForEditProductResponse
+                                                                .jsonBody,
+                                                          )!
+                                                          .toList(),
+                                                      'news_to_date'),
+                                          specialFromDate: FFAppState()
+                                                          .priceDateStart !=
+                                                      null &&
+                                                  FFAppState().priceDateStart !=
+                                                      ''
+                                              ? FFAppState().priceDateStart
+                                              : functions
+                                                  .findEditProdutFromJson(
+                                                      UmaruGroup
+                                                          .getProductAllDetailsForEditProductCall
+                                                          .gestionavancedesprix(
+                                                            formGetProductAllDetailsForEditProductResponse
+                                                                .jsonBody,
+                                                          )!
+                                                          .toList(),
+                                                      'special_from_date'),
+                                          specialToDate: FFAppState()
+                                                          .priceDateEnd !=
+                                                      null &&
+                                                  FFAppState().priceDateEnd !=
+                                                      ''
+                                              ? FFAppState().priceDateEnd
+                                              : functions
+                                                  .findEditProdutFromJson(
+                                                      UmaruGroup
+                                                          .getProductAllDetailsForEditProductCall
+                                                          .gestionavancedesprix(
+                                                            formGetProductAllDetailsForEditProductResponse
+                                                                .jsonBody,
+                                                          )!
+                                                          .toList(),
+                                                      'special_to_date'),
+                                          images: _model.uploadedLocalFile,
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              (_model.editApiResult?.jsonBody ??
+                                                      '')
+                                                  .toString(),
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .black,
+                                          ),
+                                        );
+
+                                        setState(() {});
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         '8v228q18' /* Confirm */,

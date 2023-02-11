@@ -1933,8 +1933,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       qty: int.tryParse(
                                           _model.txQuantityController.text),
                                       images: _model.uploadedLocalFile,
-                                      description: _model
-                                          .shortdescriptiontxtController.text,
+                                      description:
+                                          _model.descriptiontxtController.text,
                                       isInStock: _model.dropDownStockstaValue,
                                       weight: double.tryParse(
                                           _model.txWeightController.text),

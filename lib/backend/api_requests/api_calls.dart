@@ -41,6 +41,9 @@ class UmaruGroup {
   static ProductByCategoryIdAndProductIdCall
       productByCategoryIdAndProductIdCall =
       ProductByCategoryIdAndProductIdCall();
+  static ProductByCategoryIdAndProductIdFrenchCall
+      productByCategoryIdAndProductIdFrenchCall =
+      ProductByCategoryIdAndProductIdFrenchCall();
   static GetVendorDetailsByProductIdCall getVendorDetailsByProductIdCall =
       GetVendorDetailsByProductIdCall();
   static GetVendorAndCompanyDetailsCall getVendorAndCompanyDetailsCall =
@@ -325,17 +328,30 @@ class EditProductCall {
     String? hashkey = '',
     String? name = '',
     String? sku = '',
-    String? country = '',
-    int? price,
+    double? price,
     int? qty,
-    List<String>? imagesList,
+    FFUploadedFile? images,
+    List<int>? categoryList,
+    String? description = '',
+    String? isInStock = '',
+    String? metaTitle = '',
+    String? metaDescription = '',
+    String? shortDescription = '',
+    String? newsFromDate = '',
+    String? newsToDate = '',
+    int? swFeatured,
+    double? specialPrice,
+    String? specialFromDate = '',
+    String? specialToDate = '',
+    double? weight,
+    String? country = '',
     int? productId,
   }) {
-    final images = _serializeList(imagesList);
+    final category = _serializeList(categoryList);
 
     return ApiManager.instance.makeApiCall(
-      callName: 'edit  product',
-      apiUrl: '${UmaruGroup.baseUrl}vproductapi/vproducts/createproduct',
+      callName: 'edit product',
+      apiUrl: '${UmaruGroup.baseUrl}vendorapi/vproducts/update',
       callType: ApiCallType.POST,
       headers: {
         ...UmaruGroup.headers,
@@ -345,15 +361,27 @@ class EditProductCall {
         'hashkey': hashkey,
         'name': name,
         'sku': sku,
-        'country': country,
         'type': "simple",
-        'is_in_stock': 1,
+        'is_in_stock': isInStock,
         'price': price,
         'set': 4,
         'visibility': 4,
         'qty': qty,
         'status': 1,
         'images': images,
+        'category': category,
+        'description': description,
+        'meta_title': metaTitle,
+        'meta_description': metaDescription,
+        'short_description': shortDescription,
+        'news_from_date': newsFromDate,
+        'news_to_date': newsToDate,
+        'sw_featured': swFeatured,
+        'special_price': specialPrice,
+        'special_from_date': specialFromDate,
+        'special_to_date': specialToDate,
+        'weight': weight,
+        'country': country,
         'product_id': productId,
       },
       bodyType: BodyType.MULTIPART,
@@ -535,6 +563,38 @@ class ProductByCategoryIdAndProductIdCall {
     return ApiManager.instance.makeApiCall(
       callName: 'product by category id and product id',
       apiUrl: '${UmaruGroup.baseUrl}rest/en/V1/products',
+      callType: ApiCallType.GET,
+      headers: {
+        ...UmaruGroup.headers,
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {
+        'searchCriteria[filter_groups][0][filters][0][value]': id,
+        'searchCriteria[filter_groups][0][filters][0][field]': searchTerm,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic getItems(dynamic response) => getJsonField(
+        response,
+        r'''$.items''',
+        true,
+      );
+}
+
+class ProductByCategoryIdAndProductIdFrenchCall {
+  Future<ApiCallResponse> call({
+    String? id = '',
+    String? token = '',
+    String? searchTerm = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'product by category id and product id french',
+      apiUrl: '${UmaruGroup.baseUrl}rest/V1/products',
       callType: ApiCallType.GET,
       headers: {
         ...UmaruGroup.headers,
@@ -776,6 +836,7 @@ class SearchGroupGroup {
     'Content_type': 'application/json',
   };
   static SearchCall searchCall = SearchCall();
+  static SearchFranchCall searchFranchCall = SearchFranchCall();
 }
 
 class SearchCall {
@@ -786,6 +847,39 @@ class SearchCall {
     return ApiManager.instance.makeApiCall(
       callName: 'search',
       apiUrl: '${SearchGroupGroup.baseUrl}rest/en/V1/products',
+      callType: ApiCallType.GET,
+      headers: {
+        ...SearchGroupGroup.headers,
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {
+        'searchCriteria[filter_groups][0][filters][0][field]': "name",
+        'searchCriteria[filter_groups][0][filters][0][condition_type]': "like",
+        'searchCriteria[filter_groups][0][filters][1][field]': "name",
+        'searchCriteria[filter_groups][0][filters][0][value]': search,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic product(dynamic response) => getJsonField(
+        response,
+        r'''$.items''',
+        true,
+      );
+}
+
+class SearchFranchCall {
+  Future<ApiCallResponse> call({
+    String? search = '',
+    String? token = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'search franch',
+      apiUrl: '${SearchGroupGroup.baseUrl}rest/V1/products',
       callType: ApiCallType.GET,
       headers: {
         ...SearchGroupGroup.headers,

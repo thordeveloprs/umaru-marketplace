@@ -28,7 +28,6 @@ class FFAppState extends ChangeNotifier {
     _imageBaseUrl = prefs.getString('ff_imageBaseUrl') ?? _imageBaseUrl;
     _findShopCategoryId =
         prefs.getInt('ff_findShopCategoryId') ?? _findShopCategoryId;
-    _isEnglish = prefs.getBool('ff_isEnglish') ?? _isEnglish;
     if (prefs.containsKey('ff_subscriptionDetail')) {
       try {
         _subscriptionDetail =
@@ -148,13 +147,6 @@ class FFAppState extends ChangeNotifier {
   String get dialogueMSG => _dialogueMSG;
   set dialogueMSG(String _value) {
     _dialogueMSG = _value;
-  }
-
-  bool _isEnglish = false;
-  bool get isEnglish => _isEnglish;
-  set isEnglish(bool _value) {
-    _isEnglish = _value;
-    prefs.setBool('ff_isEnglish', _value);
   }
 
   bool _homeProgress = true;

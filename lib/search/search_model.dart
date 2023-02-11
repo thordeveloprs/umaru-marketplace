@@ -17,6 +17,8 @@ class SearchModel extends FlutterFlowModel {
       searchPageTextFieldControllerValidator;
   // Stores action output result for [Backend Call - API (search)] action in SearchPageTextField widget.
   ApiCallResponse? searchResult;
+  // Stores action output result for [Backend Call - API (search franch)] action in SearchPageTextField widget.
+  ApiCallResponse? searchResultFrench;
 
   /// Initialization and disposal methods.
 

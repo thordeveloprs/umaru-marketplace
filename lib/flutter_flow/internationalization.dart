@@ -178,6 +178,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'FCFA',
       'fr': 'FCFA',
     },
+    'fupa5x7j': {
+      'en': 'FCFA',
+      'fr': 'FCFA',
+    },
     'l5195fyp': {
       'en': 'Search',
       'fr': 'Recherche',

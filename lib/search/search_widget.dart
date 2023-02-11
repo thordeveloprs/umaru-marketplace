@@ -134,18 +134,37 @@ class _SearchWidgetState extends State<SearchWidget> {
                                               setState(() {
                                                 FFAppState().isLoading = true;
                                               });
-                                              _model.searchResult =
-                                                  await SearchGroupGroup
-                                                      .searchCall
-                                                      .call(
-                                                search: functions.urlEncode(_model
-                                                    .searchPageTextFieldController
-                                                    .text),
-                                                token: FFAppState().token,
-                                              );
-                                              setState(() {
-                                                FFAppState().isLoading = false;
-                                              });
+                                              if (FFAppState()
+                                                      .selectedLanguageCode ==
+                                                  'en') {
+                                                _model.searchResult =
+                                                    await SearchGroupGroup
+                                                        .searchCall
+                                                        .call(
+                                                  search: functions.urlEncode(_model
+                                                      .searchPageTextFieldController
+                                                      .text),
+                                                  token: FFAppState().token,
+                                                );
+                                                setState(() {
+                                                  FFAppState().isLoading =
+                                                      false;
+                                                });
+                                              } else {
+                                                _model.searchResultFrench =
+                                                    await SearchGroupGroup
+                                                        .searchFranchCall
+                                                        .call(
+                                                  token: FFAppState().token,
+                                                  search: _model
+                                                      .searchPageTextFieldController
+                                                      .text,
+                                                );
+                                                setState(() {
+                                                  FFAppState().isLoading =
+                                                      false;
+                                                });
+                                              }
 
                                               setState(() {});
                                             },
@@ -279,7 +298,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ],
                           ),
                         ),
-                        if (!FFAppState().isLoading)
+                        if (!FFAppState().isLoading &&
+                            (FFAppState().selectedLanguageCode == 'en'))
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
@@ -412,6 +432,168 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                     FFLocalizations.of(context)
                                                         .getText(
                                                       '9ugg92yn' /* FCFA */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        if (!(!FFAppState().isLoading &&
+                            (FFAppState().selectedLanguageCode == 'fr')))
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
+                            child: Builder(
+                              builder: (context) {
+                                final search = SearchGroupGroup.searchFranchCall
+                                        .product(
+                                          (_model.searchResultFrench
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )
+                                        ?.map((e) => e)
+                                        .toList()
+                                        ?.toList() ??
+                                    [];
+                                return GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 14,
+                                    mainAxisSpacing: 10,
+                                    childAspectRatio: 1,
+                                  ),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: search.length,
+                                  itemBuilder: (context, searchIndex) {
+                                    final searchItem = search[searchIndex];
+                                    return InkWell(
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'Product_detailPage',
+                                          queryParams: {
+                                            'id': serializeParam(
+                                              getJsonField(
+                                                searchItem,
+                                                r'''$.id''',
+                                              ),
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 166,
+                                        height: 185,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 16, 0, 1.9),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Image.network(
+                                                    functions.findProductImage(
+                                                        getJsonField(
+                                                          searchItem,
+                                                          r'''$.custom_attributes''',
+                                                        )!,
+                                                        FFAppState()
+                                                            .imageBaseUrl),
+                                                    width: 107,
+                                                    height: 107,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  getJsonField(
+                                                    searchItem,
+                                                    r'''$.name''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 11,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 2.5, 0),
+                                                  child: Text(
+                                                    getJsonField(
+                                                      searchItem,
+                                                      r'''$.price''',
+                                                    ).toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(2.5, 0, 0, 0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'fupa5x7j' /* FCFA */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
