@@ -160,3 +160,11 @@ String findEditProdutFromJson(
     return "";
   }
 }
+
+List<dynamic> isJsonFieldEmpty(
+  dynamic response,
+  String field,
+) {
+  var res = json.decode(response);
+  return res["data"][field] ?? [];
+}

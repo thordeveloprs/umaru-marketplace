@@ -31,18 +31,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     _model = createModel(context, () => EditProfileModel());
 
     _model.txtCompanyNameController = TextEditingController(
-        text: UmaruGroup.getVendorAndCompanyDetailsCall.informationssurlasocit2(
-                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                ) ==
-                null
-            ? 'rt'
-            : functions.getObjectFromList(
-                UmaruGroup.getVendorAndCompanyDetailsCall
-                    .informationssurlasocit(
-                      columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                    )!
-                    .toList(),
-                'Nom de l\'entreprise'));
+        text: functions.getObjectFromList(
+            functions
+                .isJsonFieldEmpty(
+                    columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                    'Informations sur la société')
+                .toList(),
+            'Nom de l\'entreprise'));
   }
 
   @override
