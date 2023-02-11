@@ -2385,14 +2385,37 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       'special_to_date'),
                                           images: _model.uploadedLocalFile,
                                         );
-                                        if (getJsonField(
-                                          (_model.editApiResult?.jsonBody ??
-                                              ''),
-                                          r'''$.data.success''',
-                                        )) {
-                                          setState(() {
-                                            _model.showLoading = true;
-                                          });
+                                        if ((_model.editApiResult?.succeeded ??
+                                            true)) {
+                                          if (getJsonField(
+                                            (_model.editApiResult?.jsonBody ??
+                                                ''),
+                                            r'''$.data.success''',
+                                          )) {
+                                            setState(() {
+                                              _model.showLoading = true;
+                                            });
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  (_model.editApiResult
+                                                              ?.jsonBody ??
+                                                          '')
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .black,
+                                              ),
+                                            );
+                                          }
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(

@@ -458,8 +458,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                               },
                             ),
                           ),
-                        if (!(!FFAppState().isLoading &&
-                            (FFAppState().selectedLanguageCode == 'fr')))
+                        if (!FFAppState().isLoading &&
+                            (FFAppState().selectedLanguageCode == 'fr'))
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
