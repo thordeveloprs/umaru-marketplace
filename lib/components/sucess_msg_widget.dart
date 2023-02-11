@@ -8,7 +8,12 @@ import 'sucess_msg_model.dart';
 export 'sucess_msg_model.dart';
 
 class SucessMsgWidget extends StatefulWidget {
-  const SucessMsgWidget({Key? key}) : super(key: key);
+  const SucessMsgWidget({
+    Key? key,
+    this.msg,
+  }) : super(key: key);
+
+  final String? msg;
 
   @override
   _SucessMsgWidgetState createState() => _SucessMsgWidgetState();
@@ -92,7 +97,7 @@ class _SucessMsgWidgetState extends State<SucessMsgWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        FFAppState().dialogueMSG,
+                        widget.msg!,
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).subtitle2.override(
                               fontFamily: 'Poppins',

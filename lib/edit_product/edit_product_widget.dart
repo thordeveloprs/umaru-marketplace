@@ -2385,24 +2385,35 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       'special_to_date'),
                                           images: _model.uploadedLocalFile,
                                         );
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              (_model.editApiResult?.jsonBody ??
-                                                      '')
-                                                  .toString(),
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                        if (getJsonField(
+                                          (_model.editApiResult?.jsonBody ??
+                                              ''),
+                                          r'''$.data.success''',
+                                        )) {
+                                          setState(() {
+                                            _model.showLoading = true;
+                                          });
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                (_model.editApiResult
+                                                            ?.jsonBody ??
+                                                        '')
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
                                               ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .black,
                                             ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .black,
-                                          ),
-                                        );
+                                          );
+                                        }
 
                                         setState(() {});
                                       },
@@ -2442,11 +2453,16 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                   ),
                 ],
               ),
-              if (FFAppState().isConfirm == true)
+              if (_model.showLoading)
                 wrapWithModel(
                   model: _model.sucessMsgModel,
                   updateCallback: () => setState(() {}),
-                  child: SucessMsgWidget(),
+                  child: SucessMsgWidget(
+                    msg: getJsonField(
+                      (_model.editApiResult?.jsonBody ?? ''),
+                      r'''$.data.message''',
+                    ).toString(),
+                  ),
                 ),
             ],
           ),

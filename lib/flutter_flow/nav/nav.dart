@@ -194,13 +194,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProductWidget(
                 id: params.getParam('id', ParamType.int),
               ),
-            ),
-            FFRoute(
-              name: 'editProductCopy',
-              path: 'editProductCopy',
-              builder: (context, params) => EditProductCopyWidget(
-                id: params.getParam('id', ParamType.int),
-              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

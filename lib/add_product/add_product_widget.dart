@@ -2041,11 +2041,16 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                   ),
                 ],
               ),
-              if (FFAppState().isConfirm == true)
+              if (_model.showLoading)
                 wrapWithModel(
                   model: _model.sucessMsgModel,
                   updateCallback: () => setState(() {}),
-                  child: SucessMsgWidget(),
+                  child: SucessMsgWidget(
+                    msg: getJsonField(
+                      (_model.createProductDetails?.jsonBody ?? ''),
+                      r'''$.data.message''',
+                    ).toString(),
+                  ),
                 ),
             ],
           ),

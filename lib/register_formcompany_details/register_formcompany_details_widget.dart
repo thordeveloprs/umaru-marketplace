@@ -770,7 +770,12 @@ class _RegisterFormcompanyDetailsWidgetState
                 wrapWithModel(
                   model: _model.sucessMsgModel,
                   updateCallback: () => setState(() {}),
-                  child: SucessMsgWidget(),
+                  child: SucessMsgWidget(
+                    msg: getJsonField(
+                      (_model.apiResult5sa?.jsonBody ?? ''),
+                      r'''$.data.message''',
+                    ).toString(),
+                  ),
                 ),
             ],
           ),
