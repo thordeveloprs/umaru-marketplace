@@ -29,15 +29,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
-
-    _model.txtCompanyNameController = TextEditingController(
-        text: functions.getObjectFromList(
-            functions
-                .isJsonFieldEmpty(
-                    columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                    'Informations sur la société')
-                .toList(),
-            'Nom de l\'entreprise'));
   }
 
   @override
@@ -1534,7 +1525,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     0, 0),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .txtCompanyNameController,
+                                                                  .txtCompanyNameController ??=
+                                                              TextEditingController(
+                                                            text: functions
+                                                                .getObjectFromList(
+                                                                    UmaruGroup
+                                                                        .getVendorAndCompanyDetailsCall
+                                                                        .informationssurlasocit(
+                                                                          columnGetVendorAndCompanyDetailsResponse
+                                                                              .jsonBody,
+                                                                        )!
+                                                                        .toList(),
+                                                                    'Nom de l\'entreprise'),
+                                                          ),
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
