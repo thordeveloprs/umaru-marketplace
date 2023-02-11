@@ -178,215 +178,424 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                          child: FutureBuilder<ApiCallResponse>(
-                            future: UmaruGroup
-                                .productByCategoryIdAndProductIdCall
-                                .call(
-                              id: widget.categoryID,
-                              token: FFAppState().token,
-                              searchTerm: 'category_id',
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                      if (FFAppState().selectedLanguageCode == 'en')
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                            child: FutureBuilder<ApiCallResponse>(
+                              future: UmaruGroup
+                                  .productByCategoryIdAndProductIdCall
+                                  .call(
+                                id: widget.categoryID,
+                                token: FFAppState().token,
+                                searchTerm: 'category_id',
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }
-                              final gridViewProductByCategoryIdAndProductIdResponse =
-                                  snapshot.data!;
-                              return Builder(
-                                builder: (context) {
-                                  final productList = UmaruGroup
-                                          .productByCategoryIdAndProductIdCall
-                                          .getItems(
-                                            gridViewProductByCategoryIdAndProductIdResponse
-                                                .jsonBody,
-                                          )
-                                          ?.map((e) => e)
-                                          .toList()
-                                          ?.toList() ??
-                                      [];
-                                  return GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 13,
-                                      mainAxisSpacing: 13,
-                                      childAspectRatio: 1,
-                                    ),
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: productList.length,
-                                    itemBuilder: (context, productListIndex) {
-                                      final productListItem =
-                                          productList[productListIndex];
-                                      return InkWell(
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'Product_detailPage',
-                                            queryParams: {
-                                              'id': serializeParam(
-                                                getJsonField(
-                                                  productListItem,
-                                                  r'''$.id''',
-                                                ),
-                                                ParamType.int,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 180,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(8.11),
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(25, 9, 25, 9),
-                                                child: Image.network(
-                                                  functions.findProductImage(
-                                                      getJsonField(
-                                                        productListItem,
-                                                        r'''$.custom_attributes''',
-                                                      )!,
-                                                      FFAppState()
-                                                          .imageBaseUrl),
-                                                  width: 66.5,
-                                                  height: 69.7,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(13, 10, 0, 0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Text(
-                                                        getJsonField(
-                                                          productListItem,
-                                                          r'''$.name''',
-                                                        ).toString(),
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF050404),
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(13, 0, 0, 0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 0, 2.5, 0),
-                                                      child: Text(
-                                                        getJsonField(
-                                                          productListItem,
-                                                          r'''$.price''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF050404),
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  2.5, 0, 0, 0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'wwb2ohk2' /* FCFA */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF050404),
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
                                   );
-                                },
-                              );
-                            },
+                                }
+                                final gridViewProductByCategoryIdAndProductIdResponse =
+                                    snapshot.data!;
+                                return Builder(
+                                  builder: (context) {
+                                    final productList = UmaruGroup
+                                            .productByCategoryIdAndProductIdCall
+                                            .getItems(
+                                              gridViewProductByCategoryIdAndProductIdResponse
+                                                  .jsonBody,
+                                            )
+                                            ?.map((e) => e)
+                                            .toList()
+                                            ?.toList() ??
+                                        [];
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 13,
+                                        mainAxisSpacing: 13,
+                                        childAspectRatio: 1,
+                                      ),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: productList.length,
+                                      itemBuilder: (context, productListIndex) {
+                                        final productListItem =
+                                            productList[productListIndex];
+                                        return InkWell(
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'Product_detailPage',
+                                              queryParams: {
+                                                'id': serializeParam(
+                                                  getJsonField(
+                                                    productListItem,
+                                                    r'''$.id''',
+                                                  ),
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 180,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.11),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(25, 9, 25, 9),
+                                                  child: Image.network(
+                                                    functions.findProductImage(
+                                                        getJsonField(
+                                                          productListItem,
+                                                          r'''$.custom_attributes''',
+                                                        )!,
+                                                        FFAppState()
+                                                            .imageBaseUrl),
+                                                    width: 66.5,
+                                                    height: 69.7,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(13, 10, 0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text(
+                                                          getJsonField(
+                                                            productListItem,
+                                                            r'''$.name''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(13, 0, 0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    2.5, 0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            productListItem,
+                                                            r'''$.price''',
+                                                          ).toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(2.5,
+                                                                    0, 0, 0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'wwb2ohk2' /* FCFA */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
+                      if (FFAppState().selectedLanguageCode == 'fr')
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                            child: FutureBuilder<ApiCallResponse>(
+                              future: UmaruGroup
+                                  .productByCategoryIdAndProductIdFrenchCall
+                                  .call(
+                                id: widget.categoryID,
+                                token: FFAppState().token,
+                                searchTerm: 'category_id',
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                final frenchGridViewProductByCategoryIdAndProductIdFrenchResponse =
+                                    snapshot.data!;
+                                return Builder(
+                                  builder: (context) {
+                                    final productList = UmaruGroup
+                                            .productByCategoryIdAndProductIdFrenchCall
+                                            .frenchGetItems(
+                                              frenchGridViewProductByCategoryIdAndProductIdFrenchResponse
+                                                  .jsonBody,
+                                            )
+                                            ?.map((e) => e)
+                                            .toList()
+                                            ?.toList() ??
+                                        [];
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 13,
+                                        mainAxisSpacing: 13,
+                                        childAspectRatio: 1,
+                                      ),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: productList.length,
+                                      itemBuilder: (context, productListIndex) {
+                                        final productListItem =
+                                            productList[productListIndex];
+                                        return InkWell(
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'Product_detailPage',
+                                              queryParams: {
+                                                'id': serializeParam(
+                                                  getJsonField(
+                                                    productListItem,
+                                                    r'''$.id''',
+                                                  ),
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 180,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.11),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(25, 9, 25, 9),
+                                                  child: Image.network(
+                                                    functions.findProductImage(
+                                                        getJsonField(
+                                                          productListItem,
+                                                          r'''$.custom_attributes''',
+                                                        )!,
+                                                        FFAppState()
+                                                            .imageBaseUrl),
+                                                    width: 66.5,
+                                                    height: 69.7,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(13, 10, 0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text(
+                                                          getJsonField(
+                                                            productListItem,
+                                                            r'''$.name''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(13, 0, 0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    2.5, 0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            productListItem,
+                                                            r'''$.price''',
+                                                          ).toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(2.5,
+                                                                    0, 0, 0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'gyqwza9d' /* FCFA */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF050404),
+                                                                fontSize: 10,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),

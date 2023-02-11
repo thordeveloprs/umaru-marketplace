@@ -355,21 +355,23 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              getJsonField(
-                                                columnProductByCategoryIdAndProductIdResponse
-                                                    .jsonBody,
-                                                r'''$.items[0].name''',
-                                              ).toString(),
-                                              textAlign: TextAlign.start,
-                                              maxLines: 2,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .title1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 18,
-                                                      ),
+                                            Expanded(
+                                              child: Text(
+                                                getJsonField(
+                                                  columnProductByCategoryIdAndProductIdResponse
+                                                      .jsonBody,
+                                                  r'''$.items[0].name''',
+                                                ).toString(),
+                                                textAlign: TextAlign.start,
+                                                maxLines: 2,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 18,
+                                                        ),
+                                              ),
                                             ),
                                           ],
                                         ),

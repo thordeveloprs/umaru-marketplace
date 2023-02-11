@@ -1281,7 +1281,15 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                               context.goNamed('Home');
                                             } else {
                                               context.pushNamed(
-                                                  'BuyMembershipPage');
+                                                'BuyMembershipPage',
+                                                queryParams: {
+                                                  'commingFromHome':
+                                                      serializeParam(
+                                                    true,
+                                                    ParamType.bool,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
                                             }
                                           } else {
                                             ScaffoldMessenger.of(context)

@@ -168,7 +168,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0pkr8h18': {
       'en': 'Search',
-      'fr': 'Appbar',
+      'fr': 'Recherche',
     },
     'c8qyhf09': {
       'en': 'Search',
@@ -193,8 +193,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Membership Details',
       'fr': 'Tarification',
     },
-    'uyracpdl': {
-      'en': 'Subscribe',
+    'zz2z69w8': {
+      'en': 'Buy Now',
       'fr': '',
     },
     'bc5c9vv1': {
@@ -712,6 +712,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ManageProducts
   {
+    'kz0byf3p': {
+      'en': 'Manage Products',
+      'fr': 'Gérer les produits',
+    },
     'e0pba0x2': {
       'en': 'Search',
       'fr': '',
@@ -1278,6 +1282,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'FCFA',
       'fr': 'FCFA',
     },
+    'gyqwza9d': {
+      'en': 'FCFA',
+      'fr': 'FCFA',
+    },
     'jdacqglr': {
       'en': 'Home',
       'fr': 'Maison',
@@ -1343,6 +1351,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // editProduct
   {
+    '83og3a5z': {
+      'en': 'Edit Product',
+      'fr': 'Modifier le produit',
+    },
     'menrklms': {
       'en': 'Product Name',
       'fr': 'Nom du produit',
@@ -1598,6 +1610,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'x0i4bayh': {
       'en': 'Home',
       'fr': 'Maison',
+    },
+  },
+  // paymentWebView
+  {
+    '08xz7j8l': {
+      'en': 'Payment',
+      'fr': '',
+    },
+    'gxm9sb4x': {
+      'en': 'Home',
+      'fr': '',
     },
   },
   // forgotPassword

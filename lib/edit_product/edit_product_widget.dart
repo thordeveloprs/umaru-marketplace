@@ -80,7 +80,9 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                     model: _model.appbarModel,
                     updateCallback: () => setState(() {}),
                     child: AppbarWidget(
-                      appTitle: 'Edit Product',
+                      appTitle: FFLocalizations.of(context).getText(
+                        '83og3a5z' /* Edit Product */,
+                      ),
                       isShowBack: true,
                     ),
                   ),
@@ -566,22 +568,24 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'pjrrc9x7' /* Special price from */,
+                                                Expanded(
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'pjrrc9x7' /* Special price from */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.black,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -1033,18 +1037,22 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'di06alia' /* Set the Product as a New from */,
+                                          Expanded(
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'di06alia' /* Set the Product as a New from */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Montserrat',
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
                                           ),
                                         ],
                                       ),
@@ -2356,7 +2364,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       null &&
                                                   FFAppState().priceDateStart !=
                                                       ''
-                                              ? FFAppState().priceDateStart
+                                              ? dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )
                                               : functions
                                                   .findEditProdutFromJson(
                                                       UmaruGroup
@@ -2372,7 +2386,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       null &&
                                                   FFAppState().priceDateEnd !=
                                                       ''
-                                              ? FFAppState().priceDateEnd
+                                              ? dateTimeFormat(
+                                                  'd/M/y',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )
                                               : functions
                                                   .findEditProdutFromJson(
                                                       UmaruGroup

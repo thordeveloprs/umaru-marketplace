@@ -337,29 +337,28 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                               ],
                             ),
                           if (false)
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                InkWell(
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'webview',
-                                      queryParams: {
-                                        'pagename': serializeParam(
-                                          'FAQ',
-                                          ParamType.String,
-                                        ),
-                                        'pageURL': serializeParam(
-                                          FFAppState().selectedLanguageCode ==
-                                                  'en'
-                                              ? 'https://staging.umarumart.com/apppage/en/faq.php'
-                                              : 'https://staging.umarumart.com/apppage/fr/faq.php',
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                  child: Container(
+                            InkWell(
+                              onTap: () async {
+                                context.pushNamed(
+                                  'webview',
+                                  queryParams: {
+                                    'pagename': serializeParam(
+                                      'FAQ',
+                                      ParamType.String,
+                                    ),
+                                    'pageURL': serializeParam(
+                                      FFAppState().selectedLanguageCode == 'en'
+                                          ? 'https://staging.umarumart.com/apppage/en/faq.php'
+                                          : 'https://staging.umarumart.com/apppage/fr/faq.php',
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(),
                                     child: Padding(
@@ -391,36 +390,35 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
-                                Divider(
-                                  thickness: 1,
-                                  color: Color(0xFFC4C4C4),
-                                ),
-                              ],
+                                  Divider(
+                                    thickness: 1,
+                                    color: Color(0xFFC4C4C4),
+                                  ),
+                                ],
+                              ),
                             ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'webview',
-                                    queryParams: {
-                                      'pagename': serializeParam(
-                                        'FAQ',
-                                        ParamType.String,
-                                      ),
-                                      'pageURL': serializeParam(
-                                        FFAppState().selectedLanguageCode ==
-                                                'en'
-                                            ? 'https://staging.umarumart.com/apppage/en/contact.php'
-                                            : 'https://staging.umarumart.com/apppage/fr/contact.php',
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Container(
+                          InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'webview',
+                                queryParams: {
+                                  'pagename': serializeParam(
+                                    'FAQ',
+                                    ParamType.String,
+                                  ),
+                                  'pageURL': serializeParam(
+                                    FFAppState().selectedLanguageCode == 'en'
+                                        ? 'https://staging.umarumart.com/apppage/en/contact.php'
+                                        : 'https://staging.umarumart.com/apppage/fr/contact.php',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(),
                                   child: Padding(
@@ -452,36 +450,35 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1,
+                                  color: Color(0xFFC4C4C4),
+                                ),
+                              ],
+                            ),
                           ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xFFC4C4C4),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'webview',
-                                    queryParams: {
-                                      'pagename': serializeParam(
-                                        'FAQ',
-                                        ParamType.String,
-                                      ),
-                                      'pageURL': serializeParam(
-                                        FFAppState().selectedLanguageCode ==
-                                                'en'
-                                            ? 'https://staging.umarumart.com/apppage/en/tnc.php'
-                                            : 'https://staging.umarumart.com/apppage/fr/tnc.php',
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Container(
+                          InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'webview',
+                                queryParams: {
+                                  'pagename': serializeParam(
+                                    'FAQ',
+                                    ParamType.String,
+                                  ),
+                                  'pageURL': serializeParam(
+                                    FFAppState().selectedLanguageCode == 'en'
+                                        ? 'https://staging.umarumart.com/apppage/en/tnc.php'
+                                        : 'https://staging.umarumart.com/apppage/fr/tnc.php',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(),
                                   child: Padding(
@@ -513,53 +510,72 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1,
+                                  color: Color(0xFFC4C4C4),
+                                ),
+                              ],
+                            ),
                           ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xFFC4C4C4),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 20),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'du1ib3ff' /* Privacy Policy */,
+                          InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'webview',
+                                queryParams: {
+                                  'pagename': serializeParam(
+                                    'FAQ',
+                                    ParamType.String,
+                                  ),
+                                  'pageURL': serializeParam(
+                                    FFAppState().selectedLanguageCode == 'en'
+                                        ? 'https://staging.umarumart.com/apppage/en/privacy.php'
+                                        : 'https://staging.umarumart.com/apppage/fr/privacy.php',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 20),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'du1ib3ff' /* Privacy Policy */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 17,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 17,
-                                            ),
-                                      ),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24,
-                                      ),
-                                    ],
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xFFC4C4C4),
+                                Divider(
+                                  thickness: 1,
+                                  color: Color(0xFFC4C4C4),
+                                ),
+                              ],
+                            ),
                           ),
                           if (FFAppState().isLogin == true)
                             InkWell(

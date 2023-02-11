@@ -89,7 +89,9 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                 model: _model.appbarModel,
                 updateCallback: () => setState(() {}),
                 child: AppbarWidget(
-                  appTitle: 'Manage Products',
+                  appTitle: FFLocalizations.of(context).getText(
+                    'kz0byf3p' /* Manage Products */,
+                  ),
                   isShowBack: true,
                 ),
               ),

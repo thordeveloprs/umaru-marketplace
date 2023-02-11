@@ -57,6 +57,8 @@ class UmaruGroup {
       GetProductAllDetailsForEditProductCall();
   static GetSubscriptionDetailsCall getSubscriptionDetailsCall =
       GetSubscriptionDetailsCall();
+  static SubscriptionAddToCartCall subscriptionAddToCartCall =
+      SubscriptionAddToCartCall();
 }
 
 class LoginCall {
@@ -611,7 +613,7 @@ class ProductByCategoryIdAndProductIdFrenchCall {
     );
   }
 
-  dynamic getItems(dynamic response) => getJsonField(
+  dynamic frenchGetItems(dynamic response) => getJsonField(
         response,
         r'''$.items''',
         true,
@@ -801,6 +803,46 @@ class GetSubscriptionDetailsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Get Subscription Details',
       apiUrl: '${UmaruGroup.baseUrl}pub/rest/V1/plan/items',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic membershipStatus(dynamic response) => getJsonField(
+        response,
+        r'''$[0].vendor_data.status''',
+      );
+  dynamic membershipPlan(dynamic response) => getJsonField(
+        response,
+        r'''$[0].vendor_data.membership_plans''',
+        true,
+      );
+}
+
+class SubscriptionAddToCartCall {
+  Future<ApiCallResponse> call({
+    String? venderId = '',
+    String? membershipId = '',
+  }) {
+    final body = '''
+{
+  "data": {
+    "vendor_id": "${venderId}",
+    "membership_id": "${membershipId}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Subscription add to cart',
+      apiUrl: '${UmaruGroup.baseUrl}pub/rest/V1/addMembership',
       callType: ApiCallType.POST,
       headers: {
         ...UmaruGroup.headers,

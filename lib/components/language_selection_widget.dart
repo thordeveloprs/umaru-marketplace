@@ -73,6 +73,8 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                 });
                 setAppLanguage(context, FFAppState().selectedLanguageCode);
                 Navigator.pop(context);
+
+                context.pushNamed('Home');
               },
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -120,6 +122,8 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                 });
                 setAppLanguage(context, FFAppState().selectedLanguageCode);
                 Navigator.pop(context);
+
+                context.pushNamed('Home');
               },
               child: Row(
                 mainAxisSize: MainAxisSize.max,

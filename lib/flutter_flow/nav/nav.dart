@@ -97,7 +97,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BuyMembershipPage',
               path: 'buyMembershipPage',
-              builder: (context, params) => BuyMembershipPageWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'BuyMembershipPage')
+                  : BuyMembershipPageWidget(
+                      commingFromHome:
+                          params.getParam('commingFromHome', ParamType.bool),
+                    ),
             ),
             FFRoute(
               name: 'registerFormPricing',
@@ -193,6 +198,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'editProduct',
               builder: (context, params) => EditProductWidget(
                 id: params.getParam('id', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'paymentWebView',
+              path: 'paymentWebView',
+              builder: (context, params) => PaymentWebViewWidget(
+                url: params.getParam('url', ParamType.String),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

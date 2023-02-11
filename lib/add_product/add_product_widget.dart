@@ -1802,6 +1802,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                         color:
                                             FlutterFlowTheme.of(context).black,
                                       ),
+                                  maxLines: null,
                                   keyboardType: TextInputType.number,
                                   validator: _model
                                       .txtMetaTitleControllerValidator
@@ -1982,7 +1983,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       r'''$.data.success''',
                                     )) {
                                       setState(() {
-                                        FFAppState().isConfirm = true;
+                                        _model.showLoading = true;
                                       });
                                     } else {
                                       ScaffoldMessenger.of(context)

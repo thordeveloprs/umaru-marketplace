@@ -99,10 +99,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: Column(
                                 children: [
                                   TabBar(
+                                    isScrollable: true,
                                     labelColor: FlutterFlowTheme.of(context)
                                         .primaryColor,
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 14,
+                                        ),
                                     indicatorColor: FlutterFlowTheme.of(context)
                                         .secondaryColor,
                                     tabs: [
