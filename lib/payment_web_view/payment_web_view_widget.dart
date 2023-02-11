@@ -71,10 +71,10 @@ class _PaymentWebViewWidgetState extends State<PaymentWebViewWidget> {
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 1,
+                height: MediaQuery.of(context).size.height * 0.84,
                 child: custom_widgets.PaymentWebView(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 1,
+                  height: MediaQuery.of(context).size.height * 0.84,
                   url: widget.url!,
                 ),
               ),

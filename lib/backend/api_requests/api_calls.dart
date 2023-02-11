@@ -691,6 +691,10 @@ class GetVendorAndCompanyDetailsCall {
         r'''$.data["Informations d’adresse"]''',
         true,
       );
+  dynamic informationssurlasocit2(dynamic response) => getJsonField(
+        response,
+        r'''$.data["Informations sur la société"]''',
+      );
 }
 
 class VendorDetailsForProductPageCall {
