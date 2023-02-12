@@ -63,6 +63,31 @@ dynamic createVendorUpdateList(String publicName) {
   return json.encode(listData);
 }
 
+String findCompanyImagePath(
+  dynamic jsonBody,
+  String attributesName,
+  String listName,
+) {
+  String defaultImg =
+      "https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg";
+
+  List<dynamic> customAttributes = jsonBody["data"][listName] ?? [];
+
+  if (customAttributes.isNotEmpty) {
+    //print(attributesName);
+    var b = customAttributes.where((d) => d["label"] == attributesName);
+    print(b);
+
+    if (b.isEmpty) {
+      return defaultImg;
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return defaultImg;
+  }
+}
+
 String getObjectFromList(
   List<dynamic> list,
   String searchLableName,

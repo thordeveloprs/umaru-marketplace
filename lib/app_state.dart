@@ -300,6 +300,12 @@ class FFAppState extends ChangeNotifier {
   set Informationsdadresse(String _value) {
     _Informationsdadresse = _value;
   }
+
+  String _Informationsgnrales = 'Informations générales';
+  String get Informationsgnrales => _Informationsgnrales;
+  set Informationsgnrales(String _value) {
+    _Informationsgnrales = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

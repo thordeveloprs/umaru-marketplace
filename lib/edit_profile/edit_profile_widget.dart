@@ -1679,16 +1679,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtEmailController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsd039assistance(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'E-mail d&#039;assistance'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'E-mail d&#039;assistance',
+                                                                FFAppState()
+                                                                    .Informationsd039assistance),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -1839,16 +1835,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtcontactnumberController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsgnrales(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Numéro de contact'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Numéro de contact',
+                                                                FFAppState()
+                                                                    .Informationsgnrales),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -1996,16 +1988,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtwhatsappnumberController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsd039assistance(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Numéro d\'assistance'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Numéro d\'assistance',
+                                                                FFAppState()
+                                                                    .Informationsd039assistance),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -2152,16 +2140,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtAboutController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlasocit(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'À propos de'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'À propos de',
+                                                                FFAppState()
+                                                                    .Informationssurlasocit),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -2309,16 +2293,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtFacebookIdController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsd039assistance(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Facebook ID'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Facebook ID',
+                                                                FFAppState()
+                                                                    .Informationsd039assistance),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -2466,16 +2446,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txttwitterlinkController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsd039assistance(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Twitter ID'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Twitter ID',
+                                                                FFAppState()
+                                                                    .Informationsd039assistance),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -2685,13 +2661,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             20),
                                                                         child: Image
                                                                             .network(
-                                                                          functions.findImagePath(
-                                                                              UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                                  .informationssurlasocit(
-                                                                                    columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                                  )!
-                                                                                  .toList(),
-                                                                              'Logo d\'entreprise'),
+                                                                          functions.findCompanyImagePath(
+                                                                              columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                              'Logo d\'entreprise',
+                                                                              FFAppState().Informationssurlasocit),
                                                                           width:
                                                                               100,
                                                                           height:
@@ -2909,13 +2882,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             20),
                                                                         child: Image
                                                                             .network(
-                                                                          functions.findImagePath(
-                                                                              UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                                  .informationssurlasocit(
-                                                                                    columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                                  )!
-                                                                                  .toList(),
-                                                                              'Bannière de l\'entreprise'),
+                                                                          functions.findCompanyImagePath(
+                                                                              columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                              'Bannière de l\'entreprise',
+                                                                              FFAppState().Informationssurlasocit),
                                                                           width:
                                                                               100,
                                                                           height:
@@ -3071,16 +3041,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtbusinessAddressController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlasocit(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Adresse de la société'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Adresse de la société',
+                                                                FFAppState()
+                                                                    .Informationssurlasocit),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3228,16 +3194,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtMetaKeywordController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlerfrencement(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Mots-clés meta'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Mots-clés meta',
+                                                                FFAppState()
+                                                                    .Informationssurlerfrencement),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3313,16 +3275,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtMetadescriptionController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlerfrencement(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Meta Description'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Meta Description',
+                                                                FFAppState()
+                                                                    .Informationssurlerfrencement),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3399,15 +3357,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .txtAddressController ??=
                                                               TextEditingController(
                                                             text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsdadresse(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Adresse'),
+                                                                .getObjectFromListCompanyProfile(
+                                                                    columnGetVendorAndCompanyDetailsResponse
+                                                                        .jsonBody,
+                                                                    'Adresse',
+                                                                    FFAppState()
+                                                                        .Informationsdadresse),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3556,15 +3511,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .txtCityController ??=
                                                               TextEditingController(
                                                             text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsdadresse(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Ville'),
+                                                                .getObjectFromListCompanyProfile(
+                                                                    columnGetVendorAndCompanyDetailsResponse
+                                                                        .jsonBody,
+                                                                    'Ville',
+                                                                    FFAppState()
+                                                                        .Informationsdadresse),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3712,16 +3664,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtZipController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsdadresse(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Code postal'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Code postal',
+                                                                FFAppState()
+                                                                    .Informationsdadresse),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -3870,15 +3818,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .txtStateController ??=
                                                               TextEditingController(
                                                             text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationsdadresse(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'État'),
+                                                                .getObjectFromListCompanyProfile(
+                                                                    columnGetVendorAndCompanyDetailsResponse
+                                                                        .jsonBody,
+                                                                    'État',
+                                                                    FFAppState()
+                                                                        .Informationsdadresse),
                                                           ),
                                                           obscureText: false,
                                                           decoration:
@@ -4054,30 +3999,25 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               initialOption:
                                                                   _model.dropDownCountryValue ??=
                                                                       () {
-                                                                if (functions.getObjectFromList(
-                                                                        UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                            .informationsdadresse(
-                                                                              columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                            )!
-                                                                            .toList(),
-                                                                        'Pays') ==
+                                                                if (functions.getObjectFromListCompanyProfile(
+                                                                        columnGetVendorAndCompanyDetailsResponse
+                                                                            .jsonBody,
+                                                                        'Pays',
+                                                                        FFAppState()
+                                                                            .Informationsdadresse) ==
                                                                     'Sénégal') {
                                                                   return 'SN';
-                                                                } else if ((functions.getObjectFromList(
-                                                                            UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                                .informationsdadresse(
-                                                                                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                                )!
-                                                                                .toList(),
-                                                                            'Pays') ==
+                                                                } else if ((functions.getObjectFromListCompanyProfile(
+                                                                            columnGetVendorAndCompanyDetailsResponse
+                                                                                .jsonBody,
+                                                                            'Pays',
+                                                                            FFAppState()
+                                                                                .Informationsdadresse) ==
                                                                         'Ivory Coast') ||
-                                                                    (functions.getObjectFromList(
-                                                                            UmaruGroup.getVendorAndCompanyDetailsCall
-                                                                                .informationsdadresse(
-                                                                                  columnGetVendorAndCompanyDetailsResponse.jsonBody,
-                                                                                )!
-                                                                                .toList(),
-                                                                            'Pays') ==
+                                                                    (functions.getObjectFromListCompanyProfile(
+                                                                            columnGetVendorAndCompanyDetailsResponse.jsonBody,
+                                                                            'Pays',
+                                                                            FFAppState().Informationsdadresse) ==
                                                                         'Côte d’Ivoire')) {
                                                                   return 'CI';
                                                                 } else {
