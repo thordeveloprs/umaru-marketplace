@@ -106,6 +106,29 @@ String urlEncode(String value) {
   return Uri.encodeComponent("%${value}%");
 }
 
+String getObjectFromListCompanyProfile(
+  dynamic jsonBoday,
+  String searchLableName,
+  String listName,
+) {
+  var res = json.decode(jsonBoday);
+  List<dynamic> list = res["data"][listName] ?? [];
+
+  if (list.isNotEmpty) {
+    print(searchLableName);
+    var b = list.where((d) => d["label"] == searchLableName);
+    print(b);
+
+    if (b.isEmpty) {
+      return "";
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return "";
+  }
+}
+
 dynamic createManageProductJson(String searchItem) {
   Map<String, dynamic> mapData = Map<String, dynamic>();
   mapData = {"name": searchItem};

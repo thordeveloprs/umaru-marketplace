@@ -1527,16 +1527,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                           controller: _model
                                                                   .txtCompanyNameController ??=
                                                               TextEditingController(
-                                                            text: functions
-                                                                .getObjectFromList(
-                                                                    UmaruGroup
-                                                                        .getVendorAndCompanyDetailsCall
-                                                                        .informationssurlasocit(
-                                                                          columnGetVendorAndCompanyDetailsResponse
-                                                                              .jsonBody,
-                                                                        )!
-                                                                        .toList(),
-                                                                    'Nom de l\'entreprise'),
+                                                            text: functions.getObjectFromListCompanyProfile(
+                                                                columnGetVendorAndCompanyDetailsResponse
+                                                                    .jsonBody,
+                                                                'Nom de l\'entreprise',
+                                                                FFAppState()
+                                                                    .Informationssurlasocit),
                                                           ),
                                                           obscureText: false,
                                                           decoration:

@@ -276,6 +276,30 @@ class FFAppState extends ChangeNotifier {
     _selectedLanguageCode = _value;
     prefs.setString('ff_selectedLanguageCode', _value);
   }
+
+  String _Informationssurlasocit = 'Informations sur la société';
+  String get Informationssurlasocit => _Informationssurlasocit;
+  set Informationssurlasocit(String _value) {
+    _Informationssurlasocit = _value;
+  }
+
+  String _Informationsd039assistance = 'Informations d&#039;assistance';
+  String get Informationsd039assistance => _Informationsd039assistance;
+  set Informationsd039assistance(String _value) {
+    _Informationsd039assistance = _value;
+  }
+
+  String _Informationssurlerfrencement = 'Informations sur le référencement';
+  String get Informationssurlerfrencement => _Informationssurlerfrencement;
+  set Informationssurlerfrencement(String _value) {
+    _Informationssurlerfrencement = _value;
+  }
+
+  String _Informationsdadresse = 'Informations d’adresse';
+  String get Informationsdadresse => _Informationsdadresse;
+  set Informationsdadresse(String _value) {
+    _Informationsdadresse = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
