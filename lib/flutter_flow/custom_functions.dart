@@ -107,12 +107,11 @@ String urlEncode(String value) {
 }
 
 String getObjectFromListCompanyProfile(
-  dynamic jsonBoday,
+  dynamic jsonBody,
   String searchLableName,
   String listName,
 ) {
-  var res = json.decode(jsonBoday);
-  List<dynamic> list = res["data"][listName] ?? [];
+  List<dynamic> list = jsonBody["data"][listName] ?? [];
 
   if (list.isNotEmpty) {
     print(searchLableName);
