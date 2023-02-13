@@ -277,7 +277,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: Colors.transparent,
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),
@@ -448,7 +448,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: Colors.transparent,
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 21, 15, 0),

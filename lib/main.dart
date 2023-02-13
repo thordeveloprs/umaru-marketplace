@@ -113,6 +113,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'search': SearchWidget(),
       'All_Category': AllCategoryWidget(),
       'MyAccounts': MyAccountsWidget(),
+      'BuyMembershipPage': BuyMembershipPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -167,6 +168,16 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               'j5glnhsd' /* Account */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'wfzqgmuf' /* Home */,
             ),
             tooltip: '',
           )
