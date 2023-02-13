@@ -348,32 +348,37 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                getJsonField(
-                                                  columnProductByCategoryIdAndProductIdResponse
-                                                      .jsonBody,
-                                                  r'''$.items[0].name''',
-                                                ).toString(),
-                                                textAlign: TextAlign.start,
-                                                maxLines: 2,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .title1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 18,
-                                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 15, 0, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  getJsonField(
+                                                    columnProductByCategoryIdAndProductIdResponse
+                                                        .jsonBody,
+                                                    r'''$.items[0].name''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.start,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .title1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 18,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         Padding(
                                           padding:

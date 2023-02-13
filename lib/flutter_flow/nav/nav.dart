@@ -97,10 +97,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BuyMembershipPage',
               path: 'buyMembershipPage',
-              builder: (context, params) => BuyMembershipPageWidget(
-                commingFromHome:
-                    params.getParam('commingFromHome', ParamType.bool),
-              ),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'BuyMembershipPage')
+                  : BuyMembershipPageWidget(
+                      commingFromHome:
+                          params.getParam('commingFromHome', ParamType.bool),
+                    ),
             ),
             FFRoute(
               name: 'registerFormPricing',
@@ -152,16 +154,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LogInPageWidget(),
             ),
             FFRoute(
-              name: 'sellerRegisteration',
-              path: 'sellerRegisteration',
-              builder: (context, params) => SellerRegisterationWidget(),
-            ),
-            FFRoute(
               name: 'sucessScreen2',
               path: 'sucessScreen2',
               builder: (context, params) => SucessScreen2Widget(
                 msg: params.getParam('msg', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'sellerRegisteration',
+              path: 'sellerRegisteration',
+              builder: (context, params) => SellerRegisterationWidget(),
             ),
             FFRoute(
               name: 'Product_detailPage',

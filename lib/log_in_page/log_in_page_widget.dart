@@ -146,7 +146,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 52,
+                              height: 54,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -258,7 +258,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 52,
+                              height: 54,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -413,7 +413,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           );
                                           FFAppState().isLogin = true;
                                         });
-
+                                        if (Navigator.of(context).canPop()) {
+                                          context.pop();
+                                        }
                                         context.pushNamed('Home');
                                       } else {
                                         ScaffoldMessenger.of(context)

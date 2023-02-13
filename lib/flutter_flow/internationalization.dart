@@ -1109,6 +1109,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
+  // sucessScreen2
+  {
+    'cejwnbr9': {
+      'en': 'Sucess',
+      'fr': 'Succès',
+    },
+    'n7b88mrq': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // sellerRegisteration
   {
     '507gsmi3': {
@@ -1238,17 +1249,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'f89tzehl': {
-      'en': 'Home',
-      'fr': 'Maison',
-    },
-  },
-  // sucessScreen2
-  {
-    'cejwnbr9': {
-      'en': 'Sucess',
-      'fr': 'Succès',
-    },
-    'n7b88mrq': {
       'en': 'Home',
       'fr': 'Maison',
     },
