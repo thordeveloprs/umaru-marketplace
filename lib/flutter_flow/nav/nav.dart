@@ -97,12 +97,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BuyMembershipPage',
               path: 'buyMembershipPage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'BuyMembershipPage')
-                  : BuyMembershipPageWidget(
-                      commingFromHome:
-                          params.getParam('commingFromHome', ParamType.bool),
-                    ),
+              builder: (context, params) => BuyMembershipPageWidget(
+                commingFromHome:
+                    params.getParam('commingFromHome', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'registerFormPricing',
@@ -117,19 +115,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : AllCategoryWidget(),
             ),
             FFRoute(
-              name: 'registerFormcompanyDetails',
-              path: 'registerFormcompanyDetails',
-              builder: (context, params) => RegisterFormcompanyDetailsWidget(),
-            ),
-            FFRoute(
-              name: 'EditProfile',
-              path: 'editProfile',
-              builder: (context, params) => EditProfileWidget(),
-            ),
-            FFRoute(
               name: 'ManageProducts',
               path: 'manageProducts',
               builder: (context, params) => ManageProductsWidget(),
+            ),
+            FFRoute(
+              name: 'registerFormcompanyDetails',
+              path: 'registerFormcompanyDetails',
+              builder: (context, params) => RegisterFormcompanyDetailsWidget(),
             ),
             FFRoute(
               name: 'MyAccounts',
@@ -137,6 +130,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'MyAccounts')
                   : MyAccountsWidget(),
+            ),
+            FFRoute(
+              name: 'EditProfile',
+              path: 'editProfile',
+              builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
               name: 'addProduct',

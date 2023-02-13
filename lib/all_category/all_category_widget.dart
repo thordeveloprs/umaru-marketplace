@@ -68,130 +68,118 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                   ],
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
-                          child: Builder(
-                            builder: (context) {
-                              final cateData = FFAppState()
-                                  .categoryData
-                                  .where((e) =>
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
+                    child: Builder(
+                      builder: (context) {
+                        final cateData = FFAppState()
+                            .categoryData
+                            .where((e) =>
+                                getJsonField(
+                                  e,
+                                  r'''$.parent_id''',
+                                ) ==
+                                FFAppState().findShopCategoryId)
+                            .toList()
+                            .map((e) => e)
+                            .toList();
+                        return GridView.builder(
+                          padding: EdgeInsets.zero,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 14,
+                            mainAxisSpacing: 14.66,
+                            childAspectRatio: 1,
+                          ),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: cateData.length,
+                          itemBuilder: (context, cateDataIndex) {
+                            final cateDataItem = cateData[cateDataIndex];
+                            return InkWell(
+                              onTap: () async {
+                                context.pushNamed(
+                                  'main_Category',
+                                  queryParams: {
+                                    'cetegoryId': serializeParam(
                                       getJsonField(
-                                        e,
-                                        r'''$.parent_id''',
-                                      ) ==
-                                      FFAppState().findShopCategoryId)
-                                  .toList()
-                                  .map((e) => e)
-                                  .toList();
-                              return GridView.builder(
-                                padding: EdgeInsets.zero,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 14,
-                                  mainAxisSpacing: 14.66,
-                                  childAspectRatio: 1,
-                                ),
-                                primary: false,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: cateData.length,
-                                itemBuilder: (context, cateDataIndex) {
-                                  final cateDataItem = cateData[cateDataIndex];
-                                  return InkWell(
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'main_Category',
-                                        queryParams: {
-                                          'cetegoryId': serializeParam(
-                                            getJsonField(
-                                              cateDataItem,
-                                              r'''$.id''',
-                                            ),
-                                            ParamType.int,
-                                          ),
-                                          'cateName': serializeParam(
-                                            getJsonField(
-                                              cateDataItem,
-                                              r'''$.name''',
-                                            ).toString(),
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 143,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.11),
+                                        cateDataItem,
+                                        r'''$.id''',
                                       ),
-                                      child: Column(
+                                      ParamType.int,
+                                    ),
+                                    'cateName': serializeParam(
+                                      getJsonField(
+                                        cateDataItem,
+                                        r'''$.name''',
+                                      ).toString(),
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 143,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(8.11),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 18.68, 0, 0),
+                                      child: Image.network(
+                                        functions.findProductImage(
+                                            getJsonField(
+                                              cateDataItem,
+                                              r'''$.custom_attributes''',
+                                            )!,
+                                            FFAppState().imageBaseUrl),
+                                        width: 66.5,
+                                        height: 69.7,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 14.49, 5, 0),
+                                      child: Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 18.68, 0, 0),
-                                            child: Image.network(
-                                              functions.findProductImage(
-                                                  getJsonField(
-                                                    cateDataItem,
-                                                    r'''$.custom_attributes''',
-                                                  )!,
-                                                  FFAppState().imageBaseUrl),
-                                              width: 66.5,
-                                              height: 69.7,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 14.49, 5, 0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    getJsonField(
-                                                      cateDataItem,
-                                                      r'''$.name''',
-                                                    ).toString(),
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
+                                          Expanded(
+                                            child: Text(
+                                              getJsonField(
+                                                cateDataItem,
+                                                r'''$.name''',
+                                              ).toString(),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 ),

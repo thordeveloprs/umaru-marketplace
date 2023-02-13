@@ -215,3 +215,11 @@ List<dynamic> isJsonFieldEmpty(
   var res = json.decode(response);
   return res["data"][field] ?? [];
 }
+
+dynamic updateUserDetailLocally(
+  dynamic userDetailJson,
+  String vendorname,
+) {
+  userDetailJson['vendor_name'] = vendorname;
+  return userDetailJson;
+}

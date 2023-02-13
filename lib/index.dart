@@ -9,11 +9,11 @@ export 'buy_membership_page/buy_membership_page_widget.dart'
 export 'register_form_pricing/register_form_pricing_widget.dart'
     show RegisterFormPricingWidget;
 export 'all_category/all_category_widget.dart' show AllCategoryWidget;
+export 'manage_products/manage_products_widget.dart' show ManageProductsWidget;
 export 'register_formcompany_details/register_formcompany_details_widget.dart'
     show RegisterFormcompanyDetailsWidget;
-export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
-export 'manage_products/manage_products_widget.dart' show ManageProductsWidget;
 export 'my_accounts/my_accounts_widget.dart' show MyAccountsWidget;
+export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export 'add_product/add_product_widget.dart' show AddProductWidget;
 export 'privacy_policy/privacy_policy_widget.dart' show PrivacyPolicyWidget;
 export 'log_in_page/log_in_page_widget.dart' show LogInPageWidget;

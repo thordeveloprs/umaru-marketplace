@@ -1379,6 +1379,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               ''),
                                                           r'''$.data.success''',
                                                         )) {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .userData =
+                                                                getJsonField(
+                                                              functions.updateUserDetailLocally(
+                                                                  FFAppState()
+                                                                      .userData,
+                                                                  _model
+                                                                      .firstNTextFieldController
+                                                                      .text),
+                                                              r'''$''',
+                                                            );
+                                                          });
+
                                                           context.pushNamed(
                                                               'Home');
                                                         } else {

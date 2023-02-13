@@ -56,6 +56,10 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
               .toList();
           FFAppState().isLoading = false;
         });
+      } else {
+        setState(() {
+          FFAppState().isLoading = false;
+        });
       }
     });
 

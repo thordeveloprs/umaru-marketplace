@@ -1803,7 +1803,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                             FlutterFlowTheme.of(context).black,
                                       ),
                                   maxLines: null,
-                                  keyboardType: TextInputType.number,
                                   validator: _model
                                       .txtMetaTitleControllerValidator
                                       .asValidator(context),

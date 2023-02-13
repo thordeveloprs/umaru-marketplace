@@ -244,6 +244,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Catégories',
     },
   },
+  // ManageProducts
+  {
+    'kz0byf3p': {
+      'en': 'Manage Products',
+      'fr': 'Gérer les produits',
+    },
+    'e0pba0x2': {
+      'en': 'Search',
+      'fr': '',
+    },
+    'bys89djy': {
+      'en': 'Add New',
+      'fr': 'Ajouter nouveau',
+    },
+    'l78spfvj': {
+      'en': 'Home',
+      'fr': 'Maison',
+    },
+  },
   // registerFormcompanyDetails
   {
     'xtlycfcc': {
@@ -333,6 +352,65 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '924w0hrp': {
       'en': 'Home',
       'fr': 'Maison',
+    },
+  },
+  // MyAccounts
+  {
+    'h1ahj7v6': {
+      'en': 'User',
+      'fr': 'Utilisateur',
+    },
+    'pldvdyz5': {
+      'en': 'Profile',
+      'fr': 'Profil',
+    },
+    '4uwb1xdx': {
+      'en': 'Manage Product',
+      'fr': 'Gérer le produit',
+    },
+    'fqdv5hs8': {
+      'en': 'Language',
+      'fr': 'Langue',
+    },
+    '5vc88ei9': {
+      'en': 'Currency',
+      'fr': 'Monnaie',
+    },
+    'lk525ulh': {
+      'en': 'XOF CFA',
+      'fr': 'XOF CFA',
+    },
+    'labm5b1q': {
+      'en': 'FAQs',
+      'fr': 'FAQ',
+    },
+    'kzuiblqv': {
+      'en': 'Contact Us',
+      'fr': 'Contactez-nous',
+    },
+    '6kc9ijah': {
+      'en': 'Terms & Conditions',
+      'fr': 'termes et conditions',
+    },
+    'du1ib3ff': {
+      'en': 'Privacy Policy',
+      'fr': 'politique de confidentialité',
+    },
+    'h7it2kdi': {
+      'en': 'Log Out',
+      'fr': 'Se déconnecter',
+    },
+    '40ndwqug': {
+      'en': 'Seller Login',
+      'fr': 'Connexion vendeur',
+    },
+    'e5nh1b6y': {
+      'en': 'Connect With us',
+      'fr': 'Connecte-toi avec nous',
+    },
+    'j5glnhsd': {
+      'en': 'Account',
+      'fr': 'Compte',
     },
   },
   // EditProfile
@@ -708,84 +786,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'vu7ttq17': {
       'en': 'Home',
       'fr': 'Maison',
-    },
-  },
-  // ManageProducts
-  {
-    'kz0byf3p': {
-      'en': 'Manage Products',
-      'fr': 'Gérer les produits',
-    },
-    'e0pba0x2': {
-      'en': 'Search',
-      'fr': '',
-    },
-    'bys89djy': {
-      'en': 'Add New',
-      'fr': 'Ajouter nouveau',
-    },
-    'l78spfvj': {
-      'en': 'Home',
-      'fr': 'Maison',
-    },
-  },
-  // MyAccounts
-  {
-    'h1ahj7v6': {
-      'en': 'User',
-      'fr': 'Utilisateur',
-    },
-    'pldvdyz5': {
-      'en': 'Profile',
-      'fr': 'Profil',
-    },
-    '4uwb1xdx': {
-      'en': 'Manage Product',
-      'fr': 'Gérer le produit',
-    },
-    'fqdv5hs8': {
-      'en': 'Language',
-      'fr': 'Langue',
-    },
-    '5vc88ei9': {
-      'en': 'Currency',
-      'fr': 'Monnaie',
-    },
-    'lk525ulh': {
-      'en': 'XOF CFA',
-      'fr': 'XOF CFA',
-    },
-    'labm5b1q': {
-      'en': 'FAQs',
-      'fr': 'FAQ',
-    },
-    'kzuiblqv': {
-      'en': 'Contact Us',
-      'fr': 'Contactez-nous',
-    },
-    '6kc9ijah': {
-      'en': 'Terms & Conditions',
-      'fr': 'termes et conditions',
-    },
-    'du1ib3ff': {
-      'en': 'Privacy Policy',
-      'fr': 'politique de confidentialité',
-    },
-    'h7it2kdi': {
-      'en': 'Log Out',
-      'fr': 'Se déconnecter',
-    },
-    '40ndwqug': {
-      'en': 'Seller Login',
-      'fr': 'Connexion vendeur',
-    },
-    'e5nh1b6y': {
-      'en': 'Connect With us',
-      'fr': 'Connecte-toi avec nous',
-    },
-    'j5glnhsd': {
-      'en': 'Account',
-      'fr': 'Compte',
     },
   },
   // addProduct

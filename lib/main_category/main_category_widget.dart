@@ -64,126 +64,113 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                 ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
-                        child: Builder(
-                          builder: (context) {
-                            final mainList = FFAppState()
-                                .categoryData
-                                .where((e) =>
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(15, 30, 15, 0),
+                  child: Builder(
+                    builder: (context) {
+                      final mainList = FFAppState()
+                          .categoryData
+                          .where((e) =>
+                              getJsonField(
+                                e,
+                                r'''$.parent_id''',
+                              ) ==
+                              widget.cetegoryId)
+                          .toList();
+                      return GridView.builder(
+                        padding: EdgeInsets.zero,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 14,
+                          mainAxisSpacing: 14.66,
+                          childAspectRatio: 1,
+                        ),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: mainList.length,
+                        itemBuilder: (context, mainListIndex) {
+                          final mainListItem = mainList[mainListIndex];
+                          return InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'categoryPage',
+                                queryParams: {
+                                  'categoryID': serializeParam(
                                     getJsonField(
-                                      e,
-                                      r'''$.parent_id''',
-                                    ) ==
-                                    widget.cetegoryId)
-                                .toList();
-                            return GridView.builder(
-                              padding: EdgeInsets.zero,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 14,
-                                mainAxisSpacing: 14.66,
-                                childAspectRatio: 1,
+                                      mainListItem,
+                                      r'''$.id''',
+                                    ).toString(),
+                                    ParamType.String,
+                                  ),
+                                  'categoryName': serializeParam(
+                                    getJsonField(
+                                      mainListItem,
+                                      r'''$.name''',
+                                    ).toString(),
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 142.7,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8.11),
                               ),
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: mainList.length,
-                              itemBuilder: (context, mainListIndex) {
-                                final mainListItem = mainList[mainListIndex];
-                                return InkWell(
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'categoryPage',
-                                      queryParams: {
-                                        'categoryID': serializeParam(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 18.68, 20, 0),
+                                    child: Image.network(
+                                      functions.findProductImage(
                                           getJsonField(
                                             mainListItem,
-                                            r'''$.id''',
-                                          ).toString(),
-                                          ParamType.String,
-                                        ),
-                                        'categoryName': serializeParam(
-                                          getJsonField(
-                                            mainListItem,
-                                            r'''$.name''',
-                                          ).toString(),
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 142.7,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.11),
+                                            r'''$.custom_attributes''',
+                                          )!,
+                                          FFAppState().imageBaseUrl),
+                                      width: 66.5,
+                                      height: 69.7,
+                                      fit: BoxFit.contain,
                                     ),
-                                    child: Column(
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 14.49, 5, 0),
+                                    child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20, 18.68, 20, 0),
-                                          child: Image.network(
-                                            functions.findProductImage(
-                                                getJsonField(
-                                                  mainListItem,
-                                                  r'''$.custom_attributes''',
-                                                )!,
-                                                FFAppState().imageBaseUrl),
-                                            width: 66.5,
-                                            height: 69.7,
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5, 14.49, 5, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  getJsonField(
-                                                    mainListItem,
-                                                    r'''$.name''',
-                                                  ).toString(),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                        Expanded(
+                                          child: Text(
+                                            getJsonField(
+                                              mainListItem,
+                                              r'''$.name''',
+                                            ).toString(),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  fontWeight: FontWeight.bold,
                                                 ),
-                                              ),
-                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
