@@ -223,3 +223,20 @@ dynamic updateUserDetailLocally(
   userDetailJson['vendor_name'] = vendorname;
   return userDetailJson;
 }
+
+String findWebsiteId(
+  List<dynamic> attributesList,
+  String attributesName,
+) {
+  if (attributesList.isNotEmpty) {
+    var b = attributesList.where((d) => d["attribute_code"] == attributesName);
+
+    if (b.isEmpty) {
+      return "1";
+    } else {
+      return b.first["value"];
+    }
+  } else {
+    return "1";
+  }
+}
