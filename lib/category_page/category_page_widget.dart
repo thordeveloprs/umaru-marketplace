@@ -450,6 +450,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                               frenchGridViewProductByCategoryIdAndProductIdFrenchResponse
                                                   .jsonBody,
                                             )
+                                            ?.map((e) => e)
+                                            .toList()
                                             ?.where((e) =>
                                                 ('${getJsonField(
                                                       e,

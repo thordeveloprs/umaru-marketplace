@@ -226,7 +226,7 @@ dynamic updateUserDetailLocally(
 
 String findWebsiteId(List<dynamic> websiteIdList) {
   if (websiteIdList.isNotEmpty) {
-    var b = websiteIdList.where((d) => d == "1");
+    var b = websiteIdList.where((d) => d == 1);
 
     if (b.isEmpty) {
       return "0";
