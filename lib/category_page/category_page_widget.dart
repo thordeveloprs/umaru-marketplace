@@ -215,6 +215,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                               gridViewProductByCategoryIdAndProductIdResponse
                                                   .jsonBody,
                                             )
+                                            ?.map((e) => e)
+                                            .toList()
                                             ?.where((e) =>
                                                 ('${getJsonField(
                                                       e,
@@ -227,8 +229,6 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                       r'''$.extension_attributes.website_ids''',
                                                     )!) ==
                                                     '1'))
-                                            .toList()
-                                            ?.map((e) => e)
                                             .toList()
                                             ?.toList() ??
                                         [];
