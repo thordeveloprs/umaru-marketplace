@@ -66,19 +66,14 @@ class _PaymentWebViewWidgetState extends State<PaymentWebViewWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.84,
-                child: custom_widgets.PaymentWebView(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.84,
-                  url: widget.url!,
-                ),
-              ),
-            ],
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: custom_widgets.PaymentWebView(
+              width: double.infinity,
+              height: double.infinity,
+              url: widget.url!,
+            ),
           ),
         ),
       ),
