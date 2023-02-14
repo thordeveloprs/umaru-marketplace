@@ -26,11 +26,12 @@ class ChangePasswordModel extends FlutterFlowModel {
     return null;
   }
 
-  // State field(s) for txtPassword widget.
-  TextEditingController? txtPasswordController1;
-  late bool txtPasswordVisibility1;
-  String? Function(BuildContext, String?)? txtPasswordController1Validator;
-  String? _txtPasswordController1Validator(BuildContext context, String? val) {
+  // State field(s) for txtNewPassword widget.
+  TextEditingController? txtNewPasswordController;
+  late bool txtNewPasswordVisibility;
+  String? Function(BuildContext, String?)? txtNewPasswordControllerValidator;
+  String? _txtNewPasswordControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'ir8ckcpm' /* New Password is required */,
@@ -40,11 +41,13 @@ class ChangePasswordModel extends FlutterFlowModel {
     return null;
   }
 
-  // State field(s) for txtPassword widget.
-  TextEditingController? txtPasswordController2;
-  late bool txtPasswordVisibility2;
-  String? Function(BuildContext, String?)? txtPasswordController2Validator;
-  String? _txtPasswordController2Validator(BuildContext context, String? val) {
+  // State field(s) for txtNewConfirmPassword widget.
+  TextEditingController? txtNewConfirmPasswordController;
+  late bool txtNewConfirmPasswordVisibility;
+  String? Function(BuildContext, String?)?
+      txtNewConfirmPasswordControllerValidator;
+  String? _txtNewConfirmPasswordControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         '9qpko8cd' /* Confirm New Password is requir... */,
@@ -60,16 +63,17 @@ class ChangePasswordModel extends FlutterFlowModel {
     appbarModel = createModel(context, () => AppbarModel());
     oldPasswordVisibility = false;
     oldPasswordControllerValidator = _oldPasswordControllerValidator;
-    txtPasswordVisibility1 = false;
-    txtPasswordController1Validator = _txtPasswordController1Validator;
-    txtPasswordVisibility2 = false;
-    txtPasswordController2Validator = _txtPasswordController2Validator;
+    txtNewPasswordVisibility = false;
+    txtNewPasswordControllerValidator = _txtNewPasswordControllerValidator;
+    txtNewConfirmPasswordVisibility = false;
+    txtNewConfirmPasswordControllerValidator =
+        _txtNewConfirmPasswordControllerValidator;
   }
 
   void dispose() {
     oldPasswordController?.dispose();
-    txtPasswordController1?.dispose();
-    txtPasswordController2?.dispose();
+    txtNewPasswordController?.dispose();
+    txtNewConfirmPasswordController?.dispose();
   }
 
   /// Additional helper methods are added here.

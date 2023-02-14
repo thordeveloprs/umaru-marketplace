@@ -113,7 +113,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       Tab(
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          'f40622jz' /* Genreal Info */,
+                                          'f40622jz' /* General Info */,
                                         ),
                                       ),
                                       Tab(

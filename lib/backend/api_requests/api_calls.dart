@@ -278,6 +278,7 @@ class CreateProductCall {
     String? specialToDate = '',
     double? weight,
     int? country,
+    String? websites = '[\"1\"]',
   }) {
     final category = _serializeList(categoryList);
 
@@ -314,6 +315,7 @@ class CreateProductCall {
         'special_to_date': specialToDate,
         'weight': weight,
         'country': country,
+        'websites': websites,
       },
       bodyType: BodyType.MULTIPART,
       returnBody: true,

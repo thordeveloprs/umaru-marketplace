@@ -221,10 +221,28 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                       r'''$.status''',
                                                     ).toString()}' ==
                                                     '1') &&
-                                                true)
+                                                (functions.findWebsiteId(
+                                                        getJsonField(
+                                                      e,
+                                                      r'''$.extension_attributes.website_ids''',
+                                                    )!) ==
+                                                    '1'))
+                                            .toList()
+                                            ?.map((e) => e)
                                             .toList()
                                             ?.toList() ??
                                         [];
+                                    if (productList.isEmpty) {
+                                      return Center(
+                                        child: Image.asset(
+                                          'assets/images/no_record_found.png',
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                        ),
+                                      );
+                                    }
                                     return GridView.builder(
                                       padding: EdgeInsets.zero,
                                       gridDelegate:
@@ -299,19 +317,20 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                             r'''$.name''',
                                                           ).toString(),
                                                           textAlign:
-                                                              TextAlign.start,
+                                                              TextAlign.center,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
-                                                                color: Color(
-                                                                    0xFF050404),
-                                                                fontSize: 10,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryColor,
+                                                                fontSize: 11,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w600,
+                                                                        .bold,
                                                               ),
                                                         ),
                                                       ),
@@ -325,7 +344,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -345,10 +365,10 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                                     'Poppins',
                                                                 color: Color(
                                                                     0xFF050404),
-                                                                fontSize: 10,
+                                                                fontSize: 12,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w600,
+                                                                        .bold,
                                                               ),
                                                         ),
                                                       ),
@@ -371,7 +391,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                                     'Poppins',
                                                                 color: Color(
                                                                     0xFF050404),
-                                                                fontSize: 10,
+                                                                fontSize: 12,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -430,10 +450,32 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                               frenchGridViewProductByCategoryIdAndProductIdFrenchResponse
                                                   .jsonBody,
                                             )
-                                            ?.map((e) => e)
+                                            ?.where((e) =>
+                                                ('${getJsonField(
+                                                      e,
+                                                      r'''$.status''',
+                                                    ).toString()}' ==
+                                                    '1') &&
+                                                (functions.findWebsiteId(
+                                                        getJsonField(
+                                                      e,
+                                                      r'''$.extension_attributes.website_ids''',
+                                                    )!) ==
+                                                    '1'))
                                             .toList()
                                             ?.toList() ??
                                         [];
+                                    if (productList.isEmpty) {
+                                      return Center(
+                                        child: Image.asset(
+                                          'assets/images/no_record_found.png',
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                        ),
+                                      );
+                                    }
                                     return GridView.builder(
                                       padding: EdgeInsets.zero,
                                       gridDelegate:

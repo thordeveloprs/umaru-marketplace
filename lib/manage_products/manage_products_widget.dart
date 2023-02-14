@@ -347,6 +347,17 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                         .jsonData
                                         .map((e) => e)
                                         .toList();
+                                    if (manageProduct.isEmpty) {
+                                      return Center(
+                                        child: Image.asset(
+                                          'assets/images/no_record_found.png',
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                        ),
+                                      );
+                                    }
                                     return GridView.builder(
                                       padding: EdgeInsets.zero,
                                       gridDelegate:

@@ -27,8 +27,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     _model = createModel(context, () => ChangePasswordModel());
 
     _model.oldPasswordController = TextEditingController();
-    _model.txtPasswordController1 = TextEditingController();
-    _model.txtPasswordController2 = TextEditingController();
+    _model.txtNewPasswordController = TextEditingController();
+    _model.txtNewConfirmPasswordController = TextEditingController();
   }
 
   @override
@@ -99,7 +99,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 51,
+                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -218,7 +218,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 51,
+                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -239,9 +239,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12, 0, 32, 0),
                                     child: TextFormField(
-                                      controller: _model.txtPasswordController1,
+                                      controller:
+                                          _model.txtNewPasswordController,
                                       obscureText:
-                                          !_model.txtPasswordVisibility1,
+                                          !_model.txtNewPasswordVisibility,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -299,13 +300,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
                                             () => _model
-                                                    .txtPasswordVisibility1 =
-                                                !_model.txtPasswordVisibility1,
+                                                    .txtNewPasswordVisibility =
+                                                !_model
+                                                    .txtNewPasswordVisibility,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            _model.txtPasswordVisibility1
+                                            _model.txtNewPasswordVisibility
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Color(0xFF757575),
@@ -324,7 +326,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             fontWeight: FontWeight.normal,
                                           ),
                                       validator: _model
-                                          .txtPasswordController1Validator
+                                          .txtNewPasswordControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -337,7 +339,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 51,
+                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -358,9 +360,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12, 0, 32, 0),
                                     child: TextFormField(
-                                      controller: _model.txtPasswordController2,
-                                      obscureText:
-                                          !_model.txtPasswordVisibility2,
+                                      controller: _model
+                                          .txtNewConfirmPasswordController,
+                                      obscureText: !_model
+                                          .txtNewConfirmPasswordVisibility,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -418,13 +421,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
                                             () => _model
-                                                    .txtPasswordVisibility2 =
-                                                !_model.txtPasswordVisibility2,
+                                                    .txtNewConfirmPasswordVisibility =
+                                                !_model
+                                                    .txtNewConfirmPasswordVisibility,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            _model.txtPasswordVisibility2
+                                            _model.txtNewConfirmPasswordVisibility
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Color(0xFF757575),
@@ -443,7 +447,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             fontWeight: FontWeight.normal,
                                           ),
                                       validator: _model
-                                          .txtPasswordController2Validator
+                                          .txtNewConfirmPasswordControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -460,6 +464,23 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                               if (_model.formKey.currentState == null ||
                                   !_model.formKey.currentState!.validate()) {
                                 return;
+                              }
+                              if (_model.txtNewPasswordController.text !=
+                                  _model.txtNewConfirmPasswordController.text) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'The Password and Confirm Password must be same',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).black,
+                                  ),
+                                );
                               }
                             },
                             text: FFLocalizations.of(context).getText(

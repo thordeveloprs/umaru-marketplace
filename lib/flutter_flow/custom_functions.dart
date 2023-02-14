@@ -224,19 +224,16 @@ dynamic updateUserDetailLocally(
   return userDetailJson;
 }
 
-String findWebsiteId(
-  List<dynamic> attributesList,
-  String attributesName,
-) {
-  if (attributesList.isNotEmpty) {
-    var b = attributesList.where((d) => d["attribute_code"] == attributesName);
+String findWebsiteId(List<dynamic> websiteIdList) {
+  if (websiteIdList.isNotEmpty) {
+    var b = websiteIdList.where((d) => d == "1");
 
     if (b.isEmpty) {
-      return "1";
+      return "0";
     } else {
-      return b.first["value"];
+      return b.toString().replaceAll("(", "").replaceAll(")", "");
     }
   } else {
-    return "1";
+    return "0";
   }
 }

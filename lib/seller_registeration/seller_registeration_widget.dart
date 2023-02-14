@@ -1153,7 +1153,7 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                     },
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '94ccrbne' /* Terms_condition */,
+                                        '94ccrbne' /* Terms Condition */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1

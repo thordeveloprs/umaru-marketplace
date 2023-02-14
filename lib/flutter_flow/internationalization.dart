@@ -416,7 +416,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // EditProfile
   {
     'f40622jz': {
-      'en': 'Genreal Info',
+      'en': 'General Info',
       'fr': 'Informations \ngénérales',
     },
     'bv6314xi': {
@@ -1171,7 +1171,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'j\'ai lu et accepté',
     },
     '94ccrbne': {
-      'en': 'Terms_condition',
+      'en': 'Terms Condition',
       'fr': 'condition_terme',
     },
     'g89imkqo': {
