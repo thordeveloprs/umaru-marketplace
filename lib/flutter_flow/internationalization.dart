@@ -1068,7 +1068,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' Sign up here',
       'fr': 'Inscrivez-vous ici',
     },
-    '1pp1xlhw': {
+    '6cswh5a4': {
       'en': 'Your Email',
       'fr': '',
     },
@@ -1076,7 +1076,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': 'Votre e-mail',
     },
-    '57eh37jj': {
+    'czts8q4e': {
       'en': 'Password',
       'fr': '',
     },

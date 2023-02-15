@@ -171,7 +171,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            '1pp1xlhw' /* Your Email */,
+                                            '6cswh5a4' /* Your Email */,
                                           ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
@@ -284,7 +284,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            '57eh37jj' /* Password */,
+                                            'czts8q4e' /* Password */,
                                           ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)

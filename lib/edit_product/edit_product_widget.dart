@@ -54,20 +54,30 @@ class _EditProductWidgetState extends State<EditProductWidget> {
           await UmaruGroup.getSelectedCategoryByProductIdCall.call(
         productid: widget.id,
       );
-      if ((_model.selectedCategoryApiRespons?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().selecetCategoryList = functions
-              .makePreSelectedCategoryList(FFAppState().categoryData.toList(),
-                  (_model.selectedCategoryApiRespons?.jsonBody ?? ''))
-              .toList();
-          FFAppState().selectedCategoryIdList = functions
-              .dynamicToInt(getJsonField(
-                (_model.selectedCategoryApiRespons?.jsonBody ?? ''),
-                r'''$''',
-              )!)
-              .toList();
-        });
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            (_model.selectedCategoryApiRespons?.jsonBody ?? '').toString(),
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          duration: Duration(milliseconds: 4000),
+          backgroundColor: Colors.black,
+        ),
+      );
+      setState(() {
+        FFAppState().selecetCategoryList = functions
+            .makePreSelectedCategoryList(FFAppState().categoryData.toList(),
+                (_model.selectedCategoryApiRespons?.jsonBody ?? ''))
+            .toList();
+        FFAppState().selectedCategoryIdList = functions
+            .dynamicToInt(getJsonField(
+              (_model.selectedCategoryApiRespons?.jsonBody ?? ''),
+              r'''$''',
+            )!)
+            .toList();
+      });
     });
   }
 
