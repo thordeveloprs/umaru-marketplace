@@ -242,18 +242,14 @@ List<String> makePreSelectedCategoryList(
   List<dynamic> categoryList,
   List<dynamic> selectedCategoryList,
 ) {
-  //print(categoryList);
-
-  print('----------- $selectedCategoryList ');
   List<String> newList = [];
 
   categoryList.forEach((value) {
-    if (categoryList.contains(value["id"])) {
+    if (selectedCategoryList.contains(value["id"])) {
       newList.add("${value["id"]} ${value["name"]}");
     }
   });
 
-  print('First newList $newList');
   return newList;
 }
 

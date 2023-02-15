@@ -50,7 +50,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
       ),
       child: Form(
         key: _model.formKey,
-        autovalidateMode: AutovalidateMode.always,
+        autovalidateMode: AutovalidateMode.disabled,
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 0),
           child: Column(
@@ -188,6 +188,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   _model.forgotPasswordApiResponse =
                       await UmaruGroup.forgotPasswordCall.call(
                     email: _model.textController.text,
+                    stores: FFAppState().selectedLanguageCode == 'en' ? 2 : 1,
                   );
                   if (getJsonField(
                     (_model.forgotPasswordApiResponse?.jsonBody ?? ''),

@@ -540,18 +540,19 @@ class UpdateUserDetailsCall {
 class ForgotPasswordCall {
   Future<ApiCallResponse> call({
     String? email = '',
+    int? stores,
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'forgot password',
       apiUrl: '${UmaruGroup.baseUrl}vendorapi/index/forgotPassword',
-      callType: ApiCallType.POST,
+      callType: ApiCallType.GET,
       headers: {
         ...UmaruGroup.headers,
       },
       params: {
         'email': email,
+        'stores': stores,
       },
-      bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
