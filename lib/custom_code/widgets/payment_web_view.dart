@@ -58,7 +58,7 @@ class _PaymentWebView extends State<PaymentWebView> {
             url.startsWith(
                 'https://staging.umarumart.com/csmembership/membership')) {
           Future.delayed(Duration(seconds: 10), () {
-            Navigator.pop(context);
+            context.pushNamed('Home');
           });
         }
       },

@@ -50,6 +50,36 @@ class _EditProductWidgetState extends State<EditProductWidget> {
         FFAppState().selecetCategoryList = [];
         FFAppState().selectedCategoryIdList = [];
       });
+      _model.selectedCategoryApiRespons =
+          await UmaruGroup.getSelectedCategoryByProductIdCall.call(
+        productid: widget.id,
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            (_model.selectedCategoryApiRespons?.succeeded ?? true).toString(),
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          duration: Duration(milliseconds: 4000),
+          backgroundColor: Colors.black,
+        ),
+      );
+      if ((_model.selectedCategoryApiRespons?.statusCode ?? 200) == 200) {
+        setState(() {
+          FFAppState().selecetCategoryList = functions
+              .makePreSelectedCategoryList(FFAppState().categoryData.toList(),
+                  (_model.selectedCategoryApiRespons?.jsonBody ?? ''))
+              .toList();
+          FFAppState().selectedCategoryIdList =
+              UmaruGroup.getSelectedCategoryByProductIdCall
+                  .listData(
+                    (_model.selectedCategoryApiRespons?.jsonBody ?? ''),
+                  )!
+                  .toList();
+        });
+      }
     });
   }
 
@@ -1521,7 +1551,7 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       if (!FFAppState()
                                           .selecetCategoryList
                                           .contains(
-                                              _model.dropDownCountryValue)) {
+                                              _model.dropDownCategoryValue)) {
                                         setState(() {
                                           FFAppState().addToSelecetCategoryList(
                                               _model.dropDownCategoryValue!);

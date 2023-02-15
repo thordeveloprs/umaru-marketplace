@@ -237,3 +237,18 @@ String findWebsiteId(List<dynamic> websiteIdList) {
     return "0";
   }
 }
+
+List<String> makePreSelectedCategoryList(
+  List<dynamic> categoryList,
+  List<dynamic> selectedCategoryList,
+) {
+  List<String> newList = [];
+
+  categoryList.forEach((value) {
+    if (categoryList.contains(value["id"])) {
+      newList.add("${value["id"]} ${value["name"]}");
+    }
+  });
+
+  return newList;
+}

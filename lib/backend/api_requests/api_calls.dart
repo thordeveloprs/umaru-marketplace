@@ -59,6 +59,8 @@ class UmaruGroup {
       GetSubscriptionDetailsCall();
   static SubscriptionAddToCartCall subscriptionAddToCartCall =
       SubscriptionAddToCartCall();
+  static GetSelectedCategoryByProductIdCall getSelectedCategoryByProductIdCall =
+      GetSelectedCategoryByProductIdCall();
 }
 
 class LoginCall {
@@ -870,6 +872,35 @@ class SubscriptionAddToCartCall {
   dynamic membershipPlan(dynamic response) => getJsonField(
         response,
         r'''$[0].vendor_data.membership_plans''',
+        true,
+      );
+}
+
+class GetSelectedCategoryByProductIdCall {
+  Future<ApiCallResponse> call({
+    int? productid,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'get selected category by product id',
+      apiUrl: '${UmaruGroup.baseUrl}rest/V1/wishusucess/searchproduct',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {
+        'productid': productid,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic listData(dynamic response) => getJsonField(
+        response,
+        r'''$''',
         true,
       );
 }

@@ -48,14 +48,23 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
         ).toString().toString(),
       );
       if ((_model.productList?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().jsonData = getJsonField(
-            (_model.productList?.jsonBody ?? ''),
-            r'''$.data.products''',
-          )!
-              .toList();
-          FFAppState().isLoading = false;
-        });
+        if (getJsonField(
+          (_model.productList?.jsonBody ?? ''),
+          r'''$.data.success''',
+        )) {
+          setState(() {
+            FFAppState().jsonData = getJsonField(
+              (_model.productList?.jsonBody ?? ''),
+              r'''$.data.products''',
+            )!
+                .toList();
+            FFAppState().isLoading = false;
+          });
+        } else {
+          setState(() {
+            FFAppState().isLoading = false;
+          });
+        }
       } else {
         setState(() {
           FFAppState().isLoading = false;

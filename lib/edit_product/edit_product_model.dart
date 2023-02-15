@@ -22,6 +22,8 @@ class EditProductModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - API (get selected category by product id)] action in editProduct widget.
+  ApiCallResponse? selectedCategoryApiRespons;
   // Model for appbar component.
   late AppbarModel appbarModel;
   // State field(s) for txtProductName widget.
