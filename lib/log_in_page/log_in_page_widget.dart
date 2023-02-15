@@ -146,7 +146,6 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 54,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -170,9 +169,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                         controller: _model.txtEmailController,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          hintText: FFLocalizations.of(context)
+                                          labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'wbfshhsf' /* Your Email */,
+                                            'tswykh2p' /* Your Email */,
                                           ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
@@ -258,7 +257,6 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 54,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -284,9 +282,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                         obscureText:
                                             !_model.txtPasswordVisibility,
                                         decoration: InputDecoration(
-                                          hintText: FFLocalizations.of(context)
+                                          labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'ah6h2pvf' /* Password */,
+                                            'zpctqmcq' /* Password */,
                                           ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
