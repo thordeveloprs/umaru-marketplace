@@ -146,7 +146,38 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                           if (FFAppState().isLogin == true)
                             InkWell(
                               onTap: () async {
-                                context.pushNamed('ManageProducts');
+                                if (getJsonField(
+                                      FFAppState().subscriptionDetail,
+                                      r'''$.running_plans''',
+                                    ) !=
+                                    null) {
+                                  context.pushNamed('ManageProducts');
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        FFAppState()
+                                            .subscriptionDetail
+                                            .toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Colors.black,
+                                    ),
+                                  );
+
+                                  context.pushNamed(
+                                    'BuyMembershipPage',
+                                    queryParams: {
+                                      'commingFromHome': serializeParam(
+                                        false,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,

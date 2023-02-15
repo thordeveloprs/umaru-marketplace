@@ -21,6 +21,8 @@ class HomeModel extends FlutterFlowModel {
   ApiCallResponse? newOutPut1;
   // Stores action output result for [Backend Call - API (get category in french)] action in Home widget.
   ApiCallResponse? newOutPutFrench;
+  // Stores action output result for [Backend Call - API (Get Subscription Details)] action in Home widget.
+  ApiCallResponse? subscriptionResult;
 
   /// Initialization and disposal methods.
 

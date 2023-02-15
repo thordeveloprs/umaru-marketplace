@@ -88,16 +88,34 @@ class _BuyMembershipPageWidgetState extends State<BuyMembershipPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'f262efla' /* Membership Details */,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                            child: InkWell(
+                              onTap: () async {
+                                context.pop();
+                              },
+                              child: Icon(
+                                Icons.arrow_back,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                size: 24,
+                              ),
                             ),
-                            style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  fontSize: 22,
-                                ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'f262efla' /* Membership Details */,
+                              ),
+                              textAlign: TextAlign.center,
+                              style:
+                                  FlutterFlowTheme.of(context).title1.override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        fontSize: 22,
+                                      ),
+                            ),
                           ),
                         ],
                       ),

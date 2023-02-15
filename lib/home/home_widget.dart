@@ -69,6 +69,24 @@ class _HomeWidgetState extends State<HomeWidget> {
           FFAppState().isLoading = false;
         });
       }
+
+      if (FFAppState().isLogin) {
+        _model.subscriptionResult =
+            await UmaruGroup.getSubscriptionDetailsCall.call(
+          venderId: getJsonField(
+            FFAppState().userData,
+            r'''$.vendor_id''',
+          ).toString().toString(),
+        );
+        if ((_model.subscriptionResult?.succeeded ?? true)) {
+          setState(() {
+            FFAppState().subscriptionDetail = getJsonField(
+              (_model.subscriptionResult?.jsonBody ?? ''),
+              r'''$[0].vendor_data''',
+            );
+          });
+        }
+      }
     });
   }
 
