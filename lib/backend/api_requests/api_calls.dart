@@ -266,7 +266,7 @@ class CreateProductCall {
     double? price,
     int? qty,
     FFUploadedFile? images,
-    List<int>? categoryList,
+    List<String>? categoryList,
     String? description = '',
     int? isInStock,
     String? metaTitle = '',
@@ -281,6 +281,7 @@ class CreateProductCall {
     double? weight,
     int? country,
     String? websites = '[\"1\"]',
+    int? status = 1,
   }) {
     final category = _serializeList(categoryList);
 
@@ -337,7 +338,7 @@ class EditProductCall {
     double? price,
     int? qty,
     FFUploadedFile? images,
-    List<int>? categoryList,
+    List<String>? categoryList,
     String? description = '',
     String? isInStock = '',
     String? metaTitle = '',

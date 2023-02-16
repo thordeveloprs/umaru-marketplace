@@ -253,11 +253,11 @@ List<String> makePreSelectedCategoryList(
   return newList;
 }
 
-List<int> dynamicToInt(List<dynamic> listData) {
+List<String> dynamicToInt(List<dynamic> listData) {
   print(listData);
-  List<int> newList = [];
+  List<String> newList = [];
   listData.forEach((value) {
-    newList.add(value);
+    newList.add("$value");
   });
 
   print('NewList:--$newList');

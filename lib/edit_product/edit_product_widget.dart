@@ -1554,9 +1554,10 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                           FFAppState().addToSelecetCategoryList(
                                               _model.dropDownCategoryValue!);
                                           FFAppState().addToSelectedCategoryIdList(
-                                              functions.getSelectedCategoryId(
-                                                  _model
-                                                      .dropDownCategoryValue!));
+                                              functions
+                                                  .getSelectedCategoryId(_model
+                                                      .dropDownCategoryValue!)
+                                                  .toString());
                                         });
                                       }
 
@@ -1645,7 +1646,8 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                         functions
                                                             .getSelectedCategoryId(
                                                                 _model
-                                                                    .dropDownsubcategoryValue!));
+                                                                    .dropDownsubcategoryValue!)
+                                                            .toString());
                                               });
                                             }
 
@@ -1750,10 +1752,10 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                                 FFAppState()
                                                                     .removeFromSelecetCategoryList(
                                                                         selectedCategoryListItem);
-                                                                FFAppState().removeFromSelectedCategoryIdList(
-                                                                    functions
-                                                                        .getSelectedCategoryId(
-                                                                            selectedCategoryListItem));
+                                                                FFAppState().removeFromSelectedCategoryIdList(functions
+                                                                    .getSelectedCategoryId(
+                                                                        selectedCategoryListItem)
+                                                                    .toString());
                                                               });
                                                             },
                                                             child: Icon(

@@ -245,24 +245,6 @@ class FFAppState extends ChangeNotifier {
     _selecetCategoryList.removeAt(_index);
   }
 
-  List<int> _selectedCategoryIdList = [];
-  List<int> get selectedCategoryIdList => _selectedCategoryIdList;
-  set selectedCategoryIdList(List<int> _value) {
-    _selectedCategoryIdList = _value;
-  }
-
-  void addToSelectedCategoryIdList(int _value) {
-    _selectedCategoryIdList.add(_value);
-  }
-
-  void removeFromSelectedCategoryIdList(int _value) {
-    _selectedCategoryIdList.remove(_value);
-  }
-
-  void removeAtIndexFromSelectedCategoryIdList(int _index) {
-    _selectedCategoryIdList.removeAt(_index);
-  }
-
   dynamic _subscriptionDetail;
   dynamic get subscriptionDetail => _subscriptionDetail;
   set subscriptionDetail(dynamic _value) {
@@ -305,6 +287,24 @@ class FFAppState extends ChangeNotifier {
   String get Informationsgnrales => _Informationsgnrales;
   set Informationsgnrales(String _value) {
     _Informationsgnrales = _value;
+  }
+
+  List<String> _selectedCategoryIdList = [];
+  List<String> get selectedCategoryIdList => _selectedCategoryIdList;
+  set selectedCategoryIdList(List<String> _value) {
+    _selectedCategoryIdList = _value;
+  }
+
+  void addToSelectedCategoryIdList(String _value) {
+    _selectedCategoryIdList.add(_value);
+  }
+
+  void removeFromSelectedCategoryIdList(String _value) {
+    _selectedCategoryIdList.remove(_value);
+  }
+
+  void removeAtIndexFromSelectedCategoryIdList(int _index) {
+    _selectedCategoryIdList.removeAt(_index);
   }
 }
 
