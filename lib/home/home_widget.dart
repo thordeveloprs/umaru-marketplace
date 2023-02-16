@@ -296,7 +296,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       catDataItem,
                                                       r'''$.custom_attributes''',
                                                     )!,
-                                                    FFAppState().imageBaseUrl),
+                                                    FFAppState()
+                                                        .categoryImageBaseUrl),
                                                 width: 41,
                                                 height: 43,
                                                 fit: BoxFit.cover,

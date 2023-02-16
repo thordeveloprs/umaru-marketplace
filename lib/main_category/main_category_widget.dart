@@ -132,7 +132,7 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
                                             mainListItem,
                                             r'''$.custom_attributes''',
                                           )!,
-                                          FFAppState().imageBaseUrl),
+                                          FFAppState().categoryImageBaseUrl),
                                       width: 66.5,
                                       height: 69.7,
                                       fit: BoxFit.contain,

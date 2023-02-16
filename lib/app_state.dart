@@ -306,6 +306,12 @@ class FFAppState extends ChangeNotifier {
   void removeAtIndexFromSelectedCategoryIdList(int _index) {
     _selectedCategoryIdList.removeAt(_index);
   }
+
+  String _categoryImageBaseUrl = 'https://staging.umarumart.com/pub';
+  String get categoryImageBaseUrl => _categoryImageBaseUrl;
+  set categoryImageBaseUrl(String _value) {
+    _categoryImageBaseUrl = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

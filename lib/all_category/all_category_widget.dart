@@ -139,7 +139,7 @@ class _AllCategoryWidgetState extends State<AllCategoryWidget> {
                                               cateDataItem,
                                               r'''$.custom_attributes''',
                                             )!,
-                                            FFAppState().imageBaseUrl),
+                                            FFAppState().categoryImageBaseUrl),
                                         width: 66.5,
                                         height: 69.7,
                                         fit: BoxFit.cover,
