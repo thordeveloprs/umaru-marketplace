@@ -31,12 +31,12 @@ class _RegisterFormcompanyDetailsWidgetState
     super.initState();
     _model = createModel(context, () => RegisterFormcompanyDetailsModel());
 
-    _model.emalIdController = TextEditingController();
-    _model.textController2 = TextEditingController();
-    _model.textController3 = TextEditingController();
-    _model.txtFacebookIdController = TextEditingController();
-    _model.textController5 = TextEditingController();
-    _model.textController6 = TextEditingController();
+    _model.emalIdController ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
+    _model.txtFacebookIdController ??= TextEditingController();
+    _model.textController5 ??= TextEditingController();
+    _model.textController6 ??= TextEditingController();
   }
 
   @override

@@ -31,6 +31,7 @@ class ManageProductsModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     textController?.dispose();
   }
 

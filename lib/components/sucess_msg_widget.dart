@@ -36,7 +36,7 @@ class _SucessMsgWidgetState extends State<SucessMsgWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

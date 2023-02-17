@@ -37,7 +37,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

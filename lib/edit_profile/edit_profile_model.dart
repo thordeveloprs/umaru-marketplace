@@ -194,6 +194,7 @@ class EditProfileModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     firstNTextFieldController?.dispose();
     yourEmailTextFieldController?.dispose();
     publicNTextFieldController?.dispose();

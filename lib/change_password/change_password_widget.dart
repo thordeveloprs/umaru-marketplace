@@ -26,9 +26,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     super.initState();
     _model = createModel(context, () => ChangePasswordModel());
 
-    _model.oldPasswordController = TextEditingController();
-    _model.txtNewPasswordController = TextEditingController();
-    _model.txtNewConfirmPasswordController = TextEditingController();
+    _model.oldPasswordController ??= TextEditingController();
+    _model.txtNewPasswordController ??= TextEditingController();
+    _model.txtNewConfirmPasswordController ??= TextEditingController();
   }
 
   @override
@@ -99,7 +99,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -218,7 +217,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -339,7 +337,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 55,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,

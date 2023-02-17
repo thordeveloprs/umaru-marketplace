@@ -729,10 +729,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           getJsonField(
                                                             bestsellerChildItem,
                                                             r'''$.name''',
-                                                          ).toString(),
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 25,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                           textAlign:
                                                               TextAlign.center,
-                                                          maxLines: 2,
+                                                          maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -934,10 +940,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           getJsonField(
                                                             bestsellerChildItem,
                                                             r'''$.name''',
-                                                          ).toString(),
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 25,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                           textAlign:
                                                               TextAlign.center,
-                                                          maxLines: 2,
+                                                          maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1

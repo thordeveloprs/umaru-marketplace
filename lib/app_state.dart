@@ -312,6 +312,43 @@ class FFAppState extends ChangeNotifier {
   set categoryImageBaseUrl(String _value) {
     _categoryImageBaseUrl = _value;
   }
+
+  List<dynamic> _imageListForAddProduct = [];
+  List<dynamic> get imageListForAddProduct => _imageListForAddProduct;
+  set imageListForAddProduct(List<dynamic> _value) {
+    _imageListForAddProduct = _value;
+  }
+
+  void addToImageListForAddProduct(dynamic _value) {
+    _imageListForAddProduct.add(_value);
+  }
+
+  void removeFromImageListForAddProduct(dynamic _value) {
+    _imageListForAddProduct.remove(_value);
+  }
+
+  void removeAtIndexFromImageListForAddProduct(int _index) {
+    _imageListForAddProduct.removeAt(_index);
+  }
+
+  List<dynamic> _imageBase64ListForAddProduct = [];
+  List<dynamic> get imageBase64ListForAddProduct =>
+      _imageBase64ListForAddProduct;
+  set imageBase64ListForAddProduct(List<dynamic> _value) {
+    _imageBase64ListForAddProduct = _value;
+  }
+
+  void addToImageBase64ListForAddProduct(dynamic _value) {
+    _imageBase64ListForAddProduct.add(_value);
+  }
+
+  void removeFromImageBase64ListForAddProduct(dynamic _value) {
+    _imageBase64ListForAddProduct.remove(_value);
+  }
+
+  void removeAtIndexFromImageBase64ListForAddProduct(int _index) {
+    _imageBase64ListForAddProduct.removeAt(_index);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

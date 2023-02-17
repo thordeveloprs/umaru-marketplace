@@ -284,6 +284,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                             ),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -315,9 +317,16 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                           getJsonField(
                                                             productListItem,
                                                             r'''$.name''',
-                                                          ).toString(),
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 25,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                           textAlign:
                                                               TextAlign.center,
+                                                          maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -519,6 +528,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                             ),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -550,21 +561,29 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                           getJsonField(
                                                             productListItem,
                                                             r'''$.name''',
-                                                          ).toString(),
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 25,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                           textAlign:
-                                                              TextAlign.start,
+                                                              TextAlign.center,
+                                                          maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
-                                                                color: Color(
-                                                                    0xFF050404),
-                                                                fontSize: 10,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryColor,
+                                                                fontSize: 11,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w600,
+                                                                        .bold,
                                                               ),
                                                         ),
                                                       ),
@@ -578,7 +597,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -598,10 +618,10 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                                                     'Poppins',
                                                                 color: Color(
                                                                     0xFF050404),
-                                                                fontSize: 10,
+                                                                fontSize: 12,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w600,
+                                                                        .bold,
                                                               ),
                                                         ),
                                                       ),

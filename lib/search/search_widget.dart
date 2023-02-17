@@ -27,7 +27,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     super.initState();
     _model = createModel(context, () => SearchModel());
 
-    _model.searchPageTextFieldController = TextEditingController();
+    _model.searchPageTextFieldController ??= TextEditingController();
   }
 
   @override
@@ -373,8 +373,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                   getJsonField(
                                                     searchItem,
                                                     r'''$.name''',
-                                                  ).toString(),
+                                                  )
+                                                      .toString()
+                                                      .maybeHandleOverflow(
+                                                        maxChars: 25,
+                                                        replacement: '…',
+                                                      ),
                                                   textAlign: TextAlign.center,
+                                                  maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -554,8 +560,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                   getJsonField(
                                                     searchItem,
                                                     r'''$.name''',
-                                                  ).toString(),
+                                                  )
+                                                      .toString()
+                                                      .maybeHandleOverflow(
+                                                        maxChars: 25,
+                                                        replacement: '…',
+                                                      ),
                                                   textAlign: TextAlign.center,
+                                                  maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1

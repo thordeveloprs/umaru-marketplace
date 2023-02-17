@@ -72,7 +72,7 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
       }
     });
 
-    _model.textController = TextEditingController();
+    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -450,9 +450,15 @@ class _ManageProductsWidgetState extends State<ManageProductsWidget> {
                                                         getJsonField(
                                                           manageProductItem,
                                                           r'''$.product_name''',
-                                                        ).toString(),
+                                                        )
+                                                            .toString()
+                                                            .maybeHandleOverflow(
+                                                              maxChars: 25,
+                                                              replacement: '…',
+                                                            ),
                                                         textAlign:
                                                             TextAlign.center,
+                                                        maxLines: 1,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

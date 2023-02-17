@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -47,16 +48,16 @@ class _AddProductWidgetState extends State<AddProductWidget> {
       });
     });
 
-    _model.txtProductNameController = TextEditingController();
-    _model.txtSkuController = TextEditingController();
-    _model.txtPriceController = TextEditingController();
-    _model.txSpecialPriceController = TextEditingController();
-    _model.txQuantityController = TextEditingController();
-    _model.txWeightController = TextEditingController();
-    _model.shortdescriptiontxtController = TextEditingController();
-    _model.descriptiontxtController = TextEditingController();
-    _model.txtMetaTitleController = TextEditingController();
-    _model.metadesTxtController = TextEditingController();
+    _model.txtProductNameController ??= TextEditingController();
+    _model.txtSkuController ??= TextEditingController();
+    _model.txtPriceController ??= TextEditingController();
+    _model.txSpecialPriceController ??= TextEditingController();
+    _model.txQuantityController ??= TextEditingController();
+    _model.txWeightController ??= TextEditingController();
+    _model.shortdescriptiontxtController ??= TextEditingController();
+    _model.descriptiontxtController ??= TextEditingController();
+    _model.txtMetaTitleController ??= TextEditingController();
+    _model.metadesTxtController ??= TextEditingController();
   }
 
   @override
@@ -1528,62 +1529,20 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(-1, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 22, 0, 0),
-                                  child: Wrap(
-                                    spacing: 0,
-                                    runSpacing: 0,
-                                    alignment: WrapAlignment.start,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    direction: Axis.horizontal,
-                                    runAlignment: WrapAlignment.start,
-                                    verticalDirection: VerticalDirection.down,
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Container(
-                                        width: 112,
-                                        height: 68,
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Container(
-                                              width: 111.5,
-                                              height: 67,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        28, 5.38, 28, 5.77),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/960/600',
-                                                  width: 55.9,
-                                                  height: 55.9,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.16, -1.42),
-                                              child: Image.asset(
-                                                'assets/images/ri_close-circle-fill.png',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0, 10, 0, 10),
+                                child: Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  child: custom_widgets.AssetsImageViewList(
+                                    width: double.infinity,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                    listImage: FFAppState()
+                                        .imageListForAddProduct
+                                        .toList(),
                                   ),
                                 ),
                               ),

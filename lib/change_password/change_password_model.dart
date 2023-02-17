@@ -71,6 +71,7 @@ class ChangePasswordModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     oldPasswordController?.dispose();
     txtNewPasswordController?.dispose();
     txtNewConfirmPasswordController?.dispose();

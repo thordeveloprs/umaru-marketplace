@@ -28,8 +28,8 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
     super.initState();
     _model = createModel(context, () => LogInPageModel());
 
-    _model.txtEmailController = TextEditingController();
-    _model.txtPasswordController = TextEditingController();
+    _model.txtEmailController ??= TextEditingController();
+    _model.txtPasswordController ??= TextEditingController();
   }
 
   @override

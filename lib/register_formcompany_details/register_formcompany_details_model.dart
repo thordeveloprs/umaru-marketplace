@@ -115,12 +115,14 @@ class RegisterFormcompanyDetailsModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     emalIdController?.dispose();
     textController2?.dispose();
     textController3?.dispose();
     txtFacebookIdController?.dispose();
     textController5?.dispose();
     textController6?.dispose();
+    sucessMsgModel.dispose();
   }
 
   /// Additional helper methods are added here.

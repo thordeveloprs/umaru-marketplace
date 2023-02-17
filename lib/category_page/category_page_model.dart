@@ -19,7 +19,9 @@ class CategoryPageModel extends FlutterFlowModel {
     appbarModel = createModel(context, () => AppbarModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    appbarModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

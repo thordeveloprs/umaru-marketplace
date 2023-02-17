@@ -30,13 +30,13 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
     super.initState();
     _model = createModel(context, () => SellerRegisterationModel());
 
-    _model.textController1 = TextEditingController();
-    _model.textController2 = TextEditingController();
-    _model.textController3 = TextEditingController();
-    _model.txtContactController = TextEditingController();
-    _model.textController5 = TextEditingController();
-    _model.textController6 = TextEditingController();
-    _model.textController7 = TextEditingController();
+    _model.textController1 ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
+    _model.txtContactController ??= TextEditingController();
+    _model.textController5 ??= TextEditingController();
+    _model.textController6 ??= TextEditingController();
+    _model.textController7 ??= TextEditingController();
   }
 
   @override
@@ -155,7 +155,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -273,7 +272,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -395,7 +393,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -516,7 +513,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -635,7 +631,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 51,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -753,7 +748,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 55,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
@@ -892,7 +886,6 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 13, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 55,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),

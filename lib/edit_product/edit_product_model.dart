@@ -94,6 +94,7 @@ class EditProductModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     txtProductNameController?.dispose();
     txtSkuController?.dispose();
     txtPriceController?.dispose();
@@ -104,6 +105,7 @@ class EditProductModel extends FlutterFlowModel {
     descriptiontxtController?.dispose();
     txtMetaTitleController?.dispose();
     metadesTxtController?.dispose();
+    sucessMsgModel.dispose();
   }
 
   /// Additional helper methods are added here.

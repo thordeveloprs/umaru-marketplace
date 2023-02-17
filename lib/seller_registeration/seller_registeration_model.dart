@@ -123,6 +123,7 @@ class SellerRegisterationModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();

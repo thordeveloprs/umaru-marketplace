@@ -60,6 +60,7 @@ class LogInPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appbarModel.dispose();
     txtEmailController?.dispose();
     txtPasswordController?.dispose();
   }
