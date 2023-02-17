@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -104,10 +103,6 @@ class AddProductModel extends FlutterFlowModel {
   String? dropDownsubcategoryValue;
   // Stores action output result for [Custom Action - getSubCategoryId] action in DropDownsubcategory widget.
   String? subCategoryId;
-  bool isMediaUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-
   // State field(s) for shortdescriptiontxt widget.
   TextEditingController? shortdescriptiontxtController;
   String? Function(BuildContext, String?)?

@@ -8,10 +8,13 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-class AssetsImageViewList extends StatefulWidget {
-  List<dynamic> listImage = [];
+import 'index.dart'; // Imports other custom widgets
 
-  AssetsImageViewList({Key? key, required this.listImage}) : super(key: key);
+class AssetsImageViewList extends StatefulWidget {
+  double width, height;
+
+  AssetsImageViewList({Key? key, required this.height, required this.width})
+      : super(key: key);
 
   @override
   State<AssetsImageViewList> createState() => _AssetsImageViewList();
@@ -22,7 +25,8 @@ class _AssetsImageViewList extends State<AssetsImageViewList> {
   Widget build(BuildContext context) {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.start,
-      children: widget.listImage
+      children: FFAppState()
+          .imageListForAddProduct
           .map((e) => Container(
                 margin: const EdgeInsets.all(8),
                 height: MediaQuery.of(context).size.height * 0.13,
@@ -37,8 +41,12 @@ class _AssetsImageViewList extends State<AssetsImageViewList> {
                         child: InkWell(
                           onTap: () {
                             setState(() {
-                              // listBase64.removeAt(listImage.indexOf(e));
-                              // listImage.remove(e);
+                              FFAppState()
+                                  .imageBase64ListForAddProduct
+                                  .removeAt(FFAppState()
+                                      .imageListForAddProduct
+                                      .indexOf(e));
+                              FFAppState().imageListForAddProduct.remove(e);
                             });
                           },
                           child: const CircleAvatar(

@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -1453,49 +1452,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  final selectedMedia =
-                                      await selectMediaWithSourceBottomSheet(
-                                    context: context,
-                                    imageQuality: 44,
-                                    allowPhoto: true,
-                                    backgroundColor: Colors.white,
-                                    textColor: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                  );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isMediaUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
-
-                                    try {
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                              ))
-                                          .toList();
-                                    } finally {
-                                      _model.isMediaUploading = false;
-                                    }
-                                    if (selectedUploadedFiles.length ==
-                                        selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                      });
-                                    } else {
-                                      setState(() {});
-                                      return;
-                                    }
-                                  }
+                                  await actions.pickImage();
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -1540,9 +1497,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     width: double.infinity,
                                     height: MediaQuery.of(context).size.height *
                                         0.1,
-                                    listImage: FFAppState()
-                                        .imageListForAddProduct
-                                        .toList(),
                                   ),
                                 ),
                               ),
@@ -1894,7 +1848,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                           _model.txtPriceController.text),
                                       qty: int.tryParse(
                                           _model.txQuantityController.text),
-                                      images: _model.uploadedLocalFile,
                                       description:
                                           _model.descriptiontxtController.text,
                                       isInStock: _model.dropDownStockstaValue,
