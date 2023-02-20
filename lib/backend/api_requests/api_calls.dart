@@ -61,6 +61,8 @@ class UmaruGroup {
       SubscriptionAddToCartCall();
   static GetSelectedCategoryByProductIdCall getSelectedCategoryByProductIdCall =
       GetSelectedCategoryByProductIdCall();
+  static ProductImageUploadCall productImageUploadCall =
+      ProductImageUploadCall();
 }
 
 class LoginCall {
@@ -905,6 +907,33 @@ class GetSelectedCategoryByProductIdCall {
         r'''$''',
         true,
       );
+}
+
+class ProductImageUploadCall {
+  Future<ApiCallResponse> call({
+    dynamic? jsonJson,
+  }) {
+    final json = _serializeJson(jsonJson);
+    final body = '''
+{
+  "parameters": ${json}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'product image upload',
+      apiUrl: '${UmaruGroup.baseUrl}pub/rest/V1/vproducts/media',
+      callType: ApiCallType.POST,
+      headers: {
+        ...UmaruGroup.headers,
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 /// End umaru Group Code

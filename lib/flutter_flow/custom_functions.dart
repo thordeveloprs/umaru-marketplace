@@ -263,3 +263,12 @@ List<String> dynamicToInt(List<dynamic> listData) {
   print('NewList:--$newList');
   return newList;
 }
+
+dynamic createAddProductImageJson(
+  List<dynamic> listImage,
+  String sku,
+) {
+  Map<String, dynamic> data = {"images": listImage, "sku": sku};
+
+  return data;
+}

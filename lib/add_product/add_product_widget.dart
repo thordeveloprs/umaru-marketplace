@@ -1497,11 +1497,11 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 child: Container(
                                   width: double.infinity,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.1,
+                                      MediaQuery.of(context).size.height * 0.13,
                                   child: custom_widgets.AssetsImageViewList(
                                     width: double.infinity,
                                     height: MediaQuery.of(context).size.height *
-                                        0.1,
+                                        0.13,
                                   ),
                                 ),
                               ),
@@ -1901,9 +1901,31 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                           ''),
                                       r'''$.data.success''',
                                     )) {
-                                      setState(() {
-                                        _model.showLoading = true;
-                                      });
+                                      _model.imageUploadRespons =
+                                          await UmaruGroup
+                                              .productImageUploadCall
+                                              .call(
+                                        jsonJson: getJsonField(
+                                          functions.createAddProductImageJson(
+                                              FFAppState()
+                                                  .imageBase64ListForAddProduct
+                                                  .toList(),
+                                              getJsonField(
+                                                (_model.createProductDetails
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.data.sku''',
+                                              ).toString()),
+                                          r'''$''',
+                                        ),
+                                      );
+                                      if ((_model
+                                              .imageUploadRespons?.succeeded ??
+                                          true)) {
+                                        setState(() {
+                                          _model.showLoading = true;
+                                        });
+                                      }
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

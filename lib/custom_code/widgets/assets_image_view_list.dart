@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:io';
+
+import 'index.dart'; // Imports other custom widgets
+
 import 'index.dart'; // Imports other custom widgets
 
 class AssetsImageViewList extends StatefulWidget {
@@ -23,44 +27,42 @@ class AssetsImageViewList extends StatefulWidget {
 class _AssetsImageViewList extends State<AssetsImageViewList> {
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      crossAxisAlignment: WrapCrossAlignment.start,
-      children: FFAppState()
-          .imageListForAddProduct
-          .map((e) => Container(
-                margin: const EdgeInsets.all(8),
-                height: MediaQuery.of(context).size.height * 0.13,
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.file(e),
-                    ),
-                    Positioned(
-                        right: 0,
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              FFAppState()
-                                  .imageBase64ListForAddProduct
-                                  .removeAt(FFAppState()
-                                      .imageListForAddProduct
-                                      .indexOf(e));
-                              FFAppState().imageListForAddProduct.remove(e);
-                            });
-                          },
-                          child: const CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.red,
-                              child: Icon(
-                                Icons.close,
-                                color: Colors.white,
-                              )),
-                        ))
-                  ],
-                ),
-              ))
-          .toList(),
+    return ListView.builder(
+      itemCount: FFAppState().imageListForAddProduct.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        File data = FFAppState().imageListForAddProduct[index];
+        return Container(
+          margin: const EdgeInsets.all(8),
+          height: MediaQuery.of(context).size.height * 0.13,
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.file(data),
+              ),
+              Positioned(
+                  right: 0,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        FFAppState().imageBase64ListForAddProduct.removeAt(
+                            FFAppState().imageListForAddProduct.indexOf(data));
+                        FFAppState().imageListForAddProduct.remove(data);
+                      });
+                    },
+                    child: const CircleAvatar(
+                        radius: 15,
+                        backgroundColor: Colors.red,
+                        child: Icon(
+                          Icons.close,
+                          color: Colors.white,
+                        )),
+                  ))
+            ],
+          ),
+        );
+      },
     );
   }
 }

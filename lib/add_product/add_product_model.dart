@@ -142,6 +142,8 @@ class AddProductModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? metadesTxtControllerValidator;
   // Stores action output result for [Backend Call - API (create product)] action in Tab1SaveButton widget.
   ApiCallResponse? createProductDetails;
+  // Stores action output result for [Backend Call - API (product image upload)] action in Tab1SaveButton widget.
+  ApiCallResponse? imageUploadRespons;
   // Model for sucessMsg component.
   late SucessMsgModel sucessMsgModel;
 
