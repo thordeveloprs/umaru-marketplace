@@ -47,6 +47,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
         FFAppState().imageListForAddProduct = [];
         FFAppState().imageBase64ListForAddProduct = [];
       });
+      setState(() {
+        FFAppState().addToSelectedCategoryIdList('9');
+      });
     });
 
     _model.txtProductNameController ??= TextEditingController();
@@ -1901,27 +1904,36 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                           ''),
                                       r'''$.data.success''',
                                     )) {
-                                      _model.imageUploadRespons =
-                                          await UmaruGroup
-                                              .productImageUploadCall
-                                              .call(
-                                        jsonJson: getJsonField(
-                                          functions.createAddProductImageJson(
-                                              FFAppState()
-                                                  .imageBase64ListForAddProduct
-                                                  .toList(),
-                                              getJsonField(
-                                                (_model.createProductDetails
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.data.sku''',
-                                              ).toString()),
-                                          r'''$''',
-                                        ),
-                                      );
-                                      if ((_model
-                                              .imageUploadRespons?.succeeded ??
-                                          true)) {
+                                      if (FFAppState()
+                                              .imageBase64ListForAddProduct
+                                              .length !=
+                                          0) {
+                                        _model.imageUploadRespons =
+                                            await UmaruGroup
+                                                .productImageUploadCall
+                                                .call(
+                                          jsonJson: getJsonField(
+                                            functions.createAddProductImageJson(
+                                                FFAppState()
+                                                    .imageBase64ListForAddProduct
+                                                    .toList(),
+                                                getJsonField(
+                                                  (_model.createProductDetails
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.data.sku''',
+                                                ).toString()),
+                                            r'''$''',
+                                          ),
+                                        );
+                                        if ((_model.imageUploadRespons
+                                                ?.succeeded ??
+                                            true)) {
+                                          setState(() {
+                                            _model.showLoading = true;
+                                          });
+                                        }
+                                      } else {
                                         setState(() {
                                           _model.showLoading = true;
                                         });

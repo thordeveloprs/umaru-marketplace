@@ -594,6 +594,11 @@ class ProductByCategoryIdAndProductIdCall {
         r'''$.items''',
         true,
       );
+  dynamic productImageList(dynamic response) => getJsonField(
+        response,
+        r'''$.items[0].media_gallery_entries''',
+        true,
+      );
 }
 
 class ProductByCategoryIdAndProductIdFrenchCall {

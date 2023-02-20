@@ -28,3 +28,4 @@ export 'webview/webview_widget.dart' show WebviewWidget;
 export 'edit_product/edit_product_widget.dart' show EditProductWidget;
 export 'payment_web_view/payment_web_view_widget.dart'
     show PaymentWebViewWidget;
+export 'test/test_widget.dart' show TestWidget;

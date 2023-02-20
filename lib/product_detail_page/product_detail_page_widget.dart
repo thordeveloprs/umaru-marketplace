@@ -166,170 +166,122 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     child: Container(
                                       height: 200,
                                       decoration: BoxDecoration(),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 213,
-                                        child: Stack(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 25),
-                                              child: PageView(
-                                                controller: _model
-                                                        .pageViewController ??=
-                                                    PageController(
-                                                        initialPage: 0),
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                children: [
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Image.network(
-                                                      functions
-                                                          .findProductImage(
-                                                              getJsonField(
-                                                                columnProductByCategoryIdAndProductIdResponse
-                                                                    .jsonBody,
-                                                                r'''$.items[0].custom_attributes''',
-                                                              )!,
-                                                              FFAppState()
-                                                                  .imageBaseUrl),
-                                                      width: 272,
-                                                      height: 176,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(37, 18,
-                                                                  37, 18),
-                                                      child: Image.network(
-                                                        'https://picsum.photos/seed/139/600',
-                                                        width: 100,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(37, 18,
-                                                                  37, 18),
-                                                      child: Image.network(
-                                                        'https://picsum.photos/seed/43/600',
-                                                        width: 100,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(37, 18,
-                                                                  37, 18),
-                                                      child: Image.network(
-                                                        'https://picsum.photos/seed/834/600',
-                                                        width: 100,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(37, 18,
-                                                                  37, 18),
-                                                      child: Image.network(
-                                                        'https://picsum.photos/seed/583/600',
-                                                        width: 100,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0, 1),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 10),
-                                                child: smooth_page_indicator
-                                                    .SmoothPageIndicator(
-                                                  controller: _model
-                                                          .pageViewController ??=
-                                                      PageController(
-                                                          initialPage: 0),
-                                                  count: 5,
-                                                  axisDirection:
-                                                      Axis.horizontal,
-                                                  onDotClicked: (i) {
-                                                    _model.pageViewController!
-                                                        .animateToPage(
-                                                      i,
-                                                      duration: Duration(
-                                                          milliseconds: 500),
-                                                      curve: Curves.ease,
-                                                    );
-                                                  },
-                                                  effect: smooth_page_indicator
-                                                      .SlideEffect(
-                                                    spacing: 8,
-                                                    radius: 13,
-                                                    dotWidth: 8,
-                                                    dotHeight: 8,
-                                                    dotColor: Color(0xFFEBF0FF),
-                                                    activeDotColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .black,
-                                                    paintStyle:
-                                                        PaintingStyle.fill,
+                                      child: Builder(
+                                        builder: (context) {
+                                          final productImage = UmaruGroup
+                                                  .productByCategoryIdAndProductIdCall
+                                                  .productImageList(
+                                                    columnProductByCategoryIdAndProductIdResponse
+                                                        .jsonBody,
+                                                  )
+                                                  ?.map((e) => e)
+                                                  .toList()
+                                                  ?.toList() ??
+                                              [];
+                                          return Container(
+                                            width: double.infinity,
+                                            height: 213,
+                                            child: Stack(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 0, 25),
+                                                  child: PageView.builder(
+                                                    controller: _model
+                                                            .pageViewController ??=
+                                                        PageController(
+                                                            initialPage: min(
+                                                                0,
+                                                                productImage
+                                                                        .length -
+                                                                    1)),
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount:
+                                                        productImage.length,
+                                                    itemBuilder: (context,
+                                                        productImageIndex) {
+                                                      final productImageItem =
+                                                          productImage[
+                                                              productImageIndex];
+                                                      return Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Image.network(
+                                                          '${FFAppState().imageBaseUrl}${getJsonField(
+                                                            productImageItem,
+                                                            r'''$.file''',
+                                                          ).toString()}',
+                                                          width: 272,
+                                                          height: 176,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
-                                              ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 1),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 10),
+                                                    child: smooth_page_indicator
+                                                        .SmoothPageIndicator(
+                                                      controller: _model
+                                                              .pageViewController ??=
+                                                          PageController(
+                                                              initialPage: min(
+                                                                  0,
+                                                                  productImage
+                                                                          .length -
+                                                                      1)),
+                                                      count:
+                                                          productImage.length,
+                                                      axisDirection:
+                                                          Axis.horizontal,
+                                                      onDotClicked: (i) {
+                                                        _model
+                                                            .pageViewController!
+                                                            .animateToPage(
+                                                          i,
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  500),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      effect:
+                                                          smooth_page_indicator
+                                                              .SlideEffect(
+                                                        spacing: 8,
+                                                        radius: 13,
+                                                        dotWidth: 8,
+                                                        dotHeight: 8,
+                                                        dotColor:
+                                                            Color(0xFFEBF0FF),
+                                                        activeDotColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .black,
+                                                        paintStyle:
+                                                            PaintingStyle.fill,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ),

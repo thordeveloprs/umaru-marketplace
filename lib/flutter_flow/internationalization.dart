@@ -1668,6 +1668,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // test
+  {
+    'kucrmfax': {
+      'en': 'File Downloading',
+      'fr': '',
+    },
+    '7simc1q1': {
+      'en': 'Button',
+      'fr': '',
+    },
+    'pl5hiuxo': {
+      'en': 'Page Title',
+      'fr': '',
+    },
+    '6nrqoxik': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // forgotPassword
   {
     's01ryyvc': {

@@ -6,3 +6,4 @@ export 'get_sub_category_id.dart' show getSubCategoryId;
 export 'convert_register_data_to_j_s_o_n.dart' show convertRegisterDataToJSON;
 export 'checking.dart' show checking;
 export 'pick_image.dart' show pickImage;
+export 'download_file.dart' show downloadFile;
