@@ -42,7 +42,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : TestWidget(),
+          : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -60,7 +60,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : TestWidget(),
+              : NavBarPage(),
           routes: [
             FFRoute(
               name: 'Home',
