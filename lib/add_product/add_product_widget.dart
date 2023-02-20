@@ -44,6 +44,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
         FFAppState().priceDateEnd = '';
         FFAppState().selecetCategoryList = [];
         FFAppState().selectedCategoryIdList = [];
+        FFAppState().imageListForAddProduct = [];
+        FFAppState().imageBase64ListForAddProduct = [];
       });
     });
 
@@ -1453,6 +1455,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               InkWell(
                                 onTap: () async {
                                   await actions.pickImage();
+                                  setState(() {
+                                    _model.forImagePickerSetState = 0;
+                                  });
                                 },
                                 child: Container(
                                   width: double.infinity,

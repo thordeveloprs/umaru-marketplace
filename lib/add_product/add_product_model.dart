@@ -19,6 +19,8 @@ class AddProductModel extends FlutterFlowModel {
 
   bool showLoading = false;
 
+  int forImagePickerSetState = 0;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
