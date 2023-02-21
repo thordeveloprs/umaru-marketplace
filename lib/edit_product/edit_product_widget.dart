@@ -54,18 +54,6 @@ class _EditProductWidgetState extends State<EditProductWidget> {
           await UmaruGroup.getSelectedCategoryByProductIdCall.call(
         productid: widget.id,
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            (_model.selectedCategoryApiRespons?.jsonBody ?? '').toString(),
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          duration: Duration(milliseconds: 4000),
-          backgroundColor: Colors.black,
-        ),
-      );
       setState(() {
         FFAppState().selecetCategoryList = functions
             .makePreSelectedCategoryList(FFAppState().categoryData.toList(),

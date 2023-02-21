@@ -120,6 +120,9 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                   ),
                                   InkWell(
                                     onTap: () async {
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
                                       context.pushNamed('sellerRegisteration');
                                     },
                                     child: Text(

@@ -127,6 +127,9 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                   ),
                                   InkWell(
                                     onTap: () async {
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
                                       context.pushNamed('LogInPage');
                                     },
                                     child: Text(
@@ -1271,8 +1274,16 @@ class _SellerRegisterationWidgetState extends State<SellerRegisterationWidget> {
                                                       ?.jsonBody ??
                                                   ''),
                                             )) {
-                                              context.goNamed('Home');
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
+                                                context.pop();
+                                              }
+                                              context.pushNamed('Home');
                                             } else {
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
+                                                context.pop();
+                                              }
                                               context.pushNamed(
                                                 'BuyMembershipPage',
                                                 queryParams: {
