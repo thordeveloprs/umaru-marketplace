@@ -411,10 +411,56 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                           );
                                           FFAppState().isLogin = true;
                                         });
-                                        if (Navigator.of(context).canPop()) {
-                                          context.pop();
+                                        _model.membershipResult =
+                                            await UmaruGroup
+                                                .getSubscriptionDetailsCall
+                                                .call(
+                                          venderId: getJsonField(
+                                            FFAppState().userData,
+                                            r'''$.vendor_id''',
+                                          ).toString(),
+                                        );
+                                        if ((_model
+                                                .membershipResult?.succeeded ??
+                                            true)) {
+                                          if (getJsonField(
+                                                (_model.membershipResult
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$[0].vendor_data.running_plans''',
+                                              ) !=
+                                              null) {
+                                            if (Navigator.of(context)
+                                                .canPop()) {
+                                              context.pop();
+                                            }
+                                            context.pushNamed(
+                                              'ManageProducts',
+                                              queryParams: {
+                                                'isCommingFromLogin':
+                                                    serializeParam(
+                                                  true,
+                                                  ParamType.bool,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          } else {
+                                            if (Navigator.of(context)
+                                                .canPop()) {
+                                              context.pop();
+                                            }
+                                            context.pushNamed(
+                                              'BuyMembershipPage',
+                                              queryParams: {
+                                                'commingFromHome':
+                                                    serializeParam(
+                                                  false,
+                                                  ParamType.bool,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          }
                                         }
-                                        context.pushNamed('Home');
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

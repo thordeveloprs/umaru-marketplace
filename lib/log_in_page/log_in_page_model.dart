@@ -49,6 +49,8 @@ class LogInPageModel extends FlutterFlowModel {
 
   // Stores action output result for [Backend Call - API (login)] action in Button widget.
   ApiCallResponse? loginData;
+  // Stores action output result for [Backend Call - API (Get Subscription Details)] action in Button widget.
+  ApiCallResponse? membershipResult;
 
   /// Initialization and disposal methods.
 

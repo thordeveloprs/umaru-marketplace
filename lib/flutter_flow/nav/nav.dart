@@ -117,7 +117,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ManageProducts',
               path: 'manageProducts',
-              builder: (context, params) => ManageProductsWidget(),
+              builder: (context, params) => ManageProductsWidget(
+                isCommingFromLogin:
+                    params.getParam('isCommingFromLogin', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'registerFormcompanyDetails',

@@ -14,7 +14,12 @@ import 'manage_products_model.dart';
 export 'manage_products_model.dart';
 
 class ManageProductsWidget extends StatefulWidget {
-  const ManageProductsWidget({Key? key}) : super(key: key);
+  const ManageProductsWidget({
+    Key? key,
+    this.isCommingFromLogin,
+  }) : super(key: key);
+
+  final bool? isCommingFromLogin;
 
   @override
   _ManageProductsWidgetState createState() => _ManageProductsWidgetState();

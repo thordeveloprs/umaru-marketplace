@@ -151,7 +151,15 @@ class _MyAccountsWidgetState extends State<MyAccountsWidget> {
                                       r'''$.running_plans''',
                                     ) !=
                                     null) {
-                                  context.pushNamed('ManageProducts');
+                                  context.pushNamed(
+                                    'ManageProducts',
+                                    queryParams: {
+                                      'isCommingFromLogin': serializeParam(
+                                        false,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                  );
                                 } else {
                                   context.pushNamed(
                                     'BuyMembershipPage',

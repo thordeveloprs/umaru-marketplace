@@ -252,7 +252,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_subscriptionDetail', jsonEncode(_value));
   }
 
-  String _selectedLanguageCode = 'en';
+  String _selectedLanguageCode = 'fr';
   String get selectedLanguageCode => _selectedLanguageCode;
   set selectedLanguageCode(String _value) {
     _selectedLanguageCode = _value;
